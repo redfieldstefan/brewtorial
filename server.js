@@ -7,11 +7,20 @@ var app = express();
 var favicon = require('serve-favicon');
 var router = express.Router();
 
+// static middleware options.
+var staticOptions = {
+  dotFiles: 'ignore',
+  etag: true,
+  index: 'index.html',
+  lastModified: true,
+  redirect: true
+};
+
 // import routes.
 require('./routes')(router);
 
 // global middleware.
-app.use([express.static(path.join(__dirname, '/assets')), 
+app.use([express.static(path.join(__dirname, '/assets'), staticOptions), 
   favicon(path.join(__dirname, '/assets/images/favicon.ico')),
   router
 ]);
