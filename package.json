@@ -1,14 +1,22 @@
 {
-  "name": "bruwbuddy",
+  "name": "brubuddy",
   "version": "0.1.0",
   "description": "homebrew companion",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js || node server.js"
   },
   "author": "",
+  "contributors": [
+    "Aaron Martone (http://aaronmartone.com)",
+    "Andrew Jacobson",
+    "Satu Bailey",
+    "Stefan Redfield"
+  ],
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.12.4",
     "express": "^4.12.4",
     "serve-favicon": "^2.2.1"
   }

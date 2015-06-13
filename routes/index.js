@@ -1,5 +1,14 @@
+// import modules.
+var express = require('express');
+var apiRouter = express.Router();
+
+// export router.
 module.exports = function(router) {
   
+  // mount '/api' route handlers.
+  router.route('/api')
+    .all(require('./api-routes')(apiRouter));
+
   // sample route.
   router.route('/')
       .get(function(req, res, next) {
