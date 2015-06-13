@@ -1,14 +1,20 @@
+var port = process.env.PORT || 3000;
+
 // import modules.
+var path = require('path');
 var express = require('express');
 var app = express();
-
+var favicon = require('serve-favicon');
 var router = express.Router();
 
 // import routes.
 require('./routes')(router);
 
 // global middleware.
-app.use(router);
+app.use([express.static(path.join(__dirname, '/assets')), 
+  favicon(path.join(__dirname, '/assets/images/favicon.ico')),
+  router
+]);
 
 // 404 handler.
 app.use(function(req, res, next) {
@@ -24,4 +30,9 @@ app.use(function(err, req, res, next) {
   res.status(500)
     .set('Content-Type', 'text/plain')
     .end('500 - Internal server error');
+});
+
+// start server.
+app.listen(port, function() {
+  console.log('\n\n\nServer is listening on port %d', port);
 });
