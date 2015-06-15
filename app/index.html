@@ -10,22 +10,19 @@
   <body class="container" data-ng-app="brewApp">
     <header class="twelve columns">
       <aside class="five columns">
-        <h1 class="headertitle">Brew buddy</h1>
+        <h1 class="headertitle">Brewtorial</h1>
         <p class="headerfooter">Your personal homebrew helper</p>
       </aside>
       <nav class="seven columns">
         <ul>
-          <li><button type="button" class="navbar" ng-model="clicked">My Profile</button></li>
-          <li class="navbar">Search</li>
-          <li class="navbar">Popular brews</li>
-          <li class="navbar" data-logout-directive><div>Logout</div></li>
+          <li class="navlayout"><a class="navbar" href="#profile">My profile</a></li>
+          <li class="navlayout"><a class="navbar" href="#all_recipes">All Recipes</a></li>
+          <li class="navlayout"><a class="navbar" href="#logged_in">Home</a></li>
+          <li class="navlayout"><a class="navbar" href="#log_out">Log Out</a></li>
         </ul>
       </nav>
     </header>
     <main class="twelve columns" data-ng-view>
-      <p>Main Content</p>
-      <div data-ng-hide ng-show="clicked"> data-profile-directive></div>
-      <section data-all-recipes-directive></section>
     </main>
     <footer class="twelve columns">
       <p class="headerfooter">BruBuddy&trade; 2015</p>
