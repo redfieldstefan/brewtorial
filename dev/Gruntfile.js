@@ -14,7 +14,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  var bldFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
+
+  var watchFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
+
 
   // configure tasks.
   grunt.initConfig({
@@ -58,7 +60,7 @@ module.exports = function(grunt) {
         filter: 'isFile'
       },
       css: {
-        cwd: 'app/styles',
+        cwd: 'app/css',
         expand: true,
         flatten: false,
         src:'**/*.css',
@@ -81,23 +83,23 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
-        src: bldFiles
+        src: watchFiles
       }
     },
 
     watch: {
-      files: bldFiles,
+      files: watchFiles,
       html: {
-                files: ['./app/**/*.html'],
-                options: {
-                    livereload: true
-                }
+              files: ['./app/**/*.html'],
+              options: {
+                  livereload: true
+              }
             },
             css: {
-                files: ['./app/**/*.css'],
-                options: {
-                    livereload: true
-                }
+              files: ['./app/**/*.css'],
+              options: {
+                  livereload: true
+              }
             },
       tasks: ['webpack:client', 'copy:html', 'copy:css']
     }
@@ -106,6 +108,6 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev'])
-  grunt.registerTask('build:dev', ['webpack:client', 'webpack:karma_test', 'copy:html', 'copy:css']);
+  grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
