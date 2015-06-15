@@ -19,8 +19,13 @@ var staticOptions = {
 // import routes.
 require('./routes')(router);
 
+app.use(express.static(__dirname + "/build"));
+app.use(express.static(__dirname + "/app"));
+
+app.use("/api", router);
+
 // global middleware.
-app.use([express.static(path.join(__dirname, '/assets'), staticOptions), 
+app.use([express.static(path.join(__dirname, '/assets'), staticOptions),
   favicon(path.join(__dirname, '/assets/images/favicon.ico')),
   router
 ]);
