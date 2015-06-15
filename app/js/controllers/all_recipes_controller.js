@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 module.exports = function(app) {
-  app.controller("allRecipesController", ["$scope", "$http", function($scope, $http) {
+  app.controller('allRecipesController', ['$scope', function($scope, $http) {
     $scope.errors = [];
     $scope.recipes = [];
 
