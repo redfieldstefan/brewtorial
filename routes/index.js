@@ -13,17 +13,12 @@ module.exports = function(router) {
   router.use('/api', handlers.api);
 
   // handle static resources.
+
+  /*
   router.route(['/', '/:slug'])
     .get(function(req, res, next) {
-      var filename = req.params.slug || 'index.html';
-      var options = {
-        root: path.join(__dirname, '../app/'),
-        dotfiles: 'deny',
-        headers: {
-          'x-timestamp': Date.now()
-        }
-      };
-      res.sendFile(filename, options, function(err) {
+      var filename = req.params.slug || 'index.html';    
+      res.sendFile(filename, function(err) {
         if (err) { 
           console.log(err);
           res.status(err.status)
@@ -31,5 +26,5 @@ module.exports = function(router) {
         }        
       });
     });
-
+  */
 }

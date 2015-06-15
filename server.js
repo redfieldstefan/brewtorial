@@ -1,4 +1,5 @@
-var port = process.env.PORT || 3000;
+// define constants.
+var PORT = process.env.PORT || 3000;
 
 // import modules.
 var path = require('path');
@@ -7,26 +8,13 @@ var app = express();
 var favicon = require('serve-favicon');
 var router = express.Router();
 
-// static middleware options.
-var staticOptions = {
-  dotFiles: 'ignore',
-  etag: true,
-  index: 'index.html',
-  lastModified: true,
-  redirect: true
-};
-
 // import routes.
 require('./routes')(router);
 
-app.use(express.static(__dirname + "/build"));
-app.use(express.static(__dirname + "/app"));
-
-app.use("/api", router);
-
 // global middleware.
-app.use([express.static(path.join(__dirname, '/assets'), staticOptions),
-  favicon(path.join(__dirname, '/assets/images/favicon.ico')),
+app.use([
+  express.static(path.join(__dirname, '/app')),
+  favicon(path.join(__dirname, '/app/images/favicon.ico')),
   router
 ]);
 
@@ -47,6 +35,6 @@ app.use(function(err, req, res, next) {
 });
 
 // start server.
-app.listen(port, function() {
-  console.log('\n\n\nServer is listening on port %d', port);
+app.listen(PORT, function() {
+  console.log('\n\n\nServer is listening on port %d', PORT);
 });
