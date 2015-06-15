@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>BruBuddy&trade;</title>
-    <link href="skeleton.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
   </head>
@@ -15,18 +15,21 @@
       </aside>
       <nav class="seven columns">
         <ul>
-          <li class="navbar">My Profile</li>
+          <li><button type="button" class="navbar" ng-model="clicked">My Profile</button></li>
           <li class="navbar">Search</li>
           <li class="navbar">Popular brews</li>
-          <li class="navbar">Log Out</li>
+          <li class="navbar" data-logout-directive><div>Logout</div></li>
         </ul>
       </nav>
     </header>
-    <main class="twelve columns">
+    <main class="twelve columns" data-ng-view>
       <p>Main Content</p>
+      <div data-ng-hide ng-show="clicked"> data-profile-directive></div>
+      <section data-all-recipes-directive></section>
     </main>
     <footer class="twelve columns">
       <p class="headerfooter">BruBuddy&trade; 2015</p>
     </footer>
+    <script src="bundle.js"></script>
   </body>
 </html>
