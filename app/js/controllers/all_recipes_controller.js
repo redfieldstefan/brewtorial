@@ -14,7 +14,6 @@ module.exports = function(app) {
 
     $scope.addIngredient = function(ingredient) {
       $scope.ingredients.push(ingredient)
-      console.log(ingredient);
     }
 
   }]);
