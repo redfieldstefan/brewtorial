@@ -132,12 +132,19 @@ footer {
   background-color: #4A4A4A;
   margin: 0 auto;
 }
-.navbar {
-  font-family: 'Gruppo', cursive;
+.navlayout {
   display: inline-block;
   margin: 5px;
+  float: right;
+  height: 50px;
+}
+.navbar {
+  font-family: 'Gruppo', cursive;
   color: #F8E07E;
-  float: right; }
+}
+.navbar:hover {
+  color: #F8F1D4;
+}
 .headertitle {
   color: #FFDB4C;
   font-family: "Cabin Sketch", "Raleway", "HelveticaNeue", "Helvetica Neue";
