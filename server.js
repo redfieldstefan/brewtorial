@@ -7,6 +7,10 @@ var express = require('express');
 var app = express();
 var favicon = require('serve-favicon');
 var apiRouter = express.Router();
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/brewtorial_dev');
+process.env.APP_SECRET = process.env.APP_SECRET || 'brewtorial_dev';
 
 // import routes.
 require('./routes/api')(apiRouter);
