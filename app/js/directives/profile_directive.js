@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 module.exports = function(app) {
-  app.directive("profileDirective", function() {
+  app.directive('profileDirective', function() {
     return {
-      restrict: "A",
-      template: ""
+      restrict: 'A',
+      templateUrl: '/js/views/profile.html'
     }
   });
 };
