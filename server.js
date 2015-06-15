@@ -6,6 +6,7 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var favicon = require('serve-favicon');
+var bodyParser = require('body-parser');
 var apiRouter = express.Router();
 
 // import routes.
@@ -14,7 +15,8 @@ require('./routes/api')(apiRouter);
 // global middleware.
 app.use([
   express.static(path.join(__dirname, '/app')),
-  favicon(path.join(__dirname, '/app/images/favicon.ico'))
+  favicon(path.join(__dirname, '/app/images/favicon.ico')),
+  bodyParser.json()
 ]);
 
 // mount routers.
