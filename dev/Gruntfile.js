@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       client: {
         entry: __dirname + '/../app/js/client.js',
         output: {
-          path: path.join(__dirname, '../', 'build'),
+          path: path.join(__dirname, '../build'),
           filename: 'bundle.js'
         }
       },
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         entry: __dirname + '/../test/karma_tests/karma_entry.js',
         output: {
           path: 'test/karma_tests/',
-          filename: 'karma_test_bundle.js'
+          filename: 'bundle.js'
         }
       }
     },
@@ -50,6 +50,14 @@ module.exports = function(grunt) {
         expand: true,
         flatten: false,
         src:'**/*.html',
+        dest: 'build/',
+        filter: 'isFile'
+      },
+      css: {
+        cwd: 'app/styles',
+        expand: true,
+        flatten: false,
+        src:'**/*.css',
         dest: 'build/',
         filter: 'isFile'
       }
@@ -71,6 +79,6 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev'])
-  grunt.registerTask('build:dev', ['webpack:client', 'webpack:karma_test', 'copy:html']);
+  grunt.registerTask('build:dev', ['webpack:client', 'webpack:karma_test', 'copy:html', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
