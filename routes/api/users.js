@@ -7,7 +7,7 @@ module.exports = function(router, passport) {
 
   router.post('/create_user', function(req, res) {
     var newUser = new User();
-    console.log(req.body);
+
     newUser.generateHash(req.body.password, function(err, hash) {
       if (err) {
         console.log(err);
@@ -20,14 +20,12 @@ module.exports = function(router, passport) {
       newUser.basic.email = req.body.email;
       newUser.basic.password = hash;
 
-      console.log(hash);
       newUser.save(function(err, user) {
         if (err) {
           console.log(err);
           return res.status(500).json({err: 'could not create user'});
         }
 
-        console.log(process.env.APP_SECRET);
         user.generateToken(process.env.APP_SECRET, function(err, token) {
           if (err) {
             console.log(err);
