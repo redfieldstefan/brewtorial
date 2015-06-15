@@ -12,6 +12,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
+  var watchFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
+
   // configure tasks.
   grunt.initConfig({
 
@@ -31,7 +33,7 @@ module.exports = function(grunt) {
       client: {
         entry: __dirname + '/../app/js/client.js',
         output: {
-          path: path.join(__dirname, '../', 'build'),
+          path: path.join(__dirname, '../build'),
           filename: 'bundle.js'
         }
       },
@@ -66,6 +68,29 @@ module.exports = function(grunt) {
         src:['../test/**/*test.js']
       }
     },
+
+    nodemon: {
+      dev: {
+        src: watchFiles
+      }
+    },
+
+    watch: {
+      files: watchFiles,
+      html: {
+                files: ['./app/**/*.html'],
+                options: {
+                    livereload: true
+                }
+            },
+            css: {
+                files: ['./app/**/*.css'],
+                options: {
+                    livereload: true
+                }
+            },
+      tasks: ['webpack:client', 'copy:html', 'copy:css']
+    }
   });
 
   // register tasks.
