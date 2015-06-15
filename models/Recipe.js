@@ -1,29 +1,31 @@
 // import modules.
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define schema.
 var recipeSchema = new mongoose.Schema({
   header: {
-    abv: 0.0,
+    abv: {
+      type: Number,
+      required: true
+    },
     author: ObjectId, 
-    brewTime: 0, // seconds
-    created: date,
-    difficulty: 0,
-    icon:, '' // url
-    likes: 0,
-    popularity: [], // users ids who completed brew
-    style: '', // lager, ale, piss    
-    title: ''
+    brewTime: Number,
+    created: Date,
+    difficulty: Number,
+    icon: String,
+    likes: Number,
+    popularity: Array,
+    style: String,
+    title: String
   },
-  equipment: [ObjectIDs],
-  // 4 quarts water <amount> <unit> <name>
-  ingredients: [ '' ] // string of amount, name and unit
+  equipment: Array,
+  ingredients: Array,
   steps: [
     {
-      directions: '',
-      offset: 0,
+      directions: String,
+      offset: Number,
       status: Boolean
-      // steps move automatically to the next
     }
   ],
 });
