@@ -1,6 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/redfieldstefan/brubuddy.png?label=ready&title=Ready)](https://waffle.io/redfieldstefan/brubuddy)
 
-Brutorial
+Brewtorial
 =========
 
 #API
@@ -9,7 +9,7 @@ Brutorial
 
 ###POST /api/users/create_user
 
-Example input: `{ displayName: 'test', email: 'test@example.com', password: 'foobaz123'}`
+Example input: `{ displayName: 'test', email: 'test@example.com', password: 'foobaz123' }`
 
 ###GET /api/users/sign_in
 
