@@ -1,14 +1,27 @@
 // import modules.
 var express = require('express');
+var recipeRouter = express.Router();
+
+// import routes.
+require('./api/recipe')(recipeRouter);
+
+// export router.
+module.exports = function(router) {
+
+  router.use('/recipe', recipeRouter);
+
+};
+/*
+
+// import modules.
+var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 
 // import models.
-/*
 var BrewEvent = require('../models/BrewEvent');
 var Equipment = require('../models/Equipment');
 var Recipe = require('../models/Recipe');
-*/
 
 // global middleware.
 router.use(bodyParser.json());
@@ -112,3 +125,4 @@ router.route('/recipe')
 
 // export router.
 module.exports = router;
+*/

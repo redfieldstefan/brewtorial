@@ -6,17 +6,19 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var favicon = require('serve-favicon');
-var router = express.Router();
+var apiRouter = express.Router();
 
 // import routes.
-require('./routes')(router);
+require('./routes/api')(apiRouter);
 
 // global middleware.
 app.use([
   express.static(path.join(__dirname, '/app')),
-  favicon(path.join(__dirname, '/app/images/favicon.ico')),
-  router
+  favicon(path.join(__dirname, '/app/images/favicon.ico'))
 ]);
+
+// mount routers.
+app.use('/api', apiRouter);
 
 // 404 handler.
 app.use(function(req, res, next) {
