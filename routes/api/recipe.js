@@ -1,14 +1,10 @@
-// import modules.
-var path = require('path');
-
 // export router.
 module.exports = function(router) {
 
-  console.log(router);
-  router.route('/api/recipe')
+  router.route('*')
     .get(function(req, res, next) {
       res.status(200)
-        .end('Tada');
+        .send('Tada');      
     });
 
 };
