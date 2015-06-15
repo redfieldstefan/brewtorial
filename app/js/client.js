@@ -36,14 +36,13 @@ brewApp.config(['$routeProvider', function($routeProvider) {
     .when('/sign_in', {
       templateUrl: '/js/views/sign_in.html'
     })
-    .when('/brew_process', {
-      templateUrl: '/js/views/brew_process_directive.html'
+    .when('/logged_in', {
+      templateUrl: '/js/views/logged_in_landing.html'
     })
     .when('/', {
-      templateUrl: '/js/views/all_recipes.html',
-      controller: 'allRecipesController'
+      redirectTo: '/logged_in'
     })
     .otherwise({
-      redirectTo: '/create_user'
+      templateUrl: '/js/views/landing.html'
     });
 }]);
