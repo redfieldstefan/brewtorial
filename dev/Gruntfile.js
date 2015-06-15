@@ -9,8 +9,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+
+  var bldFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
 
   // configure tasks.
   grunt.initConfig({
@@ -74,6 +78,29 @@ module.exports = function(grunt) {
         src:['../test/**/*test.js']
       }
     },
+
+    nodemon: {
+      dev: {
+        src: bldFiles
+      }
+    },
+
+    watch: {
+      files: bldFiles,
+      html: {
+                files: ['./app/**/*.html'],
+                options: {
+                    livereload: true
+                }
+            },
+            css: {
+                files: ['./app/**/*.css'],
+                options: {
+                    livereload: true
+                }
+            },
+      tasks: ['webpack:client', 'copy:html', 'copy:css']
+    }
   });
 
   // register tasks.
