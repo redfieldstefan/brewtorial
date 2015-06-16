@@ -9,7 +9,7 @@ var recipeSchema = new mongoose.Schema({
       type: Number,
       required: true
     },
-    author: ObjectId, 
+    author: ObjectId,
     brewTime: Number,
     created: Date,
     difficulty: Number,
@@ -20,7 +20,13 @@ var recipeSchema = new mongoose.Schema({
     title: String
   },
   equipment: Array,
-  ingredients: Array,
+  ingredients: [
+    {
+      item: String,
+      amount: String,
+      unit: String
+    }
+  ],
   steps: [
     {
       directions: String,
