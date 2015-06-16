@@ -73,4 +73,15 @@ module.exports = function(router, passport) {
       res.status(200).json({msg: 'profile removed'});
     });
   });
+
+  router.get('/profile/:id', function(req, res) {
+    User.findOne({'_id': req.params.id}, function(err, data) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({err: 'internal server error'});
+      }
+
+      res.status(200).json({user: data});
+    });
+  });
 };
