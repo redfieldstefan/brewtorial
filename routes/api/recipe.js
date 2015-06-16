@@ -6,13 +6,13 @@ module.exports = function(router) {
 
   router.route('/:id')
     .get(function(req, res, next) {
-      Recipe.findOne({ _id: req.params.id }, function(err, results) {
+      Recipe.findOne({ _id: req.params.id }, function(err, result) {
         if (err) { throw err; }
         res.status(200)
           .json({
             success: true,
             message: 'Retrieve recipe successful.',
-            result: results
+            result: result
           });
       });
     })

@@ -13,9 +13,9 @@ var User = require('../models/User');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Bru Buddy recipe routes', function(){
+describe('Bru Buddy recipe routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
-  var testRecipe
+  var testRecipeId;
 
   var testUser = new User({
     userId: uuid.v4(),
@@ -23,12 +23,12 @@ describe('Bru Buddy recipe routes', function(){
     basic: { email: 'testBrewer@example.com', password: password }
   });
 
-  before(function(done){
+  beforeEach(function(done){
     testUser.save(function(err, user) {
       if (err) console.log(err);
 
       var testUserId = user._id;
-      testRecipe = new Recipe({
+      var testRecipe = new Recipe({
         header: {
           abv: 5,
           author: testUserId,
@@ -59,32 +59,52 @@ describe('Bru Buddy recipe routes', function(){
           }
         ]
       });
-      done();
+      testRecipe.save(function(err, recipe) {
+        if (err) console.log(err);
+
+        testRecipeId = recipe._id;
+        done();
+      });
     });
   });
 
-  after(function(done) {
+  afterEach(function(done) {
     mongoose.connection.db.dropDatabase(function() {
       done();
     });
   });
 
-  it('Should return a list of recipes', function(done) {
+  it('should be able to reference a recipe id', function() {
+    expect(testRecipeId).to.not.eql(null);
+  });
+
+  it('should be able to get a recipe by its id', function(done) {
     chai.request('localhost:3000')
-      .get('/api/recipe')
+      .get('/api/recipe/' + testRecipeId)
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
         expect(res.body.success).to.eql(true);
-        expect(Array.isArray(res.body.result)).to.eql(true);
+        expect(res.body.result.header.title).to.eql('American Amber');
         done();
       });
   });
 
-  it('Should create a recipe', function(done) {
+  it('should be able to update a recipe by its id', function(done) {
     chai.request('localhost:3000')
-      .post('/api/recipe')
-      .send(testRecipe)
+      .put('/api/recipe/' + testRecipeId)
+      .send({'header.abv': 7})
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body.success).to.eql(true);
+        done();
+      });
+  });
+
+  it('should be able to remove a recipe by its id', function(done) {
+    chai.request('localhost:3000')
+      .del('/api/recipe/' + testRecipeId)
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
