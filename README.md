@@ -13,4 +13,14 @@ Example input: `{ displayName: 'test', email: 'test@example.com', password: 'foo
 
 ###GET /api/users/sign_in
 
-Example input: `test@example.com:foobaz123`
+Example input: `'test@example.com:foobaz123'`
+
+###PUT /api/users/update/:id
+
+Example url: `www.host.com/api/users/update/123abc`
+
+Example input: `{ displayName: 'new name' }`
+
+###DEL /api/users/remove/:id
+
+Example url: `www.host.com/api/users/remove/123abc`
