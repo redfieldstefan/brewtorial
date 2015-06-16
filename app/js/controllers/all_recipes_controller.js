@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('allRecipesController', ['$scope', function($scope, $http) {
+  app.controller('allRecipesController',  ['$scope', function($scope, $http) {
     $scope.errors = [];
     $scope.recipes = [];
     $scope.header = [];
@@ -21,7 +21,7 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), instruction: step.instruction, time: step.time});
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offest: step.offset});
       document.getElementById("stepForm").reset();
       console.log($scope.steps)
     };

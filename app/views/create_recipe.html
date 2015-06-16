@@ -35,7 +35,7 @@
       <h4>Steps</h4>
       <form id="stepForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addStep(step)'>
         <input type='text' name='instructions' placeholder='Instructions' data-ng-model='step.instruction'/>
-        <input type='number' name='time' placeholder='Time Required' data-ng-model='step.time'/>
+        <input type='number' name='time' placeholder='Time Required' data-ng-model='step.offset'/>
         <button type = 'submit'>Add Step</button>
       </form>
     </section>
