@@ -5,6 +5,6 @@ module.exports = function(app) {
     return {
       restrict: 'A',
       templateUrl: '/js/views/profile.html'
-    }
+    };
   });
 };

@@ -15,7 +15,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 describe('Brewtorial recipe get/post all routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
-  var testRecipe
+  var testRecipe;
 
   var testUser = new User({
     userId: uuid.v4(),

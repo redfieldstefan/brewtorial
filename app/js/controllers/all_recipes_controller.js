@@ -19,7 +19,7 @@ module.exports = function(app) {
           return console.log({msg: 'Dang, error retrieving the recipes'});
         }
         $scope.recipes = data;
-      })
+      });
     };
 
     $scope.createRecipe = function() {

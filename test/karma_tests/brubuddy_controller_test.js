@@ -17,7 +17,7 @@ describe('brubuddy controllers test', function(){
   }));
 
   it('Should be able to create a new controller', function(){
-    var bruController = new $CtrlrConstructor('bruController', {$scope: $scope});
+    var bruController = new $CtrlrConstructor('bruController', {$scope: $scope}); //jshint ignore: line
     expect(typeof bruController).toBe('object');
   });
 
