@@ -81,7 +81,10 @@ module.exports = function(router, passport) {
         res.status(500).json({err: 'internal server error'});
       }
 
-      res.status(200).json({user: data});
+      var email = data.basic.email;
+      var displayName = data.displayName;
+
+      res.status(200).json({email: email, displayName: displayName});
     });
   });
 };

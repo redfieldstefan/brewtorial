@@ -76,8 +76,8 @@ describe('Bru Buddy user routes', function(){
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
-        expect(res.body.user.displayName).to.eql('test');
-        expect(res.body.user.basic.email).to.eql('test@example.com');
+        expect(res.body.displayName).to.eql('test');
+        expect(res.body.email).to.eql('test@example.com');
         done();
       });
   });
