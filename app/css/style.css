@@ -1,1 +1,18 @@
-@import './styles/skeleton.css'
+@import './styles/skeleton.css';
+
+.red {
+  color: red;
+}
+
+ul{
+  list-style: none;
+}
+
+section {
+  float: left;
+  padding-left: 10%;
+}
+
+textarea .full{
+  width: 100%;g
+}
