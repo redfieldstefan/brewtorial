@@ -6,7 +6,7 @@ module.exports = function(app) {
       restrict: 'AC',
       replace: true,
       scope: {},
-      template: '<div data-ng-show='signedIn()'><button  type='button' data-ng-click='signOut()'>Log Out</button></div>',
+      template: "<div data-ng-show='signedIn()'><button  type='button' data-ng-click='signOut()'>Log Out</button></div>",
       controller: ['$scope', '$location', 'auth', function($scope, $location, auth) {
         $scope.signedIn = function() {
           return auth.isSignedIn();
