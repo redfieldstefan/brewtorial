@@ -14,7 +14,7 @@ module.exports = function(router) {
             message: 'Retrieve recipe successful.',
             result: results
           });
-      });      
+      });
     })
     .put(function(req, res, next) {
       var condition = { _id: req.params.id };
@@ -44,14 +44,14 @@ module.exports = function(router) {
 
   router.route('/')
     .get(function(req, res, next) {
-      Recipe.find({}, function(err, results) {
+      Recipe.find({}, function(err, result) {
         if (err) { throw err; }
         res.status(200)
           .json({
             success: true,
             message: 'Retrieve recipes successful.',
             result: result
-          });        
+          });
       });
     })
     .post(function(req, res, next) {
@@ -63,8 +63,7 @@ module.exports = function(router) {
             success: true,
             message: 'Recipe creation successful.',
             result: result
-          })  
-      });      
+          })
+      });
     });
-
 };
