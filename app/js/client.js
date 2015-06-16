@@ -8,7 +8,8 @@ require('angular-base64');
 var brewApp = angular.module('brewApp', ['ngRoute', 'ngCookies', 'base64']);
 
 //services
-require('../auth/auth_service.js')(brewApp);
+require('../auth/auth_service')(brewApp);
+require('./services/rest_resource')(brewApp);
 
 //controllers
 require('./controllers/all_recipes_controller.js')(brewApp);
