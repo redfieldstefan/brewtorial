@@ -1,19 +1,19 @@
 'use strict';
 
 process.env.MONGOLAB_URI = 'mongodb://localhost/brewtorial_test';
-require('../server.js');
+require('../../server.js');
 
 var mongoose = require('mongoose');
 var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = chai.expect;
-var Recipe = require('../models/Recipe');
-var User = require('../models/User');
+var Recipe = require('../../models/Recipe');
+var User = require('../../models/User');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Bru Buddy recipe routes', function() {
+describe('Brewtorial recipe get/post all routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testRecipe
 

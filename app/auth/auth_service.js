@@ -23,7 +23,7 @@ module.exports = function(app) {
         $http.post('/api/users/create_user', user)
           .success(function(data) {
             console.log(data);
-            $cookies.put('eat', data.token)
+            $cookies.put('eat', data.token);
             callback(null);
           })
           .error(function(data) {

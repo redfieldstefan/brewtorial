@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     $scope.editProfile = function(user) {
 
-    }
+    };
 
   }]);
 };

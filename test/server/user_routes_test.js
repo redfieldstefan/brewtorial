@@ -1,7 +1,7 @@
 'use strict';
 
 process.env.MONGOLAB_URI = 'mongodb://localhost/brewtorial_test';
-require('../server.js');
+require('../../server.js');
 
 var mongoose = require('mongoose');
 var chai = require('chai');
@@ -10,9 +10,9 @@ chai.use(chaihttp);
 var expect = chai.expect;
 var bcrypt = require('bcrypt-nodejs');
 var uuid = require('uuid');
-var User = require('../models/User');
+var User = require('../../models/User');
 
-describe('Bru Buddy user routes', function(){
+describe('Brewtorial user routes', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testToken;
   var testUserId;

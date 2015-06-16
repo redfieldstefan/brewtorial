@@ -14,7 +14,7 @@ module.exports = function(router) {
             message: 'Retrieve equipment successful.',
             result: results
           });
-      });      
+      });
     })
     .put(function(req, res, next) {
       var condition = { _id: req.params.id };
@@ -51,7 +51,7 @@ module.exports = function(router) {
             success: true,
             message: 'Retrieve equipments successful.',
             result: result
-          });        
+          });
       });
     })
     .post(function(req, res, next) {
@@ -63,8 +63,8 @@ module.exports = function(router) {
             success: true,
             message: 'Equipment creation successful.',
             result: result
-          })  
-      });      
+          });
+      });
     });
 
 };
