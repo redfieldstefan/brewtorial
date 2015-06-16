@@ -1,7 +1,9 @@
-<article data-ng-controller="">
-  <form data-ng-submit="">
-    <label for="username">Username</label>
-    <input type="text" name="username" data-ng-model="user.username">
+<article data-ng-controller="authController">
+  <form data-ng-submit="authSubmit(user)">
+    <label for="email">Email</label>
+    <input type="text" name="email" data-ng-model="user.email">
+    <label for="displayName">Username</label>
+    <input type="text" name="displayName" data-ng-model="user.displayName">
     <label for="password">Password</label>
     <input type="password" name="password" data-ng-model="user.password">
     <label for="password_confirmation">Confirmation</label>
