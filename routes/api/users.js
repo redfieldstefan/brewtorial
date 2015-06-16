@@ -48,4 +48,29 @@ module.exports = function(router, passport) {
       res.status(200).json({token: token});
     });
   });
+
+  router.put('/update/:id', function(req, res) {
+    var updates = req.body;
+    delete updates._id;
+
+    User.update({'_id': req.params.id}, updates, function(err, data) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({err: 'internal server error'});
+      }
+
+      res.status(200).json({msg: 'profile updated'});
+    });
+  });
+
+  router.delete('/remove/:id', function(req, res) {
+    User.remove({'_id': req.params.id}, function(err, data) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({err: 'internal server error'});
+      }
+
+      res.status(200).json({msg: 'profile removed'});
+    });
+  });
 };
