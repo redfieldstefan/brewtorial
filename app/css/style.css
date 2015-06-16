@@ -10,9 +10,11 @@ ul{
 
 section {
   float: left;
-  padding-left: 10%;
+  padding-left: 5%;
+  padding-right: 10%;
+  padding-bottom: 50px;
 }
 
-textarea .full{
-  width: 100%;g
+input .full{
+  width: 100%;
 }
