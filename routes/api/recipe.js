@@ -44,7 +44,7 @@ module.exports = function(router) {
 
   router.route('/')
     .get(function(req, res, next) {
-      Recipe.find({}, function(err, result) {
+      Recipe.find({}, 'header', function(err, result) {
         if (err) { throw err; }
         res.status(200)
           .json({
