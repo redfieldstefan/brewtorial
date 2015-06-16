@@ -1,6 +1,6 @@
 'use strict';
 
-process.env.MONGOLAB_URI = 'mongodb://localhost/brubuddy_test';
+process.env.MONGOLAB_URI = 'mongodb://localhost/brewtorial_test';
 require('../server.js');
 
 var mongoose = require('mongoose');
@@ -8,15 +8,60 @@ var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = chai.expect;
+var bcrypt = require('bcrypt-nodejs');
+var uuid = require('uuid');
+var User = require('../models/User');
 
 describe('Bru Buddy user routes', function(){
+  var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
+  var testToken;
 
-  before(function(){
+  before(function(done) {
+    var testUser = new User({
+      userId: uuid.v4(),
+      displayName: 'test',
+      basic: { email: 'test@example.com', password: password },
+    });
+
+    testUser.save(function(err, admin) {
+      if (err) console.log(err);
+
+      admin.generateToken(process.env.APP_SECRET, function(err, token) {
+        testToken = token;
+        done();
+      });
+    });
   });
 
-  it('should create a new user');
+  after(function(done) {
+    mongoose.connection.db.dropDatabase(function() {
+      done();
+    });
+  });
 
-  it('should sign in a new user');
+  it('should create a new user', function(done) {
+    chai.request('localhost:3000')
+      .post('/api/users/create_user')
+      .send({displayName: 'test', email: 'test2@example.com', password: 'foobar123'})
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body).to.have.property('token');
+        done();
+      })
+  });
+
+  it('should sign in an existing user', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/users/sign_in')
+      .auth('test@example.com', 'foobaz123')
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body).to.have.property('token');
+        done();
+      })
+  });
 
   it('should update a users information');
 
