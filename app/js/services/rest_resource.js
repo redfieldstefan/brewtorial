@@ -1,5 +1,6 @@
 'use strict';
 
+
 module.exports = function(app) {
   var handleError = function(callback) {
     return function(data) {
@@ -14,10 +15,10 @@ module.exports = function(app) {
     };
   };
 
-  app.factory('RESTService', ['$http', '$cookies', function($http, $cookies) {
+  app.factory('RESTResource', ['$http', '$cookies', function($http, $cookies) {
     return function(resourceName) {
       var eat = $cookies.get('eat');
-      $http.defualts.headers.commom['eat'] = eat; //jshing ignore: line
+      $http.defaults.headers.common['eat'] = eat; //jshing ignore: line
       return {
 
         getAll: function(callback) {
