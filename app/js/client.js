@@ -23,25 +23,28 @@ require('../auth/logout_directive')(brewApp);
 brewApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/all_recipes', {
-      templateUrl: '/js/views/all_recipes.html',
+      templateUrl: '../views/all_recipes.html',
       controller: 'allRecipesController'
     })
     .when('/profile', {
-      templateUrl: '/js/views/profile.html'
+      templateUrl: '../views/profile.html'
     })
     .when('/create_user', {
-      templateUrl: '/js/views/create_user.html'
+      templateUrl: '../views/create_user.html'
     })
     .when('/sign_in', {
-      templateUrl: '/js/views/sign_in.html'
+      templateUrl: '../views/sign_in.html'
     })
     .when('/logged_in', {
-      templateUrl: '/js/views/logged_in_landing.html'
+      templateUrl: '../views/logged_in_landing.html'
+    })
+    .when('langing', {
+      templateUrl: '../view/landing.html'
     })
     .when('/', {
-      redirectTo: '/logged_in'
+      templateUrl: '../views/logged_in_landing.html'
     })
     .otherwise({
-      templateUrl: '/js/views/landing.html'
+      templateUrl: '../views/landing.html'
     });
 }]);
