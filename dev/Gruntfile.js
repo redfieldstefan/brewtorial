@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         }
       },
       mocha: {
-        src: ['test/server/*test.js'],
+        src: ['test/*test.js'],
         options: {
           globals: {
             describe: true,
