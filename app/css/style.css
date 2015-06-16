@@ -1,1 +1,20 @@
-@import './styles/skeleton.css'
+@import './styles/skeleton.css';
+
+.red {
+  color: red;
+}
+
+ul{
+  list-style: none;
+}
+
+section {
+  float: left;
+  padding-left: 5%;
+  padding-right: 10%;
+  padding-bottom: 50px;
+}
+
+input .full{
+  width: 100%;
+}

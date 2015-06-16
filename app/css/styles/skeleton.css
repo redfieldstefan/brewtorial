@@ -27,7 +27,7 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  /*max-width: 960px;*/
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
@@ -47,7 +47,8 @@
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 80%; }
+    /*width: 80%;*/
+    width: 100%; }
   .column,
   .columns {
     margin-left: 4%; }
@@ -123,8 +124,10 @@ body {
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
 header {
-  background-color: #4A4A4A;
+  /*background-color: #4A4A4A*/;
+   background-color: #00CC00;
 }
+
 main {
   background-color: #F7F7F7;
 }
@@ -139,7 +142,8 @@ footer {
   height: 50px;
 }
 .navbar {
-  font-family: 'Gruppo', cursive;
+  /*font-family: 'Gruppo', cursive;*/
+  font-family: 'Raleway', cursive;
   color: #F8E07E;
 }
 .navbar:hover {
@@ -150,7 +154,8 @@ footer {
   font-family: "Cabin Sketch", "Raleway", "HelveticaNeue", "Helvetica Neue";
 }
 .headerfooter {
-  font-family: 'Gruppo', cursive;
+  /*font-family: 'Gruppo', cursive;*/
+  font-family: 'Raleway', cursive;
   font-size: 16px;
   color: #F8E07E;
 }
