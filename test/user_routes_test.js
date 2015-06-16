@@ -70,6 +70,18 @@ describe('Bru Buddy user routes', function(){
     expect(testUserId).to.not.eql(null);
   });
 
+  it('should get a users profile info by their id', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/users/profile/' + testUserId)
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body.user.displayName).to.eql('test');
+        expect(res.body.user.basic.email).to.eql('test@example.com');
+        done();
+      });
+  });
+
   it('should update a users information', function(done) {
     chai.request('localhost:3000')
       .put('/api/users/update/' + testUserId)
@@ -92,5 +104,6 @@ describe('Bru Buddy user routes', function(){
         done();
       })
   });
+
 
 });
