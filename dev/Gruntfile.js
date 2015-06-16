@@ -22,12 +22,47 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      all: ['dev/Gruntfile.js'],
       options: {
-        curly: true,
-        eqeqeq: true,
-        eqnull: true,
-        browser: true
+        node: true
+      },
+      server: {
+        src: ['dev/Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'server.js']
+      },
+      client: {
+        src: ['app/**/*.js'],
+        options: {
+          globals: {
+            angular: true
+          }
+        }
+      },
+      mocha: {
+        src: ['test/*test.js'],
+        options: {
+          globals: {
+            describe: true,
+            it: true,
+            before: true,
+            beforeEach: true,
+            after: true,
+            afterEach: true
+          }
+        }
+      },
+      jasmine: {
+        src: ['test/karma_tests/*test.js'],
+        options: {
+          globals: {
+            angular: true,
+            describe: true,
+            it: true,
+            before: true,
+            beforeEach: true,
+            after: true,
+            afterEach: true,
+            expect: true
+          }
+        }
       }
     },
 
@@ -75,7 +110,7 @@ module.exports = function(grunt) {
 
     simplemocha: {
       dev:{
-        src: ['./test/**/*test.js']
+        src: ['./test/*test.js']
       }
     },
 
