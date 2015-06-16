@@ -13,8 +13,25 @@ var uuid = require('uuid');
 var User = require('../models/User');
 
 describe('Bru Buddy user routes', function(){
-  var testPassword = bcrypt.hashSync('foobaz', bcrypt.genSaltSync(8), null);
+  var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testToken;
+
+  before(function(done) {
+    var testUser = new User({
+      userId: uuid.v4(),
+      displayName: 'test',
+      basic: { email: 'test@example.com', password: password },
+    });
+
+    testUser.save(function(err, admin) {
+      if (err) console.log(err);
+
+      admin.generateToken(process.env.APP_SECRET, function(err, token) {
+        testToken = token;
+        done();
+      });
+    });
+  });
 
   after(function(done) {
     mongoose.connection.db.dropDatabase(function() {
@@ -23,9 +40,21 @@ describe('Bru Buddy user routes', function(){
   });
 
   it('should create a new user', function(done) {
-    chai.request('http://localhost:3000')
+    chai.request('localhost:3000')
       .post('/api/users/create_user')
       .send({displayName: 'test', email: 'test2@example.com', password: 'foobar123'})
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body).to.have.property('token');
+        done();
+      })
+  });
+
+  it('should sign in an existing user', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/users/sign_in')
+      .auth('test@example.com', 'foobaz123')
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);

@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  var watchFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
+  var watchFiles = ['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
 
   // configure tasks.
   grunt.initConfig({
@@ -73,9 +73,9 @@ module.exports = function(grunt) {
       }
     },
 
-    simplemocha:{
+    simplemocha: {
       dev:{
-        src:['./test/**/*test.js']
+        src: ['./test/**/*test.js']
       }
     },
 
