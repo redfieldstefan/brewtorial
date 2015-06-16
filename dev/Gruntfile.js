@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   // configure grunt.
   grunt.file.defaultEncoding = 'utf8';
-  grunt.file.setBase('..');
+  grunt.file.setBase('../');
   var path = require("path");
 
   // load npm tasks.
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         dest: 'build/',
         filter: 'isFile'
       },
-       css: {
+      css: {
         cwd: 'app/css',
         expand: true,
         flatten: false,
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 
     simplemocha:{
       dev:{
-        src:['../test/**/*test.js']
+        src:['./test/**/*test.js']
       }
     },
 
@@ -88,24 +88,24 @@ module.exports = function(grunt) {
     watch: {
       files: watchFiles,
       html: {
-                files: ['./app/**/*.html'],
-                options: {
-                    livereload: true
-                }
-            },
-            css: {
-                files: ['./app/**/*.css'],
-                options: {
-                    livereload: true
-                }
-            },
+        files: ['./app/**/*.html'],
+        options: {
+          livereload: true
+        }
+      },
+      css: {
+        files: ['./app/**/*.css'],
+        options: {
+          livereload: true
+        }
+      },
       tasks: ['webpack:client', 'copy:html', 'copy:css']
     }
   });
 
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
-  grunt.registerTask('test',  ['simplemocha:dev'])
+  grunt.registerTask('test',  ['simplemocha:dev']);
   grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
