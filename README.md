@@ -19,7 +19,7 @@ Example input: `'test@example.com:foobaz123'`
 
 Example url: `www.host.com/api/users/profile/123abc`
 
-Example output: `{ email: 'test@example.com', displayName: 'test' }`
+Example response: `{ email: 'test@example.com', displayName: 'test' }`
 
 ###PUT /api/users/update/:id
 
