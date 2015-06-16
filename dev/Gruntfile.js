@@ -2,15 +2,19 @@ module.exports = function(grunt) {
 
   // configure grunt.
   grunt.file.defaultEncoding = 'utf8';
-  grunt.file.setBase('..');
+  grunt.file.setBase('../');
   var path = require("path");
 
   // load npm tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+
+  var watchFiles = ['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
 
   // configure tasks.
   grunt.initConfig({
@@ -31,7 +35,7 @@ module.exports = function(grunt) {
       client: {
         entry: __dirname + '/../app/js/client.js',
         output: {
-          path: path.join(__dirname, '../', 'build'),
+          path: path.join(__dirname, '../build'),
           filename: 'bundle.js'
         }
       },
@@ -39,7 +43,7 @@ module.exports = function(grunt) {
         entry: __dirname + '/../test/karma_tests/karma_entry.js',
         output: {
           path: 'test/karma_tests/',
-          filename: 'karma_test_bundle.js'
+          filename: 'bundle.js'
         }
       }
     },
@@ -52,6 +56,14 @@ module.exports = function(grunt) {
         src:'**/*.html',
         dest: 'build/',
         filter: 'isFile'
+      },
+      css: {
+        cwd: 'app/css',
+        expand: true,
+        flatten: false,
+        src:'**/*.css',
+        dest: 'build/',
+        filter: 'isFile'
       }
     },
 
@@ -61,16 +73,39 @@ module.exports = function(grunt) {
       }
     },
 
-    simplemocha:{
+    simplemocha: {
       dev:{
-        src:['../test/**/*test.js']
+        src: ['./test/**/*test.js']
       }
     },
+
+    nodemon: {
+      dev: {
+        src: watchFiles
+      }
+    },
+
+    watch: {
+      files: watchFiles,
+      html: {
+        files: ['./app/**/*.html'],
+        options: {
+          livereload: true
+        }
+      },
+      css: {
+        files: ['./app/**/*.css'],
+        options: {
+          livereload: true
+        }
+      },
+      tasks: ['webpack:client', 'copy:html', 'copy:css']
+    }
   });
 
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
-  grunt.registerTask('test',  ['simplemocha:dev'])
-  grunt.registerTask('build:dev', ['webpack:client', 'webpack:karma_test', 'copy:html']);
+  grunt.registerTask('test',  ['simplemocha:dev']);
+  grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
