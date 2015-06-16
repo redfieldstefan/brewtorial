@@ -15,6 +15,12 @@ Example input: `{ displayName: 'test', email: 'test@example.com', password: 'foo
 
 Example input: `'test@example.com:foobaz123'`
 
+###GET /api/users/profile/:id
+
+Example url: `www.host.com/api/users/profile/123abc`
+
+Example response: `{ email: 'test@example.com', displayName: 'test' }`
+
 ###PUT /api/users/update/:id
 
 Example url: `www.host.com/api/users/update/123abc`
