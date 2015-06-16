@@ -1,17 +1,23 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('allRecipesController', ['$scope', function($scope, $http) {
+  app.controller('allRecipesController', ['$scope', 'RESTResource' function($scope, resource) {
+    var Brew = resouce('brews');
     $scope.errors = [];
     $scope.recipes = [];
     $scope.header = [];
     $scope.ingredients = [];
     $scope.steps = [];
-    $scope.steps = [];
     $scope.equipment = [];
 
     $scope.getAll = function() {
-
+      Brew.getAll(function(err, data) {
+        if(err) {
+          $scope.errors.push(err);
+          return console.log({msg: 'Dang, error retrieving the recipes'});
+        }
+        $scope.recipes = data;
+      })
     }
 
     $scope.addIngredient = function(ingredient) {
