@@ -14,9 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-
-  var watchFiles=['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
-
+  var watchFiles=['./app/**/*.js'];
 
   // configure tasks.
   grunt.initConfig({
