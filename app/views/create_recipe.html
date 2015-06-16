@@ -4,11 +4,11 @@
      <section class='recipeHeader'>
       <h2>Brew Information</h2>
       <form id="headerForm" data-ng-submit='addHeader(header)'>
-          <input type='text' name='title' placeholder="Title" data-ng-model='header.title'>
-          <input type='text' name='style' placeholder='Style' data-ng-model='header.style'/>
-          <input type='text' name='abv' placeholder='ABV' data-ng-model='header.abv'/>
-          <input type='text' name='totalTime' placeholder='Total Time' data-ng-model='header.brewTime'/>
-          <input type='text' name='difficulty' placeholder='Difficulty (1-5)' data-ng-model='header.difficulty'/>
+          <input type='text' required name='title' placeholder="Title" data-ng-model='header.title'>
+          <input type='text' required name='style' placeholder='Style' data-ng-model='header.style'/>
+          <input type='number' required name='abv' placeholder='ABV' data-ng-model='header.abv'/>
+          <input type='number' required name='totalTime' placeholder='Total Time' data-ng-model='header.brewTime'/>
+          <input type='number' name='difficulty' placeholder='Difficulty (1-5)' data-ng-model='header.difficulty'/>
         <button type = 'submit'>Add Info</button>
       </form>
     </section>
@@ -16,9 +16,9 @@
     <section>
       <h4>Ingredients</h4>
       <form id="ingredientForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addIngredient(ingredient)'>
-        <input type='text' name='ingredient' placeholder='Ingredient' data-ng-model='ingredient.item'/>
-        <input type='text' name='amount' placeholder='Quantity' data-ng-model='ingredient.amount'/>
-        <input type='text' name='unit' placeholder='Units' data-ng-model='ingredient.unit'/>
+        <input type='text' required name='ingredient' placeholder='Ingredient' data-ng-model='ingredient.item'/>
+        <input type='number' required name='amount' placeholder='Quantity' data-ng-model='ingredient.amount'/>
+        <input type='text' required name='unit' placeholder='Units' data-ng-model='ingredient.unit'/>
         <button type = 'submit'>Add Ingredient</button>
       </form>
     </section>
@@ -34,8 +34,8 @@
     <section>
       <h4>Steps</h4>
       <form id="stepForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addStep(step)'>
-        <input type='text' name='instructions' placeholder='Instructions' data-ng-model='step.instruction'/>
-        <input type='number' name='time' placeholder='Time Required' data-ng-model='step.offset'/>
+        <input type='text' required name='instructions' placeholder='Instructions' data-ng-model='step.directions'/>
+        <input type='number' required name='time' placeholder='Time Required' data-ng-model='step.offset'/>
         <button type = 'submit'>Add Step</button>
       </form>
     </section>
@@ -46,7 +46,7 @@
     <section class="twelve columns">
       <h1>Your new Brew!</h1>
       <h2 class='red'>{{header.title}}</h2>
-      <ul data-ng-repeat='header in header'>
+      <ul>
        <li> Style: {{header.style}} ABV: {{header.abv}} Total Time: {{header.brewTime}} Difficulty: {{header.difficulty}}</li>
       </ul>
       <h4>Ingredients</h4>
@@ -59,8 +59,9 @@
       </ul>
       <h4>Steps</h4>
       <ul data-ng-repeat='step in steps'>
-        <li>{{step.position}}. {{step.instruction}}: Time Requred: {{step.time}}
+        <li>{{step.position}}. {{step.directions}}: Time Requred: {{step.offset}}
       </ul>
+      <button type = 'submit' data-ng-click="createRecipe()">Submit Recipe</button>
     </section>
   </section>
 </article>
