@@ -63,7 +63,7 @@ module.exports = function(router) {
             success: true,
             message: 'Recipe creation successful.',
             result: result
-          })
+          });
       });
     });
 };

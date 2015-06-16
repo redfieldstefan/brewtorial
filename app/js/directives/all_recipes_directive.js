@@ -5,6 +5,6 @@ module.exports = function(app) {
     return {
       restrict: 'A',
       template: '<li>recipe name: </li><li>difficulty: </li><li>time: </li><li>picture: </li><li>ingredients: </li><li>author: </li><li>popularity: </li>'
-    }
+    };
   });
 };
