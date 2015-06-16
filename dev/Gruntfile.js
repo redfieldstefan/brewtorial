@@ -110,7 +110,7 @@ module.exports = function(grunt) {
 
     simplemocha: {
       dev:{
-        src: ['./test/server/*test.js']
+        src: ['./test/*test.js']
       }
     },
 
