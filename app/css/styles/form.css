@@ -1,0 +1,27 @@
+.red {
+  color: red;
+}
+
+ul{
+  list-style: none;
+}
+
+section .recipeConstructor{
+  width: 50%;
+
+}
+
+section .recipe {
+
+}
+
+section {
+  float: left;
+  padding-left: 5%;
+  padding-right: 10%;
+  padding-bottom: 50px;
+}
+
+input .full{
+  width: 100%;
+}

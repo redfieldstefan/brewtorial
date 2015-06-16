@@ -26,6 +26,10 @@ brewApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '../views/all_recipes.html',
       controller: 'allRecipesController'
     })
+    .when('/create_recipe', {
+      templateUrl: '../views/create_recipe.html',
+      controller: 'allRecipesController'
+    })
     .when('/profile', {
       templateUrl: '../views/profile.html'
     })

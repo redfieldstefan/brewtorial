@@ -18,7 +18,7 @@ require('./routes/api')(apiRouter);
 
 // global middleware.
 app.use([
-  express.static(path.join(__dirname, '/app')),
+  express.static(path.join(__dirname, '/build')),
   favicon(path.join(__dirname, '/app/images/favicon.ico')),
   bodyParser.json()
 ]);

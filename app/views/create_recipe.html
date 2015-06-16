@@ -1,0 +1,66 @@
+<article data-ng-controller="allRecipesController">
+  <h1 class='red'>Create a Brew Recipe</h1>
+  <section class="recipeConstructor">
+     <section class='recipeHeader'>
+      <h2>Brew Information</h2>
+      <form id="headerForm" data-ng-submit='addHeader(header)'>
+          <input type='text' name='title' placeholder="Title" data-ng-model='header.title'>
+          <input type='text' name='style' placeholder='Style' data-ng-model='header.style'/>
+          <input type='text' name='abv' placeholder='ABV' data-ng-model='header.abv'/>
+          <input type='text' name='totalTime' placeholder='Total Time' data-ng-model='header.brewTime'/>
+          <input type='text' name='difficulty' placeholder='Difficulty (1-5)' data-ng-model='header.difficulty'/>
+        <button type = 'submit'>Add Info</button>
+      </form>
+    </section>
+
+    <section>
+      <h4>Ingredients</h4>
+      <form id="ingredientForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addIngredient(ingredient)'>
+        <input type='text' name='ingredient' placeholder='Ingredient' data-ng-model='ingredient.item'/>
+        <input type='text' name='amount' placeholder='Quantity' data-ng-model='ingredient.amount'/>
+        <input type='text' name='unit' placeholder='Units' data-ng-model='ingredient.unit'/>
+        <button type = 'submit'>Add Ingredient</button>
+      </form>
+    </section>
+
+    <section>
+      <h4>Equipment</h4>
+      <form id="equipmentForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
+        <input type='text' name='equipItem' placeholder='Item' data-ng-model='item'/>
+        <button type = 'submit'>Add Equipment</button>
+      </form>
+    </section>
+
+    <section>
+      <h4>Steps</h4>
+      <form id="stepForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addStep(step)'>
+        <input type='text' name='instructions' placeholder='Instructions' data-ng-model='step.instruction'/>
+        <input type='number' name='time' placeholder='Time Required' data-ng-model='step.time'/>
+        <button type = 'submit'>Add Step</button>
+      </form>
+    </section>
+
+  </section><!-- END CONTSTRUCTOR -->
+
+  <section class="recipe">
+    <section class="twelve columns">
+      <h1>Your new Brew!</h1>
+      <h2 class='red'>{{header.title}}</h2>
+      <ul data-ng-repeat='header in header'>
+       <li> Style: {{header.style}} ABV: {{header.abv}} Total Time: {{header.brewTime}} Difficulty: {{header.difficulty}}</li>
+      </ul>
+      <h4>Ingredients</h4>
+      <ul data-ng-repeat='ingredient in ingredients'>
+       <li> {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}</li>
+      </ul>
+       <h4>Equipment</h4>
+      <ul data-ng-repeat='equipment in equipment'>
+       <li>{{equipment}}</li>
+      </ul>
+      <h4>Steps</h4>
+      <ul data-ng-repeat='step in steps'>
+        <li>{{step.position}}. {{step.instruction}}: Time Requred: {{step.time}}
+      </ul>
+    </section>
+  </section>
+</article>
