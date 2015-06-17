@@ -1,0 +1,376 @@
+/* clear fix */
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.error {
+  border-color: #c00 !important;
+  background-color: hsla(0, 100%, 95%, 1);
+}
+
+#message {
+  background: #cc0000;
+  background: -moz-linear-gradient(top, hsla(0,100%,40%,1) 0%, hsla(0,100%,40%,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,100%,40%,1)), color-stop(100%,hsla(0,100%,40%,1)));
+  background: -webkit-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: -o-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: -ms-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: linear-gradient(to bottom, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  width: 400px;
+  border-radius: 15px;
+  margin: 30px auto;
+  box-sizing: border-box;
+  display: none;
+}
+
+#message p {
+  background: url('./images/error.png') 22px 50% no-repeat;
+  background-size: 30px 30px;
+  color: hsla(0, 100%, 100%, 0.9);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 15px 30px 15px 70px;
+  text-align: left;
+}
+
+/* container */
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+/* base styles */
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: hsla(0, 100%, 100%, 0.75);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+body {
+  min-height: 100%;
+}
+
+button {
+  background: #f8d38d;
+  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
+  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  color: hsla(0, 100%, 100%, 0.9);
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 20px;
+}
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+  color: #fff;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+hr {
+  height: 1px;
+  background: hsla(0, 0%, 0%, 0.15);
+  border: 0;
+  margin: 30px 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+img {
+  vertical-align: middle;
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 20px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+
+label {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: hsla(0, 0%, 0%, 0.5);
+  display: block;
+}
+
+p {
+  color: hsla(0, 0%, 0%, 0.5);
+  font-size: 27px;
+  text-align: center;
+  font-famiy: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 600;
+}
+
+table {
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-raidus: 5px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+td { text-align: center; }
+
+td, th {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  padding: 5px;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.075);
+}
+
+tbody tr:nth-child(odd) td {
+  background: hsla(0, 0%, 0%, 0.05);  
+}
+
+thead th {
+  background: #f8d38d;
+  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
+  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  padding: 15px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: hsla(0, 100%, 100%, 0.9);
+  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+/* background cover image */
+#bg {
+  z-index: -1;
+  opacity: 0.125;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/beer.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* page styles */
+main[data-page='landing'],
+main[data-page='sign-in'],
+main[data-page='sign-out'],
+main[data-page='register'] { 
+  background-color: #03a9f4;
+}
+
+main[data-page='dashboard'] { 
+  background-color: #ffc107;
+}
+
+main[data-page='user'],
+main[data-page='recipe'] { 
+  background-color: #e91e63; 
+}
+
+main[data-page='equipment'],
+main[data-page='ingredient'] { 
+  background-color: #8bc34a; 
+}
+
+main[data-page='brew'] {
+  background-color: #9c27b0;
+}
+
+/* ================================================================================================================== */
+/* global styles
+/* ================================================================================================================== */
+
+#nav .inner {
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.15);
+  margin: 0 auto;
+}
+
+#nav a {
+  color: hsla(0, 100%, 100%, 0.9);
+  display: inline-block;
+  padding: 30px;
+  text-transform: initial;
+}
+
+#nav h1 {
+  font-family: 'Libre Baskerville';
+  display: inline-block;
+  float: left;
+  font-size: 22px;
+  margin: 0;
+}
+
+#nav img {
+  width: 30px;
+  margin-right: 5px;
+}
+
+#nav li {
+  display: block;
+  float: right;
+  margin: 30px 30px 0 0;
+}
+
+#nav li:nth-child(2) {
+  margin-right: 15px;
+}
+
+#nav li a {
+  background-color: hsla(0, 100%, 100%, 0.15);
+  display: inline-block;
+  border-radius: 20px;
+  padding: 10px 30px;
+  border: 2px solid hsla(0, 100%, 100%, 0.3);
+  font-weight: 300;
+}
+
+#nav sup {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+#nav ul {
+  margin: 0;
+}
+
+/* ================================================================================================================== */
+/* landing styles
+/* ================================================================================================================== */
+
+#tally {
+  margin: 0 auto;
+  padding: 60px 0 90px 0;
+  width: 402px;
+}
+
+#tally div {
+  border-radius: 50%;
+  border: 2px solid hsla(0, 100%, 100%, 0.3);
+  background: hsla (0, 100%, 100%, 0.15);
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  font-size: 48px;
+  color: hsla(0, 100%, 100%, 0.9);
+  line-height: 2;
+}
+
+#tally li {
+  float: left;
+  list-style-type: none;
+  margin: 0 15px;
+}
+
+#tally p {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  font-family: 'Libre Baskerville';
+  font-size: 20px;
+  color: hsla(0, 100%, 100%, 0.9);
+  margin: 15px 0 0 0;
+}
+
+#tally ul {
+  margin: 0 auto;
+}
+
+/* ================================================================================================================== */
+/* sign-in/register styles
+/* ================================================================================================================== */
+
+#form {
+  background: hsla(0, 100%, 100%, 0.9);
+  border-radius: 15px;
+  width: 600px;
+  margin: 0 auto 90px auto;
+  padding: 30px;
+  box-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
+  box-sizing: border-box;
+}
+
+#form input[type='text'] {
+  margin-bottom: 30px;
+}
+
+#form button {
+  float: right;
+  padding: 15px 30px;
+  border-radius: 50px;
+  margin: 0;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+/* ================================================================================================================== */
+/* dashboard styles
+/* ================================================================================================================== */
+
+#filters {
+  width: 485px;
+  margin: 0 auto;
+}
+
+body[data-page='dashboard'] strong {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+tr {
+  cursor: pointer;
+}
+
+table {
+  margin-bottom: 90px;
+}
+
+body[data-page='dashboard'] input[type='text'] {
+  width: 240px;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+}

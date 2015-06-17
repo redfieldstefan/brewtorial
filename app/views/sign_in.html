@@ -1,4 +1,27 @@
-<section data-ng-controller="authController">
+<nav-header></nav-header>
+
+<section id="sign-in">
+  <div class="inner">
+    <h1>Easy as A-B-V.</h1>
+    <p>Provide your brewdentials or <a href="#/register" title="Register">Register</a> to login.</p>
+
+    <!-- message -->
+    <div id="message">
+      <p><strong>SORRY!</strong> The credentials you've provided are incorrect. Please check the email address, password and try again.</p>
+    </div>
+
+    <!-- form -->
+    <div id="form" class="cf">
+      <label>Email</label>
+      <input type="text" name="email" data-ng-model="user.email">
+      <label>Password</label>
+      <input type="password" name="password" data-ng-model="user.password">
+      <hr>
+      <button data-ng-click="signIn(user)">Sign In</button>
+    </div>
+  </div>
+  <!--
+  <section data-ng-controller="authController">
   <form data-ng-submit="authSubmit(user)">
     <label for="email">Email</label>
     <input type="text" name="email" data-ng-model="user.email">
@@ -7,4 +30,5 @@
     <button type="submit">Sign in</button>
     <p>Or <button><a href='#create_user'>Create User</a></button></p>
   </form>
+  -->
 </section>
