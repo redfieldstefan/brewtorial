@@ -13,7 +13,7 @@ var User = require('../models/User');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Bru Buddy recipe routes', function() {
+describe('Brewtorial recipe get/post all routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testRecipe
 
@@ -69,17 +69,6 @@ describe('Bru Buddy recipe routes', function() {
     });
   });
 
-  it('Should return a list of recipes', function(done) {
-    chai.request('localhost:3000')
-      .get('/api/recipe')
-      .end(function(err, res) {
-        expect(res.status).to.eql(200);
-        expect(err).to.eql(null);
-        expect(res.body.success).to.eql(true);
-        expect(Array.isArray(res.body.result)).to.eql(true);
-        done();
-      });
-  });
 
   it('Should create a recipe', function(done) {
     chai.request('localhost:3000')
@@ -89,6 +78,18 @@ describe('Bru Buddy recipe routes', function() {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
         expect(res.body.success).to.eql(true);
+        done();
+      });
+  });
+
+  it('Should return a list of recipes', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/recipe')
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body.success).to.eql(true);
+        expect(Array.isArray(res.body.result)).to.eql(true);
         done();
       });
   });

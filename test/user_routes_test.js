@@ -12,7 +12,7 @@ var bcrypt = require('bcrypt-nodejs');
 var uuid = require('uuid');
 var User = require('../models/User');
 
-describe('Bru Buddy user routes', function(){
+describe('Brewtorial user routes', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testToken;
   var testUserId;
