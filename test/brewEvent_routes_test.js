@@ -15,6 +15,7 @@ var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 var testUserId;
 var testRecipeId;
+var testBrewId;
 
 describe('Bru Buddy brew event routes', function(){
 
@@ -24,7 +25,7 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testUser = new User({
     userId: uuid.v4(),
     displayName: 'test',
-    basic: { email: 'testbrewer@example.com', password: password }
+    basic: { email: 'testbreww@example.com', password: password }
   });
 
   beforeEach(function(done){
@@ -67,6 +68,14 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
         if (err) console.log(err);
 
         testRecipeId = recipe._id;
+        var testBrew = new BrewEvent({
+          userId: testUserId,
+          recipe: testRecipeId
+        });
+        testBrew.save(function(err, brew) {
+          if (err) console.log(err);
+          testBrewId = brew._id;
+        });
         done();
       });
     });
@@ -97,7 +106,7 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
 
   it('should return to a brew event and have its state persist', function(done) {
     chai.request('localhost:3000')
-      .get('/api/brew/' + testUserId)
+      .get('/api/brew/' + testBrewId)
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
@@ -109,7 +118,7 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
 
   it('should change the status of a brew event step', function(done) {
     chai.request('localhost:3000')
-      .patch('/api/brew/' + testUserId)
+      .put('/api/brew/' + testBrewId)
       .send({ steps: [{ status: false }]})
       .end(function(err, res) {
         expect(err).to.eql(null);
