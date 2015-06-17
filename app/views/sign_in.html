@@ -13,11 +13,11 @@
     <!-- form -->
     <div id="form" class="cf">
       <label>Email</label>
-      <input class="error" type="text" />
+      <input type="text" name="email" data-ng-model="user.email">
       <label>Password</label>
-      <input class="error" type="password" />
+      <input type="password" name="password" data-ng-model="user.password">
       <hr>
-      <button>Sign In</button>
+      <button data-ng-click="signIn(user)">Sign In</button>
     </div>
   </div>
   <!--

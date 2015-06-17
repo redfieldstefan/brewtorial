@@ -2,16 +2,14 @@
 
 module.exports = function(app) {
 
-  SignOutController.$inject = ['$scope', '$http'];
+  SignOutController.$inject = ['$scope', '$http', 'auth'];
 
-  function SignOutController($scope, $http) {
+  function SignOutController($scope, $http, auth) {
     $scope.page = 'sign-out';
 
-    function init() {
-      
-    }
-
-    init();
+    $scope.signOutUser = function() {
+      auth.logout();
+    };
     
   };  
 

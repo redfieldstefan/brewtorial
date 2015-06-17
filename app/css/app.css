@@ -26,6 +26,7 @@
   border-radius: 15px;
   margin: 30px auto;
   box-sizing: border-box;
+  display: none;
 }
 
 #message p {
@@ -188,28 +189,28 @@ thead th {
 }
 
 /* page styles */
-body[data-page='landing'],
-body[data-page='sign-in'],
-body[data-page='sign-out'],
-body[data-page='register'] { 
+main[data-page='landing'],
+main[data-page='sign-in'],
+main[data-page='sign-out'],
+main[data-page='register'] { 
   background-color: #03a9f4;
 }
 
-body[data-page='dashboard'] { 
+main[data-page='dashboard'] { 
   background-color: #ffc107;
 }
 
-body[data-page='user'],
-body[data-page='recipe'] { 
+main[data-page='user'],
+main[data-page='recipe'] { 
   background-color: #e91e63; 
 }
 
-body[data-page='equipment'],
-body[data-page='ingredient'] { 
+main[data-page='equipment'],
+main[data-page='ingredient'] { 
   background-color: #8bc34a; 
 }
 
-body[data-page='brew'] {
+main[data-page='brew'] {
   background-color: #9c27b0;
 }
 

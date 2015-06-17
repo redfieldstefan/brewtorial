@@ -11,22 +11,6 @@ module.exports = function(app) {
       recipes: 0,
       craftings: 0
     };
-
-    function init() {
-
-      // get tallies.
-      $http.post('/api/service', {
-        method: 'getTallies'
-      })
-      .success(function(data) {
-        $scope.tallies = data.result;
-      })
-      .error(function(data, status) {
-        console.error('error retrieving tallies.', status, data);
-      });
-    }
-
-    init();
     
   };  
 

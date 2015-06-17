@@ -1,4 +1,4 @@
-<nav-header></nav-header>
+<nav-header data-logout="signOutUser" />
 
 <section id="register">
   <div class="inner">
@@ -13,11 +13,15 @@
     <!-- form -->
     <div id="form" class="cf">
       <label>Email</label>
-      <input class="error" type="text" />
+      <input class="error" name="email" data-ng-model="user.email" type="text" />
+      <label>Username</label>
+      <input class="error" name="displayName" data-ng-model="user.displayName" type="text" />
       <label>Password</label>
-      <input type="password" />
+      <input type="password" name="password" data-ng-model="user.password" />
+      <label>Confirm Password</label>
+      <input type="password" name="password_confirmation" data-ng-model="user.password_confirmation" />
       <hr>
-      <button>Create Account</button>
+      <button data-ng-click="registerUser(user)">Create Account</button>
     </div>
   </div>
 </section>

@@ -6,7 +6,7 @@ module.exports = function(app) {
         $location.path('/logged_in');
       }
       $scope.errors = [];
-      $scope.authSubmit = function(user) {
+      $scope.registerUser = function(user) {
         if(user.password_confirmation) {
           auth.create(user, function(err) {
             if(err) {

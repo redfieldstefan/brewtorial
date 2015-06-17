@@ -10,6 +10,8 @@ require('angular-base64');
 var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64']);
 
 // services.
+require('./services/auth_service')(brewtorialApp);
+require('./services/rest_resource')(brewtorialApp);
 
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
