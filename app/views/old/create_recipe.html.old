@@ -1,4 +1,4 @@
-<article data-ng-controller="CreateRecipeController">
+<article data-ng-controller="allRecipesController">
   <h1 class='red'>Create a Brew Recipe</h1>
   <section class="recipeConstructor">
      <section class='recipeHeader'>

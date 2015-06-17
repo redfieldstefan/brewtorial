@@ -51,7 +51,7 @@ describe('Brewtorial user routes', function(){
         expect(err).to.eql(null);
         expect(res.body).to.have.property('token');
         done();
-      })
+      });
   });
 
   it('should sign in an existing user', function(done) {
@@ -63,7 +63,7 @@ describe('Brewtorial user routes', function(){
         expect(err).to.eql(null);
         expect(res.body).to.have.property('token');
         done();
-      })
+      });
   });
 
   it('should have access to a userId', function() {
@@ -91,7 +91,7 @@ describe('Brewtorial user routes', function(){
         expect(err).to.eql(null);
         expect(res.body.msg).to.eql('profile updated');
         done();
-      })
+      });
   });
 
   it('should delete a user', function(done) {
@@ -102,7 +102,7 @@ describe('Brewtorial user routes', function(){
         expect(err).to.eql(null);
         expect(res.body.msg).to.eql('profile removed');
         done();
-      })
+      });
   });
 
 

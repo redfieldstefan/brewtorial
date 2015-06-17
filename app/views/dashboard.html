@@ -1,0 +1,44 @@
+<nav-header></nav-header>
+
+<section id="dashboard">
+  <div class="inner">
+    <h1>Let's Brew This.</h1>
+    <p>Peruse our entire list of <strong>{{ beerTally }}</strong> user-created recipes.<br>Sort and filter to your heart's content.</p>
+    <hr>
+
+    <!-- filters -->
+    <div id="filters">
+      <label>Filters:</label>
+      <input type="text" placeholder="Title" data-ng-model="search.title" />
+      <input type="text" placeholder="Type" data-ng-model="search.type" />
+    </div>
+
+    <hr>
+
+    <!-- brew list -->
+    <table>
+      <!-- head -->
+      <thead>
+        <tr>
+          <th data-ng-click="sort('rank')" style="width: 10%;">Rank</th>
+          <th data-ng-click="sort('title')" style="width: 30%;">Title</th>
+          <th data-ng-click="sort('abv')" style="width: 15%;">ABV%</th>
+          <th data-ng-click="sort('type')" style="width: 20%;">Type</th>          
+          <th data-ng-click="sort('created')" style="width: 25%;">Created</th>
+        </tr>
+      </thead>
+
+      <!-- body -->
+      <tbody>
+        <tr data-ng-click="view({{ beer._id }})" ng-repeat="beer in list | filter:search | orderBy:sortBy:sortOrder">
+          <td>{{ beer.rank }}</td>
+          <td><strong>{{ beer.title }}</strong></td>
+          <td>{{ beer.abv }}%</td>
+          <td>{{ beer.type }}</td>          
+          <td>{{ beer.created | date : 'mediumDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</section>

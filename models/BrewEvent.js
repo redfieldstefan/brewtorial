@@ -1,5 +1,6 @@
 // import modules.
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define schema.
 var brewEventSchema = new mongoose.Schema({
@@ -7,8 +8,8 @@ var brewEventSchema = new mongoose.Schema({
   recipe: ObjectId,
   steps: [
     {
-      directions: '',
-      offset: 0,
+      directions: String,
+      offset: Number, //length of the brew event
       status: Boolean
       // steps move automatically to the next
     }

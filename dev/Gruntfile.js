@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
     jshint: {
       options: {
-        node: true
+        node: true,
       },
       server: {
         src: ['dev/Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'server.js']
@@ -33,7 +33,8 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         options: {
           globals: {
-            angular: true
+            angular: true,
+            document: true
           }
         }
       },
@@ -100,6 +101,13 @@ module.exports = function(grunt) {
         dest: 'build/',
         filter: 'isFile'
       },
+      images: {
+        cwd: 'app/',
+        expand: true,
+        flatten: false,
+        src: 'images/**/*',
+        dest: 'build/'
+      },
       css: {
         cwd: 'app/css',
         expand: true,
@@ -150,6 +158,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev']);
   grunt.registerTask('build:test', ['webpack:karma_test'])
-  grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
+  grunt.registerTask('build:dev', ['clean', 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
