@@ -21,7 +21,7 @@ require('./controllers/equipment_controller')(brewtorialApp);
 require('./controllers/ingredient_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
-require('./controllers/recipe_controller')(brewtorialApp);
+require('./controllers/all_recipes_controller')(brewtorialApp);
 require('./controllers/register_controller')(brewtorialApp);
 require('./controllers/sign_in_controller')(brewtorialApp);
 require('./controllers/sign_out_controller')(brewtorialApp);
@@ -61,9 +61,9 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/recipe', {
-      templateUrl: 'views/recipe.html',
-      controller: 'RecipeController'
+    .when('/recipes', {
+      templateUrl: 'views/all_recipes.html',
+      controller: 'AllRecipesController'
     })
     .when('/register', {
       templateUrl: 'views/register.html',
