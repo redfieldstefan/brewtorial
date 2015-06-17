@@ -2,9 +2,11 @@
 
 module.exports = function(app) {
 
-  NavHeaderController.$inject = ['$scope', '$http', 'auth'];
+  NavHeaderController.$inject = ['$scope', '$http', 'auth', '$location'];
 
-  function NavHeaderController($scope, $http, auth) {
+  function NavHeaderController($scope, $http, auth, $location) {
+    $scope.page = $location.path();
+    $scope.page = $scope.page.substr(1);
     $scope.signOutUser = function() {
       auth.logout();
     };    
