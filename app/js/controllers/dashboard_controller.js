@@ -2,55 +2,38 @@
 
 module.exports = function(app) {
 
-  DashboardController.$inject = ['$scope', '$http'];
+  DashboardController.$inject = ['$scope', 'RESTResource'];
 
-  function DashboardController($scope, $http) {  
+  function DashboardController($scope, resource) {
     $scope.page = 'dashboard';
+    var Recipe = resource('recipe');
+    $scope.errors = [];
+    $scope.recipes = [];
     $scope.beerTally = 0;
     $scope.sortOrder = false;
     $scope.sortBy = 'name';
-    $scope.list = [];
 
-    function init() {
-      
-      // FIX THIS, GET DATA REMOTELY
-      $scope.list = [
-        {
-          _id: '0123456789',
-          title: 'SkunkBroo',
-          type: 'Lager',
-          abv: 6.25,
-          rank: 1,
-          created: new Date(2015, 0, 1)        
-        },
-        {
-          _id: '2468013579',
-          title: 'Brewlicious',
-          type: 'Ale',
-          abv: 7,
-          rank: 3,
-          created: new Date(2015, 3, 12)        
-        },
-        {
-          _id: '1357924680',
-          title: 'Junky Jo\'s Gutrot',
-          type: 'Ale',
-          abv: 5.5,
-          rank: 2,
-          created: new Date(2014, 11, 16)        
+    $scope.getAll = function() {
+      Recipe.getAll(function(err, data) {
+        if (err) {
+          console.log(err);
+          $scope.errors.push({msg: 'unable to retrieve recipes'});
         }
-      ];
-    }
 
-    init();
+        $scope.beerTally = data.result.length;
+        $scope.recipes = data.result;
+      });
+    };
 
     $scope.sort = function(propName) {
-      $scope.sortBy = propName;
+      $scope.sortBy = 'header.' + propName;
       $scope.sortOrder = !$scope.sortOrder;
     };
-    
-  };  
+
+    $scope.view = function(recipe) {
+      console.log(recipe._id);
+    }
+  };
 
   app.controller('DashboardController', DashboardController);
-
 };
