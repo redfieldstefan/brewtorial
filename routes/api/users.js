@@ -83,8 +83,7 @@ module.exports = function(router, passport) {
 
       var email = data.basic.email;
       var displayName = data.displayName;
-
-      res.status(200).json({email: email, displayName: displayName});
+      res.status(200).json({email: email, displayName: displayName, _id: data._id});
     });
   });
 };
