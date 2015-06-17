@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
     jshint: {
       options: {
-        node: true
+        node: true,
       },
       server: {
         src: ['dev/Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'server.js']
@@ -33,7 +33,8 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         options: {
           globals: {
-            angular: true
+            angular: true,
+            document: true
           }
         }
       },

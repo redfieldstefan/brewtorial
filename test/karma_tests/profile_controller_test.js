@@ -21,7 +21,7 @@ describe('brewtorial controllers test', function(){
   })
 
   it('Should be able to create a new controller', function(){
-    var profileController = $CtrlrConstructor('profileController', {$scope: $scope});
+    var profileController = $CtrlrConstructor('profileController', {$scope: $scope}); //jshint ignore: line
     expect(typeof profileController).toBe('object');
   });
 
