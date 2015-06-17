@@ -24,7 +24,7 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testUser = new User({
     userId: uuid.v4(),
     displayName: 'test',
-    basic: { email: 'testBrewer@example.com', password: password }
+    basic: { email: 'testbrewer@example.com', password: password }
   });
 
   beforeEach(function(done){
@@ -90,13 +90,34 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
         expect(res.status).to.eql(200);
         expect(res.body.message).to.eql('Recipe creation successful.');
         expect(res.body.data._id).to.exist;
-        expect(res.body.data.userId).to.exist;
+        expect(typeof res.body.data).to.eql('object');
+        done();
       });
-    done();
   });
 
-  it('should return to a brew event and have its state persist');
+  it('should return to a brew event and have its state persist', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/brew/' + testUserId)
+      .end(function(err, res) {
+        expect(err).to.eql(null);
+        expect(res.status).to.eql(200);
+        expect(typeof res.body.data).to.eql('object');
+        expect(res.body.message).to.eql('Successfully retrieved brew event');
+        done();
+      });
+  });
 
-  it('should change the status of a brew event step');
+  it('should change the status of a brew event step', function(done) {
+    chai.request('localhost:3000')
+      .patch('/api/brew/' + testUserId)
+      .send({ steps: [{ status: false }]})
+      .end(function(err, res) {
+        expect(err).to.eql(null);
+        expect(res.status).to.eql(200);
+        expect(typeof res.body.data).to.eql('object');
+        expect(res.body.message).to.eql('Successfully updated brew');
+        done();
+      });
+  });
 
 });

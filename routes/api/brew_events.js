@@ -32,9 +32,8 @@ module.exports = function(router) {
 
   //brew is ready
   router.patch('/:id', function(req, res) {
-    BrewEvent.findOne(req.params.id, function(err, data) {
+    BrewEvent.findOne({_id: req.params.id}, function(err, data) {
       if (err) { return console.log(err)}
-      data.steps = req.body.steps;
       res.status(200)
         .json({
           success: true,
