@@ -2,19 +2,20 @@
 
 module.exports = function(app) {
 
-  RecipeController.$inject = ['$scope', '$http'];
+  app.controller('RecipesController', ['$scope', 'RESTResource', function($scope, resource) {
+    var Recipe = resource('recipe');
+    $scope.errors = [];
+    $scope.recipes = [];
 
-  function RecipeController($scope, $http) {
-    $scope.page = 'recipe';
-
-    function init() {
-      
-    }
-
-    init();
-    
-  };  
-
-  app.controller('RecipeController', RecipeController);
+    $scope.getAll = function() {
+      Recipe.getAll(function(err, data) {
+        if(err) {
+          $scope.errors.push(err);
+          return console.log({msg: 'Dang, error retrieving the recipes'});
+        }
+        $scope.recipes = data;
+      })
+    };
+  }]);
 
 };
