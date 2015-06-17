@@ -25,3 +25,8 @@ section {
 input .full{
   width: 100%;
 }
+
+textarea {
+  padding: 0;
+  width: 900px;
+}

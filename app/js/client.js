@@ -43,7 +43,7 @@ brewApp.config(['$routeProvider', function($routeProvider) {
     .when('/logged_in', {
       templateUrl: '../views/logged_in_landing.html'
     })
-    .when('langing', {
+    .when('landing', {
       templateUrl: '../view/landing.html'
     })
     .when('/', {
