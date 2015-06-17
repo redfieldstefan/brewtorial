@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-karma');
 
   var watchFiles = ['Gruntfile.js', './app/**/*.js', './app/**/*.css'];
 
@@ -83,6 +84,13 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      test: {
+        // configFile:'../karmaConf.js'
+        configFile:'./karma.conf.js'
+      }
+    },
+
     copy: {
       html: {
         cwd: 'app/',
@@ -141,6 +149,7 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev']);
+  grunt.registerTask('build:test', ['webpack:karma_test'])
   grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
