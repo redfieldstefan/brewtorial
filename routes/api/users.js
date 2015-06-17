@@ -74,7 +74,7 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/profile/:id', function(req, res) {
+  router.get('/:id', function(req, res) {
     User.findOne({'_id': req.params.id}, function(err, data) {
       if (err) {
         console.log(err);
