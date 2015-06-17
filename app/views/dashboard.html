@@ -29,7 +29,7 @@
 
       <!-- body -->
       <tbody>
-        <tr data-ng-click="view({{ beer._id }})" ng-repeat="beer in list | filter:search | orderBy:sortBy:sortOrder">
+        <tr ng-repeat="beer in list | filter:search | orderBy:sortBy:sortOrder">
           <td>{{ beer.rank }}</td>
           <td><strong>{{ beer.title }}</strong></td>
           <td>{{ beer.abv }}%</td>
