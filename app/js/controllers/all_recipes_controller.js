@@ -11,7 +11,6 @@ module.exports = function(app) {
     $scope.steps = [];
     $scope.equipment = [];
 
-
     $scope.getAll = function() {
       Brew.getAll(function(err, data) {
         if(err) {
@@ -35,12 +34,7 @@ module.exports = function(app) {
           return console.log({msg: 'Dang, error creating the recipe'});
         } else {
           console.log(data);
-          $scope.errors = [];
-          $scope.recipes = [];
-          $scope.header = {};
-          $scope.ingredients = [];
-          $scope.steps = [];
-          $scope.equipment = [];
+          clearForms();
         }
       });
     };
@@ -64,6 +58,14 @@ module.exports = function(app) {
       $scope.equipment.push(item);
       document.getElementById("equipmentForm").reset();
     };
+
+    var clearForms = function () {
+      $scope.recipes = [];
+      $scope.header = {};
+      $scope.ingredients = [];
+      $scope.steps = [];
+      $scope.equipment = [];
+    }
 
   }]);
 };

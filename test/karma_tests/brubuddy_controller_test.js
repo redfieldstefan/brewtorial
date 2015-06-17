@@ -19,6 +19,12 @@ describe('brubuddy controllers test', function(){
   it('Should be able to create a new controller', function(){
     var bruController = new $CtrlrConstructor('bruController', {$scope: $scope});
     expect(typeof bruController).toBe('object');
+    expect(Array.isArray($scope.errors)).toBe(true);
+    expect(Array.isArray($scope.recipes)).toBe(true);
+    expect(Array.isArray($scope.ingredients)).toBe(true);
+    expect(Array.isArray($scope.steps)).toBe(true);
+    expect(Array.isArray($scope.equipment)).toBe(true);
+
   });
 
   describe('REST Functionality', function(){
@@ -32,6 +38,8 @@ describe('brubuddy controllers test', function(){
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
     });
+
+
 
   });
 
