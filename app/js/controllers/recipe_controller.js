@@ -3,12 +3,10 @@
 module.exports = function(app) {
 
   app.controller('RecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
-    var Recipe = resource('recipe');
     var BrewEvent = resource('brewEvent');
+    var Recipe = resource('recipe');
     $scope.errors = [];
     $scope.recipes = [];
-    $scope.steps = [];
-    $scope.ingredients = [];
 
     $scope.getAll = function() {
       Recipe.getAll(function(err, data) {
@@ -38,6 +36,5 @@ module.exports = function(app) {
       });
     };
   }]);
-
 };
 

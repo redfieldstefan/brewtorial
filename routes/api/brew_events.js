@@ -33,7 +33,7 @@ module.exports = function(router) {
   //brew is ready
   router.put('/:id', function(req, res) {
     BrewEvent.update({_id: req.params.id}, req.body, function(err, data) {
-      if (err) { return console.log(err)}
+      if (err) { return console.log(err);}
       res.status(200)
         .json({
           success: true,
@@ -43,4 +43,4 @@ module.exports = function(router) {
     });
   });
 
-}
+};
