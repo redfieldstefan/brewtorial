@@ -17,7 +17,7 @@ module.exports = function(app) {
       Recipe.getAll(function(err, data) {
         if (err) {
           console.log(err);
-          $scope.push({msg: 'unable to retrieve recipes'});
+          $scope.errors.push({msg: 'unable to retrieve recipes'});
         }
 
         $scope.beerTally = data.result.length;
