@@ -252,6 +252,20 @@ main[data-page='brew'] {
   margin: 30px 30px 0 0;
 }
 
+#nav li.user a {
+  background-color: hsla(0, 100%, 100%, 0.25);
+  display: inline-block;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0;  
+}
+
+#nav li.user img {
+  margin: 3px 0 0 5px;
+}
+
 #nav li:nth-child(2) {
   margin-right: 15px;
 }
@@ -282,7 +296,7 @@ main[data-page='brew'] {
 
 #tally {
   margin: 0 auto;
-  padding: 60px 0 90px 0;
+  padding: 60px 0 0 0;
   width: 402px;
 }
 
