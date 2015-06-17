@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html data-ng-app="brewtorialApp" lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>BruBuddy&trade;</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet" type="text/css">
+    <title>Brewtorial&trade;</title>
+    <!-- styles -->
+    <link href="normalize.css" rel="stylesheet">    
+    <link href="app.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Open+Sans:300italic,300,600" rel="stylesheet">    
   </head>
-  <body class="container" data-ng-app="brewApp">
-    <header class="twelve columns">
-      <aside class="five columns">
-        <h1 class="headertitle">Brewtorial</h1>
-        <p class="headerfooter">Your personal homebrew helper</p>
-      </aside>
-      <nav class="seven columns">
-        <ul>
-          <li class="navlayout"><a class="navbar" href="#profile">My profile</a></li>
-          <li class="navlayout"><a class="navbar" href="#all_recipes">All Recipes</a></li>
-          <li class="navlayout"><a class="navbar" href="#logged_in">Home</a></li>
-          <li class="navlayout" data-logout-directive>Logout</li>
-        </ul>
-      </nav>
-    </header>
-    <main class="twelve columns" data-ng-view>
-    </main>
-    <footer class="twelve columns">
-      <p class="headerfooter">BruBuddy&trade; 2015</p>
-    </footer>
+  <body>
+    <div id="bg"></div>    
+    <main data-ng-view data-page="{{ page }}"></main>
     <script src="bundle.js"></script>
+    <!-- add footer -->
+    <!-- scripts -->
   </body>
 </html>

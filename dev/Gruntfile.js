@@ -93,6 +93,13 @@ module.exports = function(grunt) {
         dest: 'build/',
         filter: 'isFile'
       },
+      images: {
+        cwd: 'app/',
+        expand: true,
+        flatten: false,
+        src: 'images/**/*',
+        dest: 'build/'
+      },
       css: {
         cwd: 'app/css',
         expand: true,
@@ -142,6 +149,6 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev']);
-  grunt.registerTask('build:dev', ['webpack:client', 'copy:html', 'copy:css']);
+  grunt.registerTask('build:dev', ['clean', 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
 };
