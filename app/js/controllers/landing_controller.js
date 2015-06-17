@@ -2,9 +2,9 @@
 
 module.exports = function(app) {
 
-  LandingController.$inject = ['$scope'];
+  LandingController.$inject = ['$scope', '$http'];
 
-  function LandingController($scope) {
+  function LandingController($scope, $http) {
     var greetings = [
       'Re-brew-nited<br>and it tastes so good.',
       'Your Kung-brew<br>is strong, grasshoppa.',
@@ -18,6 +18,16 @@ module.exports = function(app) {
       recipes: 0,
       craftings: 0
     };
+
+    $http.post('/api/service', {
+      method: 'getLandingTallies'
+    })
+    .success(function(data) {
+      $scope.tallies = data.result;
+    })
+    .error(function(data, status) {
+      console.log('FAILURE >', status, data);
+    });
 
   };  
 

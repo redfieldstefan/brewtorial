@@ -56,6 +56,7 @@ module.exports = function(router) {
     })
     .post(function(req, res, next) {
       var newRecipe = new Recipe(req.body);
+      newRecipe.header.created = Date.now();
       newRecipe.save(function(err, result) {
         if (err) { throw err; }
         res.status(200)
