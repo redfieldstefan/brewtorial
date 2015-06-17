@@ -32,6 +32,7 @@ module.exports = function(app) {
       },
 
       logout: function() {
+        console.log('Auth Service Logout Called');
         $cookies.put('eat', '');
       },
 
