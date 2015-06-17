@@ -59,18 +59,7 @@ a {
 
 body {
   min-height: 100%;
-  z-index: -1;
-  opacity: 0.125;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('./images/beer.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+
 }
 
 button {
@@ -136,6 +125,10 @@ label {
   display: block;
 }
 
+main {
+  padding-bottom: 90px;
+}
+
 p {
   color: hsla(0, 0%, 0%, 0.5);
   font-size: 27px;
@@ -184,30 +177,44 @@ thead th {
   text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
 }
 
+#bg {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/beer.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 /* page styles */
 main[data-page='landing'],
-main[data-page='sign-in'],
-main[data-page='sign-out'],
+main[data-page='sign_in'],
+main[data-page='sign_out'],
 main[data-page='register'] { 
-  background-color: #03a9f4;
+  background-color: hsla(199, 98%, 48%, 0.9);
 }
 
 main[data-page='dashboard'] { 
-  background-color: #ffc107;
+  background-color: hsla(45, 100%, 51%, 0.9);
 }
 
 main[data-page='user'],
 main[data-page='recipe'] { 
-  background-color: #e91e63; 
+  background-color: hsla(340, 82%, 52%, 0.9); 
 }
 
 main[data-page='equipment'],
 main[data-page='ingredient'] { 
-  background-color: #8bc34a; 
+  background-color: hsla(88, 50%, 53%, 0.9); 
 }
 
 main[data-page='brew'] {
-  background-color: #9c27b0;
+  background-color: hsla(14, 100%, 57%, 0.9);
 }
 
 /* ================================================================================================================== */
@@ -322,7 +329,7 @@ main[data-page='brew'] {
   background: hsla(0, 100%, 100%, 0.9);
   border-radius: 15px;
   width: 600px;
-  margin: 0 auto 90px auto;
+  margin: 0 auto;
   padding: 30px;
   box-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
   box-sizing: border-box;
@@ -356,10 +363,6 @@ body[data-page='dashboard'] strong {
 
 tr {
   cursor: pointer;
-}
-
-table {
-  margin-bottom: 90px;
 }
 
 body[data-page='dashboard'] input[type='text'] {

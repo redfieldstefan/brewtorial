@@ -5,7 +5,7 @@ module.exports = function(app) {
   SignInController.$inject = ['$scope', '$http', 'auth', '$location'];
 
   function SignInController($scope, $http, auth, $location) {
-    $scope.page = 'sign-in';
+    $scope.page = 'sign_in';
     $scope.signIn = function(user) {
       auth.signIn(user, function(err) {
         if(err) {
