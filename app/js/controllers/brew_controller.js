@@ -2,19 +2,25 @@
 
 module.exports = function(app) {
 
-  BrewController.$inject = ['$scope', '$http'];
+  app.controller('BrewController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+    var Brew = resource('brew');
+    $scope.errors = [];
+    $scope.ingredients = [{item: 'Test Ingredient', amount: 5, unit: 'Cups'}, {item: 'Test Ingredient', amount: 5, unit: 'Oz'}, {item: 'Test Ingredient', amount: 5, unit: 'Lbs'}];
+    $scope.steps = [{directions: 'Some Test Directions', offset: 60, status: true}, {directions: 'Some Test Directions', offset: 60, status: false}];
+    $scope.title = '';
 
-  function BrewController($scope, $http) {
-    $scope.page = 'brew';
+    $scope.getBrew = function(id) {
+    };
 
-    function init() {
-      
-    }
+    $scope.startTime = function() {
+    };
 
-    init();
-    
-  };  
+    $scope.stopTime = function(){
+    };
 
-  app.controller('BrewController', BrewController);
 
-}
+
+  }]);
+};
+
+
