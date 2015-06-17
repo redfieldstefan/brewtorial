@@ -8,7 +8,8 @@ module.exports = function(app) {
     var greetings = [
       'Re-brew-nited<br>and it tastes so good.',
       'Your Kung-brew<br>is strong, grasshoppa.',
-      'Keep away!<br>I know tae kwon brew!'
+      'Keep away!<br>I know tae kwon brew!',
+      'Our dog\'s name is<br>Suds McKenzie.'
     ];
     $scope.greeting = greetings[Math.floor(Math.random()*greetings.length)];
     $scope.page = 'landing';
