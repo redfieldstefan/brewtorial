@@ -1,5 +1,15 @@
-<article>
-  <p>Sign in or create user!</p>
-  <p><a href="#sign_in">Sign in</a></p>
-  <p><a href="#create_user">Create user</a></p>
-</article>
+<nav-header></nav-header>
+
+<section id="landing">
+  <div class="inner">
+    <h1>Re-brew-nited<br>and it tastes so good. {{ landingData }}</h1>
+    <p>Brewtorial&trade; lets you share in the art of micro-brewing<br>from amateurs and professional brewmasters all over the world.</p>
+    
+    <!-- tally -->
+    <ul id="tally" class="cf">
+      <li><div>{{ tallies.users }}</div><p>Users</p></li>
+      <li><div>{{ tallies.recipes }}</div><p>Recipes</p></li>
+      <li><div>{{ tallies.craftings }}</div><p>Craftings</p></li>
+    </ul>
+  </div>
+</section>

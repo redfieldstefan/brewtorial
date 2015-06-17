@@ -1,55 +1,78 @@
 'use strict';
 
+// import modules.
 require('angular/angular');
 require('angular-route');
 require('angular-cookies');
 require('angular-base64');
 
-var brewApp = angular.module('brewApp', ['ngRoute', 'ngCookies', 'base64']);
+// application.
+var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64']);
 
-//services
-require('../auth/auth_service')(brewApp);
-require('./services/rest_resource')(brewApp);
+// services.
 
-//controllers
-require('./controllers/all_recipes_controller.js')(brewApp);
-require('./controllers/profile_controller')(brewApp);
-require('../auth/auth_controller')(brewApp);
+// controllers.
+require('./controllers/brew_controller')(brewtorialApp);
+require('./controllers/dashboard_controller')(brewtorialApp);
+require('./controllers/equipment_controller')(brewtorialApp);
+require('./controllers/ingredient_controller')(brewtorialApp);
+require('./controllers/landing_controller')(brewtorialApp);
+require('./controllers/nav_header_controller')(brewtorialApp);
+require('./controllers/recipe_controller')(brewtorialApp);
+require('./controllers/register_controller')(brewtorialApp);
+require('./controllers/sign_in_controller')(brewtorialApp);
+require('./controllers/sign_out_controller')(brewtorialApp);
+require('./controllers/user_controller')(brewtorialApp);
 
-//directives
-require('./directives/all_recipes_directive')(brewApp);
-require('./directives/profile_directive')(brewApp);
-require('../auth/logout_directive')(brewApp);
+// directives.
+require('./directives/nav_header_directive')(brewtorialApp);
 
-brewApp.config(['$routeProvider', function($routeProvider) {
+// routes.
+brewtorialApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/all_recipes', {
-      templateUrl: '../views/all_recipes.html',
-      controller: 'allRecipesController'
+    .when('/', {
+      templateUrl: 'views/landing.html',
+      controller: 'LandingController'
     })
-    .when('/create_recipe', {
-      templateUrl: '../views/create_recipe.html',
-      controller: 'allRecipesController'
+    .when('/brew', {
+      templateUrl: 'views/brew.html',
+      controller: 'BrewController'
     })
-    .when('/profile', {
-      templateUrl: '../views/profile.html'
+    .when('/dashboard', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'DashboardController'
     })
-    .when('/create_user', {
-      templateUrl: '../views/create_user.html'
+    .when('/equipment', {
+      templateUrl: 'views/equipment.html',
+      controller: 'EquipmentController'
+    })
+    .when('/ingredient', {
+      templateUrl: 'views/ingredient.html',
+      controller: 'IngredientController'
+    })
+    .when('/landing', {
+      templateUrl: 'views/landing.html',
+      controller: 'LandingController'
+    })
+    .when('/recipe', {
+      templateUrl: 'views/recipe.html',
+      controller: 'RecipeController'
+    })
+    .when('/register', {
+      templateUrl: 'views/register.html',
+      controller: 'RegisterController'
     })
     .when('/sign_in', {
-      templateUrl: '../views/sign_in.html'
+      templateUrl: 'views/sign_in.html',
+      controller: 'SignInController'
     })
-    .when('/logged_in', {
-      templateUrl: '../views/logged_in_landing.html'
+    .when('/sign_out', {
+      templateUrl: 'views/sign_out.html',
+      controller: 'SignOutController'
     })
-    .when('langing', {
-      templateUrl: '../view/landing.html'
+    .when('/user', {
+      templateUrl: 'views/user.html',
+      controller: 'UserController'
     })
-    .when('/', {
-      templateUrl: '../views/logged_in_landing.html'
-    })
-    .otherwise({
-      templateUrl: '../views/landing.html'
-    });
+    .otherwise({ redirectTo: '/' });
 }]);
