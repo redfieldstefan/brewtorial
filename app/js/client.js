@@ -3,11 +3,12 @@
 // import modules.
 require('angular/angular');
 require('angular-route');
+require('angular-sanitize');
 require('angular-cookies');
 require('angular-base64');
 
 // application.
-var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64']);
+var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64', 'ngSanitize']);
 
 // services.
 require('./services/auth_service')(brewtorialApp);
