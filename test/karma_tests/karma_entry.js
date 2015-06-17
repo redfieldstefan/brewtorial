@@ -1,4 +1,5 @@
 'use strict';
 
-require('./brubuddy_controller_test');
+require('./recipes_controller_test');
+require('./profile_controller_test');
 
