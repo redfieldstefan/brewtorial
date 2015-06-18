@@ -26,7 +26,6 @@ module.exports = function(app) {
 
     $scope.getUser = function(user) {
       $http.get('/api/users/get/profile')
-        .send({eat: eat})
         .success(function(data) {
           $scope.user = data.user;
           console.log($scope.user);
