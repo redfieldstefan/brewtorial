@@ -18,7 +18,7 @@ describe('brewtorial controllers test', function(){
 
   it('should test true', function(){
     expect(true).toBe(true);
-  })
+  });
 
   it('Should be able to create a new controller', function(){
     var allRecipesController = $CtrlrConstructor('allRecipesController', {$scope: $scope});

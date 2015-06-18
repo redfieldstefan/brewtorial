@@ -8,14 +8,13 @@ module.exports = function(app) {
     $scope.page = 'ingredient';
 
     function init() {
-      
+
     }
 
     init();
-    
-  };  
+
+  }
 
   app.controller('IngredientController', IngredientController);
 
 };
-

@@ -8,12 +8,12 @@ module.exports = function(app) {
     $scope.page = 'equipment';
 
     function init() {
-      
+
     }
 
     init();
-    
-  };  
+
+  }
 
   app.controller('EquipmentController', EquipmentController);
 

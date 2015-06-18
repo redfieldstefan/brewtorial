@@ -31,7 +31,7 @@ module.exports = function(app) {
       console.log('FAILURE >', status, data);
     });
 
-  };  
+  }
 
   app.controller('LandingController', LandingController);
 
