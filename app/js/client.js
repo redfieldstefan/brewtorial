@@ -3,11 +3,12 @@
 // import modules.
 require('angular/angular');
 require('angular-route');
+require('angular-sanitize');
 require('angular-cookies');
 require('angular-base64');
 
 // application.
-var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64']);
+var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64', 'ngSanitize']);
 
 // services.
 require('./services/auth_service')(brewtorialApp);
@@ -15,6 +16,7 @@ require('./services/rest_resource')(brewtorialApp);
 
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
+require('./controllers/create_recipe_controller')(brewtorialApp);
 require('./controllers/dashboard_controller')(brewtorialApp);
 require('./controllers/equipment_controller')(brewtorialApp);
 require('./controllers/ingredient_controller')(brewtorialApp);
@@ -40,6 +42,10 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/brew.html',
       controller: 'BrewController'
     })
+    .when('/create_recipe', {
+      templateUrl: 'views/create_recipe.html',
+      controller: 'CreateRecipeController'
+    })
     .when('/dashboard', {
       templateUrl: 'views/dashboard.html',
       controller: 'DashboardController'
@@ -56,7 +62,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/recipe', {
+    .when('/recipes', {
       templateUrl: 'views/recipe.html',
       controller: 'RecipeController'
     })

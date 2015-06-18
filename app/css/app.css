@@ -252,6 +252,10 @@ main[data-page='brew'] {
   margin: 30px 30px 0 0;
 }
 
+#nav li.user {
+  margin-right: 15px;
+}
+
 #nav li.user a {
   background-color: hsla(0, 100%, 100%, 0.25);
   display: inline-block;
