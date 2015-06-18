@@ -24,6 +24,9 @@ module.exports = function(app) {
 
     $scope.startStep = function(step) {
       step.status = true;
+      // if(step.offset > 1440) {
+      //   MAIL CHIMP LOGIC GOES HERE?
+      // }
     }
 
     $scope.startTime = function(time) {
