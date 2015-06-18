@@ -22,7 +22,7 @@ module.exports = function(app) {
         $scope.description = data.description;
         $scope.header = data.result.header;
         $scope.ingredients = data.result.ingredients;
-        $scope.equiptment = data.result.equipment;
+        $scope.equipment = data.result.equipment;
         $scope.steps = data.result.steps;
         $scope.id = data.result._id;
       });
