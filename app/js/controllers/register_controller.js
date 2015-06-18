@@ -1,7 +1,6 @@
 'use strict';
 
 var val = require('validator');
-var User = require('../../../models/User');
 
 module.exports = function(app) {
 
@@ -10,18 +9,25 @@ module.exports = function(app) {
       $scope.hasValidationErrors = false;
       $scope.validationErrorMessage = '';
 
-      if(auth.isSignedIn()) { $location.path('/dashboard'); }
+      if(auth.isSignedIn()) { 
+        $location.path('/dashboard'); 
+      }
 
       $scope.errors = [];
       $scope.registerUser = function(user) {
 
         // validate user registration.
         var validationErrors = [];
-        if (val.isNull(user)) { validationErrors.push('Please fill out the form.'); }
-        else {
-          User.find({basic.email: user.email}, function(err, result) {
-            if (result.length) { validationErrors.push('Email is not unique.'); }
-          });
+        if (val.isNull(user)) { 
+          validationErrors.push('Please fill out the form.');
+        } else {
+          // User.find({ "basic.email": user.email }, function(err, result) {
+          //   if (err) { 
+          //     console.log(err);
+          //     throw err; 
+          //   }
+          //   if (result.length) { validationErrors.push('Email is not unique.'); }
+          // });
           if (val.isNull(user.email)) { validationErrors.push('Email is required.'); }
           if (val.isNull(user.displayName)) { validationErrors.push('Username is required.'); }
           if (val.isNull(user.password)) { validationErrors.push('Password is required.'); }

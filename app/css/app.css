@@ -52,8 +52,7 @@ a {
 }
 
 body {
-  min-height: 100%;
-
+  height: 100%;
 }
 
 button {
@@ -90,7 +89,7 @@ hr {
 }
 
 html {
-  min-height: 100%;
+  height: 100%;
 }
 
 img {
@@ -122,6 +121,7 @@ label {
 
 main {
   padding-bottom: 90px;
+  min-height: 100%;
 }
 
 p {
