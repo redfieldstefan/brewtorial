@@ -4,9 +4,9 @@ var val = require('validator');
 
 module.exports = function(app) {
 
-  SignInController.$inject = ['$scope', '$http', 'auth', '$location'];
+  SignInController.$inject = ['$scope', '$http', 'auth', '$location', '$cookies'];
 
-  function SignInController($scope, $http, auth, $location) {
+  function SignInController($scope, $http, auth, $location, $cookies) {
     $scope.page = 'sign_in';
     $scope.hasValidationErrors = false;
     $scope.validationErrorMessage = '';
@@ -35,7 +35,14 @@ module.exports = function(app) {
           $scope.hasValidationErrors = true;
           // return $scope.errors.push({msg: 'not able to sign in user'});
         } else {
-          $location.path('/dashboard');  
+          if ($cookies.get('postAuthenticationRedirect') && $cookies.get('postAuthenticationRedirect').length) {
+            var relocationPath = $cookies.get('postAuthenticationRedirect');
+            $cookies.put('postAuthenticationRedirect', '');
+            $location.path(decodeURIComponent(relocationPath));
+          } else {
+            $location.path('/dashboard');    
+          }
+          
         }        
       });
     };  

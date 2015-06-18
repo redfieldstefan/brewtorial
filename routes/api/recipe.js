@@ -1,5 +1,6 @@
 // import models.
 var Recipe = require('../../models/Recipe');
+var eatAuth = require('../../lib/eat_auth')(process.env.APP_SECRET);
 
 // export router.
 module.exports = function(router) {
@@ -54,17 +55,22 @@ module.exports = function(router) {
           });
       });
     })
-    .post(function(req, res, next) {
-      var newRecipe = new Recipe(req.body);
-      newRecipe.header.created = Date.now();
-      newRecipe.save(function(err, result) {
-        if (err) { throw err; }
-        res.status(200)
-          .json({
-            success: true,
-            message: 'Recipe creation successful.',
-            result: result
-          });
-      });
+
+  router.post('/', eatAuth, function(req, res) {
+    var newRecipe = new Recipe(req.body);
+    newRecipe.header.author = req.user.displayName;
+    newRecipe.header.created = Date.now();
+    newRecipe.save(function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({err: 'internal server error'});
+      }
+      res.status(200)
+        .json({
+          success: true,
+          message: 'Recipe creation successful.',
+          result: result
+        });
     });
+  });
 };

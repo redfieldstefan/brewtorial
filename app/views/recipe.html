@@ -1,15 +1,52 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 <section id="recipe">
   <div class="inner">
-    <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
-      <h1>{{header.title}}</h1>
-      <p>Style: {{header.style}}</p>
-      <p>ABV: {{header.abv}}%</p>
-      <p>Brew Time: {{header.brewTime}}</p>
-      <p>Created: {{header.created | date : 'mediumDate'}}</p>
-      <p>Brew Time: {{header.brewTime}}</p>
-      <p>Difficulty: {{header.difficulty}}</p>
-      <p>Brew Time: {{header.brewTime}}</p>
+    <article data-ng-controller="RecipeController"
+             data-ng-init="getRecipe()">
+      <header>
+        <h1 id="title">{{header.title}}</h1>
+        <p id="author">by: {{header.author}}</p>
+        <p id="created">Created on: {{header.created | date : 'mediumDate'}}</p>
+      </header>
+      <main id="info">
+
+        <!-- header -->
+        <h1>About this brew:</h1>
+        <p>Description: {{description}}</p>
+        <p>Style: {{header.style}}</p>
+        <p>ABV: {{header.abv}}%</p>
+        <p>IBU: {{header.ibu}}%</p>
+        <p>OG: {{header.og}}%</p>
+        <p>Brew Time: {{header.brewTime}}</p>
+        <p>Difficulty: {{header.difficulty}}</p>
+        <p>Times Brewed: {{header.popularity.length}}</p>
+        <p>Likes: {{header.likes}}</p>
+
+        <!-- ingredients -->
+        <h1>Ingredients:</h1>
+        <ul id="ingredients">
+          <li data-ng-repeat="ingredient in ingredients">
+            Item: {{ingredient.item}}<br>
+            Amount: {{ingredient.amount}} {{ingredient.unit}}
+          </li>
+        </ul>
+
+        <!-- equipment -->
+        <h1>Equipment:</h1>
+        <ul id="equipment">
+          <li data-ng-repeat="item in equipment">{{item}}</li>
+        </ul>
+
+        <!-- steps -->
+        <h1>Steps:</h1>
+        <ol id="steps">
+          <li data-ng-repeat="step in steps">
+            Directions: {{step.directions}}<br>
+            Time: {{step.offset}}
+          </li>
+        </ol>
+
+      </main>
       <button data-ng-click="createBrewEvent()">Brew This</button>
     </article>
   </div>
