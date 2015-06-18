@@ -6,7 +6,9 @@ module.exports = function(app) {
     $scope.page = 'recipe';
 
     var Recipe = resource('recipe');
+    var Equipment = resource('equipment');
     $scope.errors = [];
+    $scope.availableEquipment;
     $scope.header = {};
     $scope.ingredients = [];
     $scope.steps = [];
@@ -33,6 +35,17 @@ module.exports = function(app) {
         }
       });
     };
+
+    $scope.getEquipmentList = function() {
+      Equipment.getAll(function(err, data) {
+        if (err) {
+          console.log(err);
+          $scope.errors.push({msg: 'unable to retrieve recipes'});
+        }
+        $scope.availableEquipment = data.result;
+
+      });
+    }
 
     $scope.addDescription = function(description) {
       $scope.description = description;
