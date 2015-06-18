@@ -46,7 +46,7 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, complete: false});
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, status: false});
       document.getElementById("stepForm").reset();
     };
 

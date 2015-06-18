@@ -17,7 +17,7 @@ var brewEventSchema = new mongoose.Schema({
     {
       directions: String,
       offset: Number, //length of the brew event
-      status: Boolean
+      status: false
       // steps move automatically to the next
     }
   ],

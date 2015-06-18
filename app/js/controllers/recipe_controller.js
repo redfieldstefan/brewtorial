@@ -29,7 +29,7 @@ module.exports = function(app) {
       var newBrew = {
         title: $scope.header.title,
         ingredients: $scope.ingredients,
-        steps: $scope.steps,
+        steps: $scope.steps
       };
       NewBrewEvent.create(newBrew, function(err, res) {
         if (err) {
@@ -38,7 +38,7 @@ module.exports = function(app) {
         }
         console.log(res);
         var id = res.data._id;
-        $location.path('/brews/' + id); //NEW CREATE BREW CODE. DOES THIS LOOK RIGHT?
+        $location.path('/brews/' + id);
       });
     }
   }]);
