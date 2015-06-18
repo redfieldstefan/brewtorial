@@ -98,7 +98,7 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
         expect(res.body.message).to.eql('Recipe creation successful.');
-        expect(res.body.data._id).to.exist;
+        expect(res.body.data._id).to.exist; //jshint ignore: line
         expect(typeof res.body.data).to.eql('object');
         done();
       });
