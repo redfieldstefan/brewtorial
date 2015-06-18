@@ -1,16 +1,21 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 <section id="recipe">
   <div class="inner">
-    <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
-      <h1>{{header.title}}</h1>
-      <p>Style: {{header.style}}</p>
-      <p>ABV: {{header.abv}}%</p>
-      <p>Brew Time: {{header.brewTime}}</p>
-      <p>Created: {{header.created | date : 'mediumDate'}}</p>
-      <p>Brew Time: {{header.brewTime}}</p>
-      <p>Difficulty: {{header.difficulty}}</p>
-      <p>Brew Time: {{header.brewTime}}</p>
-      <button data-ng-click="createBrewEvent()">Brew This</button>
+    <article data-ng-controller="RecipeController"
+             data-ng-init="getRecipe()">
+      <header>
+        <h1 id="title">{{header.title}}</h1>
+        <h3 id="author">by: {{header.author}}</h3>
+      </header>
+      <section id="info">
+        <h4>About this brew:</h4>
+        <p>Style: {{header.style}}</p>
+        <p>ABV: {{header.abv}}%</p>
+        <p>Brew Time: {{header.brewTime}}</p>
+        <p>Created: {{header.created | date : 'mediumDate'}}</p>
+        <p>Difficulty: {{header.difficulty}}</p>
+        <button data-ng-click="createBrewEvent()">Brew This</button>
+      </section>
     </article>
   </div>
 </section>
