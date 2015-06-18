@@ -6,14 +6,15 @@ module.exports = function(app) {
     var User = resource('users');
     $scope.page = 'user';
     $scope.errors = [];
-    $scope.user = {};
+    $scope.user = null;
 
     $scope.getUser = function(user) {
-      User.getOne(function(err, data) {
+      User.getOne(user, function(err, data) {
         if(err) {
           $scope.errors.push(err);
           return console.log({msg: 'could not get user'});
         }
+        console.log(data);
         $scope.user = data;
       });
     };
