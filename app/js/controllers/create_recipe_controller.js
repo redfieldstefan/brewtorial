@@ -36,6 +36,7 @@ module.exports = function(app) {
 
     $scope.addDescription = function(description) {
       $scope.description = description;
+      document.getElementById("description").value = '';
     }
 
     $scope.addHeader = function(newHeader) {
