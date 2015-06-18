@@ -10,8 +10,8 @@ module.exports = function(app) {
     $scope.signOutUser = function() {
       auth.logout();
     };
-    
-  };  
+
+  }
 
   app.controller('SignOutController', SignOutController);
 

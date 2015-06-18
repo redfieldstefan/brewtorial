@@ -43,18 +43,17 @@ module.exports = function(router) {
 
     });
 
-  router.route('/')
-    .get(function(req, res, next) {
-      Recipe.find({}, 'header', function(err, result) {
-        if (err) { throw err; }
-        res.status(200)
-          .json({
-            success: true,
-            message: 'Retrieve recipes successful.',
-            result: result
-          });
-      });
-    })
+  router.get('/', function(req, res, next) {
+    Recipe.find({}, 'header', function(err, result) {
+      if (err) { throw err; }
+      res.status(200)
+        .json({
+          success: true,
+          message: 'Retrieve recipes successful.',
+          result: result
+        });
+    });
+  });
 
   router.post('/', eatAuth, function(req, res) {
     var newRecipe = new Recipe(req.body);

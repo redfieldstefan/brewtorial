@@ -4,7 +4,7 @@ module.exports = function(app) {
 
   app.controller('BrewController', ['$scope', '$location', '$timeout', '$routeParams', 'RESTResource', 'auth', '$cookies', function($scope, $location, $timeout, $routeParams, resource, auth, $cookies) {
     var Brew = resource('brew');
-    $scope.thisBrew;
+    $scope.thisBrew = {};
     $scope.errors = [];
     $scope.ingredients;
     $scope.steps;
@@ -13,7 +13,7 @@ module.exports = function(app) {
     $scope.counter;
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
-    if(!auth.isSignedIn()){
+    if (!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
     }
@@ -29,16 +29,16 @@ module.exports = function(app) {
     }
 
     $scope.getBrew = function() {
-      Brew.getOne($routeParams, function(err, data) {
-        if(err){
+      Brew.getOne($routeParams, function(err, brew) {
+        if (err){
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error fetching the brew event'});
         }
-        $scope.thisBrew = data.data;
-        $scope.steps = data.data.steps;
-        $scope.ingredients = data.data.ingredients;
-        $scope.title = data.data.title;
-        $scope.description = data.data.description;
+        $scope.thisBrew = brew.data;
+        $scope.steps = brew.data.steps;
+        $scope.ingredients = brew.data.ingredients;
+        $scope.title = brew.data.title;
+        $scope.description = brew.data.description;
         $scope.counter = $scope.steps[0].offset;
       });
     };
@@ -65,6 +65,7 @@ module.exports = function(app) {
         step.done = false;
       })
     };
+
 
     $scope.prevStep = function(current, prev) {
       console.log('previous')
@@ -104,9 +105,5 @@ module.exports = function(app) {
             console.log('your time ran out!');
         }
     });
-
-
   }]);
 };
-
-
