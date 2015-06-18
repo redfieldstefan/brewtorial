@@ -21,8 +21,7 @@ module.exports = function(app) {
 
       create: function(user, callback) {
         $http.post('/api/users/create_user', user)
-          .success(function(data) {
-            console.log(data);
+          .success(function(data) {            
             $cookies.put('eat', data.token);
             callback(null);
           })
