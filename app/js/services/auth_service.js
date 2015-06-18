@@ -6,15 +6,20 @@ module.exports = function(app) {
       signIn: function(user, callback) {
         //make an encoded version of username and password
         var encoded = $base64.encode(user.email + ':' + user.password);
+        
         $http.get('/api/users/sign_in', {
           //following is what http-basic expects
           headers: {'Authorization': 'Basic ' + encoded}
         })
-        .success(function(data){
-          $cookies.put('eat', data.token);
-          callback(null);
+        .success(function(data){ 
+          if (data.success) {
+            $cookies.put('eat', data.result.token);
+            callback(null);
+          } else {
+            callback(data.message);
+          }          
         })
-        .error(function(data) {
+        .error(function(data) {          
           callback(data);
         });
       },
