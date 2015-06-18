@@ -64,8 +64,8 @@ module.exports = function(app) {
       $scope.ingredients = [];
       $scope.steps = [];
       $scope.equipment = [];
+      $scope.description = '';
     }
 
   }]);
 };
-
