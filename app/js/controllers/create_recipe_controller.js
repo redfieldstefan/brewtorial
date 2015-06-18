@@ -27,8 +27,9 @@ module.exports = function(app) {
         } else {
           console.log(data);
           clearForms();
+          console.log(data);
           var address = data.result._id;
-          $location.path('/recipe/' + address);
+          $location.path('/recipes/' + address);
         }
       });
     };
