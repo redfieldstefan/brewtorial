@@ -3,6 +3,8 @@
 module.exports = function(app) {
 
   app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+    $scope.page = 'recipe';
+
     var Recipe = resource('recipe');
     $scope.errors = [];
     $scope.header = {};
