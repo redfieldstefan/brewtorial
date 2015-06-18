@@ -9,7 +9,9 @@ module.exports = function(app) {
       'Re-brew-nited<br>and it tastes so good.',
       'Your Kung-brew<br>is strong, grasshoppa.',
       'Keep away!<br>I know tae kwon brew!',
-      'Our dog\'s name is<br>Suds McKenzie.'
+      'Our dog\'s name is<br>Suds McKenzie.',
+      'The beau coup<br>brew crew.',
+      'Welcome to counter-<br>productivity.'
     ];
     $scope.greeting = greetings[Math.floor(Math.random()*greetings.length)];
     $scope.page = 'landing';

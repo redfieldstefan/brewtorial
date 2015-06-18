@@ -12,7 +12,7 @@ module.exports = function(router, passport) {
     newUser.generateHash(req.body.password, function(err, hash) {
       if (err) {
         console.log(err);
-        return res.status(500).json({err: 'internal server error'});
+        return res.status(500).json({msg: 'internal server error'});
       }
 
       // generate unique uuid for each new user
