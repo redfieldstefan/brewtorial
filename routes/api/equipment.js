@@ -50,7 +50,7 @@ module.exports = function(router) {
           .json({
             success: true,
             message: 'Retrieve equipments successful.',
-            result: result
+            result: results
           });
       });
     })

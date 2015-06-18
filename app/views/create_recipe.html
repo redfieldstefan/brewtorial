@@ -1,6 +1,6 @@
 
 <nav data-nav-header data-page="{{ page }}"></nav>
-<article data-ng-controller="CreateRecipeController" data-page="{{ page }}">
+<article data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
   <h1 class='red'>Create a Brew Recipe</h1>
   <section class="recipeConstructor">
      <section class='recipeHeader'>
@@ -27,7 +27,17 @@
       <form id="ingredientForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addIngredient(ingredient)'>
         <input type='text' required name='ingredient' placeholder='Ingredient' data-ng-model='ingredient.item'/>
         <input type='number' required name='amount' placeholder='Quantity' data-ng-model='ingredient.amount'/>
-        <input type='text' required name='unit' placeholder='Units' data-ng-model='ingredient.unit'/>
+        <select data-ng-model="ingredient.unit" placeholder='units'>
+          <option>Cups</option>
+          <option>Gallons</option>
+          <option>Quarts</option>
+          <option>Liters</option>
+          <option>lbs</option>
+          <option>oz</option>
+          <option>tsp</option>
+          <option>tbsp</option>
+          <option>Packet</option>
+        </select>
         <button type = 'submit'>Add Ingredient</button>
       </form>
     </section>
@@ -35,7 +45,11 @@
     <section>
       <h4>Equipment</h4>
       <form id="equipmentForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
-        <input type='text' name='equipItem' placeholder='Item' data-ng-model='item'/>
+        <!-- <input type='text' name='equipItem' placeholder='Item' data-ng-model='item'/> -->
+        <select data-ng-model="item">
+          <option data-ng-repeat="equipment in availableEquipment">{{equipment.name}}</option>
+        </select>
+       <!--  <input type='text' name='newEquipItem' placeholder='Add a new one?' data-ng-model='item'/> -->
         <button type = 'submit'>Add Equipment</button>
       </form>
     </section>
