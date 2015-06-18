@@ -5,8 +5,8 @@
     <p>Provide your brewdentials or <a href="#/register" title="Register">Register</a> to login.</p>
 
     <!-- message -->
-    <div id="message">
-      <p><strong>SORRY!</strong> The credentials you've provided are incorrect. Please check the email address, password and try again.</p>
+    <div id="message" data-ng-show="hasValidationErrors">
+      <p><strong>PLEASE RESOLVE THESE ERRORS:</strong> {{ validationErrorMessage }}</p>
     </div>
 
     <!-- form -->
@@ -19,15 +19,5 @@
       <button data-ng-click="signIn(user)">Sign In</button>
     </div>
   </div>
-  <!--
-  <section data-ng-controller="authController">
-  <form data-ng-submit="authSubmit(user)">
-    <label for="email">Email</label>
-    <input type="text" name="email" data-ng-model="user.email">
-    <label for="password">Password</label>
-    <input type="password" name="password" data-ng-model="user.password">
-    <button type="submit">Sign in</button>
-    <p>Or <button><a href='#create_user'>Create User</a></button></p>
-  </form>
-  -->
+  
 </section>
