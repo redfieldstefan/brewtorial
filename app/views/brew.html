@@ -9,10 +9,10 @@
       <li>
         <p>{{step.directions}}</p>
         <section data-timer-directive
-            data-ng-init='timer(step.offset, $scope.button.start, $scope.button.stop , $scope.button.reset)'
-            data-start="startTime(step.offset)"
-            data-stop="stopTime(step.offset)"
-            data-reset="resetTime(step.offset)"
+            data-ng-init='timer()'
+            data-start="startTimer()"
+            data-stop="stopTimer()"
+            data-reset="resetTime()"
         ></section>
         <button data-ng-click="startStep(steps[steps.indexOf(step) + 1])">NEXT STEP</button>
       </li>
