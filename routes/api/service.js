@@ -1,3 +1,5 @@
+// import models.
+var User = require('../../models/User');
 
 // export router.
 module.exports = function(router) {
@@ -18,6 +20,23 @@ module.exports = function(router) {
                 craftings: 100  
               }              
             });
+          break;
+
+        // ensures email address provided is unique.
+        case 'isEmailUnique':
+          User.find({ 'basic.email': req.body.data.email }, function(err, results) {
+            if (err) { 
+              console.log('error ensuring email is unique', err);
+              res.status(500)
+                .json({ msg: 'internal server error' })
+            }
+            res.status(200)
+              .json({
+                success: true,
+                message: 'Unique email validation was successful.',
+                result: (results.length) ? false: true
+              });
+          });
           break;
           
         default:
