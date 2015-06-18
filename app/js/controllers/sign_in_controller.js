@@ -29,11 +29,14 @@ module.exports = function(app) {
       }
 
       auth.signIn(user, function(err) {
-        if(err) {
-          console.log(err);
-          return $scope.errors.push({msg: 'not able to create user'});
-        }
-        $location.path('/dashboard');
+        if (err) {          
+          validationErrors.push('Credentials are invalid.');
+          $scope.validationErrorMessage = validationErrors.join('\n');
+          $scope.hasValidationErrors = true;
+          // return $scope.errors.push({msg: 'not able to sign in user'});
+        } else {
+          $location.path('/dashboard');  
+        }        
       });
     };  
     
