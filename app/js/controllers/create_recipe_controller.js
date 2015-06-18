@@ -3,6 +3,8 @@
 module.exports = function(app) {
 
   app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+    $scope.page = 'recipe';
+
     var Recipe = resource('recipe');
     var Equipment = resource('equipment');
     $scope.errors = [];
@@ -25,10 +27,9 @@ module.exports = function(app) {
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
         } else {
-          console.log(data);
           clearForms();
           var address = data.result._id;
-          $location.path('/recipe/' + address);
+          $location.path('/recipes/' + address);
         }
       });
     };
@@ -46,6 +47,7 @@ module.exports = function(app) {
 
     $scope.addDescription = function(description) {
       $scope.description = description;
+      document.getElementById("description").value = '';
     }
 
     $scope.addHeader = function(newHeader) {
@@ -74,8 +76,8 @@ module.exports = function(app) {
       $scope.ingredients = [];
       $scope.steps = [];
       $scope.equipment = [];
+      $scope.description = '';
     }
 
   }]);
 };
-

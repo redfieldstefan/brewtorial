@@ -18,6 +18,8 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
+
+        $scope.description = data.description;
         $scope.header = data.result.header;
         $scope.ingredients = data.result.ingredients;
         $scope.equipment = data.result.equipment;
@@ -32,12 +34,13 @@ module.exports = function(app) {
         ingredients: $scope.ingredients,
         steps: $scope.steps
       };
+
       NewBrewEvent.create(newBrew, function(err, res) {
         if (err) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-        console.log(res);
+
         var id = res.data._id;
         $location.path('/brews/' + id);
       });
