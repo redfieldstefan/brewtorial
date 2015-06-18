@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', function($scope, resource, $routeParams) {
+  app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
     $scope.page = 'recipe';
 
     var Recipe = resource('recipe');
@@ -8,6 +8,7 @@ module.exports = function(app) {
     $scope.ingredients = [];
     $scope.equipment = [];
     $scope.steps = [];
+    $scope.id;
 
     $scope.getRecipe = function() {
       Recipe.getOne($routeParams, function(err, data) {
@@ -20,7 +21,12 @@ module.exports = function(app) {
         $scope.ingredients = data.result.ingredients;
         $scope.equipment = data.result.equipment;
         $scope.steps = data.result.steps;
+        $scope.id = data.result._id;
       });
-    }
+    };
+
+    $scope.triggerBrewEvent = function(id) {
+      $location.path('/brews/' + id);
+    };
   }]);
 };
