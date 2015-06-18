@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = function(app) {
   var handleError = function(callback) {
     return function(data) {
