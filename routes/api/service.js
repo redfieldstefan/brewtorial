@@ -19,7 +19,7 @@ module.exports = function(router) {
               }              
             });
           break;
-
+          
         default:
           res.status(500)
             .json({

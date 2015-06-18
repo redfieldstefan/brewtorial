@@ -9,11 +9,6 @@
     clear: both;
 }
 
-.error {
-  border-color: #c00 !important;
-  background-color: hsla(0, 100%, 95%, 1);
-}
-
 #message {
   background: #cc0000;
   background: -moz-linear-gradient(top, hsla(0,100%,40%,1) 0%, hsla(0,100%,40%,1) 100%);
@@ -26,7 +21,6 @@
   border-radius: 15px;
   margin: 30px auto;
   box-sizing: border-box;
-  display: none;
 }
 
 #message p {
@@ -75,6 +69,7 @@ button {
   font-family: 'Open Sans';
   font-weight: 600;
   font-size: 20px;
+  outline: none;
 }
 
 h1 {
@@ -383,7 +378,7 @@ tr {
   cursor: pointer;
 }
 
-body[data-page='dashboard'] input[type='text'] {
+main[data-page='dashboard'] input[type='text'] {
   width: 240px;
   border-radius: 5px;
   padding: 7px;
