@@ -20,8 +20,10 @@ module.exports = function(app) {
         header: $scope.header,
         equipment: $scope.equipment,
         ingredients: $scope.ingredients,
-        steps: $scope.steps
+        steps: $scope.steps,
+        description: $scope.description
       };
+
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);

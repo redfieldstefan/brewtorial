@@ -19,7 +19,7 @@ module.exports = function(app) {
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
 
-        $scope.description = data.description;
+        $scope.description = data.result.description;
         $scope.header = data.result.header;
         $scope.ingredients = data.result.ingredients;
         $scope.equipment = data.result.equipment;
