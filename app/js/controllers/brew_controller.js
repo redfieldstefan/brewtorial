@@ -9,10 +9,10 @@ module.exports = function(app) {
     $scope.steps = [{directions: 'Some Test Directions', offset: 60, status: true}, {directions: 'Some Test Directions', offset: 60, status: false}, {directions: 'Some Test Directions', offset: 60, status: false}];
     $scope.title = '';
 
-    $scope.getBrew = function(id) {
+    $scope.getBrew = function() {
       Brew.getOne($routeParams, function(err, data) {
         if(err){
-           $scope.errors.push(err);
+          $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
         }
         console.log(data);
@@ -24,9 +24,13 @@ module.exports = function(app) {
 
     $scope.startStep = function(step) {
       step.status = true;
-      // if(step.offset > 1440) {
-      //   MAIL CHIMP LOGIC GOES HERE?
-      // }
+      Brew.save($routeParams, function(err, data) {
+        if(err){
+          $scope.errors.push(err);
+          return console.log({msg: 'Dang, error creating the recipe'});
+        }
+        console.log('save successful')
+      });
     }
 
     $scope.startTime = function(time) {
