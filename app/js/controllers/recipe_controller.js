@@ -41,8 +41,7 @@ module.exports = function(app) {
         $scope.equipment = data.result.equipment;
         $scope.steps = data.result.steps;
         $scope.id = data.result._id;
-      });
-    };
+      };
 
     $scope.triggerBrewEvent = function(id) {
       $location.path('/brews/' + id);

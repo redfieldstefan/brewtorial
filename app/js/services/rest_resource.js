@@ -32,12 +32,6 @@ module.exports = function(app) {
             .error(handleError(callback));
         },
 
-        getOne: function(resourceData, callback) {
-          $http.get('/api/' + resourceName + '/' + resourceData._id)
-            .success(handleSuccess(callback))
-            .error(handleError(callback));
-        },
-
         create:  function(resourceData, callback) {
           $http.post('/api/' + resourceName, resourceData)
             .success(handleSuccess(callback))
