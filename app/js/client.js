@@ -30,6 +30,7 @@ require('./controllers/user_controller')(brewtorialApp);
 
 // directives.
 require('./directives/nav_header_directive')(brewtorialApp);
+require('./directives/timer_directive')(brewtorialApp);
 
 // routes.
 brewtorialApp.config(['$routeProvider', function($routeProvider) {
@@ -38,7 +39,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/brew', {
+    .when('/brew/', {
       templateUrl: 'views/brew.html',
       controller: 'BrewController'
     })
