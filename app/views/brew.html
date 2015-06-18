@@ -2,9 +2,11 @@
 <section id="brew" data-ng-controller='BrewController'>
   <div class="inner">
     <h1>{{$scope.title}}</h1>
+    <ul data-ng-repeat="ingredient in ingredients">
+      <li>{{ingredient.item}}  {{ingredient.amount}}  {{ingredient.unit}}</li>
+    </ul>
     <h2>Ready to Start?</h2>
     <button data-ng-click="startBrew()">Start</button>
-    <ul class="ingredients"></ul>
     <ul class="steps" data-ng-repeat='step in steps' data-ng-if="step.status === true">
       <li>
         <p>{{step.directions}}</p>
