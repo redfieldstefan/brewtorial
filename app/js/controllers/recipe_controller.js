@@ -10,7 +10,7 @@ module.exports = function(app) {
     $scope.steps = [];
 
     $scope.getRecipe = function() {
-      Recipe.getOne($routeParams.id, function(err, data) {
+      Recipe.getOne($routeParams, function(err, data) {
         if (err) {
           console.log(err);
           $scope.errors.push({msg: 'Problem finding resource'});

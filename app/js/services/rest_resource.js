@@ -20,8 +20,8 @@ module.exports = function(app) {
       $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
       return {
 
-        getOne: function(id, callback) {
-          $http.get('/api/' + resourceName + '/' + id)
+        getOne: function(resourceData, callback) {
+          $http.get('/api/' + resourceName + '/' + resourceData._id)
             .success(handleSuccess(callback))
             .error(handleError(callback));
         },
