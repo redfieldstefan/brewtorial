@@ -1,21 +1,32 @@
-'use strict';
-
 module.exports = function(app) {
+  app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
+    $scope.page = 'recipe';
 
-  app.controller('RecipesController', ['$scope', 'RESTResource', function($scope, resource) {
     var Recipe = resource('recipe');
     $scope.errors = [];
-    $scope.recipes = [];
+    $scope.header;
+    $scope.ingredients = [];
+    $scope.equipment = [];
+    $scope.steps = [];
+    $scope.id;
 
-    $scope.getAll = function() {
-      Recipe.getAll(function(err, data) {
-        if(err) {
-          $scope.errors.push(err);
-          return console.log({msg: 'Dang, error retrieving the recipes'});
+    $scope.getRecipe = function() {
+      Recipe.getOne($routeParams, function(err, data) {
+        if (err) {
+          console.log(err);
+          $scope.errors.push({msg: 'Problem finding resource'});
         }
-        $scope.recipes = data;
-      })
+
+        $scope.header = data.result.header;
+        $scope.ingredients = data.result.ingredients;
+        $scope.equipment = data.result.equipment;
+        $scope.steps = data.result.steps;
+        $scope.id = data.result._id;
+      });
+    };
+
+    $scope.triggerBrewEvent = function(id) {
+      $location.path('/brews/' + id);
     };
   }]);
-
 };
