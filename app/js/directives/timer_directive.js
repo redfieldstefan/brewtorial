@@ -2,10 +2,11 @@
 
 module.exports = function(app) {
 
-  app.directive('timer', function() {
+  app.directive('timerDirective', function() {
     return {
       restrict: 'EA',
-      controller: 'NavHeaderController',
+      replace: true,
+      controller: 'BrewController',
       templateUrl: 'views/directives/timer.html',
        scope: {
         start: '&',
