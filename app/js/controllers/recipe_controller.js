@@ -1,6 +1,7 @@
 module.exports = function(app) {
   app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
     $scope.page = 'recipe';
+
     var NewBrewEvent = resource('/brew/newbrew');
 
     var Recipe = resource('recipe');
