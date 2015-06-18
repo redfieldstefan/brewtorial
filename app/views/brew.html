@@ -1,13 +1,18 @@
-<nav data-nav-header data-page="{{ page }}"></nav>
-<section data-ng-controller='BrewController' id="brew">
+<nav data-nav-header data-page="{{ page }}" ></nav>
+<section id="brew" data-ng-controller='BrewController'>
   <div class="inner">
     <h1>{{$scope.title}}</h1>
     <ul class="ingredients"></ul>
-    <ul class="steps" data-ng-repeat='step in steps'>
+    <ul class="steps" data-ng-repeat='step in steps' data-ng-if="step.status === true">
       <li>
         <p>{{step.directions}}</p>
-        <section data-timer></section>
-        <button>NEXT STEP</button>
+        <section data-timer-directive
+            data-ng-init='timer(step.offset, $scope.button.start, $scope.button.stop , $scope.button.reset)'
+            data-start="startTime(step.offset)"
+            data-stop="stopTime(step.offset)"
+            data-reset="resetTime(step.offset)"
+        ></section>
+        <button data-ng-click="startStep(steps[steps.indexOf(step) + 1])">NEXT STEP</button>
       </li>
     </ul>
     <p>Thanks for enjoying Brewtorial&trade; responsibly.</p>
