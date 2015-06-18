@@ -9,11 +9,11 @@ module.exports = function(app) {
     $scope.page = $scope.page.substr(1);
     $scope.signOutUser = function() {
       auth.logout();
-    }; 
+    };
     $scope.isLoggedIn = function() {
       return auth.isSignedIn();
     };
-  };  
+  }
 
   app.controller('NavHeaderController', NavHeaderController);
 

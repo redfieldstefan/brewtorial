@@ -50,7 +50,7 @@ module.exports = function(router) {
             }
             results.craftings = count;
             sendResultCheck();
-          })
+          });
 
           function sendResultCheck() {
             asyncCompleted++;
@@ -59,20 +59,20 @@ module.exports = function(router) {
                 .json({
                   success: true,
                   message: 'Tallies successfully queried.',
-                  result: results   
+                  result: results
                 });
             }
           }
-                    
+
           break;
 
         // ensures email address provided is unique.
         case 'isEmailUnique':
           User.find({ 'basic.email': req.body.data.email }, function(err, results) {
-            if (err) { 
+            if (err) {
               console.log('error ensuring email is unique', err);
               res.status(500)
-                .json({ msg: 'internal server error' })
+                .json({ msg: 'internal server error' });
             }
             res.status(200)
               .json({
@@ -82,7 +82,7 @@ module.exports = function(router) {
               });
           });
           break;
-          
+
         default:
           res.status(500)
             .json({

@@ -14,7 +14,7 @@ module.exports = function(app) {
     $scope.signIn = function(user) {
 
       var validationErrors = [];
-      if (val.isNull(user)) { 
+      if (val.isNull(user)) {
         validationErrors.push('Please fill out the form.');
       } else {
         if (val.isNull(user.email)) { validationErrors.push('Email is required.'); }
@@ -29,7 +29,7 @@ module.exports = function(app) {
       }
 
       auth.signIn(user, function(err) {
-        if (err) {          
+        if (err) {
           validationErrors.push('Credentials are invalid.');
           $scope.validationErrorMessage = validationErrors.join('\n');
           $scope.hasValidationErrors = true;
@@ -40,14 +40,14 @@ module.exports = function(app) {
             $cookies.put('postAuthenticationRedirect', '');
             $location.path(decodeURIComponent(relocationPath));
           } else {
-            $location.path('/dashboard');    
+            $location.path('/dashboard');
           }
-          
-        }        
+
+        }
       });
-    };  
-    
-  };  
+    };
+
+  }
 
   app.controller('SignInController', SignInController);
 
