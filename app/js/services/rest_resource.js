@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = function(app) {
   var handleError = function(callback) {
     return function(data) {
@@ -20,6 +19,12 @@ module.exports = function(app) {
       var eat = $cookies.get('eat');
       $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
       return {
+
+        getOne: function(id, callback) {
+          $http.get('/api/' + resourceName + '/' + id)
+            .success(handleSuccess(callback))
+            .error(handleError(callback));
+        },
 
         getAll: function(callback) {
           $http.get('/api/' + resourceName)
