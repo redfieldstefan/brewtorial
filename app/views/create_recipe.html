@@ -1,4 +1,6 @@
-<article data-ng-controller="CreateRecipeController">
+
+<nav data-nav-header data-page="{{ page }}"></nav>
+<article data-ng-controller="CreateRecipeController" data-page="{{ page }}">
   <h1 class='red'>Create a Brew Recipe</h1>
   <section class="recipeConstructor">
      <section class='recipeHeader'>
@@ -7,11 +9,18 @@
           <input type='text' required name='title' placeholder="Title" data-ng-model='header.title'>
           <input type='text' required name='style' placeholder='Style' data-ng-model='header.style'/>
           <input type='number' required name='abv' placeholder='ABV' data-ng-model='header.abv'/>
+          <input type='number' required name='ibu' placeholder='IBU' data-ng-model='header.ibu'/>
+          <input type='number' required name='og' placeholder='OG' data-ng-model='header.og'/>
           <input type='number' required name='totalTime' placeholder='Total Time' data-ng-model='header.brewTime'/>
           <input type='number' name='difficulty' placeholder='Difficulty (1-5)' data-ng-model='header.difficulty'/>
         <button type = 'submit'>Add Info</button>
       </form>
     </section>
+
+    <form id="description" data-ng-submit="addDescription(description)">
+      <textarea required name="description" placeholder="Describe Your Brew" data-ng-model="description"></textarea>
+      <button type="submit">Add Description</button>
+    </form>
 
     <section>
       <h4>Ingredients</h4>
@@ -46,8 +55,9 @@
     <section class="twelve columns">
       <h1>Your new Brew!</h1>
       <h2 class='red'>{{header.title}}</h2>
+      <p>{{description}}</p>
       <ul>
-       <li> Style: {{header.style}} ABV: {{header.abv}} Total Time: {{header.brewTime}} Difficulty: {{header.difficulty}}</li>
+       <li> Style: {{header.style}} ABV: {{header.abv}}, IBU: {{header.ibu}}, OG: {{header.og}}, Total Time: {{header.brewTime}} Difficulty: {{header.difficulty}}</li>
       </ul>
       <h4>Ingredients</h4>
       <ul data-ng-repeat='ingredient in ingredients'>

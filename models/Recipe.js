@@ -4,6 +4,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define schema.
 var recipeSchema = new mongoose.Schema({
+  description: String,
   header: {
     abv: {
       type: Number,
@@ -13,8 +14,10 @@ var recipeSchema = new mongoose.Schema({
     brewTime: Number,
     created: Date,
     difficulty: Number,
+    ibu: Number,
     icon: String,
     likes: Number,
+    og: Number,
     popularity: Array,
     style: String,
     title: String

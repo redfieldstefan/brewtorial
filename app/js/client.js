@@ -31,6 +31,7 @@ require('./controllers/user_controller')(brewtorialApp);
 
 // directives.
 require('./directives/nav_header_directive')(brewtorialApp);
+require('./directives/timer_directive')(brewtorialApp);
 
 // routes.
 brewtorialApp.config(['$routeProvider', function($routeProvider) {

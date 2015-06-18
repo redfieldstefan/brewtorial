@@ -5,7 +5,7 @@ var eatAuth = require("../../lib/eat_auth")(process.env.APP_SECRET);
 
 module.exports = function(router) {
 
-  router.post('/newbrew', eatAuth, function(req, res) {
+  router.post('/newbrew', function(req, res) {
     var newBrew = new BrewEvent(req.body);
     newBrew.steps.status = true; //set status to true: in process
     newBrew.save(function(err, data) {
@@ -19,7 +19,7 @@ module.exports = function(router) {
     });
   });
 
-  router.get('/:id', eatAuth, function(req, res) {
+  router.get('/:id', function(req, res) {
     BrewEvent.findOne({_id: req.params.id}, function(err, data) {
       if(err) { return console.log(err);}
       res.status(200)
@@ -32,7 +32,7 @@ module.exports = function(router) {
   });
 
   //brew is ready
-  router.put('/:id', eatAuth, function(req, res) {
+  router.put('/:id', function(req, res) {
     BrewEvent.update({_id: req.params.id}, req.body, function(err, data) {
       if (err) { return console.log(err);}
       res.status(200)

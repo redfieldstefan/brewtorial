@@ -2,13 +2,14 @@
 
 module.exports = function(app) {
 
-  app.controller('CreateRecipeController', ['$scope', 'RESTResource', function($scope, resource) {
+  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
     var Recipe = resource('recipe');
     $scope.errors = [];
     $scope.header = {};
     $scope.ingredients = [];
     $scope.steps = [];
     $scope.equipment = [];
+    $scope.description = ''
 
     $scope.createRecipe = function() {
       var newRecipe = {
@@ -24,9 +25,15 @@ module.exports = function(app) {
         } else {
           console.log(data);
           clearForms();
+          var address = data.result._id;
+          $location.path('/recipe/' + address);
         }
       });
     };
+
+    $scope.addDescription = function(description) {
+      $scope.description = description;
+    }
 
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
@@ -39,7 +46,7 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, complete: false});
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, status: false});
       document.getElementById("stepForm").reset();
     };
 
@@ -58,3 +65,4 @@ module.exports = function(app) {
 
   }]);
 };
+
