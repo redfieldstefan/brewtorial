@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 
 // define schema.
 var equipmentSchema = new mongoose.Schema({
-  name: '',
-  photo: '',
-  description: ''
+  name: String,
+  picture: String,
+  description: String
 });
 
 // export model.
