@@ -2,9 +2,9 @@
 
 module.exports = function(app) {
 
-  DashboardController.$inject = ['$scope', 'RESTResource'];
+  DashboardController.$inject = ['$scope', '$location', 'RESTResource'];
 
-  function DashboardController($scope, resource) {
+  function DashboardController($scope, $location, resource) {
     $scope.page = 'dashboard';
     var Recipe = resource('recipe');
     $scope.errors = [];
@@ -31,7 +31,7 @@ module.exports = function(app) {
     };
 
     $scope.view = function(recipe) {
-      console.log(recipe._id);
+      $location.path('recipes/' + recipe._id);
     }
   };
 

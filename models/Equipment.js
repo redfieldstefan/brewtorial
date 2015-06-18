@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 // define schema.
 var equipmentSchema = new mongoose.Schema({
   name: String,
+  picture: String,
   description: String
 });
 

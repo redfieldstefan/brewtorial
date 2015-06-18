@@ -1,9 +1,16 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 <section id="recipe">
   <div class="inner">
-    <h1>Recipe.</h1>
-    <p>Thanks for enjoying Brewtorial&trade; responsibly.</p>
-
-    <p><img src="images/logo.png" width="250"></p>
+    <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
+      <h1>{{header.title}}</h1>
+      <p>Style: {{header.style}}</p>
+      <p>ABV: {{header.abv}}%</p>
+      <p>Brew Time: {{header.brewTime}}</p>
+      <p>Created: {{header.created | date : 'mediumDate'}}</p>
+      <p>Brew Time: {{header.brewTime}}</p>
+      <p>Difficulty: {{header.difficulty}}</p>
+      <p>Brew Time: {{header.brewTime}}</p>
+      <button data-ng-click="triggerBrewEvent(id)">Brew This</button>
+    </article>
   </div>
 </section>
