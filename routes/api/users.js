@@ -40,7 +40,7 @@ module.exports = function(router, passport) {
   });
 
   router.get('/sign_in', passport.authenticate('basic', {session: false}), function(req, res) {
-    
+
     if (!('error' in req.user)) {
       req.user.generateToken(process.env.APP_SECRET, function(err, token) {
         if (err) {
@@ -55,7 +55,7 @@ module.exports = function(router, passport) {
                 token: token
               }
             });
-          }        
+          }
       });
     } else {
       res.status(200)
@@ -63,8 +63,8 @@ module.exports = function(router, passport) {
           success: false,
           message: 'Authentication failed',
           result: req.user.message
-        });  
-    }    
+        });
+    }
   });
 
   router.put('/update/:id', eatAuth, function(req, res) {
@@ -92,16 +92,23 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/:id', eatAuth, function(req, res) {
-    User.findOne({'_id': req.params.id}, function(err, data) {
+  router.get('/get', function(req, res) {
+    User.find({}, function(err, users) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({msg: "internal server error"});
+      }
+      res.json(users);
+    });
+  });
+
+  router.get('/get/profile', eatAuth, function(req, res) {
+    User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
       }
-      console.log("data in user.js: " + data);
-      var email = data.basic.email;
-      var displayName = data.displayName;
-      res.status(200).json({email: email, displayName: displayName});
+      res.status(200).json({user: user});
     });
   });
 };

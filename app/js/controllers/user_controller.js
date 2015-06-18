@@ -2,21 +2,39 @@
 
 module.exports = function(app) {
 
-  app.controller('UserController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
-    var User = resource('users');
+  app.controller('UserController', ['$scope', '$http', 'auth', '$cookies', function($scope, $http, auth, $cookies) {
+
+    // var User = resource('users');
     $scope.page = 'user';
     $scope.errors = [];
-    $scope.user = null;
+    $scope.user;
+    $scope.users = [];
+    var eat = $cookies.get('eat');
+    $http.defaults.headers.common['eat'] = eat;
+
+    $scope.getUsers = function() {
+      $http.get('/api/users/get')
+        .success(function(data) {
+          console.log(data);
+          $scope.users = data;
+        })
+        .error(function(data) {
+          console.log(data);
+          $scope.errors.push({msg: 'error getting user'});
+        });
+    };
 
     $scope.getUser = function(user) {
-      User.getOne(user, function(err, data) {
-        if(err) {
-          $scope.errors.push(err);
-          return console.log({msg: 'could not get user'});
-        }
-        console.log(data);
-        $scope.user = data;
-      });
+      $http.get('/api/users/get/profile')
+        .send({eat: eat})
+        .success(function(data) {
+          $scope.user = data.user;
+          console.log($scope.user);
+        })
+        .error(function(data) {
+          console.log(data);
+          $scope.errors.push({msg: 'error getting user'});
+        });
     };
 
     $scope.deleteUser = function(user) {

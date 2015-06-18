@@ -3,10 +3,14 @@
   <div class="inner">
     <article data-ng-controller="UserController">
       <h1>My profile</h1>
-      <ul data-ng-init="getUser(user)">
+      <div data-ng-init="getUser()"></div>
+      <button  data-ng-click="getUsers()">get all</button>
+      <ul data-ng-repeat="user in users">
         <li>Picture: Add picture if we have extra time</li>
         <li>Username: {{user.displayName}}</li>
-        <li>Email: {{user.email}}</li>
+        <li>Email: {{user.basic.email}}</li>
+        <li>PW: {{user.basic.password}}</li>
+        <li>id: {{user._id}}</li>
       </ul>
       <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
