@@ -21,6 +21,12 @@ module.exports = function(app) {
       $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
       return {
 
+        getOne: function(resourceData, callback) {
+          $http.get('/api/' + resourceName + '/' + resourceData._id)
+            .success(handleSuccess(callback))
+            .error(handleError(callback));
+        },
+
         getAll: function(callback) {
           $http.get('/api/' + resourceName)
             .success(handleSuccess(callback))
