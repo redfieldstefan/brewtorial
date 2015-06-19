@@ -62,7 +62,7 @@ module.exports = function(router) {
     newRecipe.save(function(err, result) {
       if (err) {
         console.log(err);
-        res.status(500).json({err: 'internal server error'});
+        return res.status(500).json({err: 'internal server error'});
       }
       res.status(200)
         .json({
