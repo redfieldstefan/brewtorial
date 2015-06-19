@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     var eat = $cookies.get('eat');
     $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
-
+    $scope.page = 'profile';
     $scope.errors = [];
     $scope.user;
     $scope.users = [];

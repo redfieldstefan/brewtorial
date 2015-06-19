@@ -10,7 +10,7 @@
           <li>My brews: {{user.currentBrews}}</li>
         </ul>
       </div>
-      <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>
+      <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
         <form name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username

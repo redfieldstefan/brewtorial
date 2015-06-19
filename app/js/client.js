@@ -78,7 +78,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/sign_out.html',
       controller: 'SignOutController'
     })
-    .when('/user', {
+    .when('/profile', {
       templateUrl: 'views/user.html',
       controller: 'UserController'
     })
