@@ -18,8 +18,6 @@ require('./services/rest_resource')(brewtorialApp);
 require('./controllers/brew_controller')(brewtorialApp);
 require('./controllers/create_recipe_controller')(brewtorialApp);
 require('./controllers/dashboard_controller')(brewtorialApp);
-require('./controllers/equipment_controller')(brewtorialApp);
-require('./controllers/ingredient_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
 require('./controllers/recipe_controller')(brewtorialApp);

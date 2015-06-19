@@ -15,6 +15,7 @@ module.exports = function(app) {
     ];
     $scope.greeting = greetings[Math.floor(Math.random()*greetings.length)];
     $scope.page = 'landing';
+    $scope.errors = [];
     $scope.tallies = {
       users: 0,
       recipes: 0,

@@ -42,14 +42,20 @@ module.exports = function(app) {
     };
 
     $scope.deleteUser = function(user) {
-      $scope.users.splice($scope.users.indexOf(user), 1);
-      $http.delete('/api/users/remove')
-        .error(function(data) {
-          console.log(data);
-          $scope.errors.push({msg: 'could not delete user'});
-        });
-        $location.path('/register');
-        console.log('deleted');
+      (function() {
+        var rigthAnswer = 'yes';
+        var areYouSure = prompt("Are you sure you want to delete your profile? The decision is final. Type 'yes' if you want to delete your account.");
+        if(areYouSure === rigthAnswer) {
+          $scope.users.splice($scope.users.indexOf(user), 1);
+          $http.delete('/api/users/remove')
+            .error(function(data) {
+              console.log(data);
+              $scope.errors.push({msg: 'could not delete user'});
+            });
+            $location.path('/register');
+            console.log('deleted');
+        }
+      })();
     };
 
     $scope.editUser = function(user) {
