@@ -4,7 +4,7 @@ module.exports = function(app) {
 
   app.controller('BrewController', ['$scope', '$location', '$timeout', '$routeParams', 'RESTResource', 'auth', '$cookies', function($scope, $location, $timeout, $routeParams, resource, auth, $cookies) {
     var Brew = resource('brew');
-    $scope.thisBrew = {};
+    $scope.thisBrew;
     $scope.errors = [];
     $scope.ingredients;
     $scope.steps;
@@ -16,16 +16,6 @@ module.exports = function(app) {
     if (!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
-    }
-
-    $scope.saveBrew = function() {
-      Brew.save($scope.thisBrew, function(err, data) {
-        if(err){
-          $scope.errors.push(err);
-          return console.log({msg: 'could not move to next step'});
-        }
-        console.log('save successful');
-      });
     }
 
     $scope.getBrew = function() {
@@ -43,8 +33,19 @@ module.exports = function(app) {
       });
     };
 
+    $scope.saveBrew = function() {
+      console.log($scope.thisBrew)
+      Brew.save($scope.thisBrew, function(err, data) {
+        if(err){
+          $scope.errors.push(err);
+          return console.log({msg: 'could not move to next step'});
+        }
+        console.log('save successful');
+      });
+    }
+
     $scope.startBrew = function(){
-      $scope.steps[0].status = true;
+      $scope.steps[0].active = true;
       $scope.counter = $scope.steps[0].offset;
       $scope.saveBrew();
     };
