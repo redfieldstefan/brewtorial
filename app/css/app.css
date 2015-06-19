@@ -620,6 +620,7 @@ main[data-page='dashboard'] input[type='text'] {
   font-size: 24px;
   padding: 15px 30px;
   border-radius: 50px;
+  text-transform: inherit;
 }
 
 #recipes .return {
