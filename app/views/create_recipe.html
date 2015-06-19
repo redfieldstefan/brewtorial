@@ -1,7 +1,7 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
 <!-- article -->
-<article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init"getEquipmentList()">
+<article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
 
   <div class="inner">
 
@@ -10,24 +10,24 @@
 
     <!-- container -->
     <div id="container" class="cf">
-      
+
       <!-- recipe info -->
       <div id="recipe_info">
-        
+
         <section>
-          <h1>Review</h1>         
+          <h1>Review</h1>
           <h2>{{header.title}}</h2>
           <p>{{description}}</p>
           <form class="page_form">
 
             <h3>Brew Info:</h3>
-            <h4>Style: <span>{{header.style}}</span></h4>            
-            <h4>ABV%: <span>{{header.abv}}</span></h4>            
-            <h4>IBU: <span>{{header.ibu}}</span></h4>            
-            <h4>OG: <span>{{header.og}}</span></h4>            
-            <h4>Brew Time: <span>{{header.brewTime}}</span></h4>            
-            <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>           
-            
+            <h4>Style: <span>{{header.style}}</span></h4>
+            <h4>ABV%: <span>{{header.abv}}</span></h4>
+            <h4>IBU: <span>{{header.ibu}}</span></h4>
+            <h4>OG: <span>{{header.og}}</span></h4>
+            <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
+            <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
+
             <hr>
 
             <h3>Ingredients:</h3>
@@ -52,19 +52,19 @@
             <hr>
 
             <button type="submit" data-ng-click="createRecipe()">Submit This Recipe</button>
-          </form>          
+          </form>
         </section>
 
       </div>
 
       <!-- form data -->
       <div id="form_sections">
-        
+
         <!-- brew information -->
         <section id="brew_info">
           <h3><strong>Step 1</strong> &ndash; Brew Information</h3>
           <form id="form_headers" class="page_form" data-ng-submit="addHeader(header)">
-            
+
             <label>Title</label>
             <small>Enter the title of your brew</small>
             <input type="text" required name="title" data-ng-model="header.title">
@@ -143,7 +143,7 @@
         <section>
           <h3><strong>Step 3</strong> &ndash; Equipment</h3>
           <form id="form_equipment" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
-            
+
             <label>Equipment</label>
             <small>Gear needed to create your brew</small>
             <select data-ng-model="item">
