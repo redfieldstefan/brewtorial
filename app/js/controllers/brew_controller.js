@@ -11,28 +11,19 @@ module.exports = function(app) {
     }
 
     var Brew = resource('brew');
-    $scope.thisBrew = {};
+    $scope.thisBrew;
     $scope.errors = [];
     $scope.ingredients;
     $scope.steps;
     $scope.title;
     $scope.description;
     $scope.counter;
+    $scope.congrats = "CONGRATS! You just made an entire brew!"
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if (!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
-    }
-
-    $scope.saveBrew = function() {
-      Brew.save($scope.thisBrew, function(err, data) {
-        if(err){
-          $scope.errors.push(err);
-          return console.log({msg: 'could not move to next step'});
-        }
-        console.log('save successful');
-      });
     }
 
     $scope.getBrew = function() {
@@ -46,41 +37,67 @@ module.exports = function(app) {
         $scope.ingredients = brew.data.ingredients;
         $scope.title = brew.data.title;
         $scope.description = brew.data.description;
-        $scope.counter = $scope.steps[0].offset;
+        $scope.steps.forEach(function(step) {
+          if (step.active === true) {
+            $scope.counter = step.offset;
+          }
+        });
       });
     };
 
+    $scope.saveBrew = function() {
+      console.log($scope.thisBrew)
+      Brew.save($scope.thisBrew, function(err, data) {
+        if(err){
+          $scope.errors.push(err);
+          return console.log({msg: 'could not move to next step'});
+        }
+        console.log('save successful');
+      });
+    }
+
     $scope.startBrew = function(){
-      $scope.steps[0].status = true;
+      $scope.steps[0].active = true;
       $scope.counter = $scope.steps[0].offset;
       $scope.saveBrew();
     };
 
-    $scope.nextStep = function(current, next) {
+    $scope.startHere = function(step) {
+      $scope.counter = step.offset;
+      $scope.thisBrew.complete = false;
+      $scope.steps.forEach(function(step){
+        step.done = false;
+      });
+      $scope.saveBrew();
+    };
+
+     $scope.nextStep = function(current, next) {
+      if(!next){
+        $scope.thisBrew.complete = true;
+        $scope.saveBrew();
+        return console.log('done');
+      }
+      $scope.stopTimer();
       current.active = false;
       current.done = true;
       next.active = true;
+      $scope.saveBrew();
       if(!next.done){
         $scope.counter = next.offset;
         $scope.saveBrew();
       }
-    };
 
-    $scope.startHere = function(step) {
-      $scope.counter = step.offset;
-      $scope.steps.forEach(function(step){
-        step.done = false;
-      })
     };
-
 
     $scope.prevStep = function(current, prev) {
-      console.log('previous')
       current.active = false;
       prev.active = true;
     };
 
-
+    $scope.completeBrew = function(current, prev) {
+      current.active = false;
+      prev.active = true;
+    };
 
     //TIMER FUNCTIONS
 
@@ -93,7 +110,7 @@ module.exports = function(app) {
             return;
         }
         $scope.counter--;
-        mytimeout = $timeout($scope.onTimeout, 100);
+        mytimeout = $timeout($scope.onTimeout, 1000);
     };
 
     $scope.startTimer = function() {
