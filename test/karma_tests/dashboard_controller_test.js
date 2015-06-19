@@ -3,11 +3,12 @@
 require('../../app/js/client');
 require('angular-mocks');
 
-describe('brewtorial user controller test', function(){
+describe('brewtorial dashboard controller test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
   var $routeParams;
+  var $scope;
 
   beforeEach(angular.mock.module('brewtorialApp'));
 
@@ -17,15 +18,15 @@ describe('brewtorial user controller test', function(){
   }));
 
   it('Should be able to create a new controller', function(){
-    var UserController = $CtrlrConstructor('UserController', {$scope: $scope});
-    expect(typeof UserController).toBe('object');
+    var DashboardController = $CtrlrConstructor('DashboardController', {$scope: $scope});
+    expect(typeof DashboardController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
   });
 
   describe('REST Functionality', function(){
 
     beforeEach(angular.mock.inject(function(_$httpBackend_, _$routeParams_) {
-      this.UserController = $CtrlrConstructor('UserController', {$scope: $scope});
+      this.DashboardController = $CtrlrConstructor('DashboardController', {$scope: $scope});
       $httpBackend = _$httpBackend_;
       $routeParams = _$routeParams_;
     }));
@@ -33,6 +34,13 @@ describe('brewtorial user controller test', function(){
     afterEach(function() {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
+    });
+
+    it('should get a list of recipes', function(){
+      $httpBackend.expectGET('/api/recipe').respond(200, {result: ['Test recipes']});
+      $scope.getAll();
+      $httpBackend.flush();
+      expect($scope.recipes[0]).toBe('Test recipes');
     });
 
   });

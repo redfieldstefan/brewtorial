@@ -1,7 +1,6 @@
 module.exports = function(app) {
   app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
     $scope.page = 'recipe';
-
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
     $scope.errors = [];
@@ -46,3 +45,4 @@ module.exports = function(app) {
     };
   }]);
 };
+
