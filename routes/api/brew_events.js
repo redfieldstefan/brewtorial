@@ -9,7 +9,6 @@ module.exports = function(router) {
   router.post('/newbrew', eatAuth, function(req, res) {
     var newBrew = new BrewEvent(req.body);
     var thisUser = JSON.parse(JSON.stringify(req.body));
-    console.log(thisUser.userId);
     newBrew.steps.status = true; //set status to true: in process
     User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {
@@ -19,7 +18,6 @@ module.exports = function(router) {
       user.currentBrews.push(newBrew.title);
       user.save(function(err, data) {
         if(err) { return console.log(err);}
-        console.log("user saved");
         console.log(newBrew.title);
       });
       newBrew.save(function(err, data) {
@@ -30,7 +28,6 @@ module.exports = function(router) {
             message: 'Brew event saved.',
             data: data
           });
-        console.log("new brew created");
       });
     });
   });
