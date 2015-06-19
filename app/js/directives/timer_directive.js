@@ -12,6 +12,7 @@ module.exports = function(app) {
         start: '&',
         stop: '&',
       },
+      transclude: true
     };
   });
 

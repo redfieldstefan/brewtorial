@@ -8,20 +8,22 @@ module.exports = function(app) {
     var Recipe = resource('recipe');
     var Equipment = resource('equipment');
     $scope.errors = [];
-    $scope.availableEquipment;
+    $scope.availableEquipment = [];
     $scope.header = {};
     $scope.ingredients = [];
     $scope.steps = [];
     $scope.equipment = [];
-    $scope.description = ''
+    $scope.description = '';
 
     $scope.createRecipe = function() {
       var newRecipe = {
         header: $scope.header,
         equipment: $scope.equipment,
         ingredients: $scope.ingredients,
-        steps: $scope.steps
+        steps: $scope.steps,
+        description: $scope.description
       };
+
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
@@ -43,12 +45,12 @@ module.exports = function(app) {
         $scope.availableEquipment = data.result;
 
       });
-    }
+    };
 
     $scope.addDescription = function(description) {
       $scope.description = description;
       document.getElementById("description").value = '';
-    }
+    };
 
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
@@ -77,7 +79,7 @@ module.exports = function(app) {
       $scope.steps = [];
       $scope.equipment = [];
       $scope.description = '';
-    }
+    };
 
   }]);
 };

@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
       success: false,
       message: '404 - Resource Not Found',
       result: req.method + ' ' + req.url
-    })
+    });
 });
 
 // 500 handler.

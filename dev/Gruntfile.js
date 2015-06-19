@@ -158,7 +158,7 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev']);
-  grunt.registerTask('build:test', ['webpack:karma_test'])
+  grunt.registerTask('build:test', ['webpack:karma_test']);
   grunt.registerTask('build:dev', ['clean', 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('am', ['build:dev', 'watch']);
