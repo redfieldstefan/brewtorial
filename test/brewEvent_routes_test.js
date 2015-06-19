@@ -17,9 +17,8 @@ var bcrypt = require('bcrypt-nodejs');
 describe('Bru Buddy brew event routes', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testUserId;
-  var testRecipeId;
+  var testBrew;
   var testBrewId;
-
 
   beforeEach(function(done){
     var testUser = new User({
@@ -33,21 +32,8 @@ describe('Bru Buddy brew event routes', function(){
 
       testUserId = user._id;
 
-      var testRecipe = new Recipe({
-        description: 'a test recipe',
-        header: {
-          abv: 5,
-          author: testUser.displayName,
-          brewTime: 20,
-          created: Date.now(),
-          difficulty: 2,
-          icon: 'www.test.com/img',
-          likes: 10,
-          popularity: [testUserId],
-          style: 'Amber',
-          title: 'American Amber'
-        },
-        equipment: ['big brew pot', 'thermometer'],
+      testBrew = new BrewEvent({
+        userId: testUserId,
         ingredients: [
           {item: 'malt extract', amount: '3.3', unit: 'pounds'},
           {item: 'hops', amount: '.5', unit: 'ounces'}
@@ -63,40 +49,15 @@ describe('Bru Buddy brew event routes', function(){
             offset: 15,
             complete: false
           }
-        ]
+        ],
+        complete: false
       });
-      testRecipe.save(function(err, recipe) {
+
+      testBrew.save(function(err, brew) {
         if (err) console.log(err);
 
-        testRecipeId = recipe._id;
-        var testBrew = new BrewEvent({
-          userId: testUserId,
-          recipe: testRecipeId,
-          ingredients: [
-            {item: 'malt extract', amount: '3.3', unit: 'pounds'},
-            {item: 'hops', amount: '.5', unit: 'ounces'}
-          ],
-          steps: [
-            {
-              directions: 'Fill brew pot with 3 gallons of fresh water.',
-              offset: 0,
-              complete: false
-            },
-            {
-              directions: 'Add steeping grains',
-              offset: 15,
-              complete: false
-            }
-          ],
-          complete: false
-        });
-
-        testBrew.save(function(err, brew) {
-          if (err) console.log(err);
-
-          testBrewId = brew._id;
-          done();
-        });
+        testBrewId = brew._id;
+        done();
       });
     });
   });
@@ -105,23 +66,6 @@ describe('Bru Buddy brew event routes', function(){
     mongoose.connection.db.dropDatabase(function() {
       done();
     });
-  });
-
-  it('should create a new brew event', function(done) {
-    chai.request('localhost:3000')
-      .post('/api/brew/newbrew')
-      .send({
-        userId: testUserId,
-        recipe: testRecipeId
-      })
-      .end(function(err, res) {
-        expect(err).to.eql(null);
-        expect(res.status).to.eql(200);
-        expect(res.body.message).to.eql('Recipe creation successful.');
-        expect(res.body.data._id).to.exist; //jshint ignore: line
-        expect(typeof res.body.data).to.eql('object');
-        done();
-      });
   });
 
   it('should return to a brew event and have its state persist', function(done) {
