@@ -3,7 +3,7 @@
 require('../../app/js/client');
 require('angular-mocks');
 
-describe('brewtorial controllers test', function(){
+describe('brewtorial controllers recipes test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
