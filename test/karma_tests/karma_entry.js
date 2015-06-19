@@ -1,4 +1,5 @@
 'use strict';
 
-require('./recipes_controller_test');
+require('./create_recipe_controller_test');
+require('./brew_event_controller_test');
 

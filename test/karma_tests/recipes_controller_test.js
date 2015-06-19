@@ -3,9 +3,8 @@
 require('../../app/js/client');
 require('angular-mocks');
 
-describe('brewtorial controllers test', function(){
+describe('brewtorial Recipe controller test', function(){
 
-  var now = date.now();
   var $CtrlrConstructor;
   var $httpBackend;
   var $scope;
@@ -25,7 +24,6 @@ describe('brewtorial controllers test', function(){
     var RecipeController = $CtrlrConstructor('RecipeController', {$scope: $scope});
     expect(typeof RecipeController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
-    expect(Array.isArray($scope.recipes)).toBe(true);
     expect(Array.isArray($scope.ingredients)).toBe(true);
     expect(Array.isArray($scope.steps)).toBe(true);
   });
@@ -56,7 +54,6 @@ describe('brewtorial controllers test', function(){
     it('should make a post request to brewEvents', function() {
       $httpBackend.expectPOST('/api/brewEvents')
         .respond(200,[{ abv: 1, author: 'Test Author', brewTime: 50, style: 'Pilsner', likes: 4, popularity: ['testUser'], difficulty: 5,  icon: 'testUrl', title: 'Test Brew'}]);
-      $scope.getAll();
       $httpBackend.flush();
       expect($scope.recipes[0].abv).toBe(1);
       expect($scope.recipes[0].author).toBe('Test Author');

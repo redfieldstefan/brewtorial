@@ -3,32 +3,29 @@
 require('../../app/js/client');
 require('angular-mocks');
 
-describe('brewtorial controllers test', function(){
+describe('brewtorial brew event controllers test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
   var $scope;
 
-  beforeEach(angular.mock.module('brewApp'));
+  beforeEach(angular.mock.module('brewtorialApp'));
 
   beforeEach(angular.mock.inject(function($rootScope, $controller) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
   }));
 
-  it('should test true', function(){
-    expect(true).toBe(true);
-  });
-
   it('Should be able to create a new controller', function(){
-    var profileController = $CtrlrConstructor('profileController', {$scope: $scope}); //jshint ignore: line
-    expect(typeof profileController).toBe('object');
+    var BrewController = $CtrlrConstructor('BrewController', {$scope: $scope});
+    expect(typeof BrewController).toBe('object');
+    expect(Array.isArray($scope.errors)).toBe(true);
   });
 
   describe('REST Functionality', function(){
 
     beforeEach(angular.mock.inject(function(_$httpBackend_) {
-      this.profileController = $CtrlrConstructor('profileController', {$scope: $scope});
+      this.BrewController = $CtrlrConstructor('BrewController', {$scope: $scope});
       $httpBackend = _$httpBackend_;
     }));
 

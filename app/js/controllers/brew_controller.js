@@ -11,6 +11,8 @@ module.exports = function(app) {
     $scope.title;
     $scope.description;
     $scope.counter;
+    $scope.complete = false;
+    $scope.congrats="CONGRATS! You've made a delicious brew"
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if (!auth.isSignedIn()){
@@ -55,7 +57,12 @@ module.exports = function(app) {
       next.active = true;
       if(!next.done){
         $scope.counter = next.offset;
+        saveBrew();
+      }
+      if(!next){
+        $scope.complete = true;
         $scope.saveBrew();
+
       }
     };
 
@@ -68,7 +75,11 @@ module.exports = function(app) {
 
 
     $scope.prevStep = function(current, prev) {
-      console.log('previous')
+      current.active = false;
+      prev.active = true;
+    };
+
+    $scope.completeBrew = function(current, prev) {
       current.active = false;
       prev.active = true;
     };
