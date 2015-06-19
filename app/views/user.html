@@ -6,11 +6,17 @@
       <div data-ng-init="getUser(user)">
         <p><strong>Username:</strong> {{ user.displayName }}</p>
         <p><strong>Email:</strong> {{ user.basic.email }}</p>
-        <p><strong>My Brews:</strong> {{ user.currentBrews }}</p>
+        <h2>Current Brews</h2>
+        <ul data-ng-repeat="brew in user.currentBrews track by $index">
+          <li>
+            {{ brew.title }}
+            <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
+          </li>
+        </ul>
         <button data-ng-click="gotoRecipes()">View the Recipes</button>
         <hr>
         <button data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
-      </div>      
+      </div>  
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
         <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username

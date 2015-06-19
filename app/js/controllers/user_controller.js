@@ -16,6 +16,7 @@ module.exports = function(app) {
     $scope.errors = [];
     $scope.user;
     $scope.users = [];
+    $scope.userBrews;
 
     $scope.gotoRecipes = function() {
       $location.path('/recipes');
@@ -26,6 +27,7 @@ module.exports = function(app) {
         .success(function(data) {
           console.log(data);
           $scope.users = data;
+          $scope.userBrews = data.currentBrews;
         })
         .error(function(data) {
           console.log(data);
@@ -82,6 +84,10 @@ module.exports = function(app) {
       user.editing = false;
       $scope.donutCopy = null;
     };
+
+    $scope.goToBrew = function(id){
+      $location.path('/brews/' + id);
+    }
 
   }]);
 };
