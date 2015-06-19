@@ -81,8 +81,8 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.delete('/remove/:id', eatAuth, function(req, res) {
-    User.remove({'_id': req.params.id}, function(err, data) {
+  router.delete('/remove', eatAuth, function(req, res) {
+    User.remove({'_id': req.user._id}, function(err, data) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
