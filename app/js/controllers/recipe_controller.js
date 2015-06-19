@@ -39,7 +39,6 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-
         var id = res.data._id;
         $location.path('/brews/' + id);
       });
