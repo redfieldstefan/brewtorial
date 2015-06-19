@@ -7,7 +7,14 @@
         <ul>
           <li>Username: {{user.displayName}}</li>
           <li>Email: {{user.basic.email}}</li>
-          <li>My brews: {{user.currentBrews}}</li>
+          <!-- <li>My brews: {{user.currentBrews}}</li> -->
+        </ul>
+        <h2>Current Brews</h2>
+        <ul data-ng-repeat="brew in user.currentBrews track by $index">
+          <li>
+            {{brew.title}}
+            <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
+          </li>
         </ul>
       </div>
       <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
