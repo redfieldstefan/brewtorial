@@ -7,20 +7,9 @@
         <ul>
           <li>Username: {{user.displayName}}</li>
           <li>Email: {{user.basic.email}}</li>
-          <li>PW: {{user.basic.password}}</li>
-          <li>id: {{user._id}}</li>
-          <li>Current brews: {{user.currentBrews}}</li>
-          <li>Completed brews: {{user.completedBrews}}</li>
+          <li>My brews: {{user.currentBrews}}</li>
         </ul>
       </div>
-      <button  data-ng-click="getUsers()">get all</button>
-      <ul data-ng-repeat="user in users">
-        <li>Picture: Add picture if we have extra time</li>
-        <li>Username: {{user.displayName}}</li>
-        <li>Email: {{user.basic.email}}</li>
-        <li>PW: {{user.basic.password}}</li>
-        <li>id: {{user._id}}</li>
-      </ul>
       <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
         <form name="profileForm" data-ng-submit="saveUser(user)">

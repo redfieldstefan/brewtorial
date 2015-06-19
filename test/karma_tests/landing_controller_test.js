@@ -8,18 +8,24 @@ describe('Landing Page controller test', function(){
   var $CtrlrConstructor;
   var $httpBackend;
   var $scope;
+  var $location
 
   beforeEach(angular.mock.module('brewtorialApp'));
 
-  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+  beforeEach(angular.mock.inject(function($rootScope, $controller, _$location_) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
+    $location = _$location_;
   }));
 
   it('Should be able to create a new controller', function(){
     var LandingController = $CtrlrConstructor('LandingController', {$scope: $scope});
     expect(typeof LandingController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
+    expect(Array.isArray($scope.recipes)).toBe(true);
+    expect($scope.beerTally).toBe(0);
+    expect($scope.sortOrder).toBe(false);
+    expect($scope.sortBy).toBe('name');
   });
 
   describe('REST Functionality', function(){
