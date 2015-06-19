@@ -10,33 +10,34 @@ chai.use(chaihttp);
 var expect = chai.expect;
 var Recipe = require('../models/Recipe');
 var User = require('../models/User');
-var BrewEvent = require('../models/BrewEvent.js');
+var BrewEvent = require('../models/BrewEvent');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
-var testUserId;
-var testRecipeId;
-var testBrewId;
 
 describe('Bru Buddy brew event routes', function(){
-
-var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
+  var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
+  var testUserId;
   var testRecipeId;
+  var testBrewId;
 
-  var testUser = new User({
-    userId: uuid.v4(),
-    displayName: 'test',
-    basic: { email: 'testbreww@example.com', password: password }
-  });
 
   beforeEach(function(done){
+    var testUser = new User({
+      userId: uuid.v4(),
+      displayName: 'test',
+      basic: { email: 'testbreww@example.com', password: password }
+    });
+
     testUser.save(function(err, user) {
       if (err) console.log(err);
 
       testUserId = user._id;
+
       var testRecipe = new Recipe({
+        description: 'a test recipe',
         header: {
           abv: 5,
-          author: testUserId,
+          author: testUser.displayName,
           brewTime: 20,
           created: Date.now(),
           difficulty: 2,
@@ -70,13 +71,32 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
         testRecipeId = recipe._id;
         var testBrew = new BrewEvent({
           userId: testUserId,
-          recipe: testRecipeId
+          recipe: testRecipeId,
+          ingredients: [
+            {item: 'malt extract', amount: '3.3', unit: 'pounds'},
+            {item: 'hops', amount: '.5', unit: 'ounces'}
+          ],
+          steps: [
+            {
+              directions: 'Fill brew pot with 3 gallons of fresh water.',
+              offset: 0,
+              complete: false
+            },
+            {
+              directions: 'Add steeping grains',
+              offset: 15,
+              complete: false
+            }
+          ],
+          complete: false
         });
+
         testBrew.save(function(err, brew) {
           if (err) console.log(err);
+
           testBrewId = brew._id;
+          done();
         });
-        done();
       });
     });
   });
@@ -128,5 +148,4 @@ var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
         done();
       });
   });
-
 });
