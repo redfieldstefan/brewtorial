@@ -621,3 +621,7 @@ main[data-page='dashboard'] input[type='text'] {
   padding: 15px 30px;
   border-radius: 50px;
 }
+
+#recipes .return {
+  font-size: 18px;
+}
