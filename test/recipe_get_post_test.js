@@ -16,6 +16,7 @@ var bcrypt = require('bcrypt-nodejs');
 describe('Brewtorial recipe get/post all routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testRecipe;
+  var testToken;
 
   var testUser = new User({
     userId: uuid.v4(),
@@ -28,38 +29,44 @@ describe('Brewtorial recipe get/post all routes', function() {
       if (err) console.log(err);
 
       var testUserId = user._id;
-      testRecipe = new Recipe({
-        header: {
-          abv: 5,
-          author: testUserId,
-          brewTime: 20,
-          created: Date.now(),
-          difficulty: 2,
-          icon: 'www.test.com/img',
-          likes: 10,
-          popularity: [testUserId],
-          style: 'Amber',
-          title: 'American Amber'
-        },
-        equipment: ['big brew pot', 'thermometer'],
-        ingredients: [
-          {item: 'malt extract', amount: '3.3', unit: 'pounds'},
-          {item: 'hops', amount: '.5', unit: 'ounces'}
-        ],
-        steps: [
-          {
-            directions: 'Fill brew pot with 3 gallons of fresh water.',
-            offset: 0,
-            complete: false
+      user.generateToken(process.env.APP_SECRET, function(err, token) {
+        if (err) console.log(err);
+
+        testToken = token;
+        testRecipe = {
+          eat: testToken,
+          header: {
+            abv: 5,
+            author: testUserId,
+            brewTime: 20,
+            created: Date.now(),
+            difficulty: 2,
+            icon: 'www.test.com/img',
+            likes: 10,
+            popularity: [testUserId],
+            style: 'Amber',
+            title: 'American Amber'
           },
-          {
-            directions: 'Add steeping grains',
-            offset: 15,
-            complete: false
-          }
-        ]
+          equipment: ['big brew pot', 'thermometer'],
+          ingredients: [
+            {item: 'malt extract', amount: '3.3', unit: 'pounds'},
+            {item: 'hops', amount: '.5', unit: 'ounces'}
+          ],
+          steps: [
+            {
+              directions: 'Fill brew pot with 3 gallons of fresh water.',
+              offset: 0,
+              complete: false
+            },
+            {
+              directions: 'Add steeping grains',
+              offset: 15,
+              complete: false
+            }
+          ]
+        };
+        done();
       });
-      done();
     });
   });
 
