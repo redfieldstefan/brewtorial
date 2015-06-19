@@ -23,12 +23,12 @@
       </ul>
       <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
-        <form name="profileForm" data-ng-submit="save({user:user})">
+        <form name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username
             <input placeholder="new username" data-ng-model="user.displayName" type="text">
           </label>
           <label>Email
-            <input placeholder="new email" data-ng-model="user.email" type="text">
+            <input placeholder="new email" data-ng-model="user.basic.email" type="text">
           </label>
           <button type="button" data-ng-click="cancelEdit(user)">Cancel</button>
           <button type="submit">submit</button>

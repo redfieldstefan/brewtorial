@@ -4,13 +4,8 @@ module.exports = function(app) {
 
   app.controller('UserController', ['$scope', '$http', 'auth', '$cookies', '$location', function($scope, $http, auth, $cookies, $location) {
 
-  // app.controller('UserController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
-  //   $scope.page = 'user';
     var eat = $cookies.get('eat');
     $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
-
-    // var Users = resource('users/get');
-    // var OneUser = resource('users/get/profile');
 
     $scope.errors = [];
     $scope.user;
@@ -49,6 +44,27 @@ module.exports = function(app) {
         });
         $location.path('/register');
         console.log('deleted');
+    };
+
+    $scope.editUser = function(user) {
+      user.editing = true;
+      $scope.userCopy = angular.copy(user);
+    };
+
+    $scope.saveUser = function(user) {
+      user.editing = false;
+      $http.put('/api/users/update', user)
+        .error(function(data) {
+          console.log(data);
+          $scope.errors.push({msg: 'could not update user'})
+        });
+    };
+
+    $scope.cancelEdit = function(user) {
+      user.displayName = $scope.userCopy.displayName;
+      user.email = $scope.userCopy.email;
+      user.editing = false;
+      $scope.donutCopy = null;
     };
 
   }]);

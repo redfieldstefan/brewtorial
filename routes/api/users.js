@@ -67,11 +67,11 @@ module.exports = function(router, passport) {
     }
   });
 
-  router.put('/update/:id', eatAuth, function(req, res) {
+  router.put('/update', eatAuth, function(req, res) {
     var updates = req.body;
     delete updates._id;
 
-    User.update({'_id': req.params.id}, updates, function(err, data) {
+    User.update({'_id': req.user.id}, updates, function(err, data) {
       if (err) {
         console.log(err);
         return res.status(500).json({err: 'internal server error'});
