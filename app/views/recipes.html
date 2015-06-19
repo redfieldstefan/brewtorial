@@ -1,8 +1,9 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
-<section id="recipe">
+
+<section id="recipes">
   <div class="inner">
-    <article data-ng-controller="RecipeController"
-             data-ng-init="getRecipe()">
+
+    <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
       <header>
         <h1 id="title">{{header.title}}</h1>
         <p id="author">by: {{header.author}}</p>

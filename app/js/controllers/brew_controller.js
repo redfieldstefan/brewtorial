@@ -3,6 +3,13 @@
 module.exports = function(app) {
 
   app.controller('BrewController', ['$scope', '$location', '$timeout', '$routeParams', 'RESTResource', 'auth', '$cookies', function($scope, $location, $timeout, $routeParams, resource, auth, $cookies) {
+    
+    // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
+    if(!auth.isSignedIn()){
+      $cookies.put('postAuthenticationRedirect', $location.path());
+      $location.path('/sign_in');
+    }
+
     var Brew = resource('brew');
     $scope.thisBrew = {};
     $scope.errors = [];

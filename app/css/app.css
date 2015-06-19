@@ -214,28 +214,34 @@ thead th {
   background-size: cover;
 }
 
-/* page styles */
-main[data-page='landing'],
-main[data-page='sign_in'],
-main[data-page='sign_out'],
-main[data-page='register'] { 
+/* blue */
+main[data-page='landing'] { 
   background-color: hsla(199, 98%, 48%, 0.9);
 }
 
-main[data-page='dashboard'] { 
+/* yellow */
+main[data-page='profile'] { 
   background-color: hsla(45, 100%, 51%, 0.9);
 }
 
+/* register */
+main[data-page='register'] { 
+  background-color: hsla(291, 64%, 42%, 0.9);
+}
+
+/* magenta */
 main[data-page='user'],
 main[data-page='recipe'] { 
   background-color: hsla(340, 82%, 52%, 0.9); 
 }
 
-main[data-page='equipment'],
-main[data-page='ingredient'] { 
+/* green */
+main[data-page='sign_in'],
+main[data-page='sign_out'] { 
   background-color: hsla(88, 50%, 53%, 0.9); 
 }
 
+/* orange*/
 main[data-page='brew'] {
   background-color: hsla(14, 100%, 57%, 0.9);
 }
@@ -376,9 +382,12 @@ main[data-page='brew'] {
   box-sizing: border-box;
 }
 
-#form input[type='text'] {
+#form input[type='text'],
+#form input[type='password'] {
   margin-bottom: 30px;
 }
+
+#form input.last_field { margin-bottom: 0; }
 
 #form button {
   float: right;
@@ -525,4 +534,18 @@ main[data-page='dashboard'] input[type='text'] {
   color: hsla(0, 0%, 0%, 0.5);
   font-size: 18px;
   font-family: 'Open Sans';
+}
+
+#filters input {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
 }

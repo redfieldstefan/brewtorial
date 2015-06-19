@@ -2,8 +2,14 @@
 
 module.exports = function(app) {
 
-  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$cookies', function($scope, $location, resource, $cookies) {
     $scope.page = 'recipe';
+
+    // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
+    if(!auth.isSignedIn()){
+      $cookies.put('postAuthenticationRedirect', $location.path());
+      $location.path('/sign_in');
+    }
 
     var Recipe = resource('recipe');
     var Equipment = resource('equipment');
