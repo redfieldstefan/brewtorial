@@ -3,7 +3,7 @@
 require('../../app/js/client');
 require('angular-mocks');
 
-describe('brewtorial create brew event controllers test', function(){
+describe('brewtorial create recipe controllers test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
@@ -40,6 +40,14 @@ describe('brewtorial create brew event controllers test', function(){
       $httpBackend.expectPOST('/api/recipe').respond(200, {result: {_id: 2}, equipment: ['TEST'], ingredients: ['TEST'], steps: ['TEST'], description: "Oh what a test" });
       $scope.createRecipe();
       $httpBackend.flush();
+      expect($scope.errors.length).toBe(0);
+    });
+
+    it('should get a list of equipment', function(){
+      $httpBackend.expectGET('/api/equipment').respond(200, {result: ['cool hammer']});
+      $scope.getEquipmentList();
+      $httpBackend.flush();
+      expect($scope.availableEquipment[0]).toBe('cool hammer');
     });
 
   });

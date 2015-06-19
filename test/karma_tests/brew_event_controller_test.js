@@ -7,6 +7,7 @@ describe('brewtorial brew event controllers test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
+  var $routeParams;
   var $scope;
 
   beforeEach(angular.mock.module('brewtorialApp'));
@@ -24,14 +25,36 @@ describe('brewtorial brew event controllers test', function(){
 
   describe('REST Functionality', function(){
 
-    beforeEach(angular.mock.inject(function(_$httpBackend_) {
+    beforeEach(angular.mock.inject(function(_$httpBackend_, _$routeParams_) {
       this.BrewController = $CtrlrConstructor('BrewController', {$scope: $scope});
       $httpBackend = _$httpBackend_;
+      $routeParams = _$routeParams_;
     }));
 
     afterEach(function() {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
+    });
+
+    it('get a specific brew event', function(){
+      $routeParams._id = 4;
+      $httpBackend.expectGET('/api/brew/4').respond(200, {data: {ingredients: ['Test Ingredients'], steps: ['Test Steps']}});
+      $scope.getBrew();
+      $httpBackend.flush();
+      expect(typeof $scope.thisBrew).toBe('object');
+      expect($scope.ingredients[0]).toBe('Test Ingredients');
+      expect($scope.steps[0]).toBe('Test Steps');
+
+    });
+
+    it('get save brew event', function(){
+      $scope.thisBrew = {
+        _id: 4
+      };
+      $httpBackend.expectPUT('/api/brew/4').respond(200);
+      $scope.saveBrew();
+      $httpBackend.flush();
+      expect($scope.errors.length).toBe(0);
     });
 
   });
