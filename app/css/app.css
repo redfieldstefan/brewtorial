@@ -626,3 +626,16 @@ main[data-page='dashboard'] input[type='text'] {
 #recipes .return {
   font-size: 18px;
 }
+
+#user p {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+#user p strong {
+  color: hsla(0, 100%, 100%, 0.9);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
+}

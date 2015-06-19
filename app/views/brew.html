@@ -1,13 +1,26 @@
 <nav data-nav-header data-page="{{ page }}" data-ng-init="getBrew()"></nav>
 
-<section id="brew" data-ng-controller="BrewController">
+<section class="page_form" id="brew" data-ng-controller="BrewController">
   <div class="inner">
-    <h1>{{$scope.title}}</h1>
-    <ul data-ng-repeat="ingredient in ingredients">
-      <li>{{ingredient.item}}  {{ingredient.amount}}  {{ingredient.unit}}</li>
-    </ul>
-    <h2>Ready to Start?</h2>
-    <button data-ng-click="startBrew()">Start</button>
+    <h1>{{ title }}</h1>
+    <div class="cf">
+        <div class="left">
+            <h2>Ingredients</h2>
+            <ul>
+              <li data-ng-repeat="ingredient in ingredients">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.item}}</li>
+            </ul>
+        </div>
+        <div class="right">
+            <h2>Steps</h2>
+            <ul>
+              <li data-ng-repeat="step in steps">{{ step.directions }}</li>
+            </ul>
+        </div>
+    </div>
+    
+    <hr>
+    <h2>Ready to Brew?</h2>
+    <button data-ng-click="startBrew()">Let's Do It!</button>
     <ul class="ingredients"></ul>
     <p>{{counter}}</p>
     <ul class="steps" data-ng-repeat="step in steps" data-ng-if="step.active === true">
