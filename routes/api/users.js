@@ -111,4 +111,5 @@ module.exports = function(router, passport) {
       res.status(200).json({user: user});
     });
   });
+
 };
