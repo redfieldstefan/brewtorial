@@ -2,6 +2,9 @@
 <section id="brew" data-ng-controller='BrewController'>
   <div class="inner">
     <h1>{{$scope.title}}</h1>
+    <ul data-ng-repeat="ingredient in ingredients">
+      <li>{{ingredient.item}}  {{ingredient.amount}}  {{ingredient.unit}}</li>
+    </ul>
     <h2>Ready to Start?</h2>
     <button data-ng-click="startBrew()">Start</button>
     <ul class="ingredients"></ul>
@@ -15,7 +18,7 @@
             <button name='start' data-ng-click='startTimer()'>Start</button>
             <button name='stop' data-ng-click='stopTimer()'>Stop</button>
         </section>
-        <button data-ng-if="steps[steps.indexOf(step) - 1]" data-ng-click="prevStep(step, steps[steps.indexOf(step) - 1])">     PREVIOUS STEP
+        <button data-ng-if="steps[steps.indexOf(step) - 1]" data-ng-click="prevStep(step, steps[steps.indexOf(step) - 1])">   PREVIOUS STEP
         </button>
         <button data-ng-click="nextStep(step, steps[steps.indexOf(step) + 1])">
             NEXT STEP
@@ -23,7 +26,11 @@
         <button data-ng-click="startHere(step)">Start Here</button>
       </li>
     </ul>
+<<<<<<< HEAD
     <h1 data-ng-if="complete === true">{{congrats}}</h1>
+=======
+    <h1 data-ng-if="thisBrew.complete === true">{{congrats}}</h1>
+>>>>>>> e5faf556ebd4e7efe18fcd8a6b50c5b652ff6724
     <p>Thanks for enjoying Brewtorial&trade; responsibly.</p>
 
     <p><img src="images/logo.png" width="250"></p>

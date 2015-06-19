@@ -23,6 +23,7 @@ describe('brewtorial Recipe controller test', function(){
   it('Should be able to create a new controller', function(){
     var RecipeController = $CtrlrConstructor('RecipeController', {$scope: $scope});
     expect(typeof RecipeController).toBe('object');
+    expect(typeof $scope.header).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
     expect(Array.isArray($scope.ingredients)).toBe(true);
     expect(Array.isArray($scope.steps)).toBe(true);
