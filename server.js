@@ -28,18 +28,24 @@ app.use('/api', apiRouter);
 
 // 404 handler.
 app.use(function(req, res, next) {
-  console.log('404 - ' + req.url);
+  console.log('404 - ' + req.method + ' ' + req.url);
   res.status(404)
-    .set('Content-Type', 'text/plain')
-    .end('404 - Resource not found');
+    .json({
+      success: false,
+      message: '404 - Resource Not Found',
+      result: req.method + ' ' + req.url
+    });
 });
 
 // 500 handler.
 app.use(function(err, req, res, next) {
   console.log('500 - ', err.message, err.stack);
   res.status(500)
-    .set('Content-Type', 'text/plain')
-    .end('500 - Internal server error');
+    .json({
+      success: false,
+      message: '500 - Internal Server Error',
+      result: null
+    });
 });
 
 // start server.

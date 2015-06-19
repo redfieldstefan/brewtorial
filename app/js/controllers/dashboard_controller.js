@@ -32,8 +32,8 @@ module.exports = function(app) {
 
     $scope.view = function(recipe) {
       $location.path('recipes/' + recipe._id);
-    }
-  };
+    };
+  }
 
   app.controller('DashboardController', DashboardController);
 };

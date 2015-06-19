@@ -27,6 +27,7 @@ require('./controllers/all_recipes_controller')(brewtorialApp);
 require('./controllers/register_controller')(brewtorialApp);
 require('./controllers/sign_in_controller')(brewtorialApp);
 require('./controllers/sign_out_controller')(brewtorialApp);
+require('./controllers/timer_controller')(brewtorialApp);
 require('./controllers/user_controller')(brewtorialApp);
 
 // directives.

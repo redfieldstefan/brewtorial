@@ -40,21 +40,38 @@ module.exports = function(router, passport) {
   });
 
   router.get('/sign_in', passport.authenticate('basic', {session: false}), function(req, res) {
-    req.user.generateToken(process.env.APP_SECRET, function(err, token) {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({err: 'could not generate token'});
-      }
 
-      res.status(200).json({token: token});
-    });
+    if (!('error' in req.user)) {
+      req.user.generateToken(process.env.APP_SECRET, function(err, token) {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({ err: 'could not generate token' });
+        } else {
+          res.status(200)
+            .json({
+              success: true,
+              message: 'Authentication passed',
+              result: {
+                token: token
+              }
+            });
+          }
+      });
+    } else {
+      res.status(200)
+        .json({
+          success: false,
+          message: 'Authentication failed',
+          result: req.user.message
+        });
+    }
   });
 
-  router.put('/update/:id', eatAuth, function(req, res) {
+  router.put('/update', eatAuth, function(req, res) {
     var updates = req.body;
     delete updates._id;
 
-    User.update({'_id': req.params.id}, updates, function(err, data) {
+    User.update({'_id': req.user.id}, updates, function(err, data) {
       if (err) {
         console.log(err);
         return res.status(500).json({err: 'internal server error'});
@@ -64,8 +81,8 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.delete('/remove/:id', eatAuth, function(req, res) {
-    User.remove({'_id': req.params.id}, function(err, data) {
+  router.delete('/remove', eatAuth, function(req, res) {
+    User.remove({'_id': req.user._id}, function(err, data) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
@@ -75,16 +92,23 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/:id', eatAuth, function(req, res) {
-    User.findOne({'_id': req.params.id}, function(err, data) {
+  router.get('/get', function(req, res) {
+    User.find({}, function(err, users) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({msg: "internal server error"});
+      }
+      res.json(users);
+    });
+  });
+
+  router.get('/get/profile', eatAuth, function(req, res) {
+    User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
       }
-      console.log("data in user.js: " + data);
-      var email = data.basic.email;
-      var displayName = data.displayName;
-      res.status(200).json({email: email, displayName: displayName});
+      res.status(200).json({user: user});
     });
   });
 };

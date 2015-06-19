@@ -10,7 +10,7 @@ var recipeSchema = new mongoose.Schema({
       type: Number,
       required: true
     },
-    author: ObjectId,
+    author: String,
     brewTime: Number,
     created: Date,
     difficulty: Number,
