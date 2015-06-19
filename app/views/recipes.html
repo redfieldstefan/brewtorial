@@ -1,17 +1,39 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
-<section id="recipes">
+
+
+<!--
+
+
+
+
+
+Add a BACK TO RECIPES LIST button.
+
+
+
+
+
+
+
+-->
+
+<section data-ng-controller="RecipeController" data-ng-init="getRecipe()" id="recipes">
   <div class="inner">
 
+    <h1>{{ header.title }}</h1>
+    <p><img src="images/logo.png" width="96" alt=""></p>
+    <p><em>created by:</em> {{ header.author }}</p>
+
+<!--
     <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
       <header>
-        <h1 id="title">{{header.title}}</h1>
-        <p id="author">by: {{header.author}}</p>
-        <p id="created">Created on: {{header.created | date : 'mediumDate'}}</p>
+        <h1>{{ header.title }}</h1>
+        <p>by: {{ header.author }}</p>
+        <p>Created on: {{header.created | date : 'mediumDate'}}</p>
       </header>
       <main id="info">
 
-        <!-- header -->
         <h1>About this brew:</h1>
         <p>Description: {{description}}</p>
         <p>Style: {{header.style}}</p>
@@ -23,7 +45,6 @@
         <p>Times Brewed: {{header.popularity.length}}</p>
         <p>Likes: {{header.likes}}</p>
 
-        <!-- ingredients -->
         <h1>Ingredients:</h1>
         <ul id="ingredients">
           <li data-ng-repeat="ingredient in ingredients">
@@ -32,13 +53,11 @@
           </li>
         </ul>
 
-        <!-- equipment -->
         <h1>Equipment:</h1>
         <ul id="equipment">
           <li data-ng-repeat="item in equipment">{{item}}</li>
         </ul>
 
-        <!-- steps -->
         <h1>Steps:</h1>
         <ol id="steps">
           <li data-ng-repeat="step in steps">
@@ -52,3 +71,4 @@
     </article>
   </div>
 </section>
+-->
