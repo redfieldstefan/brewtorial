@@ -1,26 +1,9 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
-
-
-<!--
-
-
-
-
-
-Add a BACK TO RECIPES LIST button.
-
-
-
-
-
-
-
--->
-
 <section data-ng-controller="RecipeController" data-ng-init="getRecipe()" id="recipes">
   <div class="inner">
 
+    <p><a href="#/recipes" class="return" title="Back to Recipes">Back to Recipes</a></p>
     <h1>{{ header.title }}</h1>
     <p><img src="images/logo.png" width="96" alt=""></p>
     <p class="author"><span>created by:</span> {{ header.author }} <span>created on:</span> {{ header.created | date:'mediumDate' }}</p>
@@ -90,7 +73,7 @@ Add a BACK TO RECIPES LIST button.
           </ol>
         </div>        
         <hr>
-        <p><button data-ng-click="createBrewEvent()">Brew This</button> <button data-ng-click="returnToRecipes()">Back to Recipes</button></p>
+        <p><button data-ng-click="createBrewEvent()">Brew This!</button></p>
       </form>    
 
     </div>
