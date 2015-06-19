@@ -18,16 +18,6 @@ describe('Landing Page controller test', function(){
     $location = _$location_;
   }));
 
-  it('Should be able to create a new controller', function(){
-    var LandingController = $CtrlrConstructor('LandingController', {$scope: $scope});
-    expect(typeof LandingController).toBe('object');
-    expect(Array.isArray($scope.errors)).toBe(true);
-    expect(Array.isArray($scope.recipes)).toBe(true);
-    expect($scope.beerTally).toBe(0);
-    expect($scope.sortOrder).toBe(false);
-    expect($scope.sortBy).toBe('name');
-  });
-
   describe('REST Functionality', function(){
 
     beforeEach(angular.mock.inject(function(_$httpBackend_) {
