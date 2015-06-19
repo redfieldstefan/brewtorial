@@ -40,7 +40,7 @@ module.exports = function(app) {
             $cookies.put('postAuthenticationRedirect', '');
             $location.path(decodeURIComponent(relocationPath));
           } else {
-            $location.path('/dashboard');
+            $location.path('/profile');
           }
 
         }

@@ -17,7 +17,6 @@ require('./services/rest_resource')(brewtorialApp);
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
 require('./controllers/create_recipe_controller')(brewtorialApp);
-require('./controllers/dashboard_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
 require('./controllers/recipe_controller')(brewtorialApp);
@@ -46,10 +45,6 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
     .when('/create_recipe', {
       templateUrl: 'views/create_recipe.html',
       controller: 'CreateRecipeController'
-    })
-    .when('/dashboard', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'DashboardController'
     })
     .when('/equipment', {
       templateUrl: 'views/equipment.html',
