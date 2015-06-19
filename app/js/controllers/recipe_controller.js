@@ -27,6 +27,10 @@ module.exports = function(app) {
       });
     };
 
+    $scope.returnToRecipes = function() {
+      $location.path('/recipes');
+    }
+
     $scope.createBrewEvent = function() {
       var newBrew = {
         title: $scope.header.title,

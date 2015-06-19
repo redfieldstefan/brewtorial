@@ -1,6 +1,6 @@
 <nav data-nav-header data-page="{{ page }}" data-ng-init="getBrew()"></nav>
 
-<section id="brew" data-ng-controller='BrewController'>
+<section id="brew" data-ng-controller="BrewController">
   <div class="inner">
     <h1>{{$scope.title}}</h1>
     <ul data-ng-repeat="ingredient in ingredients">
@@ -10,14 +10,14 @@
     <button data-ng-click="startBrew()">Start</button>
     <ul class="ingredients"></ul>
     <p>{{counter}}</p>
-    <ul class="steps" data-ng-repeat='step in steps' data-ng-if="step.active === true">
+    <ul class="steps" data-ng-repeat="step in steps" data-ng-if="step.active === true">
       <li>
         <p>{{step.directions}}</p>
         <!-- <section data-timer-directive></section> -->
-        <section class='timer'>
+        <section class="timer">
             <p>Time Required: {{step.offset}} Minutes</p>
-            <button name='start' data-ng-click='startTimer()'>Start</button>
-            <button name='stop' data-ng-click='stopTimer()'>Stop</button>
+            <button name="start" data-ng-click="startTimer()">Start</button>
+            <button name="stop" data-ng-click="stopTimer()">Stop</button>
         </section>
         <button data-ng-if="steps[steps.indexOf(step) - 1]" data-ng-click="prevStep(step, steps[steps.indexOf(step) - 1])">   PREVIOUS STEP
         </button>
