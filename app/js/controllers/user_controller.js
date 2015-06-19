@@ -36,6 +36,9 @@ module.exports = function(app) {
     };
 
     $scope.deleteUser = function(user) {
+      (function() {
+        alert("are you sure you want to delete your profile? The decision is final");
+      })();
       $scope.users.splice($scope.users.indexOf(user), 1);
       $http.delete('/api/users/remove')
         .error(function(data) {
