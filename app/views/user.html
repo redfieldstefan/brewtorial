@@ -7,10 +7,7 @@
         <ul>
           <li>Username: {{user.displayName}}</li>
           <li>Email: {{user.basic.email}}</li>
-          <li>PW: {{user.basic.password}}</li>
-          <li>id: {{user._id}}</li>
-          <li>Current brews: {{user.currentBrews}}</li>
-          <li>Completed brews: {{user.completedBrews}}</li>
+          <li>My brews: {{user.currentBrews}}</li>
         </ul>
       </div>
       <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>

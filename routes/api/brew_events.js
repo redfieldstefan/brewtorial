@@ -16,10 +16,11 @@ module.exports = function(router) {
         console.log(err);
         return res.status(500).json({msg: 'internal server error'});
       }
-      user.currentBrews.push(newBrew);
+      user.currentBrews.push(newBrew.title);
       user.save(function(err, data) {
         if(err) { return console.log(err);}
         console.log("user saved");
+        console.log(newBrew.title);
       });
       newBrew.save(function(err, data) {
         if(err) { return console.log(err);}
