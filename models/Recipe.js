@@ -4,17 +4,20 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // define schema.
 var recipeSchema = new mongoose.Schema({
+  description: String,
   header: {
     abv: {
       type: Number,
       required: true
     },
-    author: ObjectId,
+    author: String,
     brewTime: Number,
     created: Date,
     difficulty: Number,
+    ibu: Number,
     icon: String,
     likes: Number,
+    og: Number,
     popularity: Array,
     style: String,
     title: String

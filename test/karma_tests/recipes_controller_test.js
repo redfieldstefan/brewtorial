@@ -19,7 +19,7 @@ describe('brewtorial controllers test', function(){
 
   it('should test true', function(){
     expect(true).toBe(true);
-  })
+  });
 
   it('Should be able to create a new controller', function(){
     var RecipeController = $CtrlrConstructor('RecipeController', {$scope: $scope});
@@ -63,8 +63,6 @@ describe('brewtorial controllers test', function(){
       expect($scope.recipes[0].brewTime).toBe(50);
       expect($scope.recipes[0].style).toBe('Pilsner');
     });
-
-
   });
 
 });

@@ -1,6 +1,0 @@
-<article data-ng-controller="allRecipesController">
-  <h1>All brew recipes: </h1>
-  <section data-ng-click="getAll()">
-    <ul data-all-recipes-directive></ul>
-  </section>
-</article>

@@ -9,11 +9,6 @@
     clear: both;
 }
 
-.error {
-  border-color: #c00 !important;
-  background-color: hsla(0, 100%, 95%, 1);
-}
-
 #message {
   background: #cc0000;
   background: -moz-linear-gradient(top, hsla(0,100%,40%,1) 0%, hsla(0,100%,40%,1) 100%);
@@ -26,7 +21,6 @@
   border-radius: 15px;
   margin: 30px auto;
   box-sizing: border-box;
-  display: none;
 }
 
 #message p {
@@ -58,7 +52,7 @@ a {
 }
 
 body {
-  min-height: 100%;
+  height: 100%;
 }
 
 button {
@@ -74,6 +68,7 @@ button {
   font-family: 'Open Sans';
   font-weight: 600;
   font-size: 20px;
+  outline: none;
 }
 
 h1 {
@@ -94,7 +89,7 @@ hr {
 }
 
 html {
-  min-height: 100%;
+  height: 100%;
 }
 
 img {
@@ -122,6 +117,11 @@ label {
   text-transform: uppercase;
   color: hsla(0, 0%, 0%, 0.5);
   display: block;
+}
+
+main {
+  padding-bottom: 90px;
+  min-height: 100%;
 }
 
 p {
@@ -172,10 +172,8 @@ thead th {
   text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
 }
 
-/* background cover image */
 #bg {
   z-index: -1;
-  opacity: 0.125;
   position: fixed;
   top: 0;
   left: 0;
@@ -190,28 +188,28 @@ thead th {
 
 /* page styles */
 main[data-page='landing'],
-main[data-page='sign-in'],
-main[data-page='sign-out'],
+main[data-page='sign_in'],
+main[data-page='sign_out'],
 main[data-page='register'] { 
-  background-color: #03a9f4;
+  background-color: hsla(199, 98%, 48%, 0.9);
 }
 
 main[data-page='dashboard'] { 
-  background-color: #ffc107;
+  background-color: hsla(45, 100%, 51%, 0.9);
 }
 
 main[data-page='user'],
 main[data-page='recipe'] { 
-  background-color: #e91e63; 
+  background-color: hsla(340, 82%, 52%, 0.9); 
 }
 
 main[data-page='equipment'],
 main[data-page='ingredient'] { 
-  background-color: #8bc34a; 
+  background-color: hsla(88, 50%, 53%, 0.9); 
 }
 
 main[data-page='brew'] {
-  background-color: #9c27b0;
+  background-color: hsla(14, 100%, 57%, 0.9);
 }
 
 /* ================================================================================================================== */
@@ -249,6 +247,24 @@ main[data-page='brew'] {
   margin: 30px 30px 0 0;
 }
 
+#nav li.user {
+  margin-right: 15px;
+}
+
+#nav li.user a {
+  background-color: hsla(0, 100%, 100%, 0.25);
+  display: inline-block;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0;  
+}
+
+#nav li.user img {
+  margin: 3px 0 0 5px;
+}
+
 #nav li:nth-child(2) {
   margin-right: 15px;
 }
@@ -279,7 +295,7 @@ main[data-page='brew'] {
 
 #tally {
   margin: 0 auto;
-  padding: 60px 0 90px 0;
+  padding: 60px 0 0 0;
   width: 402px;
 }
 
@@ -326,7 +342,7 @@ main[data-page='brew'] {
   background: hsla(0, 100%, 100%, 0.9);
   border-radius: 15px;
   width: 600px;
-  margin: 0 auto 90px auto;
+  margin: 0 auto;
   padding: 30px;
   box-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
   box-sizing: border-box;
@@ -362,11 +378,7 @@ tr {
   cursor: pointer;
 }
 
-table {
-  margin-bottom: 90px;
-}
-
-body[data-page='dashboard'] input[type='text'] {
+main[data-page='dashboard'] input[type='text'] {
   width: 240px;
   border-radius: 5px;
   padding: 7px;

@@ -1,6 +1,7 @@
 var User = require('../../models/User');
 var bodyparser = require('body-parser');
 var uuid = require('uuid');
+var eatAuth = require("../../lib/eat_auth")(process.env.APP_SECRET);
 
 module.exports = function(router, passport) {
   router.use(bodyparser.json());
@@ -11,7 +12,7 @@ module.exports = function(router, passport) {
     newUser.generateHash(req.body.password, function(err, hash) {
       if (err) {
         console.log(err);
-        return res.status(500).json({err: 'internal server error'});
+        return res.status(500).json({msg: 'internal server error'});
       }
 
       // generate unique uuid for each new user
@@ -39,17 +40,34 @@ module.exports = function(router, passport) {
   });
 
   router.get('/sign_in', passport.authenticate('basic', {session: false}), function(req, res) {
-    req.user.generateToken(process.env.APP_SECRET, function(err, token) {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({err: 'could not generate token'});
-      }
-
-      res.status(200).json({token: token});
-    });
+    
+    if (!('error' in req.user)) {
+      req.user.generateToken(process.env.APP_SECRET, function(err, token) {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({ err: 'could not generate token' });
+        } else {
+          res.status(200)
+            .json({
+              success: true,
+              message: 'Authentication passed',
+              result: {
+                token: token
+              }
+            });
+          }        
+      });
+    } else {
+      res.status(200)
+        .json({
+          success: false,
+          message: 'Authentication failed',
+          result: req.user.message
+        });  
+    }    
   });
 
-  router.put('/update/:id', function(req, res) {
+  router.put('/update/:id', eatAuth, function(req, res) {
     var updates = req.body;
     delete updates._id;
 
@@ -63,7 +81,7 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.delete('/remove/:id', function(req, res) {
+  router.delete('/remove/:id', eatAuth, function(req, res) {
     User.remove({'_id': req.params.id}, function(err, data) {
       if (err) {
         console.log(err);
@@ -74,16 +92,15 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/profile/:id', function(req, res) {
+  router.get('/:id', eatAuth, function(req, res) {
     User.findOne({'_id': req.params.id}, function(err, data) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
       }
-
+      console.log("data in user.js: " + data);
       var email = data.basic.email;
       var displayName = data.displayName;
-
       res.status(200).json({email: email, displayName: displayName});
     });
   });

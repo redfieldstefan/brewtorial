@@ -6,23 +6,27 @@ module.exports = function(app) {
       signIn: function(user, callback) {
         //make an encoded version of username and password
         var encoded = $base64.encode(user.email + ':' + user.password);
+        
         $http.get('/api/users/sign_in', {
           //following is what http-basic expects
           headers: {'Authorization': 'Basic ' + encoded}
         })
-        .success(function(data){
-          $cookies.put('eat', data.token);
-          callback(null);
+        .success(function(data){ 
+          if (data.success) {
+            $cookies.put('eat', data.result.token);
+            callback(null);
+          } else {
+            callback(data.message);
+          }          
         })
-        .error(function(data) {
+        .error(function(data) {          
           callback(data);
         });
       },
 
       create: function(user, callback) {
         $http.post('/api/users/create_user', user)
-          .success(function(data) {
-            console.log(data);
+          .success(function(data) {            
             $cookies.put('eat', data.token);
             callback(null);
           })
@@ -32,6 +36,7 @@ module.exports = function(app) {
       },
 
       logout: function() {
+        console.log('Auth Service Logout Called');
         $cookies.put('eat', '');
       },
 

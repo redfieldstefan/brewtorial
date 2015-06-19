@@ -3,11 +3,12 @@
 // import modules.
 require('angular/angular');
 require('angular-route');
+require('angular-sanitize');
 require('angular-cookies');
 require('angular-base64');
 
 // application.
-var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64']);
+var brewtorialApp = angular.module('brewtorialApp', ['ngRoute', 'ngCookies', 'base64', 'ngSanitize']);
 
 // services.
 require('./services/auth_service')(brewtorialApp);
@@ -15,19 +16,23 @@ require('./services/rest_resource')(brewtorialApp);
 
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
+require('./controllers/create_recipe_controller')(brewtorialApp);
 require('./controllers/dashboard_controller')(brewtorialApp);
 require('./controllers/equipment_controller')(brewtorialApp);
 require('./controllers/ingredient_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
 require('./controllers/recipe_controller')(brewtorialApp);
+require('./controllers/all_recipes_controller')(brewtorialApp);
 require('./controllers/register_controller')(brewtorialApp);
 require('./controllers/sign_in_controller')(brewtorialApp);
 require('./controllers/sign_out_controller')(brewtorialApp);
+require('./controllers/timer_controller')(brewtorialApp);
 require('./controllers/user_controller')(brewtorialApp);
 
 // directives.
 require('./directives/nav_header_directive')(brewtorialApp);
+require('./directives/timer_directive')(brewtorialApp);
 
 // routes.
 brewtorialApp.config(['$routeProvider', function($routeProvider) {
@@ -36,9 +41,13 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/brew', {
+    .when('/brews/:_id', {
       templateUrl: 'views/brew.html',
       controller: 'BrewController'
+    })
+    .when('/create_recipe', {
+      templateUrl: 'views/create_recipe.html',
+      controller: 'CreateRecipeController'
     })
     .when('/dashboard', {
       templateUrl: 'views/dashboard.html',
@@ -56,7 +65,11 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/recipe', {
+    .when('/recipes', {
+      templateUrl: 'views/all_recipes.html',
+      controller: 'AllRecipesController'
+    })
+    .when('/recipes/:_id', {
       templateUrl: 'views/recipe.html',
       controller: 'RecipeController'
     })

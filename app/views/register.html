@@ -1,21 +1,20 @@
-<nav-header data-logout="signOutUser" />
-
+<nav data-nav-header data-page="{{ page }}"></nav>
 <section id="register">
   <div class="inner">
-    <h1>All the cool kids are.</h1>
-    <p>Believe us, you want in on this.<br>Already on the list? Then <a href="#/sign-in" title="Sign In">Sign In</a>, already!</p>
+    <h1>All the cool kids do it,<br>shouldn't you too?</h1>
+    <p>Believe us, you want in on this.<br>Already on the list? Then <a href="#/sign_in" title="Sign In">Sign In</a>, already!</p>
 
     <!-- message -->
-    <div id="message">
-      <p><strong>SORRY!</strong> But the email address you provided is already in use.</p>
+    <div id="message" data-ng-show="hasValidationErrors">
+      <p><strong>PLEASE RESOLVE THESE ERRORS:</strong> {{ validationErrorMessage }}</p>
     </div>
 
     <!-- form -->
     <div id="form" class="cf">
       <label>Email</label>
-      <input class="error" name="email" data-ng-model="user.email" type="text" />
+      <input name="email" autofocus data-ng-model="user.email" type="text" />
       <label>Username</label>
-      <input class="error" name="displayName" data-ng-model="user.displayName" type="text" />
+      <input name="displayName" data-ng-model="user.displayName" type="text" />
       <label>Password</label>
       <input type="password" name="password" data-ng-model="user.password" />
       <label>Confirm Password</label>

@@ -6,15 +6,23 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var brewEventSchema = new mongoose.Schema({
   userId: ObjectId,
   recipe: ObjectId,
+  ingredients: [
+    {
+      item: String,
+      amount: String,
+      unit: String
+    }
+  ],
   steps: [
     {
       directions: String,
       offset: Number, //length of the brew event
-      status: Boolean
+      active: false,
+      done: false
       // steps move automatically to the next
     }
   ],
-  complete: boolean
+  complete: Boolean
 });
 
 // export model.

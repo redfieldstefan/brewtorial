@@ -1,44 +1,48 @@
-'use strict';
-
 module.exports = function(app) {
-
-  app.controller('RecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+  app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
+    $scope.page = 'recipe';
     var Recipe = resource('recipe');
-    var BrewEvent = resource('brewEvent');
+    var NewBrewEvent = resource('/brew/newbrew');
     $scope.errors = [];
-    $scope.recipes = [];
-    $scope.steps = [];
+    $scope.header = {};
     $scope.ingredients = [];
+    $scope.equipment = [];
+    $scope.steps = [];
+    $scope.id = '';
 
-    $scope.getAll = function() {
-      Recipe.getAll(function(err, data) {
-        if(err) {
-          $scope.errors.push(err);
-          return console.log({msg: 'Dang, error retrieving the recipes'});
+    $scope.getRecipe = function() {
+      Recipe.getOne($routeParams, function(err, recipe) {
+        if (err) {
+          console.log(err);
+          return $scope.errors.push({msg: 'Problem finding resource'});
         }
-        $scope.recipes = data;
+
+        $scope.description = recipe.description;
+        $scope.header = recipe.result.header;
+        $scope.ingredients = recipe.result.ingredients;
+        $scope.equipment = recipe.result.equipment;
+        $scope.steps = recipe.result.steps;
+        $scope.id = recipe.result._id;
       });
     };
 
-    // $scope.createBrewEvent = function() {
-    //   var newBrewEvent = {
-    //     parentRecipe: $routeParams.id,
-    //     ingredients: $scope.ingredients,
-    //     steps: $scope.steps
-    //   }
-    //   BrewEvent.create(newBrewEvent, function(err, data){
-    //     if(err) {
-    //       $scope.errors.push(err);
-    //       return console.log({msg: 'Dang, error creating the recipe'});
-    //     } else {
-    //       console.log(data);
-    //       var address = data.result._id;
-    //       $location.path('/recipe/' + address);
-    //     }
-    //   });
-    // };
+    $scope.createBrewEvent = function() {
+      var newBrew = {
+        title: $scope.header.title,
+        ingredients: $scope.ingredients,
+        steps: $scope.steps
+      };
 
+      NewBrewEvent.create(newBrew, function(err, res) {
+        if (err) {
+          console.log(err);
+          return $scope.errors.push({msg: 'Problem finding resource'});
+        }
+
+        var id = res.data._id;
+        $location.path('/brews/' + id);
+      });
+    };
   }]);
-
-}
+};
 

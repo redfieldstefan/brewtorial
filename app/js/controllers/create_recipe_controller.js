@@ -3,20 +3,27 @@
 module.exports = function(app) {
 
   app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', function($scope, $location, resource) {
+    $scope.page = 'recipe';
+
     var Recipe = resource('recipe');
+    var Equipment = resource('equipment');
     $scope.errors = [];
+    $scope.availableEquipment = [];
     $scope.header = {};
     $scope.ingredients = [];
     $scope.steps = [];
     $scope.equipment = [];
+    $scope.description = '';
 
     $scope.createRecipe = function() {
       var newRecipe = {
         header: $scope.header,
         equipment: $scope.equipment,
         ingredients: $scope.ingredients,
-        steps: $scope.steps
+        steps: $scope.steps,
+        description: $scope.description
       };
+
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
@@ -30,6 +37,22 @@ module.exports = function(app) {
       });
     };
 
+    $scope.getEquipmentList = function() {
+      Equipment.getAll(function(err, data) {
+        if (err) {
+          console.log(err);
+          $scope.errors.push({msg: 'unable to retrieve recipes'});
+        }
+        $scope.availableEquipment = data.result;
+
+      });
+    };
+
+    $scope.addDescription = function(description) {
+      $scope.description = description;
+      document.getElementById("description").value = '';
+    };
+
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
       document.getElementById("headerForm").reset();
@@ -41,7 +64,7 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, complete: false});
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, status: false});
       document.getElementById("stepForm").reset();
     };
 
@@ -56,8 +79,8 @@ module.exports = function(app) {
       $scope.ingredients = [];
       $scope.steps = [];
       $scope.equipment = [];
-    }
+      $scope.description = '';
+    };
 
   }]);
 };
-

@@ -1,10 +1,30 @@
-<nav-header></nav-header>
-
-<section id="brew">
+<nav data-nav-header data-page="{{ page }}" data-ng-init="getBrew()"></nav>
+<section id="brew" data-ng-controller='BrewController'>
   <div class="inner">
-    <h1>Brew.</h1>
+    <h1>{{$scope.title}}</h1>
+    <h2>Ready to Start?</h2>
+    <button data-ng-click="startBrew()">Start</button>
+    <ul class="ingredients"></ul>
+    <p>{{counter}}</p>
+    <ul class="steps" data-ng-repeat='step in steps' data-ng-if="step.active === true">
+      <li>
+        <p>{{step.directions}}</p>
+        <!-- <section data-timer-directive></section> -->
+        <section class='timer'>
+            <p>Time Required: {{step.offset}} Minutes</p>
+            <button name='start' data-ng-click='startTimer()'>Start</button>
+            <button name='stop' data-ng-click='stopTimer()'>Stop</button>
+        </section>
+        <button data-ng-if="steps[steps.indexOf(step) - 1]" data-ng-click="prevStep(step, steps[steps.indexOf(step) - 1])">     PREVIOUS STEP
+        </button>
+        <button data-ng-click="nextStep(step, steps[steps.indexOf(step) + 1])">
+            NEXT STEP
+        </button>
+        <button data-ng-click="startHere(step)">Start Here</button>
+      </li>
+    </ul>
     <p>Thanks for enjoying Brewtorial&trade; responsibly.</p>
 
-    <p><img src="images/logo.png" width="250"></p>    
+    <p><img src="images/logo.png" width="250"></p>
   </div>
 </section>
