@@ -39,6 +39,7 @@
   max-width: 1120px;
   margin: 0 auto;
   width: 90%;
+  position: relative;
 }
 
 /* base styles */
@@ -79,6 +80,33 @@ h1 {
   letter-spacing: -0.025em;
   text-align: center;
   text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+h2 {
+  font-family: 'Libre Baskerville';
+  font-size: 36px;
+  font-weight: 300;
+  color: hsla(0, 100%, 100%, 0.9);
+}
+
+h3 {
+  font-family: 'Open Sans';
+  font-size: 24px;
+  font-weight: 300;
+  color: hsla(0, 100%, 100%, 0.9);
+}
+
+h4 {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: hsla(0, 100%, 100%, 0.5);
+}
+
+h3 strong {
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 hr {
@@ -385,4 +413,116 @@ main[data-page='dashboard'] input[type='text'] {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+#container {
+  position: relative;
+  width: 100%;
+}
+
+#recipe_info {
+  float: right;
+  width: 50%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#form_sections {
+  float: left;
+  width: 50%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.page_form input[type='text'],
+.page_form input[type='number'] {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.page_form label {
+  font-size: 16px;
+  display: inline;
+}
+
+.page_form small {
+  margin: 0 0 10px 0;
+  display: inline-block;
+  color: hsla(0, 100%, 100%, 0.5);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.page_form button,
+.page_form button[type='submit'] {
+  background: #f8d38d;
+  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
+  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  color: hsla(0, 100%, 100%, 0.9);
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 16px;
+  outline: none;
+  padding: 5px 15px;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+}
+
+.page_form textarea {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
+  height: 100px;
+}
+
+.page_form select {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+.page_form h4 { margin: 0; }
+
+.page_form h4 span {
+  font-size: 18px;
+  text-align: left;
+  font-weight: 300;
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+.page_form li {
+  color: hsla(0, 0%, 0%, 0.5);
+  font-size: 18px;
+  font-family: 'Open Sans';
 }

@@ -1,8 +1,35 @@
 module.exports = function(grunt) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+  // DONT USE THIS, IT'S JUST A TEMP I MADE TO GET QUICK CSS/HTML CHANGES TO REGISTER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // configure grunt.
   grunt.file.defaultEncoding = 'utf8';
-  grunt.file.setBase('../');
   var path = require("path");
 
   // load npm tasks.
@@ -15,7 +42,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-karma');
 
-  var watchFiles = ['./app/**/*.js', './app/**/*.css', './app/**/*.html'];
+  var watchFiles = ['app/**/*.js', 'app/**/*.css', 'app/**/*.html'];
 
   // configure tasks.
   grunt.initConfig({
@@ -70,14 +97,14 @@ module.exports = function(grunt) {
 
     webpack: {
       client: {
-        entry: __dirname + '/../app/js/client.js',
+        entry: __dirname + '/app/js/client.js',
         output: {
-          path: path.join(__dirname, '../build'),
+          path: path.join(__dirname, '/build'),
           filename: 'bundle.js'
         }
       },
       karma_test: {
-        entry: __dirname + '/../test/karma_tests/karma_entry.js',
+        entry: __dirname + '/test/karma_tests/karma_entry.js',
         output: {
           path: 'test/karma_tests/',
           filename: 'bundle.js'
@@ -88,7 +115,7 @@ module.exports = function(grunt) {
     karma: {
       test: {
         // configFile:'../karmaConf.js'
-        configFile:'./karma.conf.js'
+        configFile:'karma.conf.js'
       }
     },
 
@@ -126,7 +153,7 @@ module.exports = function(grunt) {
 
     simplemocha: {
       dev:{
-        src: ['./test/*test.js']
+        src: ['test/*test.js']
       }
     },
 
@@ -139,13 +166,13 @@ module.exports = function(grunt) {
     watch: {
       files: watchFiles,
       html: {
-        files: ['./app/**/*.html'],
+        files: ['app/**/*.html'],
         options: {
           livereload: true
         }
       },
       css: {
-        files: ['./app/**/*.css'],
+        files: ['app/**/*.css'],
         options: {
           livereload: true
         }
