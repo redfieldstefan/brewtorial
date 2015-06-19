@@ -70,22 +70,34 @@ describe('Brewtorial user routes', function(){
     expect(testUserId).to.not.eql(null);
   });
 
-  it('should get a users profile info by their id', function(done) {
+  it('should get all users', function(done) {
     chai.request('localhost:3000')
-      .get('/api/users/' + testUserId)
+      .get('/api/users/get')
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
-        expect(res.body.displayName).to.eql('test');
-        expect(res.body.email).to.eql('test@example.com');
+        expect(Array.isArray(res.body)).to.eql(true);
+        done();
+      });
+  });
+
+  it('should get a specific user', function(done) {
+    chai.request('localhost:3000')
+      .get('/api/users/get/profile')
+      .send({eat: testToken})
+      .end(function(err, res) {
+        expect(res.status).to.eql(200);
+        expect(err).to.eql(null);
+        expect(res.body.user.displayName).to.eql('test')
+        expect(res.body.user.basic.email).to.eql('test@example.com')
         done();
       });
   });
 
   it('should update a users information', function(done) {
     chai.request('localhost:3000')
-      .put('/api/users/update/' + testUserId)
-      .send({displayName: 'changed'})
+      .put('/api/users/update')
+      .send({displayName: 'changed', eat: testToken})
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
@@ -96,7 +108,8 @@ describe('Brewtorial user routes', function(){
 
   it('should delete a user', function(done) {
     chai.request('localhost:3000')
-      .del('/api/users/remove/' + testUserId)
+      .del('/api/users/remove/')
+      .send({eat: testToken})
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
@@ -104,6 +117,5 @@ describe('Brewtorial user routes', function(){
         done();
       });
   });
-
 
 });
