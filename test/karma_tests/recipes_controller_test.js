@@ -9,7 +9,7 @@ describe('brewtorial controllers test', function(){
   var $httpBackend;
   var $scope;
 
-  beforeEach(angular.mock.module('brewApp'));
+  beforeEach(angular.mock.module('brewtorialApp'));
 
   beforeEach(angular.mock.inject(function($rootScope, $controller) {
     $scope = $rootScope.$new();
@@ -21,8 +21,8 @@ describe('brewtorial controllers test', function(){
   });
 
   it('Should be able to create a new controller', function(){
-    var allRecipesController = $CtrlrConstructor('allRecipesController', {$scope: $scope});
-    expect(typeof allRecipesController).toBe('object');
+    var AllRecipesController = $CtrlrConstructor('AllRecipesController', {$scope: $scope});
+    expect(typeof AllRecipesController).toBe('object');
     expect(typeof $scope.header).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
     expect(Array.isArray($scope.recipes)).toBe(true);
