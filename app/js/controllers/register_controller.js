@@ -10,7 +10,7 @@ module.exports = function(app) {
       $scope.validationErrorMessage = '';
 
       if(auth.isSignedIn()) {
-        $location.path('/dashboard');
+        $location.path('/profile');
       }
 
       $scope.errors = [];
@@ -48,7 +48,7 @@ module.exports = function(app) {
                 console.log(err);
                 return $scope.errors.push({msg: 'not able to sign in'});
               }
-              $location.path('/dashboard');
+              $location.path('/profile');
             });
 
           })
