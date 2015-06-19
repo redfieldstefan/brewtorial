@@ -3,7 +3,7 @@
 module.exports = function(app) {
 
   app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$cookies', 'auth', function($scope, $location, resource, $cookies, auth) {
-    
+
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if(!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
@@ -35,10 +35,10 @@ module.exports = function(app) {
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
         } else {
-          console.log(data);
+          console.log(data.result._id);
           clearForms();
           var address = data.result._id;
-          $location.path('/recipe/' + address);
+          $location.path('/recipes/' + address);
         }
       });
     };
@@ -50,7 +50,6 @@ module.exports = function(app) {
           $scope.errors.push({msg: 'unable to retrieve recipes'});
         }
         $scope.availableEquipment = data.result;
-
       });
     };
 
