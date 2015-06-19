@@ -23,52 +23,77 @@ Add a BACK TO RECIPES LIST button.
 
     <h1>{{ header.title }}</h1>
     <p><img src="images/logo.png" width="96" alt=""></p>
-    <p><em>created by:</em> {{ header.author }}</p>
+    <p class="author"><span>created by:</span> {{ header.author }} <span>created on:</span> {{ header.created | date:'mediumDate' }}</p>
 
-<!--
-    <article data-ng-controller="RecipeController" data-ng-init="getRecipe()">
-      <header>
-        <h1>{{ header.title }}</h1>
-        <p>by: {{ header.author }}</p>
-        <p>Created on: {{header.created | date : 'mediumDate'}}</p>
-      </header>
-      <main id="info">
+    <hr>
 
-        <h1>About this brew:</h1>
-        <p>Description: {{description}}</p>
-        <p>Style: {{header.style}}</p>
-        <p>ABV: {{header.abv}}%</p>
-        <p>IBU: {{header.ibu}}%</p>
-        <p>OG: {{header.og}}%</p>
-        <p>Brew Time: {{header.brewTime}}</p>
-        <p>Difficulty: {{header.difficulty}}</p>
-        <p>Times Brewed: {{header.popularity.length}}</p>
-        <p>Likes: {{header.likes}}</p>
+    <div class="container">
+      <form class="cf page_form">
+        <div class="left">
+          <h3>About this brewski:</h3>
+          <label>Description:</label>
+          <p>{{ description }}</p>
+          <hr>
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 45%;" class="header">Style:</td>
+                <td style="width: 55%;" class="data">{{ header.style }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">ABV%:</td>
+                <td style="width: 55%;" class="data">{{ header.abv }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">IBU:</td>
+                <td style="width: 55%;" class="data">{{ header.ibu }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">OG:</td>
+                <td style="width: 55%;" class="data">{{ header.og }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">Brew Time:</td>
+                <td style="width: 55%;" class="data">{{ header.brewTime }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">Difficulty:</td>
+                <td style="width: 55%;" class="data">{{ header.difficulty }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">Times Brewed:</td>
+                <td style="width: 55%;" class="data">{{ header.popularity.length }}</td>
+              </tr>
+              <tr>
+                <td style="width: 45%;" class="header">Likes:</td>
+                <td style="width: 55%;" class="data">{{ header.likes }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br><br>
+        </div>
 
-        <h1>Ingredients:</h1>
-        <ul id="ingredients">
-          <li data-ng-repeat="ingredient in ingredients">
-            Item: {{ingredient.item}}<br>
-            Amount: {{ingredient.amount}} {{ingredient.unit}}
-          </li>
-        </ul>
+        <div class="right">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li data-ng-repeat="ingredient in ingredients">{{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.item }}</li>
+          </ul>
+          <hr>
+          <h3>Equipment:</h3>
+          <ul>
+            <li data-ng-repeat="item in equipment">{{ item }}</li>
+          </ul>
+          <hr>
+          <h3>Steps:</h3>
+          <ol>
+            <li data-ng-repeat="step in steps">{{ step.directions }} (<em>Time: {{ step.offset }}</em>)</li>
+          </ol>
+        </div>        
+        <hr>
+        <p><button data-ng-click="createBrewEvent()">Brew This</button></p>
+      </form>    
 
-        <h1>Equipment:</h1>
-        <ul id="equipment">
-          <li data-ng-repeat="item in equipment">{{item}}</li>
-        </ul>
+    </div>
 
-        <h1>Steps:</h1>
-        <ol id="steps">
-          <li data-ng-repeat="step in steps">
-            Directions: {{step.directions}}<br>
-            Time: {{step.offset}}
-          </li>
-        </ol>
-
-      </main>
-      <button data-ng-click="createBrewEvent()">Brew This</button>
-    </article>
   </div>
 </section>
--->

@@ -11,6 +11,7 @@ module.exports = function(app) {
     }
 
     var Brew = resource('brew');
+    $scope.page = 'brew';
     $scope.thisBrew;
     $scope.errors = [];
     $scope.ingredients;
