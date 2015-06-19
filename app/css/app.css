@@ -114,6 +114,7 @@ hr {
   background: hsla(0, 0%, 0%, 0.15);
   border: 0;
   margin: 30px 0;
+  clear: both;
 }
 
 html {
@@ -167,11 +168,23 @@ strong {
 table {
   border: 1px solid hsla(0, 0%, 0%, 0.15);
   border-raidus: 5px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
 td { text-align: center; }
+
+td.header {
+  color: hsla(0, 100%, 100%, 0.9);
+  font-weight: 600;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+td.data {
+  text-align: left;
+  padding-left: 15px;
+}
 
 td, th {
   font-family: 'Open Sans';
@@ -214,30 +227,36 @@ thead th {
   background-size: cover;
 }
 
-/* page styles */
-main[data-page='landing'],
-main[data-page='sign_in'],
-main[data-page='sign_out'],
-main[data-page='register'] { 
+/* blue */
+main[data-page='landing'] { 
   background-color: hsla(199, 98%, 48%, 0.9);
 }
 
-main[data-page='dashboard'] { 
+/* yellow */
+main[data-page='profile'] { 
   background-color: hsla(45, 100%, 51%, 0.9);
 }
 
+/* register */
+main[data-page='register'] { 
+  background-color: hsla(291, 64%, 42%, 0.9);
+}
+
+/* magenta */
 main[data-page='user'],
 main[data-page='recipe'] { 
   background-color: hsla(340, 82%, 52%, 0.9); 
 }
 
-main[data-page='equipment'],
-main[data-page='ingredient'] { 
+/* green */
+main[data-page='sign_in'],
+main[data-page='sign_out'] { 
   background-color: hsla(88, 50%, 53%, 0.9); 
 }
 
+/* gray blue */
 main[data-page='brew'] {
-  background-color: hsla(14, 100%, 57%, 0.9);
+  background-color: hsla(200, 18%, 46%, 0.9);
 }
 
 /* ================================================================================================================== */
@@ -272,7 +291,21 @@ main[data-page='brew'] {
 #nav li {
   display: block;
   float: right;
-  margin: 30px 30px 0 0;
+  margin: 30px 15px 0 0;
+}
+
+#nav li.brew { margin-right: 30px; }
+
+#nav li.brew a {
+  background: #f8d38d;
+  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
+  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  padding: 11px 30px;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
 }
 
 #nav li.user {
@@ -376,9 +409,12 @@ main[data-page='brew'] {
   box-sizing: border-box;
 }
 
-#form input[type='text'] {
+#form input[type='text'],
+#form input[type='password'] {
   margin-bottom: 30px;
 }
+
+#form input.last_field { margin-bottom: 0; }
 
 #form button {
   float: right;
@@ -525,4 +561,57 @@ main[data-page='dashboard'] input[type='text'] {
   color: hsla(0, 0%, 0%, 0.5);
   font-size: 18px;
   font-family: 'Open Sans';
+}
+
+#filters input {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.left {
+  width: 50%;
+  float: left;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.right {
+  width: 50%;
+  float: right;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#recipes p.author span {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  color: hsla(0, 100%, 100%, 0.9);
+  margin: 0 15px;
+}
+
+#recipes p.author span:first-of-type {
+  margin-left: 0;
+}
+
+#recipes p.author {
+  line-height: 1;
+  margin: 10px 0;
+}
+
+.left p {
+  text-align: left;
+  color: hsla(0, 100%, 100%, 0.9);
+  font-size: 18px;
+  margin-top: 0;
 }

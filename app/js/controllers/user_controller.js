@@ -4,6 +4,12 @@ module.exports = function(app) {
 
   app.controller('UserController', ['$scope', '$http', 'auth', '$cookies', '$location', function($scope, $http, auth, $cookies, $location) {
 
+    // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
+    if(!auth.isSignedIn()){
+      $cookies.put('postAuthenticationRedirect', $location.path());
+      $location.path('/sign_in');
+    }
+
     var eat = $cookies.get('eat');
     $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
 
