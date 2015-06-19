@@ -17,6 +17,10 @@ module.exports = function(app) {
     $scope.user;
     $scope.users = [];
 
+    $scope.gotoRecipes = function() {
+      $location.path('/recipes');
+    };
+
     $scope.getUsers = function() {
       $http.get('/api/users/get')
         .success(function(data) {
