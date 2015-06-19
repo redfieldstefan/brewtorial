@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
     password: { type: String, required: true }
   },
   currentBrews: [],
-  completeBrews: []
+  completedBrews: []
 });
 
 userSchema.methods.generateHash = function(password, callback) {
