@@ -61,7 +61,7 @@ describe('Brewtorial user routes', function(){
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
-        expect(res.body).to.have.property('token');
+        expect(res.body.result).to.have.property('token');
         done();
       });
   });
@@ -72,7 +72,7 @@ describe('Brewtorial user routes', function(){
 
   it('should get a users profile info by their id', function(done) {
     chai.request('localhost:3000')
-      .get('/api/users/profile/' + testUserId)
+      .get('/api/users/' + testUserId)
       .end(function(err, res) {
         expect(res.status).to.eql(200);
         expect(err).to.eql(null);
