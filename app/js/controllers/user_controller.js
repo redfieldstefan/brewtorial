@@ -32,14 +32,13 @@ module.exports = function(app) {
         .error(function(data) {
           console.log(data);
           $scope.errors.push({msg: 'error getting user'});
-      });
+        });
     };
 
     $scope.getUser = function(user) {
       $http.get('/api/users/get/profile', user)
         .success(function(data) {
           $scope.user = data.user;
-          console.log($scope.user);
         })
         .error(function(data) {
           console.log(data);
@@ -48,20 +47,20 @@ module.exports = function(app) {
     };
 
     $scope.deleteUser = function(user) {
-      (function() {
-        var rigthAnswer = 'yes';
-        var areYouSure = prompt("Are you sure you want to delete your profile? The decision is final. Type 'yes' if you want to delete your account.");
-        if(areYouSure === rigthAnswer) {
-          $scope.users.splice($scope.users.indexOf(user), 1);
-          $http.delete('/api/users/remove')
-            .error(function(data) {
-              console.log(data);
-              $scope.errors.push({msg: 'could not delete user'});
-            });
-            $location.path('/register');
+      var areYouSure = prompt('Are you sure you want to delete your profile forever? Type "Yes" to confirm.');
+      if (areYouSure.toLowerCase() === 'yes') {
+        $scope.users.splice($scope.users.indexOf(user), 1);
+        $location.path('/register');
+        auth.logout();
+        $http.delete('/api/users/remove')
+          .success(function(data) {
             console.log('deleted');
-        }
-      })();
+          })
+          .error(function(data) {
+            console.log('err:', data);
+            $scope.errors.push({msg: 'could not delete user'});
+          });
+      }
     };
 
     $scope.editUser = function(user) {
