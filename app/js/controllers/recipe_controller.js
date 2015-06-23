@@ -11,7 +11,9 @@ module.exports = function(app) {
     $scope.id = '';
 
     $scope.getRecipe = function() {
-      Recipe.getOne($routeParams, function(err, recipe) {
+      var recipeId = $routeParams.id;
+
+      Recipe.getOne(recipeId, function(err, recipe) {
         if (err) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
@@ -49,4 +51,3 @@ module.exports = function(app) {
     };
   }]);
 };
-
