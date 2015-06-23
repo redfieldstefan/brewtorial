@@ -18,9 +18,8 @@ module.exports = function(app) {
     $scope.steps;
     $scope.title;
     $scope.description;
-    $scope.days;
-    $scope.hours;
-    $scope.minutes;
+    $scope.counter;
+    $scope.started = false;
     $scope.congrats="CONGRATS! You've made a delicious brew"
 
 
@@ -50,7 +49,6 @@ module.exports = function(app) {
     };
 
     $scope.saveBrew = function() {
-      console.log($scope.thisBrew)
       Brew.save($scope.thisBrew, function(err, data) {
         if(err){
           $scope.errors.push(err);
@@ -62,9 +60,8 @@ module.exports = function(app) {
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
-      $scope.days = $scope.steps[0].offset.days;
-      $scope.hours = $scope.steps[0].offset.hours;
-      $scope.minutes = $scope.steps[0].offset.minutes;
+      $scope.counter = $scope.steps[0].offset;
+      $scope.started = true;
       $scope.saveBrew();
     };
 

@@ -38,7 +38,6 @@ module.exports = function(app) {
       $http.get('/api/users/get/profile', user)
         .success(function(data) {
           $scope.user = data.user;
-          console.log($scope.user);
         })
         .error(function(data) {
           console.log(data);

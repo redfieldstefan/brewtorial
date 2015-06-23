@@ -29,7 +29,7 @@ module.exports = function(app) {
         steps: $scope.steps,
         description: $scope.description
       };
-
+      console.log(newRecipe);
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
