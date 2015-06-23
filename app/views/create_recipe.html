@@ -1,91 +1,209 @@
-
 <nav data-nav-header data-page="{{ page }}"></nav>
-<article data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
-  <h1 class='red'>Create a Brew Recipe</h1>
-  <section class="recipeConstructor">
-     <section class='recipeHeader'>
-      <h2>Brew Information</h2>
-      <form id="headerForm" data-ng-submit='addHeader(header)'>
-          <input type='text' required name='title' placeholder="Title" data-ng-model='header.title'>
-          <input type='text' required name='style' placeholder='Style' data-ng-model='header.style'/>
-          <input type='number' required name='abv' placeholder='ABV' data-ng-model='header.abv'/>
-          <input type='number' required name='ibu' placeholder='IBU' data-ng-model='header.ibu'/>
-          <input type='number' required name='og' placeholder='OG' data-ng-model='header.og'/>
-          <input type='number' required name='totalTime' placeholder='Total Time' data-ng-model='header.brewTime'/>
-          <input type='number' name='difficulty' placeholder='Difficulty (1-5)' data-ng-model='header.difficulty'/>
-        <button type = 'submit'>Add Info</button>
-      </form>
-    </section>
 
-    <form id="descriptionForm" data-ng-submit="addDescription(description)">
-      <textarea id="description" required name="description" placeholder="Describe Your Brew" data-ng-model="description"></textarea>
-      <button type="submit">Add Description</button>
-    </form>
+<!-- article -->
+<article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
 
-    <section>
-      <h4>Ingredients</h4>
-      <form id="ingredientForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addIngredient(ingredient)'>
-        <input type='text' required name='ingredient' placeholder='Ingredient' data-ng-model='ingredient.item'/>
-        <input type='number' required name='amount' placeholder='Quantity' data-ng-model='ingredient.amount'/>
-        <select data-ng-model="ingredient.unit" placeholder='units'>
-          <option>Cups</option>
-          <option>Gallons</option>
-          <option>Quarts</option>
-          <option>Liters</option>
-          <option>lbs</option>
-          <option>oz</option>
-          <option>tsp</option>
-          <option>tbsp</option>
-          <option>Packet</option>
-        </select>
-        <button type = 'submit'>Add Ingredient</button>
-      </form>
-    </section>
+  <div class="inner">
 
-    <section>
-      <h4>Equipment</h4>
-      <form id="equipmentForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
-        <!-- <input type='text' name='equipItem' placeholder='Item' data-ng-model='item'/> -->
-        <select data-ng-model="item">
-          <option data-ng-repeat="equipment in availableEquipment">{{equipment.name}}</option>
-        </select>
-       <!--  <input type='text' name='newEquipItem' placeholder='Add a new one?' data-ng-model='item'/> -->
-        <button type = 'submit'>Add Equipment</button>
-      </form>
-    </section>
+    <h1>New brew, coming through.</h1>
+    <hr>
 
-    <section>
-      <h4>Steps</h4>
-      <form id="stepForm" ng-model-options="{updateOn: 'submit'}" data-ng-submit='addStep(step)'>
-        <textarea type='text' required name='instructions' placeholder='Instructions' data-ng-model='step.directions'></textarea>
-        <input type='number' required name='time' placeholder='Time Required' data-ng-model='step.offset'/>
-        <button type = 'submit'>Add Step</button>
-      </form>
-    </section>
+    <!-- container -->
+    <div id="container" class="cf">
 
-  </section><!-- END CONTSTRUCTOR -->
+      <!-- recipe info -->
+      <div id="recipe_info">
 
-  <section class="recipe">
-    <section class="twelve columns">
-      <h1>Your new Brew!</h1>
-      <h2 class='red'>{{header.title}}</h2>
-      <p>{{description}}</p>
-      <ul>
-       <li> Style: {{header.style}} ABV: {{header.abv}}, IBU: {{header.ibu}}, OG: {{header.og}}, Total Time: {{header.brewTime}} Difficulty: {{header.difficulty}}</li>
-      </ul>
-      <h4>Ingredients</h4>
-      <ul data-ng-repeat='ingredient in ingredients'>
-       <li> {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}</li>
-      </ul>
-       <h4>Equipment</h4>
-      <ul data-ng-repeat='equipment in equipment'>
-       <li>{{equipment}}</li>
-      </ul>
-      <h4>Steps</h4>
-      <ul data-ng-repeat='step in steps'>
-        <li>{{step.position}}. {{step.directions}}: Time Requred: {{step.offset}}
-      </ul>
-      <button type = 'submit' data-ng-click="createRecipe()">Submit Recipe</button>
-    </section>
-  </section>
+        <section>
+          <h1>Review</h1>
+          <h2>{{header.title}}</h2>
+          <p>{{description}}</p>
+          <form class="page_form">
+
+            <h3>Brew Info:</h3>
+            <h4>Style: <span>{{header.style}}</span></h4>
+            <h4>ABV%: <span>{{header.abv}}</span></h4>
+            <h4>IBU: <span>{{header.ibu}}</span></h4>
+            <h4>OG: <span>{{header.og}}</span></h4>
+            <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
+            <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
+
+            <hr>
+
+            <h3>Ingredients:</h3>
+            <ul>
+              <li data-ng-repeat="ingredient in ingredients">{{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}</li>
+            </ul>
+
+            <hr>
+
+            <h3>Equipment:</h3>
+            <ul>
+              <li data-ng-repeat="equipment in equipment track by $index">{{equipment}}</li>
+            </ul>
+
+            <hr>
+
+            <h3>Steps:</h3>
+            <ol>
+              <li data-ng-repeat="step in steps"><!--{{step.position}}.-->{{step.directions}}: (<em>Time Requred: {{step.offset}}</em>)</li>
+            </ol>
+
+            <hr>
+
+            <button type="submit" data-ng-click="createRecipe()">Submit This Recipe</button>
+          </form>
+        </section>
+
+      </div>
+
+      <!-- form data -->
+      <div id="form_sections">
+
+        <!-- brew information -->
+        <section id="brew_info">
+          <h3><strong>Step 1</strong> &ndash; Brew Information</h3>
+          <form id="form_headers" class="page_form" data-ng-submit="addHeader(header)">
+
+            <label>Title</label>
+            <small>Enter the title of your brew</small>
+            <input type="text" required name="title" data-ng-model="header.title">
+
+
+            <label>Style</label>
+            <small>Provide a style, such as: Lager, Ale, etc.</small>
+            <input type="text" required name="style" data-ng-model="header.style"/>
+
+            <label>ABV%</label>
+            <small>Enter the Alcohol by Volume percent</small>
+            <input type="number" required name="abv" data-ng-model="header.abv"/>
+
+            <label>IBU</label>
+            <small>International Bittering Units of your brew</small>
+            <input type="number" required name="ibu" data-ng-model="header.ibu"/>
+
+            <label>OG</label>
+            <small>Original Gravity of your brew</small>
+            <input type="number" required name="og" data-ng-model="header.og"/>
+
+            <label>Brewing Time</label>
+            <small>How long it takes to prepare your brew</small>
+            <input type="number" required name="totalTime" data-ng-model="header.brewTime"/>
+
+            <label>Difficulty</label>
+            <small>A scale of how easy (1) to hard (5) this brew is to make</small>
+            <input type="number" name="difficulty" data-ng-model="header.difficulty"/>
+            <button type="submit">Add Info to Review</button>
+          </form>
+
+          <hr>
+
+          <!-- description form -->
+          <form class="page_form" data-ng-submit="addDescription(description)">
+            <label>Description</label>
+            <small>Provide a description for your brew</small>
+            <textarea id="description" required name="description" data-ng-model="description"></textarea>
+            <button type="submit">Add Description to Review</button>
+          </form>
+        </section>
+
+        <hr>
+
+        <!-- ingredients -->
+        <section>
+          <h3><strong>Step 2</strong> &ndash; Ingredients</h3>
+          <form id="form_ingredients" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addIngredient(ingredient)">
+            <label>Item</label>
+            <small>The ingredient item</small>
+            <input type="text" required name="ingredient" data-ng-model="ingredient.item"/>
+            <label>Amount</label>
+            <small>The quantity of the ingredient</small>
+            <input type="number" required name="amount" data-ng-model="ingredient.amount"/>
+            <label>Unit</label>
+            <small>The unit of measurement for the ingredient</small>
+            <select data-ng-model="ingredient.unit">
+              <option>Cups</option>
+              <option>Gallons</option>
+              <option>Quarts</option>
+              <option>Liters</option>
+              <option>Pounds</option>
+              <option>Ounces</option>
+              <option>Teaspoons</option>
+              <option>Tablespoons</option>
+              <option>Packet</option>
+            </select>
+            <button type="submit">Add Ingredient to Review</button>
+          </form>
+
+        </section>
+
+        <hr>
+
+        <!-- equipment. -->
+        <section>
+          <h3><strong>Step 3</strong> &ndash; Equipment</h3>
+          <form id="form_equipment" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
+
+            <label>Equipment</label>
+            <small>Gear needed to create your brew</small>
+            <select data-ng-model="item">
+              <option data-ng-repeat="equipment in availableEquipment">{{equipment.name}}</option>
+            </select>
+
+            <button type="submit">Add Equipment to Review</button>
+          </form>
+
+        </section>
+
+        <hr>
+
+        <!-- steps -->
+        <section>
+          <h3><strong>Step 4</strong> &ndash; Steps</h3>
+          <form id="form_steps" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addStep(step)">
+            <label>Directions</label>
+            <small>Outline the instructions to complete this step</small>
+            <textarea type="text" required name="instructions" data-ng-model="step.directions"></textarea>
+            <label>Offset</label>
+            <small>The amount of time this step takes</small>
+            <input type="number" name="days" placeholder="days" data-ng-model="step.offset.days"/>
+            <input type="number" name="hours" placeholder="hours" data-ng-model="step.offset.hours"/>
+            <input type="number" name="minutes" placeholder="minutes" data-ng-model="step.offset.minutes"/>
+            <button type="submit">Add Step to Review</button>
+          </form>
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

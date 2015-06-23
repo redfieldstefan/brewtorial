@@ -33,7 +33,11 @@ var recipeSchema = new mongoose.Schema({
   steps: [
     {
       directions: String,
-      offset: Number,
+      offset: {
+        days: Number,
+        hours: Number,
+        minutes: Number
+      },
       status: Boolean
     }
   ],

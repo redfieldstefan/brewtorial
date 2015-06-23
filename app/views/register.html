@@ -1,8 +1,8 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 <section id="register">
   <div class="inner">
-    <h1>All the cool kids do it,<br>shouldn't you too?</h1>
-    <p>Believe us, you want in on this.<br>Already on the list? Then <a href="#/sign_in" title="Sign In">Sign In</a>, already!</p>
+    <h1>We card those under 21.<br>Just kidding, get in here.</h1>
+    <p>Become a part of our brewing family.<br>Already on the list? Then <a href="#/sign_in" title="Sign In">Sign In</a>, already!</p>
 
     <!-- message -->
     <div id="message" data-ng-show="hasValidationErrors">
@@ -18,7 +18,7 @@
       <label>Password</label>
       <input type="password" name="password" data-ng-model="user.password" />
       <label>Confirm Password</label>
-      <input type="password" name="password_confirmation" data-ng-model="user.password_confirmation" />
+      <input type="password" class="last_field" name="password_confirmation" data-ng-model="user.password_confirmation" />
       <hr>
       <button data-ng-click="registerUser(user)">Create Account</button>
     </div>

@@ -1,28 +1,36 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 <section id="user">
   <div class="inner">
-    <article data-ng-controller="UserController">
-      <h1>My profile</h1>
-      <ul data-ng-init="getUser(user)">
-        <li>Picture: Add picture if we have extra time</li>
-        <li>Username: {{user.displayName}}</li>
-        <li>Email: {{user.email}}</li>
-      </ul>
-      <button type="button" data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit username</button>
+    <article class="page_form" data-ng-controller="UserController">
+      <h1>Profile</h1>
+      <div data-ng-init="getUser(user)">
+        <p><strong>Username:</strong> {{ user.displayName }}</p>
+        <p><strong>Email:</strong> {{ user.basic.email }}</p>
+        <h2>Current Brews</h2>
+        <ul data-ng-repeat="brew in user.currentBrews track by $index">
+          <li>
+            {{ brew.title }}
+            <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
+          </li>
+        </ul>
+        <button data-ng-click="gotoRecipes()">View the Recipes</button>
+        <hr>
+        <button data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
+      </div>  
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
-        <form name="profileForm" data-ng-submit="save({user:user})">
+        <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username
             <input placeholder="new username" data-ng-model="user.displayName" type="text">
           </label>
           <label>Email
-            <input placeholder="new email" data-ng-model="user.email" type="text">
+            <input placeholder="new email" data-ng-model="user.basic.email" type="text">
           </label>
           <button type="button" data-ng-click="cancelEdit(user)">Cancel</button>
           <button type="submit">submit</button>
         </form>
       </div>
       <button data-ng-click="deleteUser(user)">Delete profile</button>
-      <p>Note! The decision is final. Profile deletion cannot be undone.</p>
+      <p>Drink Up!</p>
     </article>
     <p><img src="images/logo.png" width="250"></p>
   </div>

@@ -17,9 +17,6 @@ require('./services/rest_resource')(brewtorialApp);
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
 require('./controllers/create_recipe_controller')(brewtorialApp);
-require('./controllers/dashboard_controller')(brewtorialApp);
-require('./controllers/equipment_controller')(brewtorialApp);
-require('./controllers/ingredient_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
 require('./controllers/recipe_controller')(brewtorialApp);
@@ -49,10 +46,6 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/create_recipe.html',
       controller: 'CreateRecipeController'
     })
-    .when('/dashboard', {
-      templateUrl: 'views/dashboard.html',
-      controller: 'DashboardController'
-    })
     .when('/equipment', {
       templateUrl: 'views/equipment.html',
       controller: 'EquipmentController'
@@ -70,7 +63,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       controller: 'AllRecipesController'
     })
     .when('/recipes/:_id', {
-      templateUrl: 'views/recipe.html',
+      templateUrl: 'views/recipes.html',
       controller: 'RecipeController'
     })
     .when('/register', {
@@ -85,7 +78,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/sign_out.html',
       controller: 'SignOutController'
     })
-    .when('/user', {
+    .when('/profile', {
       templateUrl: 'views/user.html',
       controller: 'UserController'
     })

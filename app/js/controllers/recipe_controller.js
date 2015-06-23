@@ -1,7 +1,6 @@
 module.exports = function(app) {
   app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
     $scope.page = 'recipe';
-
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
     $scope.errors = [];
@@ -17,7 +16,6 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-
         $scope.description = recipe.description;
         $scope.header = recipe.result.header;
         $scope.ingredients = recipe.result.ingredients;
@@ -26,6 +24,10 @@ module.exports = function(app) {
         $scope.id = recipe.result._id;
       });
     };
+
+    $scope.returnToRecipes = function() {
+      $location.path('/recipes');
+    }
 
     $scope.createBrewEvent = function() {
       var newBrew = {
@@ -45,3 +47,4 @@ module.exports = function(app) {
     };
   }]);
 };
+

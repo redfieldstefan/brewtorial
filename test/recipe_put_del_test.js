@@ -17,13 +17,14 @@ describe('Brewtorial recipe put/del by id routes', function() {
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testRecipeId;
 
-  var testUser = new User({
-    userId: uuid.v4(),
-    displayName: 'test',
-    basic: { email: 'testBrewer@example.com', password: password }
-  });
 
   beforeEach(function(done){
+    var testUser = new User({
+      userId: uuid.v4(),
+      displayName: 'test',
+      basic: { email: 'testBrewer@example.com', password: password }
+    });
+
     testUser.save(function(err, user) {
       if (err) console.log(err);
 

@@ -1,5 +1,5 @@
 {
-  "name": "brubuddy",
+  "name": "brewtorial",
   "version": "0.1.0",
   "description": "homebrew companion",
   "main": "server.js",
@@ -7,6 +7,10 @@
     "build": "grunt --gruntfile ./dev/Gruntfile.js",
     "test": "mocha dev/tests",
     "start": "nodemon server.js || node server.js"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/redfieldstefan/brewtorial.git"
   },
   "author": "",
   "contributors": [

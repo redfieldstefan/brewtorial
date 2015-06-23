@@ -8,46 +8,36 @@ var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = chai.expect;
-var Recipe = require('../models/Recipe');
 var User = require('../models/User');
+var BrewEvent = require('../models/BrewEvent');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Brewtorial recipe get/post all routes', function() {
+describe('Bru Buddy brew event post route', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
-  var testRecipe;
+  var testUserId;
+  var testBrew;
+  var testBrewId;
   var testToken;
 
-  var testUser = new User({
-    userId: uuid.v4(),
-    displayName: 'test',
-    basic: { email: 'testBrewer@example.com', password: password }
-  });
+  before(function(done) {
+    var testUser = new User({
+      userId: uuid.v4(),
+      displayName: 'test',
+      basic: { email: 'testbrewer@example.com', password: password }
+    });
 
-  before(function(done){
     testUser.save(function(err, user) {
       if (err) console.log(err);
 
-      var testUserId = user._id;
+      testUserId = user._id;
       user.generateToken(process.env.APP_SECRET, function(err, token) {
         if (err) console.log(err);
 
         testToken = token;
-        testRecipe = {
+        testBrew = {
           eat: testToken,
-          header: {
-            abv: 5,
-            author: testUserId,
-            brewTime: 20,
-            created: Date.now(),
-            difficulty: 2,
-            icon: 'www.test.com/img',
-            likes: 10,
-            popularity: [testUserId],
-            style: 'Amber',
-            title: 'American Amber'
-          },
-          equipment: ['big brew pot', 'thermometer'],
+          userId: testUserId,
           ingredients: [
             {item: 'malt extract', amount: '3.3', unit: 'pounds'},
             {item: 'hops', amount: '.5', unit: 'ounces'}
@@ -63,7 +53,8 @@ describe('Brewtorial recipe get/post all routes', function() {
               offset: 15,
               complete: false
             }
-          ]
+          ],
+          complete: false
         };
         done();
       });
@@ -76,27 +67,16 @@ describe('Brewtorial recipe get/post all routes', function() {
     });
   });
 
-
-  it('Should create a recipe', function(done) {
+  it('should create a new brew event', function(done) {
     chai.request('localhost:3000')
-      .post('/api/recipe')
-      .send(testRecipe)
+      .post('/api/brew/newbrew')
+      .send(testBrew)
       .end(function(err, res) {
-        expect(res.status).to.eql(200);
         expect(err).to.eql(null);
-        expect(res.body.success).to.eql(true);
-        done();
-      });
-  });
-
-  it('Should return a list of recipes', function(done) {
-    chai.request('localhost:3000')
-      .get('/api/recipe')
-      .end(function(err, res) {
         expect(res.status).to.eql(200);
-        expect(err).to.eql(null);
-        expect(res.body.success).to.eql(true);
-        expect(Array.isArray(res.body.result)).to.eql(true);
+        expect(res.body.message).to.eql('Brew event saved.');
+        expect(res.body.data._id).to.exist; //jshint ignore: line
+        expect(typeof res.body.data).to.eql('object');
         done();
       });
   });
