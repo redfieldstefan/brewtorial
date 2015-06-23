@@ -20,8 +20,8 @@ module.exports = function(app) {
       $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
       return {
 
-        getOne: function(resourceData, callback) {
-          $http.get('/api/' + resourceName + '/' + resourceData._id)
+        getOne: function(id, callback) {
+          $http.get('/api/' + resourceName + '/' + id)
             .success(handleSuccess(callback))
             .error(handleError(callback));
         },
@@ -38,14 +38,14 @@ module.exports = function(app) {
             .error(handleError(callback));
         },
 
-        save: function(resourceData, callback) {
-          $http.put('/api/' + resourceName + '/' + resourceData._id, resourceData)
+        save: function(id, resourceData, callback) {
+          $http.put('/api/' + resourceName + '/' + id, resourceData)
             .success(handleSuccess(callback))
             .error(handleError(callback));
         },
 
-        remove: function(resourceData, callback) {
-          $http.delete('/api/' + resourceName + '/' + resourceData._id)
+        remove: function(id, callback) {
+          $http.delete('/api/' + resourceName + '/' + id)
             .success(handleSuccess(callback))
             .error(handleError(callback));
         }
