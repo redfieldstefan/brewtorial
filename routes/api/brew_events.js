@@ -66,15 +66,13 @@ module.exports = function(router) {
             console.log('user saved');
           });
         });
-      } else if (req.body.complete === false) {
-        console.log('waht happened where\'s my kidney');
-        res.status(200)
-          .json({
-            success: true,
-            message: 'Brew event saved.',
-            data: data
-          });
       }
+      res.status(200)
+        .json({
+          success: true,
+          message: 'Brew event saved.',
+          data: data
+        });
     });
   });
 
