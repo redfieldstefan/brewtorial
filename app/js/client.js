@@ -38,7 +38,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/landing.html',
       controller: 'LandingController'
     })
-    .when('/brews/:_id', {
+    .when('/brews/:id', {
       templateUrl: 'views/brew.html',
       controller: 'BrewController'
     })
@@ -62,7 +62,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/all_recipes.html',
       controller: 'AllRecipesController'
     })
-    .when('/recipes/:_id', {
+    .when('/recipes/:id', {
       templateUrl: 'views/recipes.html',
       controller: 'RecipeController'
     })

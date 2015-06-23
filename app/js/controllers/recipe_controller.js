@@ -9,15 +9,18 @@ module.exports = function(app) {
     $scope.equipment = [];
     $scope.steps = [];
     $scope.id = '';
+    $scope.description = '';
 
     $scope.getRecipe = function() {
-      Recipe.getOne($routeParams, function(err, recipe) {
+      var recipeId = $routeParams.id;
+
+      Recipe.getOne(recipeId, function(err, recipe) {
         if (err) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
 
-        $scope.description = recipe.description;
+        $scope.description = recipe.result.description;
         $scope.header = recipe.result.header;
         $scope.ingredients = recipe.result.ingredients;
         $scope.equipment = recipe.result.equipment;
@@ -49,4 +52,3 @@ module.exports = function(app) {
     };
   }]);
 };
-
