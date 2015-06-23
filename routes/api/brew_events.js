@@ -9,17 +9,18 @@ module.exports = function(router) {
   router.post('/newbrew', eatAuth, function(req, res) {
     var newBrew = new BrewEvent(req.body);
     var thisUser = JSON.parse(JSON.stringify(req.body));
+    newBrew.userId = req.user._id;
     newBrew.steps.status = true; //set status to true: in process
     User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {
         console.log(err);
         return res.status(500).json({msg: 'internal server error'});
       }
-      user.currentBrews.push({title: newBrew.title, id: newBrew._id});
-      user.save(function(err, data) {
-        if(err) { return console.log(err);}
-        console.log(newBrew.title);
-      });
+      // user.currentBrews.push({title: newBrew.title, id: newBrew._id});
+      // user.save(function(err, data) {
+      //   if(err) { return console.log(err);}
+      //   console.log(newBrew.title);
+      // });
       newBrew.save(function(err, data) {
         if(err) { return console.log(err);}
         res.status(200)
