@@ -20,9 +20,9 @@
 
     <hr>
     <h2>Ready to Brew?</h2>
-    <button data-ng-click="startBrew()">Let's Do It!</button>
+    <button  data-ng-if="!started" data-ng-click="startBrew()">Let's Do It!</button>
     <ul class="ingredients"></ul>
-    <p>{{days}} Days {{hours}} hours {{minutes}} minutes </p>
+    <p>{{counter.days}} Days {{counter.hours}} hours {{counter.minutes}} minutes </p>
     <ul class="steps" data-ng-repeat="step in steps" data-ng-if="step.active === true">
       <li>
         <p>{{step.directions}}</p>
