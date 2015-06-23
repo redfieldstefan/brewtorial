@@ -45,14 +45,32 @@ module.exports = function(router) {
   });
 
   //brew is ready
-  router.put('/:id', function(req, res) {
+  router.put('/:id', eatAuth, function(req, res) {
     BrewEvent.update({_id: req.params.id}, req.body, function(err, data) {
       if (err) { return console.log(err);}
-
+      if(req.body.complete === true){
+        User.findOne({'_id': req.user._id}, function(err, user) {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({msg: 'internal server error'});
+          }
+          var userBrews = user.currentBrews;
+          for (var i = 0; i < userBrews.length; i++) {
+            if(userBrews[i].id == req.params.id) {
+              user.completedBrews.push(userBrews[i]);
+              userBrews.splice(userBrews.indexOf(userBrews[i]),1);
+            }
+          };
+          user.save(function(err, data) {
+            if(err) { return console.log(err);}
+            console.log('user saved');
+          });
+        });
+      }
       res.status(200)
         .json({
           success: true,
-          message: 'Successfully updated brew',
+          message: 'Brew event saved.',
           data: data
         });
     });
