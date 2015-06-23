@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 
-  LandingController.$inject = ['$scope', 'RESTService'];
+  LandingController.$inject = ['$scope', 'RESTResource'];
 
   function LandingController($scope, resource) {
     var greetings = [
@@ -30,18 +30,7 @@ module.exports = function(app) {
 
         $scope.tallies = data.result;
       });
-    }
-
-    $http.post('/api/service', {
-      method: 'getLandingTallies'
-    })
-      .success(function(data) {
-        $scope.tallies = data.result;
-      })
-      .error(function(data, status) {
-        console.log('FAILURE >', status, data);
-      });
-
+    };
   }
 
   app.controller('LandingController', LandingController);
