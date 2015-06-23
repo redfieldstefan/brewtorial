@@ -32,7 +32,7 @@ module.exports = function(app) {
         .error(function(data) {
           console.log(data);
           $scope.errors.push({msg: 'error getting user'});
-      });
+        });
     };
 
     $scope.getUser = function(user) {
