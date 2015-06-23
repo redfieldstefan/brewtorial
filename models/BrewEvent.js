@@ -24,7 +24,7 @@ var brewEventSchema = new mongoose.Schema({
       // steps move automatically to the next
     }
   ],
-  complete: false
+  complete: {type: Boolean, default: false}
 });
 
 // export model.
