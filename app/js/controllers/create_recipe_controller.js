@@ -35,7 +35,6 @@ module.exports = function(app) {
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
         } else {
-          console.log(data.result._id);
           clearForms();
           var address = data.result._id;
           $location.path('/recipes/' + address);
