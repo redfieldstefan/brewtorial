@@ -68,7 +68,8 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, status: false});
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
+      console.log($scope.steps);
       document.getElementById("form_steps").reset();
     };
 
