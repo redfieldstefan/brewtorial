@@ -9,6 +9,7 @@ module.exports = function(app) {
     $scope.equipment = [];
     $scope.steps = [];
     $scope.id = '';
+    $scope.description = '';
 
     $scope.getRecipe = function() {
       var recipeId = $routeParams.id;
@@ -18,7 +19,7 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-        $scope.description = recipe.description;
+        $scope.description = recipe.result.description;
         $scope.header = recipe.result.header;
         $scope.ingredients = recipe.result.ingredients;
         $scope.equipment = recipe.result.equipment;
