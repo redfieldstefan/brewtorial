@@ -16,7 +16,8 @@ module.exports = function(app) {
     $scope.errors = [];
     $scope.user;
     $scope.users = [];
-    $scope.userBrews;
+    $scope.currentBrews;
+    $scope.completedBrews;
 
     $scope.gotoRecipes = function() {
       $location.path('/recipes');
@@ -26,7 +27,6 @@ module.exports = function(app) {
       $http.get('/api/users/get')
         .success(function(data) {
           $scope.users = data;
-          $scope.userBrews = data.currentBrews;
         })
         .error(function(data) {
           console.log(data);
@@ -38,6 +38,8 @@ module.exports = function(app) {
       $http.get('/api/users/get/profile', user)
         .success(function(data) {
           $scope.user = data.user;
+          $scope.currentBrews = data.user.currentBrews;
+          $scope.completedBrews = data.user.completedBrews;
         })
         .error(function(data) {
           console.log(data);
@@ -68,7 +70,9 @@ module.exports = function(app) {
     };
 
     $scope.saveUser = function(user) {
-      user.editing = false;
+      if(user.editing) {
+        user.editing = false;
+      }
       $http.put('/api/users/update', user)
         .error(function(data) {
           console.log(data);
@@ -81,6 +85,26 @@ module.exports = function(app) {
       user.email = $scope.userCopy.email;
       user.editing = false;
       $scope.donutCopy = null;
+    };
+
+    $scope.removeCurrentBrew = function(brew) {
+      var currentBrews = $scope.currentBrews;
+      for (var i = 0; i < currentBrews.length; i++) {
+        if(brew === currentBrews[i].id){
+          currentBrews.splice(currentBrews.indexOf(currentBrews[i]), 1);
+        }
+      };
+      $scope.saveUser($scope.user);
+    };
+
+    $scope.removePastBrew = function(brew) {
+      var pastBrews = $scope.completedBrews;
+      for (var i = 0; i < pastBrews.length; i++) {
+        if(brew === pastBrews[i].id){
+          pastBrews.splice(pastBrews.indexOf(pastBrews[i]), 1);
+        }
+      };
+      $scope.saveUser($scope.user);
     };
 
     $scope.goToBrew = function(id){
