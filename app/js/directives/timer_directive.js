@@ -9,8 +9,12 @@ module.exports = function(app) {
       controller: 'BrewController',
       templateUrl: 'views/directives/timer.html',
        scope: {
-        start: '&',
-        stop: '&',
+        start: '=',
+        stop: '=',
+        days: '@',
+        hours: '@',
+        minutes: '@',
+        counter: '@'
       },
       transclude: true
     };

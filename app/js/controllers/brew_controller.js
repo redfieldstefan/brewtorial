@@ -19,7 +19,12 @@ module.exports = function(app) {
     $scope.steps;
     $scope.title;
     $scope.description;
-    $scope.counter;
+    $scope.counter = 500000;
+    $scope.now = Date.now();
+    $scope.days;
+    $scope.hours;
+    $scope.mins;
+    $scope.secs;
     $scope.started = false;
     $scope.congrats="CONGRATS! You've made a delicious brew"
 
@@ -103,33 +108,94 @@ module.exports = function(app) {
 
     //TIMER FUNCTIONS
 
-    var mytimeout = null; // the current timeoutID
-    // actual timer method, counts down every second, stops on zero
-    $scope.onTimeout = function() {
-      if($scope.counter ===  0) {
-        $scope.$broadcast('timer-stopped', 0);
-        $timeout.cancel(mytimeout);
-        return;
-      }
-      $scope.counter--;
-      mytimeout = $timeout($scope.onTimeout, 1000);
-    };
+    // var mytimeout = null; // the current timeoutID
+    // // actual timer method, counts down every second, stops on zero
+    // $scope.onTimeout = function() {
+    //   if($scope.counter ===  0) {
+    //     $scope.$broadcast('timer-stopped', 0);
+    //     $timeout.cancel(mytimeout);
+    //     return;
+    //   }
+    //   $scope.counter.minutes--;
+    //   mytimeout = $timeout($scope.onTimeout, 1000);
+    // };
 
-    $scope.startTimer = function() {
-      console.log('start');
-      mytimeout = $timeout($scope.onTimeout, 1000);
-    };
+    // $scope.startTimer = function() {
+    //   console.log('start');
+    //   mytimeout = $timeout($scope.onTimeout, 1000);
+    // };
 
-    $scope.stopTimer = function() {
-      console.log('stop');
-      $scope.$broadcast('timer-stopped', $scope.counter);
-      $timeout.cancel(mytimeout);
-    };
-    // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
-    $scope.$on('timer-stopped', function(event, remaining) {
-      if(remaining === 0) {
-        console.log('your time ran out!');
-      }
-    });
+    // $scope.stopTimer = function() {
+    //   console.log('stop');
+    //   $scope.$broadcast('timer-stopped', $scope.counter);
+    //   $timeout.cancel(mytimeout);
+    // };
+    // // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+    // $scope.$on('timer-stopped', function(event, remaining) {
+    //   if(remaining === 0) {
+    //     console.log('your time ran out!');
+    //   }
+    // });
+    // var mytimeout = null; // the current timeoutID
+    // // actual timer method, counts down every second, stops on zero
+    // $scope.onTimeout = function() {
+    //   if($scope.timer <=  0) {
+    //     $scope.$broadcast('timer-stopped', 0);
+    //     $timeout.cancel(mytimeout);
+    //     return;
+    //   }
+    //   var endTime = new Date($scope.now + $scope.counter);
+    //   $scope.timer = (endTime - Date.now())/1000;
+    //   mytimeout = $timeout($scope.onTimeout, 1000);
+    // };
+
+    // $scope.startTimer = function() {
+    //   console.log('start');
+    //   mytimeout = $timeout($scope.onTimeout, 1000);
+    // };
+
+    // $scope.stopTimer = function() {
+    //   console.log('stop');
+    //   $scope.$broadcast('timer-stopped', $scope.timer);
+    //   $timeout.cancel(mytimeout);
+    // };
+    // // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+    // $scope.$on('timer-stopped', function(event, remaining) {
+    //   if(remaining === 0) {
+    //     console.log('your time ran out!');
+    //   }
+    // });
+
+  //END INITIAL TIMER
+
+  // $scope.countDown = function(){
+  //   var timer = $timeout(function(){
+  //     var endTime = new Date($scope.now + $scope.counter);
+  //     $scope.timer = endTime - Date.now();
+  //     console.log($scope.timer);
+  //   }, 1000)
+  // };
+
+    $scope.startCounter = function(){
+      var counterDate = new Date($scope.now + $scope.counter);
+      var calculateUnit=function(secDiff, unitSeconds){
+        var tmp = Math.abs((tmp = secDiff/unitSeconds)) < 1? 0 : tmp;
+        return Math.abs(tmp < 0 ? Math.ceil(tmp) : Math.floor(tmp));
+      };
+      var calculate=function(){
+        var secDiff = Math.abs(Math.round(((new Date()) - counterDate)/1000));
+        $scope.days = calculateUnit(secDiff,86400);
+        $scope.hours = calculateUnit((secDiff-($scope.days*86400)),3600);
+        $scope.mins = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)),60);
+        $scope.secs = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)-($scope.mins*60)),1);
+      };
+      var update=function(){
+        calculate();
+        console.log($scope.secs);
+        $timeout(function(){update();}, (1000));
+      };
+      update();
+    }
+
   }]);
 };
