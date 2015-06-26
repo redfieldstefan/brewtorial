@@ -20,7 +20,6 @@ module.exports = function(app) {
     $scope.title;
     $scope.description;
     $scope.counter;
-    $scope.now = Date.now();
     $scope.days;
     $scope.hours;
     $scope.mins;
@@ -70,13 +69,11 @@ module.exports = function(app) {
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
       $scope.counter = $scope.totalTime($scope.steps[0]);
-      // $scope.counter = $scope.steps[0].offset;
       $scope.started = true;
       $scope.saveBrew();
     };
 
     $scope.startHere = function(step) {
-      // $scope.counter = step.offset;
       $scope.counter = $scope.totalTime(step);
       $scope.thisBrew.complete = false;
       $scope.steps.forEach(function(step){
@@ -97,7 +94,6 @@ module.exports = function(app) {
       next.active = true;
       $scope.saveBrew();
       if(!next.done){
-        // $scope.counter = next.offset;
         $scope.counter = $scope.totalTime(next);
         $scope.saveBrew();
       }
@@ -112,42 +108,9 @@ module.exports = function(app) {
       prev.active = true;
     };
 
-    //TIMER FUNCTIONS
-
-    // var mytimeout = null; // the current timeoutID
-    // // actual timer method, counts down every second, stops on zero
-    // $scope.onTimeout = function() {
-    //   if($scope.counter ===  0) {
-    //     $scope.$broadcast('timer-stopped', 0);
-    //     $timeout.cancel(mytimeout);
-    //     return;
-    //   }
-    //   $scope.counter.minutes--;
-    //   mytimeout = $timeout($scope.onTimeout, 1000);
-    // };
-
-    // $scope.startTimer = function() {
-    //   console.log('start');
-    //   mytimeout = $timeout($scope.onTimeout, 1000);
-    // };
-
-    // $scope.stopTimer = function() {
-    //   console.log('stop');
-    //   $scope.$broadcast('timer-stopped', $scope.counter);
-    //   $timeout.cancel(mytimeout);
-    // };
-    // // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
-    // $scope.$on('timer-stopped', function(event, remaining) {
-    //   if(remaining === 0) {
-    //     console.log('your time ran out!');
-    //   }
-    // });
-
-  //END INITIAL TIMER
-
+// NEW TIMER FUNCTIONS
     var counterTimeout;
     $scope.startTimer = function(){
-      var counterDate = new Date($scope.now + $scope.counter);
       var counterDate = new Date(Date.now() + $scope.counter);
       console.log($scope.counter);
       var calculateUnit = function(secDiff, unitSeconds){
@@ -178,33 +141,35 @@ module.exports = function(app) {
 };
 
 
+//ORIGINAL TIMER FOR REFERENCE
 
-
-// $scope.totalTime = function(step){
-//   if(!step.offset.days){
-//     if(!step.offset.hours){
-//       return step.offset.minutes * 60000;
-//     }
-//     if(!step.offset.minutes) {
-//       return step.offset.hours * 3600000;
-//     }
-//     return (step.offset.hours * 3600000) + (step.offset.minutes * 60000);
-//   } else if (!step.offset.hours) {
-//       if(!step.offset.days){
-//         return step.offset.minutes * 60000;
-//       }
-//       if(!step.offset.minutes) {
-//         return step.offset.days * 3600000;
-//       }
-//       return (step.offset.days * 86400000) + (step.offset.minutes * 60000);
-//   } else if (!step.offset.minutes) {
-//       if(!step.offset.days){
-//         return step.offset.hours * 3600000;
-//       }
-//       if(!step.offset.hours) {
-//         return step.offset.days * 3600000;
-//       }
-//       return (step.offset.days * 86400000) + (step.offset.hours * 3600000);
+// var mytimeout = null; // the current timeoutID
+// // actual timer method, counts down every second, stops on zero
+// $scope.onTimeout = function() {
+//   if($scope.counter ===  0) {
+//     $scope.$broadcast('timer-stopped', 0);
+//     $timeout.cancel(mytimeout);
+//     return;
 //   }
-//   return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000))
+//   $scope.counter.minutes--;
+//   mytimeout = $timeout($scope.onTimeout, 1000);
 // };
+
+// $scope.startTimer = function() {
+//   console.log('start');
+//   mytimeout = $timeout($scope.onTimeout, 1000);
+// };
+
+// $scope.stopTimer = function() {
+//   console.log('stop');
+//   $scope.$broadcast('timer-stopped', $scope.counter);
+//   $timeout.cancel(mytimeout);
+// };
+// // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+// $scope.$on('timer-stopped', function(event, remaining) {
+//   if(remaining === 0) {
+//     console.log('your time ran out!');
+//   }
+// });
+
+//END INITIAL TIMER
