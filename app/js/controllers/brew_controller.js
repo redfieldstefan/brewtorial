@@ -148,6 +148,7 @@ module.exports = function(app) {
     var counterTimeout;
     $scope.startTimer = function(){
       var counterDate = new Date($scope.now + $scope.counter);
+      var counterDate = new Date(Date.now() + $scope.counter);
       console.log($scope.counter);
       var calculateUnit = function(secDiff, unitSeconds){
         var tmp = Math.abs((tmp = secDiff/unitSeconds)) < 1? 0 : tmp;
