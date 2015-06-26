@@ -48,8 +48,9 @@ module.exports = function(app) {
         $scope.ingredients = brew.data.ingredients;
         $scope.title = brew.data.title;
         $scope.description = brew.data.description;
-        $scope.steps.forEach(function(step) {
+        brew.data.steps.forEach(function(step) {
           if (step.active === true) {
+            $scope.started = true;
             $scope.counter = $scope.totalTime(step);
           };
         });
@@ -109,6 +110,14 @@ module.exports = function(app) {
     };
 
 // NEW TIMER FUNCTIONS
+//THIS TIMER IS AN ALTERED FORM OF THE Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+// *********************************************************************************************
+// * Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+// * (http://PraveenLobo.com/techblog/javascript-counter-count-days-hours-minutes-seconds/)
+// * This notice MUST stay intact(in both JS file and SCRIPT tag) for legal use.
+// * http://praveenlobo.com/blog/disclaimer/
+// *********************************************************************************************
+
     var counterTimeout;
     $scope.startTimer = function(){
       var counterDate = new Date(Date.now() + $scope.counter);
@@ -125,7 +134,7 @@ module.exports = function(app) {
       };
       var update=function(){
         calculate();
-         if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
+        if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
             return $timeout.cancel(counterTimeout);
         };
         counterTimeout = $timeout(function(){
@@ -136,7 +145,6 @@ module.exports = function(app) {
     };
 
     $scope.stopTimer = function() {
-      console.log('stop');
       $scope.$broadcast('timer-stopped', $scope.counter);
       $timeout.cancel(counterTimeout);
     };

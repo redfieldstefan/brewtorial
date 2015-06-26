@@ -13,7 +13,7 @@
         <div class="right">
             <h2>Steps</h2>
             <ul>
-              <li data-ng-repeat="step in steps">{{ step.directions }} Time Required {{step.offset}}</li>
+              <li data-ng-repeat="step in steps">{{ step.directions }} <br> Time: Days {{step.offset.days}} : Hours {{step.offset.hours}} : Minutes {{step.offset.minutes}}</li>
             </ul>
         </div>
     </div>
@@ -22,11 +22,21 @@
     <h2>Ready to Brew?</h2>
     <button  data-ng-if="!started" data-ng-click="startBrew()">Let's Do It!</button>
     <ul class="ingredients"></ul>
-    <p>Days {{days}} : Hours {{hours}} : Minutes {{mins}} : Seconds{{secs}}</p>
+
+<!-- This timer is an adjusted version of the Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+    /**********************************************************************************************
+    * Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+    * (http://PraveenLobo.com/techblog/javascript-counter-count-days-hours-minutes-seconds/)
+    * This notice MUST stay intact(in both JS file and SCRIPT tag) for legal use.
+    * http://praveenlobo.com/blog/disclaimer/
+    **********************************************************************************************/ -->
+
+    <h3 id="timer-main">Days {{days}} : Hours {{hours}} : Minutes {{mins}} : Seconds {{secs}}</h3>
     <ul class="steps" data-ng-repeat="step in steps" data-ng-if="step.active === true">
       <li>
         <p>{{step.directions}}</p>
         <section class="timer">
+            <p>Time: Days {{step.offset.days}} : Hours {{step.offset.hours}} : Minutes {{step.offset.minutes}}</p>
             <button name="start" data-ng-click="startTimer()">Start</button>
             <button name="stop" data-ng-click="stopTimer()">Stop</button>
         </section>
