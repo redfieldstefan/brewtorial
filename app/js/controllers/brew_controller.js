@@ -19,7 +19,7 @@ module.exports = function(app) {
     $scope.steps;
     $scope.title;
     $scope.description;
-    $scope.counter = 500000;
+    $scope.counter;
     $scope.now = Date.now();
     $scope.days;
     $scope.hours;
@@ -28,12 +28,15 @@ module.exports = function(app) {
     $scope.started = false;
     $scope.congrats="CONGRATS! You've made a delicious brew"
 
-
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if (!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
     }
+
+    $scope.totalTime = function(step){
+      return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000))
+    };
 
     $scope.getBrew = function() {
       Brew.getOne(brewId, function(err, brew) {
@@ -48,8 +51,8 @@ module.exports = function(app) {
         $scope.description = brew.data.description;
         $scope.steps.forEach(function(step) {
           if (step.active === true) {
-            $scope.counter = step.offset;
-          }
+            $scope.counter = $scope.totalTime(step);
+          };
         });
       });
     };
@@ -66,13 +69,15 @@ module.exports = function(app) {
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
-      $scope.counter = $scope.steps[0].offset;
+      $scope.counter = $scope.totalTime($scope.steps[0]);
+      // $scope.counter = $scope.steps[0].offset;
       $scope.started = true;
       $scope.saveBrew();
     };
 
     $scope.startHere = function(step) {
-      $scope.counter = step.offset;
+      // $scope.counter = step.offset;
+      $scope.counter = $scope.totalTime(step);
       $scope.thisBrew.complete = false;
       $scope.steps.forEach(function(step){
         step.done = false;
@@ -92,7 +97,8 @@ module.exports = function(app) {
       next.active = true;
       $scope.saveBrew();
       if(!next.done){
-        $scope.counter = next.offset;
+        // $scope.counter = next.offset;
+        $scope.counter = $scope.totalTime(next);
         $scope.saveBrew();
       }
       if(!next){
@@ -136,53 +142,18 @@ module.exports = function(app) {
     //     console.log('your time ran out!');
     //   }
     // });
-    // var mytimeout = null; // the current timeoutID
-    // // actual timer method, counts down every second, stops on zero
-    // $scope.onTimeout = function() {
-    //   if($scope.timer <=  0) {
-    //     $scope.$broadcast('timer-stopped', 0);
-    //     $timeout.cancel(mytimeout);
-    //     return;
-    //   }
-    //   var endTime = new Date($scope.now + $scope.counter);
-    //   $scope.timer = (endTime - Date.now())/1000;
-    //   mytimeout = $timeout($scope.onTimeout, 1000);
-    // };
-
-    // $scope.startTimer = function() {
-    //   console.log('start');
-    //   mytimeout = $timeout($scope.onTimeout, 1000);
-    // };
-
-    // $scope.stopTimer = function() {
-    //   console.log('stop');
-    //   $scope.$broadcast('timer-stopped', $scope.timer);
-    //   $timeout.cancel(mytimeout);
-    // };
-    // // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
-    // $scope.$on('timer-stopped', function(event, remaining) {
-    //   if(remaining === 0) {
-    //     console.log('your time ran out!');
-    //   }
-    // });
 
   //END INITIAL TIMER
 
-  // $scope.countDown = function(){
-  //   var timer = $timeout(function(){
-  //     var endTime = new Date($scope.now + $scope.counter);
-  //     $scope.timer = endTime - Date.now();
-  //     console.log($scope.timer);
-  //   }, 1000)
-  // };
-
-    $scope.startCounter = function(){
+    var counterTimeout;
+    $scope.startTimer = function(){
       var counterDate = new Date($scope.now + $scope.counter);
-      var calculateUnit=function(secDiff, unitSeconds){
+      console.log($scope.counter);
+      var calculateUnit = function(secDiff, unitSeconds){
         var tmp = Math.abs((tmp = secDiff/unitSeconds)) < 1? 0 : tmp;
         return Math.abs(tmp < 0 ? Math.ceil(tmp) : Math.floor(tmp));
       };
-      var calculate=function(){
+      var calculate = function(){
         var secDiff = Math.abs(Math.round(((new Date()) - counterDate)/1000));
         $scope.days = calculateUnit(secDiff,86400);
         $scope.hours = calculateUnit((secDiff-($scope.days*86400)),3600);
@@ -191,11 +162,48 @@ module.exports = function(app) {
       };
       var update=function(){
         calculate();
-        console.log($scope.secs);
-        $timeout(function(){update();}, (1000));
+        counterTimeout = $timeout(function(){update();}, (1000));
       };
       update();
-    }
+    };
+
+    $scope.stopTimer = function() {
+      console.log('stop');
+      $scope.$broadcast('timer-stopped', $scope.counter);
+      $timeout.cancel(counterTimeout);
+    };
 
   }]);
 };
+
+
+
+
+// $scope.totalTime = function(step){
+//   if(!step.offset.days){
+//     if(!step.offset.hours){
+//       return step.offset.minutes * 60000;
+//     }
+//     if(!step.offset.minutes) {
+//       return step.offset.hours * 3600000;
+//     }
+//     return (step.offset.hours * 3600000) + (step.offset.minutes * 60000);
+//   } else if (!step.offset.hours) {
+//       if(!step.offset.days){
+//         return step.offset.minutes * 60000;
+//       }
+//       if(!step.offset.minutes) {
+//         return step.offset.days * 3600000;
+//       }
+//       return (step.offset.days * 86400000) + (step.offset.minutes * 60000);
+//   } else if (!step.offset.minutes) {
+//       if(!step.offset.days){
+//         return step.offset.hours * 3600000;
+//       }
+//       if(!step.offset.hours) {
+//         return step.offset.days * 3600000;
+//       }
+//       return (step.offset.days * 86400000) + (step.offset.hours * 3600000);
+//   }
+//   return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000))
+// };
