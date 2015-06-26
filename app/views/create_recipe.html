@@ -166,9 +166,9 @@
             <textarea type="text" required name="instructions" data-ng-model="step.directions"></textarea>
             <label>Offset</label>
             <small>The amount of time this step takes</small>
-            <input type="number" name="days" placeholder="days" data-ng-model="step.offset.days"/>
-            <input type="number" name="hours" placeholder="hours" data-ng-model="step.offset.hours"/>
-            <input type="number" name="minutes" placeholder="minutes" data-ng-model="step.offset.minutes"/>
+            <input type="number" name="days" placeholder="days" value = "0" data-ng-model="step.offset.days"/>
+            <input type="number" name="hours" placeholder="hours" value = "0" data-ng-model="step.offset.hours"/>
+            <input type="number" name="minutes" placeholder="minutes" value = "0" data-ng-model="step.offset.minutes"/>
             <button type="submit">Add Step to Review</button>
           </form>
         </section>

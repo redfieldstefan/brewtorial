@@ -68,9 +68,7 @@ module.exports = function(app) {
     };
 
     $scope.addStep = function(step) {
-      // $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: (step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000), status: false});
-      console.log($scope.steps);
+      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
       document.getElementById("form_steps").reset();
     };
 
