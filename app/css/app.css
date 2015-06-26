@@ -72,6 +72,10 @@ button {
   outline: none;
 }
 
+ul {
+  list-style: none;
+}
+
 h1 {
   font-family: 'Libre Baskerville', serif;
   color: #fff;
@@ -194,7 +198,7 @@ td, th {
 }
 
 tbody tr:nth-child(odd) td {
-  background: hsla(0, 0%, 0%, 0.05);  
+  background: hsla(0, 0%, 0%, 0.05);
 }
 
 thead th {
@@ -220,7 +224,7 @@ thead th {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('./images/beer.jpg') no-repeat center center fixed; 
+  background: url('./images/beer.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -228,30 +232,30 @@ thead th {
 }
 
 /* blue */
-main[data-page='landing'] { 
+main[data-page='landing'] {
   background-color: hsla(199, 98%, 48%, 0.9);
 }
 
 /* yellow */
-main[data-page='profile'] { 
+main[data-page='profile'] {
   background-color: hsla(45, 100%, 51%, 0.9);
 }
 
 /* register */
-main[data-page='register'] { 
+main[data-page='register'] {
   background-color: hsla(291, 64%, 42%, 0.9);
 }
 
 /* magenta */
 main[data-page='user'],
-main[data-page='recipe'] { 
-  background-color: hsla(340, 82%, 52%, 0.9); 
+main[data-page='recipe'] {
+  background-color: hsla(340, 82%, 52%, 0.9);
 }
 
 /* green */
 main[data-page='sign_in'],
-main[data-page='sign_out'] { 
-  background-color: hsla(88, 50%, 53%, 0.9); 
+main[data-page='sign_out'] {
+  background-color: hsla(88, 50%, 53%, 0.9);
 }
 
 /* gray blue */
@@ -319,7 +323,7 @@ main[data-page='brew'] {
   width: 42px;
   height: 42px;
   box-sizing: border-box;
-  padding: 0;  
+  padding: 0;
 }
 
 #nav li.user img {
