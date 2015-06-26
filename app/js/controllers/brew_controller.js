@@ -112,7 +112,6 @@ module.exports = function(app) {
     var counterTimeout;
     $scope.startTimer = function(){
       var counterDate = new Date(Date.now() + $scope.counter);
-      console.log($scope.counter);
       var calculateUnit = function(secDiff, unitSeconds){
         var tmp = Math.abs((tmp = secDiff/unitSeconds)) < 1? 0 : tmp;
         return Math.abs(tmp < 0 ? Math.ceil(tmp) : Math.floor(tmp));
@@ -126,7 +125,12 @@ module.exports = function(app) {
       };
       var update=function(){
         calculate();
-        counterTimeout = $timeout(function(){update();}, (1000));
+         if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
+            return $timeout.cancel(counterTimeout);
+        };
+        counterTimeout = $timeout(function(){
+          update();
+        }, (1000));
       };
       update();
     };
