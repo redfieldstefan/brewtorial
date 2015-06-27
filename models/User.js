@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var BrewEvent = require('./BrewEvent')
 var bcrypt = require('bcrypt-nodejs');
 var eat = require('eat');
 
@@ -12,6 +13,22 @@ var userSchema = mongoose.Schema({
   currentBrews: [],
   completedBrews: []
 });
+
+userSchema.methods.findBrewEvents = function(callback) {
+  var user = this;
+  BrewEvent.find({userId: user}, function(err, brewEvents){
+    if(err){
+      callback(err);
+    }
+    console.log(brewEvents);
+    user.currentBrews = brewEvents;
+    user.save(function(err){
+      if(err) {
+        console.log(err);
+      }
+    });
+  });
+};
 
 userSchema.methods.generateHash = function(password, callback) {
   bcrypt.genSalt(8, function(err, salt) {

@@ -29,7 +29,7 @@ module.exports = function(app) {
         steps: $scope.steps,
         description: $scope.description
       };
-
+      console.log(newRecipe);
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
@@ -67,8 +67,20 @@ module.exports = function(app) {
       document.getElementById("form_ingredients").reset();
     };
 
-    $scope.addStep = function(step) {
-      $scope.steps.push({position: ($scope.steps.length + 1 ), directions: step.directions, offset: step.offset, status: false});
+     $scope.addStep = function(step) {
+      if(!step.offset.days){
+        step.offset.days = 0;
+      }
+      if(!step.offset.hours){
+        step.offset.hours = 0;
+      }
+      if(!step.offset.minutes){
+        step.offset.minutes = 0;
+      }
+      $scope.steps.push({directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
+      step.offset.days = 0;
+      step.offset.hours = 0;
+      step.offset.minutes = 0;
       document.getElementById("form_steps").reset();
     };
 

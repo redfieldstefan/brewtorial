@@ -19,7 +19,6 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-
         $scope.description = recipe.result.description;
         $scope.header = recipe.result.header;
         $scope.ingredients = recipe.result.ingredients;
@@ -45,7 +44,6 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-
         var id = res.data._id;
         $location.path('/brews/' + id);
       });

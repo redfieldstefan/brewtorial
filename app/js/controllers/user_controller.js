@@ -26,7 +26,6 @@ module.exports = function(app) {
     $scope.getUsers = function() {
       $http.get('/api/users/get')
         .success(function(data) {
-          console.log(data);
           $scope.users = data;
         })
         .error(function(data) {
