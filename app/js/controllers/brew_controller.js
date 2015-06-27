@@ -24,7 +24,7 @@ module.exports = function(app) {
     $scope.hours;
     $scope.mins;
     $scope.secs;
-    $scope.started = false;
+    $scope.started;
     $scope.congrats="CONGRATS! You've made a delicious brew"
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
@@ -52,7 +52,7 @@ module.exports = function(app) {
           if (step.active === true) {
             $scope.started = true;
             $scope.counter = $scope.totalTime(step);
-          };
+          }
         });
       });
     };
