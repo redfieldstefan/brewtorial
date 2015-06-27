@@ -1,0 +1,13 @@
+#timer-main  {
+  color: #66FF99;
+  text-align: center;
+}
+
+section #timer-case {
+  background: black;
+  padding: 25px;
+}
+
+section #timer-case p {
+  color: white;
+}

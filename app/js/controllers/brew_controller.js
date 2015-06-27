@@ -20,14 +20,22 @@ module.exports = function(app) {
     $scope.title;
     $scope.description;
     $scope.counter;
+    $scope.days;
+    $scope.hours;
+    $scope.mins;
+    $scope.secs;
+    $scope.started;
     $scope.congrats="CONGRATS! You've made a delicious brew"
-
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if (!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
     }
+
+    $scope.totalTime = function(step){
+      return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000))
+    };
 
     $scope.getBrew = function() {
       Brew.getOne(brewId, function(err, brew) {
@@ -40,9 +48,10 @@ module.exports = function(app) {
         $scope.ingredients = brew.data.ingredients;
         $scope.title = brew.data.title;
         $scope.description = brew.data.description;
-        $scope.steps.forEach(function(step) {
+        brew.data.steps.forEach(function(step) {
           if (step.active === true) {
-            $scope.counter = step.offset;
+            $scope.started = true;
+            $scope.counter = $scope.totalTime(step);
           }
         });
       });
@@ -60,12 +69,13 @@ module.exports = function(app) {
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
-      $scope.counter = $scope.steps[0].offset;
+      $scope.counter = $scope.totalTime($scope.steps[0]);
+      $scope.started = true;
       $scope.saveBrew();
     };
 
     $scope.startHere = function(step) {
-      $scope.counter = step.offset;
+      $scope.counter = $scope.totalTime(step);
       $scope.thisBrew.complete = false;
       $scope.steps.forEach(function(step){
         step.done = false;
@@ -85,7 +95,7 @@ module.exports = function(app) {
       next.active = true;
       $scope.saveBrew();
       if(!next.done){
-        $scope.counter = next.offset;
+        $scope.counter = $scope.totalTime(next);
         $scope.saveBrew();
       }
       if(!next){
@@ -99,35 +109,79 @@ module.exports = function(app) {
       prev.active = true;
     };
 
-    //TIMER FUNCTIONS
+// NEW TIMER FUNCTIONS
+//THIS TIMER IS AN ALTERED FORM OF THE Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+// *********************************************************************************************
+// * Days-Hours-Minutes-Seconds Counter script by Praveen Lobo
+// * (http://PraveenLobo.com/techblog/javascript-counter-count-days-hours-minutes-seconds/)
+// * This notice MUST stay intact(in both JS file and SCRIPT tag) for legal use.
+// * http://praveenlobo.com/blog/disclaimer/
+// *********************************************************************************************
 
-    var mytimeout = null; // the current timeoutID
-    // actual timer method, counts down every second, stops on zero
-    $scope.onTimeout = function() {
-      if($scope.counter ===  0) {
-        $scope.$broadcast('timer-stopped', 0);
-        $timeout.cancel(mytimeout);
-        return;
-      }
-      $scope.counter--;
-      mytimeout = $timeout($scope.onTimeout, 1000);
-    };
-
-    $scope.startTimer = function() {
-      console.log('start');
-      mytimeout = $timeout($scope.onTimeout, 1000);
+    var counterTimeout;
+    $scope.startTimer = function(){
+      var counterDate = new Date(Date.now() + $scope.counter);
+      var calculateUnit = function(secDiff, unitSeconds){
+        var tmp = Math.abs((tmp = secDiff/unitSeconds)) < 1? 0 : tmp;
+        return Math.abs(tmp < 0 ? Math.ceil(tmp) : Math.floor(tmp));
+      };
+      var calculate = function(){
+        var secDiff = Math.abs(Math.round(((new Date()) - counterDate)/1000));
+        $scope.days = calculateUnit(secDiff,86400);
+        $scope.hours = calculateUnit((secDiff-($scope.days*86400)),3600);
+        $scope.mins = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)),60);
+        $scope.secs = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)-($scope.mins*60)),1);
+      };
+      var update=function(){
+        calculate();
+        if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
+            return $timeout.cancel(counterTimeout);
+        };
+        counterTimeout = $timeout(function(){
+          update();
+        }, (1000));
+      };
+      update();
     };
 
     $scope.stopTimer = function() {
-      console.log('stop');
       $scope.$broadcast('timer-stopped', $scope.counter);
-      $timeout.cancel(mytimeout);
+      $timeout.cancel(counterTimeout);
     };
-    // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
-    $scope.$on('timer-stopped', function(event, remaining) {
-      if(remaining === 0) {
-        console.log('your time ran out!');
-      }
-    });
+
   }]);
 };
+
+
+//ORIGINAL TIMER FOR REFERENCE
+
+// var mytimeout = null; // the current timeoutID
+// // actual timer method, counts down every second, stops on zero
+// $scope.onTimeout = function() {
+//   if($scope.counter ===  0) {
+//     $scope.$broadcast('timer-stopped', 0);
+//     $timeout.cancel(mytimeout);
+//     return;
+//   }
+//   $scope.counter.minutes--;
+//   mytimeout = $timeout($scope.onTimeout, 1000);
+// };
+
+// $scope.startTimer = function() {
+//   console.log('start');
+//   mytimeout = $timeout($scope.onTimeout, 1000);
+// };
+
+// $scope.stopTimer = function() {
+//   console.log('stop');
+//   $scope.$broadcast('timer-stopped', $scope.counter);
+//   $timeout.cancel(mytimeout);
+// };
+// // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+// $scope.$on('timer-stopped', function(event, remaining) {
+//   if(remaining === 0) {
+//     console.log('your time ran out!');
+//   }
+// });
+
+//END INITIAL TIMER

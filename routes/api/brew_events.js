@@ -9,6 +9,7 @@ module.exports = function(router) {
   router.post('/newbrew', eatAuth, function(req, res) {
     var newBrew = new BrewEvent(req.body);
     var thisUser = JSON.parse(JSON.stringify(req.body));
+    newBrew.userId = req.user._id;
     newBrew.steps.status = true; //set status to true: in process
     User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {

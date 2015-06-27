@@ -2,7 +2,6 @@ module.exports = function(grunt) {
 
   // configure grunt.
   grunt.file.defaultEncoding = 'utf8';
-  // grunt.file.setBase('../');
   var path = require("path");
 
   // load npm tasks.
@@ -15,7 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-karma');
 
-  var watchFiles = ['./app/**/*.js', './app/**/*.css', './app/**/*.html'];
+  var watchFiles = ['Gruntfile.js','./app/**/*.js', './app/**/*.css', './app/**/*.html'];
 
   // configure tasks.
   grunt.initConfig({
@@ -150,7 +149,8 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      tasks: ['copy:html', 'copy:css']
+      // tasks: ['webpack:client','copy:html', 'copy:css']
+      tasks: ['build']
     }
 
   });
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev', 'karma']);
   grunt.registerTask('build:test', ['webpack:karma_test'])
-  grunt.registerTask('build:dev', ['clean', 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
+  grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('am', ['build:dev', 'watch']);
 };

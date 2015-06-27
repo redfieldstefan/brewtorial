@@ -1,8 +1,7 @@
-// import modules.
+
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-// define schema.
 var brewEventSchema = new mongoose.Schema({
   userId: ObjectId,
   recipe: ObjectId,
@@ -18,7 +17,11 @@ var brewEventSchema = new mongoose.Schema({
   steps: [
     {
       directions: String,
-      offset: Number, //length of the brew event
+      offset: {
+        days: Number,
+        hours: Number,
+        minutes: Number
+      }, //length of the brew event
       active: false,
       done: false
       // steps move automatically to the next
@@ -27,5 +30,4 @@ var brewEventSchema = new mongoose.Schema({
   complete: {type: Boolean, default: false}
 });
 
-// export model.
 module.exports = mongoose.model('BrewEvent', brewEventSchema);

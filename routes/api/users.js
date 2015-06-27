@@ -108,6 +108,13 @@ module.exports = function(router, passport) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
       }
+      // user.findBrewEvents(function(){
+      //   if(err){
+      //     console.log(err);
+      //     res.status(500).json({err: 'internal server error, could not find brew events'});
+      //   }
+      //   console.log('successfuly retrieved brew events');
+      // });
       res.status(200).json({user: user});
     });
   });
