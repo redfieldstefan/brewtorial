@@ -1,13 +1,44 @@
-#timer-main  {
-  color: #66FF99;
-  text-align: center;
-}
-
 section #timer-case {
-  background: black;
+  background-color:rgba(0,0,0,0.75);
   padding: 25px;
 }
 
 section #timer-case p {
   color: white;
+}
+
+#timer-main {
+  width: 100%;
+  float: left;
+  padding-bottom: 50px;
+}
+
+#timer-main h3{
+  color: #66FF99;
+  text-align: center;
+}
+
+#timer-main .buttons {
+  width: 175px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#timer-main .buttons button {
+  width: 45%;
+  border: 0;
+}
+
+#spinner {
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+
+
+.timer {
+  width: 100%;
 }
