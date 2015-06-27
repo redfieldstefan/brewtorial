@@ -15,16 +15,13 @@ module.exports = function(app) {
     $scope.page = 'brew';
     $scope.thisBrew;
     $scope.errors = [];
-    $scope.ingredients;
-    $scope.steps;
-    $scope.title;
-    $scope.description;
     $scope.counter;
     $scope.days;
     $scope.hours;
     $scope.mins;
     $scope.secs;
     $scope.started;
+    $scope.brewing;
     $scope.congrats="CONGRATS! You've made a delicious brew"
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
@@ -44,10 +41,7 @@ module.exports = function(app) {
           return console.log({msg: 'Dang, error fetching the brew event'});
         }
         $scope.thisBrew = brew.data;
-        $scope.steps = brew.data.steps;
-        $scope.ingredients = brew.data.ingredients;
-        $scope.title = brew.data.title;
-        $scope.description = brew.data.description;
+        // $scope.steps = brew.data.steps;
         brew.data.steps.forEach(function(step) {
           if (step.active === true) {
             $scope.started = true;
@@ -69,7 +63,7 @@ module.exports = function(app) {
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
-      $scope.counter = $scope.totalTime($scope.steps[0]);
+      $scope.counter = $scope.totalTime($scope.thisBrew.steps[0]);
       $scope.started = true;
       $scope.saveBrew();
     };
@@ -135,18 +129,22 @@ module.exports = function(app) {
       var update=function(){
         calculate();
         if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
-            return $timeout.cancel(counterTimeout);
+              $scope.brewing = false;
+              $timeout.cancel(counterTimeout);
+              return
         };
         counterTimeout = $timeout(function(){
           update();
         }, (1000));
       };
+      $scope.brewing = true;
       update();
     };
 
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       $timeout.cancel(counterTimeout);
+      $scope.brewing = false;
     };
 
   }]);
