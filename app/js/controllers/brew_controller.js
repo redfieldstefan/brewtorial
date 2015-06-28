@@ -14,6 +14,7 @@ module.exports = function(app) {
     var brewId = $routeParams.id;
     $scope.page = 'brew';
     $scope.thisBrew;
+    $scope.steps;
     $scope.errors = [];
     $scope.counter;
     $scope.days;
@@ -41,6 +42,7 @@ module.exports = function(app) {
           return console.log({msg: 'Dang, error fetching the brew event'});
         }
         $scope.thisBrew = brew.data;
+        $scope.steps = brew.data.steps;
         // $scope.steps = brew.data.steps;
         brew.data.steps.forEach(function(step) {
           if (step.active === true) {
@@ -63,7 +65,7 @@ module.exports = function(app) {
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
-      $scope.counter = $scope.totalTime($scope.thisBrew.steps[0]);
+      $scope.counter = $scope.totalTime($scope.steps[0]);
       $scope.started = true;
       $scope.saveBrew();
     };
