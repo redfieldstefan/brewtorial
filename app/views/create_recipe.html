@@ -46,7 +46,7 @@
 
             <h3>Steps:</h3>
             <ol>
-              <li data-ng-repeat="step in steps">{{step.directions}}: (<em>Time Requred: {{step.offset}}</em>)</li>
+              <li data-ng-repeat="step in steps">{{step.directions}}: (<em>Time Requred: Days: {{step.offset.days}} Hours: {{step.offset.hours}} Minutes: {{step.offset.minutes}}</em>)</li>
             </ol>
 
             <hr>
