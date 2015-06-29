@@ -13,7 +13,7 @@ var BrewEvent = require('../models/BrewEvent');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Bru Buddy brew event post route', function(){
+describe('Brewtorial brew event post route', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testUserId;
   var testBrew;
