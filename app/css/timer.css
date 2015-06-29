@@ -8,6 +8,10 @@ section #timer-case p {
   color: white;
 }
 
+section #timer-case h1 {
+  padding: 0;
+}
+
 #timer-main {
   width: 100%;
   float: left;

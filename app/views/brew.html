@@ -2,9 +2,9 @@
 
 <section class="page_form" id="brew" data-ng-controller="BrewController">
   <div class="inner">
-    <h1>{{ thisBrew.title }}</h1>
      <section id = "timer-case">
-        <h2>Ready to Brew?</h2>
+        <h1>{{ thisBrew.title }}</h1>
+        <h2 data-ng-if="!started">Ready to Brew?</h2>
         <button  data-ng-if="!started" data-ng-click="startBrew()">Let's Do It!</button>
         <ul class="ingredients"></ul>
 
