@@ -39,14 +39,19 @@
 
             <h3>Equipment:</h3>
             <ul>
-              <li data-ng-repeat="equipment in equipment">{{equipment}}</li>
+              <li data-ng-repeat="equipment in equipment track by $index">{{equipment}}</li>
             </ul>
 
             <hr>
 
             <h3>Steps:</h3>
             <ol>
-              <li data-ng-repeat="step in steps"><!--{{step.position}}.-->{{step.directions}}: (<em>Time Requred: {{step.offset}}</em>)</li>
+              <li data-ng-repeat="step in steps">{{step.directions}}:
+                (<em>Time Requred:
+                  {{step.offset.days}} Days,
+                  {{step.offset.hours}} Hours,
+                  {{step.offset.minutes}} Minutes
+                </em>)</li>
             </ol>
 
             <hr>
@@ -166,7 +171,9 @@
             <textarea type="text" required name="instructions" data-ng-model="step.directions"></textarea>
             <label>Offset</label>
             <small>The amount of time this step takes</small>
-            <input type="number" required name="time" data-ng-model="step.offset"/>
+            <input type="number" name="days" placeholder="days"  data-ng-model="step.offset.days"/>
+            <input type="number" name="hours" placeholder="hours"  data-ng-model="step.offset.hours"/>
+            <input type="number" name="minutes" placeholder="minutes"  data-ng-model="step.offset.minutes"/>
             <button type="submit">Add Step to Review</button>
           </form>
         </section>
@@ -178,30 +185,3 @@
   </div>
 
 </article>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

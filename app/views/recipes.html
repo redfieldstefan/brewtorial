@@ -69,12 +69,12 @@
           <hr>
           <h3>Steps:</h3>
           <ol>
-            <li data-ng-repeat="step in steps">{{ step.directions }} (<em>Time: {{ step.offset }}</em>)</li>
+            <li data-ng-repeat="step in steps">{{ step.directions }} (<em>Time: {{ step.offset.days }} Days {{ step.offset.hours }} Hours {{ step.offset.minutes }} Minutes</em>)</li>
           </ol>
-        </div>        
+        </div>
         <hr>
         <p><button data-ng-click="createBrewEvent()">Brew This!</button></p>
-      </form>    
+      </form>
 
     </div>
 
