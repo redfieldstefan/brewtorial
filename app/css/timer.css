@@ -1,6 +1,7 @@
 section #timer-case {
   background-color:rgba(0,0,0,0.75);
   padding: 25px;
+  margin-top: 50px;
 }
 
 section #timer-case p {
