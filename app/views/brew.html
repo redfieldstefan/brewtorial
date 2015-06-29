@@ -3,23 +3,7 @@
 <section class="page_form" id="brew" data-ng-controller="BrewController">
   <div class="inner">
     <h1>{{ thisBrew.title }}</h1>
-    <div class="cf">
-        <div class="left">
-            <h2>Ingredients</h2>
-            <ul>
-              <li data-ng-repeat="ingredient in thisBrew.ingredients">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.item}}</li>
-            </ul>
-        </div>
-        <div class="right">
-            <h2>Steps</h2>
-            <ul>
-              <li data-ng-repeat="step in thisBrew.steps">{{ step.directions }} <br> Time: Days {{step.offset.days}} : Hours {{step.offset.hours}} : Minutes {{step.offset.minutes}}</li>
-            </ul>
-        </div>
-    </div>
-
-    <hr>
-    <section id = "timer-case">
+     <section id = "timer-case">
         <h2>Ready to Brew?</h2>
         <button  data-ng-if="!started" data-ng-click="startBrew()">Let's Do It!</button>
         <ul class="ingredients"></ul>
@@ -56,6 +40,23 @@
         </ul>
     </section>
     <h1 data-ng-if="thisBrew.complete === true">{{congrats}}</h1>
+    <div class="cf">
+        <div class="left">
+            <h2>Ingredients</h2>
+            <ul>
+              <li data-ng-repeat="ingredient in thisBrew.ingredients">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.item}}</li>
+            </ul>
+        </div>
+        <div class="right">
+            <h2>Steps</h2>
+            <ul>
+              <li data-ng-repeat="step in thisBrew.steps">{{ step.directions }} <br> Time: Days {{step.offset.days}} : Hours {{step.offset.hours}} : Minutes {{step.offset.minutes}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
     <p>Thanks for enjoying Brewtorial&trade; responsibly.</p>
 
     <p><img src="images/logo.png" width="250"></p>
