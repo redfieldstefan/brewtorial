@@ -14,11 +14,12 @@ var BrewEvent = require('../models/BrewEvent');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
-describe('Bru Buddy brew event routes', function(){
+describe('Brewtorial brew event get/put routes', function(){
   var password = bcrypt.hashSync('foobaz123', bcrypt.genSaltSync(8), null);
   var testUserId;
   var testBrew;
   var testBrewId;
+  var testToken;
 
   beforeEach(function(done){
     var testUser = new User({
@@ -31,33 +32,37 @@ describe('Bru Buddy brew event routes', function(){
       if (err) console.log(err);
 
       testUserId = user._id;
-
-      testBrew = new BrewEvent({
-        userId: testUserId,
-        ingredients: [
-          {item: 'malt extract', amount: '3.3', unit: 'pounds'},
-          {item: 'hops', amount: '.5', unit: 'ounces'}
-        ],
-        steps: [
-          {
-            directions: 'Fill brew pot with 3 gallons of fresh water.',
-            offset: 0,
-            complete: false
-          },
-          {
-            directions: 'Add steeping grains',
-            offset: 15,
-            complete: false
-          }
-        ],
-        complete: false
-      });
-
-      testBrew.save(function(err, brew) {
+      user.generateToken(process.env.APP_SECRET, function(err, token) {
         if (err) console.log(err);
 
-        testBrewId = brew._id;
-        done();
+        testToken = token;
+        testBrew = new BrewEvent({
+          userId: testUserId,
+          ingredients: [
+            {item: 'malt extract', amount: '3.3', unit: 'pounds'},
+            {item: 'hops', amount: '.5', unit: 'ounces'}
+          ],
+          steps: [
+            {
+              directions: 'Fill brew pot with 3 gallons of fresh water.',
+              offset: 0,
+              complete: false
+            },
+            {
+              directions: 'Add steeping grains',
+              offset: 15,
+              complete: false
+            }
+          ],
+          complete: false
+        });
+
+        testBrew.save(function(err, brew) {
+          if (err) console.log(err);
+
+          testBrewId = brew._id;
+          done();
+        });
       });
     });
   });
@@ -71,6 +76,7 @@ describe('Bru Buddy brew event routes', function(){
   it('should return to a brew event and have its state persist', function(done) {
     chai.request('localhost:3000')
       .get('/api/brew/' + testBrewId)
+      .send({eat: testToken})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
@@ -83,12 +89,12 @@ describe('Bru Buddy brew event routes', function(){
   it('should change the status of a brew event step', function(done) {
     chai.request('localhost:3000')
       .put('/api/brew/' + testBrewId)
-      .send({ steps: [{ status: false }]})
+      .send({ steps: [{ status: false }], eat: testToken})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
         expect(typeof res.body.data).to.eql('object');
-        expect(res.body.message).to.eql('Successfully updated brew');
+        expect(res.body.message).to.eql('Brew event saved.');
         done();
       });
   });
