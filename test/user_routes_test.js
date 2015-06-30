@@ -96,7 +96,7 @@ describe('Brewtorial user routes', function(){
 
   it('should update a users information', function(done) {
     chai.request('localhost:3000')
-      .put('/api/users')
+      .put('/api/users/' + testUserId)
       .send({displayName: 'changed', eat: testToken})
       .end(function(err, res) {
         expect(res.status).to.eql(200);
@@ -108,7 +108,7 @@ describe('Brewtorial user routes', function(){
 
   it('should delete a user', function(done) {
     chai.request('localhost:3000')
-      .del('/api/users')
+      .del('/api/users/' + testUserId)
       .send({eat: testToken})
       .end(function(err, res) {
         expect(res.status).to.eql(200);
