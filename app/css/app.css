@@ -75,9 +75,15 @@ button {
   outline: none;
 }
 
+  button:hover {
+    background: rgba(140, 252, 187, 1);
+  }
+
 ul {
   list-style: none;
+  padding-left: 0;
 }
+
 
 h1 {
   font-family: 'Libre Baskerville', serif;
@@ -202,6 +208,14 @@ td, th {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.075);
 }
 
+tr:hover{
+  background-color: rgba(140, 252, 187, 1);
+}
+
+tr:hover > td {
+  color: white;
+}
+
 tbody tr:nth-child(odd) td {
   background: hsla(0, 0%, 0%, 0.05);
 }
@@ -292,6 +306,10 @@ main[data-page='brew'] {
   margin: 0;
 }
 
+  #nav h1 a:hover {
+    color: rgba(140, 252, 187, 1);
+  }
+
 #nav img {
   width: 30px;
   margin-right: 5px;
@@ -303,7 +321,7 @@ main[data-page='brew'] {
   margin: 30px 15px 0 0;
 }
 
-#nav li.brew { margin-right: 30px; }
+#nav li.brew { margin-right: 10px; }
 
 #nav li.brew a {
   background: #f8d38d;
@@ -317,12 +335,17 @@ main[data-page='brew'] {
   border: 1px solid hsla(0, 0%, 0%, 0.15);
 }
 
+#nav li.brew a:hover {
+  background: rgba(140, 252, 187, 1);
+}
+
 #nav li.user {
   margin-right: 15px;
 }
 
 #nav li.user a {
-  background-color: hsla(0, 100%, 100%, 0.25);
+  /*background-color: hsla(0, 100%, 100%, 0.25);*/
+  background-color: rgba(0, 0, 0, 0.25);
   display: inline-block;
   border-radius: 50%;
   width: 42px;
@@ -340,13 +363,18 @@ main[data-page='brew'] {
 }
 
 #nav li a {
-  background-color: hsla(0, 100%, 100%, 0.15);
+  /*background-color: hsla(0, 100%, 100%, 0.15);*/
+  background-color: rgba(0, 0, 0, 0.25);
   display: inline-block;
   border-radius: 20px;
   padding: 10px 30px;
   border: 2px solid hsla(0, 100%, 100%, 0.3);
   font-weight: 300;
 }
+
+  #nav li a:hover {
+    background-color: rgba(140, 252, 187, 1);
+  }
 
 #nav sup {
   font-family: 'Open Sans';
@@ -526,6 +554,10 @@ main[data-page='dashboard'] input[type='text'] {
   border: 1px solid hsla(0, 0%, 0%, 0.15);
   border-radius: 7px;
 }
+
+  .page_form button:hover {
+    background: rgba(140, 252, 187, 1);
+  }
 
 .page_form textarea {
   width: 100%;
