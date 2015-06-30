@@ -51,7 +51,7 @@ Example input:
       difficulty: 1,
       ibu: 40,
       og: 15,
-      style: Porter,
+      style: 'Porter',
       title: 'Test'
     },
     equipment: ['Wort Chiller', 'Glass Carboy'],
