@@ -41,7 +41,7 @@ module.exports = function(app) {
       var areYouSure = prompt('Are you sure you want to delete your profile forever? Type "Yes" to confirm.');
       if (areYouSure.toLowerCase() === 'yes') {
         $scope.users.splice($scope.users.indexOf(user), 1);
-        $location.path('/register');
+        $location.path('/dashboard');
         auth.logout();
 
         User.remove(user._id, function(err, data) {
