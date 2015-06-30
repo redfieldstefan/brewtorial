@@ -24,7 +24,7 @@ module.exports = function(app) {
     };
 
     $scope.getUsers = function() {
-      $http.get('/api/users/get')
+      $http.get('/api/users/')
         .success(function(data) {
           $scope.users = data;
         })
@@ -35,7 +35,7 @@ module.exports = function(app) {
     };
 
     $scope.getUser = function(user) {
-      $http.get('/api/users/get/profile', user)
+      $http.get('/api/users/profile', user)
         .success(function(data) {
           $scope.user = data.user;
           $scope.currentBrews = data.user.currentBrews;
@@ -53,7 +53,7 @@ module.exports = function(app) {
         $scope.users.splice($scope.users.indexOf(user), 1);
         $location.path('/register');
         auth.logout();
-        $http.delete('/api/users/remove')
+        $http.delete('/api/users')
           .success(function(data) {
             console.log('deleted');
           })
@@ -73,7 +73,7 @@ module.exports = function(app) {
       if(user.editing) {
         user.editing = false;
       }
-      $http.put('/api/users/update', user)
+      $http.put('/api/users', user)
         .error(function(data) {
           console.log(data);
           $scope.errors.push({msg: 'could not update user'})
