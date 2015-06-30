@@ -1,0 +1,9 @@
+nav #nav {
+  background-color:rgba(0,0,0, 0.50);
+  width: 100%;
+  z-index: 10;
+}
+
+nav #nav h1 {
+  padding: 0;
+}
