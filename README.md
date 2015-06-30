@@ -15,18 +15,18 @@ Example input: `{ displayName: 'test', email: 'test@example.com', password: 'foo
 
 Example input: `'test@example.com:foobaz123'`
 
-###GET /api/users/profile/:id
+###GET /api/users/profile/
 
-Example url: `www.host.com/api/users/profile/123abc`
+Example url: `www.host.com/api/users/profile/`
 
 Example response: `{ email: 'test@example.com', displayName: 'test' }`
 
-###PUT /api/users/update/:id
+###PUT /api/users/:id
 
-Example url: `www.host.com/api/users/update/123abc`
+Example url: `www.host.com/api/users/123abc`
 
 Example input: `{ displayName: 'new name' }`
 
-###DEL /api/users/remove/:id
+###DEL /api/users/:id
 
-Example url: `www.host.com/api/users/remove/123abc`
+Example url: `www.host.com/api/users/123abc`
