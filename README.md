@@ -39,3 +39,37 @@ Example url: `www.host.com/api/users/123abc`
 ##Recipe Routes:
 
 ###*POST /api/recipe*
+**Creates a new recipe**
+
+Example input:
+```
+{
+  description: 'Test Recipe',
+    header: {
+      abv: 4
+      brewTime: 400,
+      difficulty: 1,
+      ibu: 40,
+      og: 15,
+      style: Porter,
+      title: 'Test'
+    },
+    equipment: ['Wort Chiller', 'Glass Carboy'],
+    ingredients: [
+      {
+        item: Hops,
+        amount: 4,
+        unit: 'Pounds'
+      }
+    ],
+    steps: [
+      {
+        directions: 'Add hops',
+        offset: {
+          days: 0,
+          hours: 0,
+          minutes: 10
+        }
+      }
+    ],
+  }
