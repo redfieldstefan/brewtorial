@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.controller('RecipeController', ['$scope', 'RESTResource', '$routeParams', '$location', function($scope, resource, $routeParams, $location) {
+  app.controller('RecipeController', ['$scope', '$anchorScroll', 'RESTResource', '$routeParams', '$location', function($scope, $anchorScroll, resource, $routeParams, $location) {
     $scope.page = 'recipe';
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
@@ -46,6 +46,7 @@ module.exports = function(app) {
         }
         var id = res.data._id;
         $location.path('/brews/' + id);
+        $anchorScroll();
       });
     };
   }]);
