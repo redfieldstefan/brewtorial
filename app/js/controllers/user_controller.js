@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 
-  app.controller('UserController', ['$scope', '$http', 'auth', '$cookies', '$location', function($scope, $http, auth, $cookies, $location) {
+  app.controller('UserController', ['$scope', 'RESTResource', 'auth', '$location', function($scope, resource, auth, $location) {
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if(!auth.isSignedIn()){
@@ -10,8 +10,9 @@ module.exports = function(app) {
       $location.path('/sign_in');
     }
 
-    var eat = $cookies.get('eat');
-    $http.defaults.headers.common['eat'] = eat; //jshint ignore: line
+    var User = resource('users');
+    var Profile = resource('users/profile');
+
     $scope.page = 'profile';
     $scope.errors = [];
     $scope.user;
@@ -23,28 +24,17 @@ module.exports = function(app) {
       $location.path('/recipes');
     };
 
-    $scope.getUsers = function() {
-      $http.get('/api/users/')
-        .success(function(data) {
-          $scope.users = data;
-        })
-        .error(function(data) {
-          console.log(data);
-          $scope.errors.push({msg: 'error getting user'});
-        });
-    };
+    $scope.getUser = function() {
+      Profile.getAll(function(err, data) {
+        if (err) {
+          console.log(err);
+          return $scope.errors.push({msg: 'Could not fetch profile'});
+        }
 
-    $scope.getUser = function(user) {
-      $http.get('/api/users/profile', user)
-        .success(function(data) {
-          $scope.user = data.user;
-          $scope.currentBrews = data.user.currentBrews;
-          $scope.completedBrews = data.user.completedBrews;
-        })
-        .error(function(data) {
-          console.log(data);
-          $scope.errors.push({msg: 'error getting user'});
-        });
+        $scope.user = data.user;
+        $scope.currentBrews = data.user.currentBrews;
+        $scope.completedBrews = data.user.completedBrews;
+      });
     };
 
     $scope.deleteUser = function(user) {
@@ -53,14 +43,13 @@ module.exports = function(app) {
         $scope.users.splice($scope.users.indexOf(user), 1);
         $location.path('/register');
         auth.logout();
-        $http.delete('/api/users')
-          .success(function(data) {
-            console.log('deleted');
-          })
-          .error(function(data) {
-            console.log('err:', data);
-            $scope.errors.push({msg: 'could not delete user'});
-          });
+
+        User.remove(user._id, function(err, data) {
+          if (err) {
+            console.log(err);
+            return $scope.errors.push({msg: 'Could not remove user'});
+          }
+        });
       }
     };
 
@@ -70,14 +59,14 @@ module.exports = function(app) {
     };
 
     $scope.saveUser = function(user) {
-      if(user.editing) {
-        user.editing = false;
-      }
-      $http.put('/api/users', user)
-        .error(function(data) {
-          console.log(data);
-          $scope.errors.push({msg: 'could not update user'})
-        });
+      user.editing = false;
+
+      User.save(user._id, user, function(err, data) {
+        if (err) {
+          console.log(err);
+          return $scope.errors.push({msg: 'Could not save user'});
+        }
+      });
     };
 
     $scope.cancelEdit = function(user) {
