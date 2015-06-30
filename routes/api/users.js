@@ -55,7 +55,7 @@ module.exports = function(router, passport) {
                 token: token
               }
             });
-          }
+        }
       });
     } else {
       res.status(200)
@@ -67,11 +67,11 @@ module.exports = function(router, passport) {
     }
   });
 
-  router.put('/update', eatAuth, function(req, res) {
+  router.put('/:id', eatAuth, function(req, res) {
     var updates = req.body;
     delete updates._id;
 
-    User.update({'_id': req.user.id}, updates, function(err, data) {
+    User.update({'_id': req.params.id}, updates, function(err, data) {
       if (err) {
         console.log(err);
         return res.status(500).json({err: 'internal server error'});
@@ -81,8 +81,8 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.delete('/remove', eatAuth, function(req, res) {
-    User.remove({'_id': req.user._id}, function(err, data) {
+  router.delete('/:id', eatAuth, function(req, res) {
+    User.remove({'_id': req.params.id}, function(err, data) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
@@ -92,7 +92,7 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/get', function(req, res) {
+  router.get('/', function(req, res) {
     User.find({}, function(err, users) {
       if (err) {
         console.log(err);
@@ -102,19 +102,20 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.get('/get/profile', eatAuth, function(req, res) {
+  router.get('/profile', eatAuth, function(req, res) {
     User.findOne({'_id': req.user._id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
       }
-      // user.findBrewEvents(function(){
-      //   if(err){
-      //     console.log(err);
-      //     res.status(500).json({err: 'internal server error, could not find brew events'});
-      //   }
-      //   console.log('successfuly retrieved brew events');
-      // });
+      user.findBrewEvents(function(){
+        if(err){
+          console.log(err);
+          res.status(500).json({err: 'internal server error, could not find brew events'});
+        }
+        console.log('successfuly retrieved brew events');
+      });
+
       res.status(200).json({user: user});
     });
   });
