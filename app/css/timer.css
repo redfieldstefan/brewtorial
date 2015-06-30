@@ -42,8 +42,10 @@ section #timer-case h1 {
   padding-bottom: 50px;
 }
 
-
-
 .timer {
   width: 100%;
+}
+
+.cf li {
+  padding-bottom: 25px;
 }

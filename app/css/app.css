@@ -208,11 +208,11 @@ td, th {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.075);
 }
 
-tr:hover{
+tr.all_recipes:hover{
   background-color: rgba(140, 252, 187, 1);
 }
 
-tr:hover > td {
+tr.all_recipes:hover > td {
   color: white;
 }
 

@@ -37,7 +37,7 @@
 
       <!-- body -->
       <tbody>
-        <tr data-ng-click="view(recipe)" ng-repeat="recipe in recipes | filter:search | orderBy:sortBy:sortOrder">
+        <tr class="all_recipes" data-ng-click="view(recipe)" ng-repeat="recipe in recipes | filter:search | orderBy:sortBy:sortOrder">
           <td>{{ recipe.header.popularity.length }}</td>
           <td><strong>{{ recipe.header.title }}</strong></td>
           <td>{{ recipe.header.abv }}%</td>
