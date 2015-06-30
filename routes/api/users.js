@@ -55,7 +55,7 @@ module.exports = function(router, passport) {
                 token: token
               }
             });
-          }
+        }
       });
     } else {
       res.status(200)
@@ -67,11 +67,11 @@ module.exports = function(router, passport) {
     }
   });
 
-  router.put('/', eatAuth, function(req, res) {
+  router.put('/:id', eatAuth, function(req, res) {
     var updates = req.body;
     delete updates._id;
 
-    User.update({'_id': req.user.id}, updates, function(err, data) {
+    User.update({'_id': req.params.id}, updates, function(err, data) {
       if (err) {
         console.log(err);
         return res.status(500).json({err: 'internal server error'});
@@ -81,8 +81,8 @@ module.exports = function(router, passport) {
     });
   });
 
-  router.delete('/', eatAuth, function(req, res) {
-    User.remove({'_id': req.user._id}, function(err, data) {
+  router.delete('/:id', eatAuth, function(req, res) {
+    User.remove({'_id': req.params.id}, function(err, data) {
       if (err) {
         console.log(err);
         res.status(500).json({err: 'internal server error'});
@@ -115,6 +115,7 @@ module.exports = function(router, passport) {
         }
         console.log('successfuly retrieved brew events');
       });
+
       res.status(200).json({user: user});
     });
   });
