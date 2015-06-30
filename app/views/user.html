@@ -29,13 +29,15 @@
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
         <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username
-            <input placeholder="new username" data-ng-model="user.displayName" type="text">
+            <input placeholder="new username"
+                   data-ng-model="user.displayName" type="text" required>
           </label>
           <label>Email
-            <input placeholder="new email" data-ng-model="user.basic.email" type="text">
+            <input placeholder="new email"
+                   data-ng-model="user.basic.email" type="text" required>
           </label>
           <button type="button" data-ng-click="cancelEdit(user)">Cancel</button>
-          <button type="submit">save</button>
+          <button data-ng-disabled="profileForm.$invalid" type="submit">save</button>
         </form>
       </div>
       <button data-ng-click="deleteUser(user)">Delete profile</button>
