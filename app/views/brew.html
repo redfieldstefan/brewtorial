@@ -42,6 +42,7 @@
     <h1 data-ng-if="thisBrew.complete === true">{{congrats}}</h1>
     <div class="cf">
         <div class="left">
+            <p>{{thisBrew.description}}</p>
             <h2>Ingredients</h2>
             <ul>
               <li data-ng-repeat="ingredient in thisBrew.ingredients">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.item}}</li>
