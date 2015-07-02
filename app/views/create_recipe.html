@@ -82,19 +82,19 @@
 
             <label>ABV%</label>
             <small>Enter the Alcohol by Volume percent</small>
-            <input type="number" required name="abv" data-ng-model="header.abv"/>
+            <input type="number" step="any" required name="abv" data-ng-model="header.abv"/>
 
             <label>IBU</label>
             <small>International Bittering Units of your brew</small>
-            <input type="number" required name="ibu" data-ng-model="header.ibu"/>
+            <input type="number" step="any" required name="ibu" data-ng-model="header.ibu"/>
 
             <label>OG</label>
             <small>Original Gravity of your brew</small>
-            <input type="number" required name="og" data-ng-model="header.og"/>
+            <input type="number" step="any" required name="og" data-ng-model="header.og"/>
 
             <label>Brewing Time</label>
             <small>How long it takes to prepare your brew</small>
-            <input type="number" required name="totalTime" data-ng-model="header.brewTime"/>
+            <input type="number" step="any" required name="totalTime" data-ng-model="header.brewTime"/>
 
             <label>Difficulty</label>
             <small>A scale of how easy (1) to hard (5) this brew is to make</small>
@@ -124,7 +124,7 @@
             <input type="text" required name="ingredient" data-ng-model="ingredient.item"/>
             <label>Amount</label>
             <small>The quantity of the ingredient</small>
-            <input type="number" required name="amount" data-ng-model="ingredient.amount"/>
+            <input type="number" required name="amount" step="any" data-ng-model="ingredient.amount"/>
             <label>Unit</label>
             <small>The unit of measurement for the ingredient</small>
             <select data-ng-model="ingredient.unit">
