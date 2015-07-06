@@ -144,13 +144,11 @@ module.exports = function(app) {
       $scope.brewing = true;
       update();
     };
-
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       $timeout.cancel(counterTimeout);
       $scope.brewing = false;
     };
-
   }]);
 };
 

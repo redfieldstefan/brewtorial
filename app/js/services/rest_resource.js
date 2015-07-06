@@ -7,13 +7,11 @@ module.exports = function(app) {
       callback(data);
     };
   };
-
   var handleSuccess = function(callback) {
     return function(data){
       callback(null, data);
     };
   };
-
   app.factory('RESTResource', ['$http', '$cookies', function($http, $cookies) {
     return function(resourceName) {
       var eat = $cookies.get('eat');
