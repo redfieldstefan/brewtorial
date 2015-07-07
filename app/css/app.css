@@ -1,6 +1,7 @@
 @import 'timer.css';
 @import 'nav.css';
 @import 'landing.css';
+@import 'profile.css';
 
 /* clear fix */
 .cf:before,
@@ -87,7 +88,8 @@ ul {
 
 
 h1 {
-  font-family: 'Libre Baskerville', serif;
+  /*font-family: 'Libre Baskerville', serif;*/
+  font-family: 'Roboto', serif;
   text-transform: uppercase;
   color: #fff;
   font-size: 65px;
@@ -100,7 +102,8 @@ h1 {
 }
 
 h2 {
-  font-family: 'Libre Baskerville';
+  /*font-family: 'Libre Baskerville';*/
+  font-family: 'Roboto', serif;
   font-size: 36px;
   font-weight: 300;
   color: hsla(0, 100%, 100%, 0.9);
@@ -525,15 +528,3 @@ main[data-page='dashboard'] input[type='text'] {
   font-size: 18px;
 }
 
-#user p {
-  font-size: 22px;
-  margin: 10px 0;
-}
-
-#user p strong {
-  color: hsla(0, 100%, 100%, 0.9);
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
-}
