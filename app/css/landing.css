@@ -1,0 +1,126 @@
+.landing-main {
+  margin-top: 75px;
+  width: 100%;
+  background-color:rgba(0,0,0,0.75);
+}
+
+.landing-main img.down-arrow {
+  width: 7%;
+  margin-left:46.5%;
+  margin-top: -50px;
+}
+
+.landing-main h1 {
+  padding-top: 75px;
+  font-size: 45px;
+}
+
+.landing-main ul.options {
+  width: 100%;
+  height: 300px;
+  margin: 100px auto;
+}
+
+.landing-main li {
+  border: 3px solid tomato;
+  float: left;
+  margin: 2% 2%;
+  width: 294px;
+  height: 294px;
+  background: white;
+  border-radius: 50%;
+}
+
+  .landing-main li:hover {
+    background: tomato;
+    cursor: pointer;
+  }
+
+  .landing-main li:hover > p {
+    color: white;
+  }
+
+.landing-main li p {
+  color: tomato;
+  font-size: 15px;
+  margin: 0;
+  line-height: 300px;
+  text-align: center;
+}
+
+.landing-main article {
+  background: white;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.landing-main article h1 {
+  color: rgba(140, 252, 187, 1);
+  padding-bottom: 50px;
+  text-shadow: none;
+}
+
+.landing-main article h3 {
+  width: 20%;
+  margin: 0 auto;
+  color: tomato;
+  text-align: center;
+  padding: 10px 25px;
+}
+
+  .landing-main article h3:hover {
+    color: white;
+    background: tomato;
+    cursor: pointer;
+  }
+
+.landing-main article p {
+  margin: 0 auto;
+  padding-bottom: 25px;
+  width: 55%;
+  text-align: justify;
+  color: black;
+}
+
+#tally {
+  margin: 0 auto;
+  padding: 50px 0 0 0;
+  width: 402px;
+}
+
+#tally div {
+  border-radius: 50%;
+  border: 2px solid hsla(0, 100%, 100%, 0.3);
+  background: hsla (0, 100%, 100%, 0.15);
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  font-size: 48px;
+  color: hsla(0, 100%, 100%, 0.9);
+  line-height: 2;
+}
+
+#tally li {
+  float: left;
+  list-style-type: none;
+  margin: 0 15px;
+}
+
+#tally p {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  font-family: 'Libre Baskerville';
+  font-size: 20px;
+  color: hsla(0, 100%, 100%, 0.9);
+  margin: 15px 0 0 0;
+}
+
+#tally ul {
+  margin: 0 auto;
+}
+
+

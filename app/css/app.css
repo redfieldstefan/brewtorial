@@ -1,5 +1,6 @@
 @import 'timer.css';
 @import 'nav.css';
+@import 'landing.css';
 
 /* clear fix */
 .cf:before,
@@ -39,9 +40,9 @@
 
 /* container */
 .inner {
-  max-width: 1120px;
+  /*max-width: 1220px;*/
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   position: relative;
 }
 
@@ -87,9 +88,10 @@ ul {
 
 h1 {
   font-family: 'Libre Baskerville', serif;
+  text-transform: uppercase;
   color: #fff;
-  font-size: 72px;
-  font-weight: 700;
+  font-size: 65px;
+  font-weight: 600;
   letter-spacing: -0.025em;
   text-align: center;
   text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
@@ -216,6 +218,10 @@ tr.all_recipes:hover > td {
   color: white;
 }
 
+tbody {
+  background: rgba(255, 255, 255, .50);
+}
+
 tbody tr:nth-child(odd) td {
   background: hsla(0, 0%, 0%, 0.05);
 }
@@ -268,7 +274,8 @@ main[data-page='register'] {
 /* magenta */
 main[data-page='user'],
 main[data-page='recipe'] {
-  background-color: hsla(340, 82%, 52%, 0.9);
+  /*background-color: hsla(340, 82%, 52%, 0.9);*/
+  background-color: hsla(199, 98%, 48%, 0.9);
 }
 
 /* green */
@@ -280,156 +287,6 @@ main[data-page='sign_out'] {
 /* gray blue */
 main[data-page='brew'] {
   background-color: hsla(200, 18%, 46%, 0.9);
-}
-
-/* ================================================================================================================== */
-/* global styles
-/* ================================================================================================================== */
-
-#nav .inner {
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.15);
-  margin: 0 auto;
-}
-
-#nav a {
-  color: hsla(0, 100%, 100%, 0.9);
-  display: inline-block;
-  padding: 30px;
-  text-transform: initial;
-}
-
-#nav h1 {
-  font-family: 'Libre Baskerville';
-  display: inline-block;
-  float: left;
-  font-size: 22px;
-  margin: 0;
-}
-
-  #nav h1 a:hover {
-    color: rgba(140, 252, 187, 1);
-  }
-
-#nav img {
-  width: 30px;
-  margin-right: 5px;
-}
-
-#nav li {
-  display: block;
-  float: right;
-  margin: 30px 15px 0 0;
-}
-
-#nav li.brew { margin-right: 10px; }
-
-#nav li.brew a {
-  background: #f8d38d;
-  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
-  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  padding: 11px 30px;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-}
-
-#nav li.brew a:hover {
-  background: rgba(140, 252, 187, 1);
-}
-
-#nav li.user {
-  margin-right: 15px;
-}
-
-#nav li.user a {
-  /*background-color: hsla(0, 100%, 100%, 0.25);*/
-  background-color: rgba(0, 0, 0, 0.25);
-  display: inline-block;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  box-sizing: border-box;
-  padding: 0;
-}
-
-#nav li.user img {
-  margin: 3px 0 0 5px;
-}
-
-#nav li:nth-child(2) {
-  margin-right: 15px;
-}
-
-#nav li a {
-  /*background-color: hsla(0, 100%, 100%, 0.15);*/
-  background-color: rgba(0, 0, 0, 0.25);
-  display: inline-block;
-  border-radius: 20px;
-  padding: 10px 30px;
-  border: 2px solid hsla(0, 100%, 100%, 0.3);
-  font-weight: 300;
-}
-
-  #nav li a:hover {
-    background-color: rgba(140, 252, 187, 1);
-  }
-
-#nav sup {
-  font-family: 'Open Sans';
-  font-weight: 300;
-  opacity: 0.5;
-  font-size: 16px;
-}
-
-#nav ul {
-  margin: 0;
-}
-
-/* ================================================================================================================== */
-/* landing styles
-/* ================================================================================================================== */
-
-#tally {
-  margin: 0 auto;
-  padding: 60px 0 0 0;
-  width: 402px;
-}
-
-#tally div {
-  border-radius: 50%;
-  border: 2px solid hsla(0, 100%, 100%, 0.3);
-  background: hsla (0, 100%, 100%, 0.15);
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  font-family: 'Open Sans';
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  font-size: 48px;
-  color: hsla(0, 100%, 100%, 0.9);
-  line-height: 2;
-}
-
-#tally li {
-  float: left;
-  list-style-type: none;
-  margin: 0 15px;
-}
-
-#tally p {
-  display: inline-block;
-  width: 100px;
-  text-align: center;
-  font-family: 'Libre Baskerville';
-  font-size: 20px;
-  color: hsla(0, 100%, 100%, 0.9);
-  margin: 15px 0 0 0;
-}
-
-#tally ul {
-  margin: 0 auto;
 }
 
 /* ================================================================================================================== */
@@ -651,7 +508,7 @@ main[data-page='dashboard'] input[type='text'] {
 }
 
 .left p {
-  text-align: left;
+  text-align: justify;
   color: hsla(0, 100%, 100%, 0.9);
   font-size: 18px;
   margin-top: 0;
