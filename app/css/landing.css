@@ -11,22 +11,24 @@
 }
 
 .landing-main h1 {
-  padding-top: 75px;
+  padding-top: 50px;
   font-size: 45px;
 }
 
 .landing-main ul.options {
-  width: 100%;
-  height: 300px;
-  margin: 100px auto;
+  width: 90%;
+
+  margin: 75px auto;
+  padding-bottom: 350px;
 }
 
 .landing-main li {
   border: 3px solid tomato;
   float: left;
-  margin: 2% 2%;
-  width: 294px;
-  height: 294px;
+  margin: 1.5% 1.5%;
+  width: 21.5%;
+  height: 0;
+  padding-bottom: 21.5%;
   background: white;
   border-radius: 50%;
 }
@@ -44,12 +46,13 @@
   color: tomato;
   font-size: 15px;
   margin: 0;
-  line-height: 300px;
+  padding-top: 47%;
+  /*line-height: 275px;*/
   text-align: center;
 }
 
 .landing-main article {
-  background: white;
+  background: rgba(255, 255, 255, 1);
   margin-top: 50px;
   padding-bottom: 50px;
 }
