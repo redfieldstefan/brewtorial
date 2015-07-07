@@ -8,16 +8,17 @@
         <p><strong>Email:</strong> {{ user.basic.email }}</p>
         <h2>Current Brews</h2>
         <ul data-ng-repeat="brew in user.currentBrews track by $index">
-          <li>
-            {{ brew.title }}
-            <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
-            <button data-ng-click="removeCurrentBrew(brew.id)">Remove</button>
+          <li class="brew" data-ng-click="goToBrew(brew.id)">
+            <p>{{ brew.title }}</p>
+            <img src="../images/logo.png" />
+            <!-- <button data-ng-click="goToBrew(brew.id)">Visit Brew</button> -->
+            <button data-ng-click="removeCurrentBrew(brew.id)">Remove         &#x2715;</button>
           </li>
         </ul>
         <h2>Past brews</h2>
         <ul data-ng-repeat="brew in user.completedBrews track by $index">
-          <li>
-            {{ brew.title }}
+          <li class="brew">
+            <p>{{ brew.title }}</p>
             <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
             <button data-ng-click="removePastBrew(brew.id)">Remove</button>
           </li>
