@@ -8,6 +8,110 @@ nav #nav h1 {
   padding: 0;
 }
 
+#nav img.logo {
+  width: 50px;
+  margin-right: 5px;
+}
+
 #recipes a:hover {
   color: rgba(140, 252, 187, 1);
 }
+
+#nav .inner {
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.15);
+  margin: 0 auto;
+}
+
+#nav a {
+  /*color: hsla(0, 100%, 100%, 0.9);*/
+  color: white;
+  display: inline-block;
+  padding: 20px 20px 0 30px;
+  text-transform: initial;
+}
+
+#nav h1 {
+  /*font-family: 'Libre Baskerville';*/
+  font-family: 'Roboto';
+  display: inline-block;
+  float: left;
+  font-size: 35px;
+  margin: 0;
+}
+
+  #nav h1 a:hover {
+    color: rgba(140, 252, 187, 1);
+  }
+
+#nav li {
+  display: block;
+  float: right;
+  margin: 30px 15px 0 0;
+}
+
+#nav li.brew { margin-right: 10px; }
+
+#nav li.brew a {
+  background: #f8d38d;
+  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
+  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  padding: 11px 30px;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+}
+
+#nav li.brew a:hover {
+  background: rgba(140, 252, 187, 1);
+}
+
+#nav li.user {
+  margin-right: 15px;
+}
+
+#nav li.user a {
+  /*background-color: hsla(0, 100%, 100%, 0.25);*/
+  background-color: rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+#nav li.user img {
+  margin: 3px 0 0 5px;
+}
+
+#nav li:nth-child(2) {
+  margin-right: 15px;
+}
+
+#nav li a {
+  /*background-color: hsla(0, 100%, 100%, 0.15);*/
+  background-color: rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  border-radius: 20px;
+  padding: 10px 30px;
+  border: 2px solid hsla(0, 100%, 100%, 0.3);
+  font-weight: 300;
+}
+
+  #nav li a:hover {
+    background-color: rgba(140, 252, 187, 1);
+  }
+
+#nav sup {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+#nav ul {
+  margin: 0;
+}
+

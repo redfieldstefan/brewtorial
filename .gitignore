@@ -2,7 +2,6 @@
 **/npm-debug.log
 .env
 *.DS_Store
-.env
 /data/*
 **/build/
 **/bundle.js

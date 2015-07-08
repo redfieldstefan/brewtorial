@@ -128,6 +128,7 @@ module.exports = function(app) {
         $scope.mins = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)),60);
         $scope.secs = calculateUnit((secDiff-($scope.days*86400)-($scope.hours*3600)-($scope.mins*60)),1);
         $scope.counter = $scope.counter - 1000;
+        console.log($scope.counter);
       };
       var update=function(){
         calculate();
@@ -143,13 +144,11 @@ module.exports = function(app) {
       $scope.brewing = true;
       update();
     };
-
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       $timeout.cancel(counterTimeout);
       $scope.brewing = false;
     };
-
   }]);
 };
 
