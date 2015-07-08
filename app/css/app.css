@@ -261,7 +261,8 @@ thead th {
 
 /* blue */
 main[data-page='landing'] {
-  background-color: hsla(199, 98%, 48%, 0.9);
+  /*background-color: hsla(199, 98%, 48%, 0.9);*/
+  background-color: hsla(200, 18%, 46%, 0.9);
 }
 
 /* yellow */
@@ -278,7 +279,8 @@ main[data-page='register'] {
 main[data-page='user'],
 main[data-page='recipe'] {
   /*background-color: hsla(340, 82%, 52%, 0.9);*/
-  background-color: hsla(199, 98%, 48%, 0.9);
+  /*background-color: hsla(199, 98%, 48%, 0.9);*/
+   background-color: hsla(200, 18%, 46%, 0.9);
 }
 
 /* green */
