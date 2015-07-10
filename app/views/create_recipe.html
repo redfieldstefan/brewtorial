@@ -4,16 +4,12 @@
 <article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
 
   <div class="inner">
-
     <h1>New brew, coming through.</h1>
     <hr>
-
     <!-- container -->
     <div id="container" class="cf">
-
       <!-- recipe info -->
       <div id="recipe_info">
-
         <section>
           <h1>Review</h1>
           <h2>{{header.title}}</h2>
@@ -65,7 +61,6 @@
 
       <!-- form data -->
       <div id="form_sections">
-
         <!-- brew information -->
         <section id="brew_info">
           <h3><strong>Step 1</strong> &ndash; Brew Information</h3>
@@ -74,7 +69,6 @@
             <label>Title</label>
             <small>Enter the title of your brew</small>
             <input type="text" required name="title" data-ng-model="header.title">
-
 
             <label>Style</label>
             <small>Provide a style, such as: Lager, Ale, etc.</small>
@@ -149,7 +143,6 @@
         <section>
           <h3><strong>Step 3</strong> &ndash; Equipment</h3>
           <form id="form_equipment" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
-
             <label>Equipment</label>
             <small>Gear needed to create your brew</small>
             <select data-ng-model="item">
@@ -178,11 +171,7 @@
             <button type="submit">Add Step to Review</button>
           </form>
         </section>
-
       </div>
-
     </div>
-
   </div>
-
 </article>
