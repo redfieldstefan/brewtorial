@@ -1,5 +1,25 @@
 #user article.page_form {
-  padding-left: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#user .head {
+  padding: 50px 0;
+  width: 100%;
+  float: left;
+}
+
+#user .head button {
+  float: left;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#user h1 {
+  margin: 0;
+  padding: 0;
+  padding-right: 25px;
+  float: left;
 }
 
 #user p strong {
@@ -9,8 +29,29 @@
   text-transform: uppercase;
   text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
 }
+#user .userInfo {
+  width: 100%;
+  margin-bottom: 50px;
+  float: left;
+  background-color:rgba(255,255,255, 0.50);
+}
+
+#user .userInfo p {
+  margin: 0;
+  float: left;
+  padding: 25px;
+  text-align: left;
+  padding-left: 25px;
+}
+
+#user ul {
+  width: 100%;
+  float: left;
+}
 
 #user li.brew {
+  float: left;
+  margin: 10px;
   width: 300px;
   background-color:rgba(255,255,255, 0.50);
 }

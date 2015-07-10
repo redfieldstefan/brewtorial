@@ -267,7 +267,8 @@ main[data-page='landing'] {
 
 /* yellow */
 main[data-page='profile'] {
-  background-color: hsla(45, 100%, 51%, 0.9);
+  /*background-color: hsla(45, 100%, 51%, 0.9);*/
+  background-color: hsla(200, 18%, 46%, 0.9);
 }
 
 /* register */
