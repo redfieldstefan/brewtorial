@@ -4,27 +4,28 @@ module.exports = function(app) {
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
     $scope.errors = [];
-    $scope.header = {};
-    $scope.ingredients = [];
-    $scope.equipment = [];
-    $scope.steps = [];
-    $scope.id = '';
-    $scope.description = '';
+    $scope.recicpe = {};
+    // $scope.header = {};
+    // $scope.ingredients = [];
+    // $scope.equipment = [];
+    // $scope.steps = [];
+    // $scope.id = '';
+    // $scope.description = '';
+    $scope.recipeId = $routeParams.id;
 
     $scope.getRecipe = function() {
-      var recipeId = $routeParams.id;
-
-      Recipe.getOne(recipeId, function(err, recipe) {
+      Recipe.getOne($scope.recipeId, function(err, recipe) {
         if (err) {
           console.log(err);
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
-        $scope.description = recipe.result.description;
-        $scope.header = recipe.result.header;
-        $scope.ingredients = recipe.result.ingredients;
-        $scope.equipment = recipe.result.equipment;
-        $scope.steps = recipe.result.steps;
-        $scope.id = recipe.result._id;
+        $scope.recipe = recipe.result;
+        // $scope.description = recipe.result.description;
+        // $scope.header = recipe.result.header;
+        // $scope.ingredients = recipe.result.ingredients;
+        // $scope.equipment = recipe.result.equipment;
+        // $scope.steps = recipe.result.steps;
+        // $scope.id = recipe.result._id;
       });
     };
 
@@ -32,13 +33,18 @@ module.exports = function(app) {
       $location.path('/recipes');
     }
 
-    $scope.createBrewEvent = function() {
+    $scope.createBrewEvent = function(user) {
       var newBrew = {
         title: $scope.header.title,
         ingredients: $scope.ingredients,
         steps: $scope.steps
       };
-
+      $scope.recipe.header.popularity.push(user);
+      Recipe.save($scope.recipeId, $scope.recipe, function(err, res){
+        if(err) {
+          console.log(err);
+        }
+      });
       NewBrewEvent.create(newBrew, function(err, res) {
         if (err) {
           console.log(err);
