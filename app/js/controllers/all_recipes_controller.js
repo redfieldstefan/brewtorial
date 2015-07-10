@@ -5,7 +5,7 @@ module.exports = function(app) {
   AllRecipesController.$inject = ['$scope', '$location', 'RESTResource', 'auth', '$cookies'];
 
   function AllRecipesController($scope, $location, resource, auth, $cookies) {
-    $scope.page = 'recipe';    
+    $scope.page = 'recipe';
 
     var Recipe = resource('recipe');
     $scope.errors = [];
@@ -20,7 +20,6 @@ module.exports = function(app) {
           console.log(err);
           $scope.errors.push({msg: 'unable to retrieve recipes'});
         }
-
         $scope.beerTally = data.result.length;
         $scope.recipes = data.result;
       });
@@ -34,6 +33,7 @@ module.exports = function(app) {
     $scope.view = function(recipe) {
       $location.path('recipes/' + recipe._id);
     };
+
   }
 
   app.controller('AllRecipesController', AllRecipesController);
