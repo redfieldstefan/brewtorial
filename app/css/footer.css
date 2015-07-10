@@ -1,0 +1,26 @@
+footer {
+  padding-top: 25px;
+  background-color: rgba(140, 252, 187, 1);
+  width: 100%;
+  float: left;
+}
+
+footer img {
+  float: left;
+  margin-left: 25px;
+  width: 75px;
+  padding-bottom: 25px;
+}
+
+footer ul {
+  width: 50%;
+  padding-top: 25px;
+  margin-left: 25px;
+  float: left;
+}
+
+footer li {
+  color: white;
+  float: left;
+  padding-left: 10px;
+}
