@@ -23,29 +23,31 @@
     <hr>
 
     <!-- brew list -->
-    <table data-ng-show="!errors.length">
-      <!-- head -->
-      <thead>
-        <tr>
-          <th data-ng-click="sort('rank')" style="width: 10%;">Rank</th>
-          <th data-ng-click="sort('title')" style="width: 30%;">Title</th>
-          <th data-ng-click="sort('abv')" style="width: 15%;">ABV%</th>
-          <th data-ng-click="sort('style')" style="width: 20%;">Style</th>
-          <th data-ng-click="sort('created')" style="width: 25%;">Created</th>
-        </tr>
-      </thead>
+    <section class="tables">
+      <table data-ng-show="!errors.length">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th data-ng-click="sort('rank')" style="width: 10%;">Rank</th>
+            <th data-ng-click="sort('title')" style="width: 30%;">Title</th>
+            <th data-ng-click="sort('abv')" style="width: 15%;">ABV%</th>
+            <th data-ng-click="sort('style')" style="width: 20%;">Style</th>
+            <th data-ng-click="sort('created')" style="width: 25%;">Created</th>
+          </tr>
+        </thead>
 
-      <!-- body -->
-      <tbody>
-        <tr class="all_recipes" data-ng-click="view(recipe)" ng-repeat="recipe in recipes | filter:search | orderBy:sortBy:sortOrder">
-          <td>{{ recipe.header.popularity.length }}</td>
-          <td><strong>{{ recipe.header.title }}</strong></td>
-          <td>{{ recipe.header.abv }}%</td>
-          <td>{{ recipe.header.style }}</td>
-          <td>{{ recipe.header.created | date : 'mediumDate' }}</td>
-        </tr>
-      </tbody>
-    </table>
+        <!-- body -->
+        <tbody>
+          <tr class="all_recipes" data-ng-click="view(recipe)" ng-repeat="recipe in recipes | filter:search | orderBy:sortBy:sortOrder">
+            <td>{{ recipe.header.popularity.length }}</td>
+            <td><strong>{{ recipe.header.title }}</strong></td>
+            <td>{{ recipe.header.abv }}%</td>
+            <td>{{ recipe.header.style }}</td>
+            <td>{{ recipe.header.created | date : 'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
   </div>
 </section>

@@ -2,6 +2,7 @@
 @import 'nav.css';
 @import 'landing.css';
 @import 'profile.css';
+@import 'footer.css';
 
 /* clear fix */
 .cf:before,
@@ -145,6 +146,12 @@ img {
   vertical-align: middle;
 }
 
+img.bottom {
+  padding-bottom: 25px;
+  width: 5%;
+  margin-left: 47.5%;
+}
+
 input[type='text'],
 input[type='password'] {
   width: 100%;
@@ -169,7 +176,6 @@ label {
 }
 
 main {
-  padding-bottom: 90px;
   min-height: 100%;
 }
 
@@ -183,6 +189,12 @@ p {
 
 strong {
   font-weight: 600;
+}
+
+section.tables {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
 }
 
 table {
