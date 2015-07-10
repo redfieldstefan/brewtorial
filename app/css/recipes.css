@@ -1,0 +1,74 @@
+section.recipes ul {
+  width: 90%;
+  float: left;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+section.recipes li {
+  position: relative;
+  width: 23%;
+  min-height: 500px;
+  max-height: 500px;
+  background-color:rgba(255,255,255, 0.50);
+  float: left;
+  margin: 1%;
+}
+
+  section.recipes li:hover {
+    background-color: rgba(140, 252, 187, 1);
+    cursor: pointer;
+    max-height: none;
+    z-index: 10;
+
+  }
+
+  section.recipes li:hover > p {
+    color: tomato;
+  }
+
+section.recipes li h3 {
+  margin-top: 0;
+  padding-top: 10%;
+  min-height: 75px;
+  background: white;
+  text-transform: uppercase;
+  text-align: center;
+  color: tomato;
+  font-weight: bold;
+}
+
+section.recipes li h4 {
+  text-align: center;
+  color: white;
+}
+
+section.recipes li p {
+  padding: 0;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+section.recipes li p.description {
+  width: 90%;
+  font-size: 20px;
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+section.recipes li button {
+  position: absolute;
+  bottom: 0;
+  border: 0;
+  color: black;
+  background: white;
+  width: 100%;
+  border-radius: 0;
+}
+
+section.recipes li button:hover {
+  color: white;
+  background: tomato;
+}
