@@ -61,7 +61,7 @@ module.exports = function(router) {
               user.completedBrews.push(userBrews[i]);
               userBrews.splice(userBrews.indexOf(userBrews[i]),1);
             }
-          };
+          }
           user.save(function(err, data) {
             if(err) { return console.log(err);}
             console.log('user saved');
