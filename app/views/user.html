@@ -2,31 +2,38 @@
 <section id="user">
   <div class="inner">
     <article class="page_form" data-ng-controller="UserController">
-      <h1>Profile</h1>
+      <section class = "head">
+        <h1>Profile</h1>
+        <button data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
+        <button data-ng-click="deleteUser(user)">Delete profile</button>
+      </section>
       <div data-ng-init="getUser()">
-        <p><strong>Username:</strong> {{ user.displayName }}</p>
-        <p><strong>Email:</strong> {{ user.basic.email }}</p>
+
+        <section class="userInfo">
+          <p><strong>Username:</strong> {{ user.displayName }}</p>
+          <p><strong>Email:</strong> {{ user.basic.email }}</p>
+          <p><strong>Number of Brews Completed:</strong> {{ user.completedBrews.length}}</p>
+        </section>
+
         <h2>Current Brews</h2>
-        <ul data-ng-repeat="brew in user.currentBrews track by $index">
-          <li class="brew" data-ng-click="goToBrew(brew.id)">
+        <ul>
+          <li data-ng-repeat="brew in user.currentBrews track by $index" class="brew" data-ng-click="goToBrew(brew.id)">
             <p>{{ brew.title }}</p>
             <img src="../images/logo.png" />
-            <!-- <button data-ng-click="goToBrew(brew.id)">Visit Brew</button> -->
-            <button data-ng-click="removeCurrentBrew(brew.id)">Remove         &#x2715;</button>
+            <button data-ng-click="removeCurrentBrew(brew.id)">Remove &#x2715;</button>
           </li>
         </ul>
+
         <h2>Past brews</h2>
-        <ul data-ng-repeat="brew in user.completedBrews track by $index">
-          <li class="brew">
+        <ul>
+          <li data-ng-repeat="brew in user.completedBrews track by $index" class="brew">
             <p>{{ brew.title }}</p>
-            <button data-ng-click="goToBrew(brew.id)">Visit Brew</button>
+            <img src="../images/logo.png" />
             <button data-ng-click="removePastBrew(brew.id)">Remove</button>
           </li>
         </ul>
-        <button data-ng-click="gotoRecipes()">View the Recipes</button>
-        <hr>
-        <button data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
       </div>
+
       <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
         <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
           <label>Username
@@ -41,9 +48,7 @@
           <button data-ng-disabled="profileForm.$invalid" type="submit">save</button>
         </form>
       </div>
-      <button data-ng-click="deleteUser(user)">Delete profile</button>
-      <p>Drink Up!</p>
     </article>
-    <p><img src="images/logo.png" width="250"></p>
+    <p><img src="images/new-logo.png" width="250"></p>
   </div>
 </section>
