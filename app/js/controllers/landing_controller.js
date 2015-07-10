@@ -2,9 +2,9 @@
 
 module.exports = function(app) {
 
-  LandingController.$inject = ['$scope', '$location', 'RESTResource'];
+  LandingController.$inject = ['$scope', '$location', '$document', 'RESTResource'];
 
-  function LandingController($scope, $location, resource) {
+  function LandingController($scope, $location, $document, resource) {
     var greetings = [
       'Re-brew-nited<br>and it tastes so good.',
       'Your Kung-brew<br>is strong, grasshoppa.',
