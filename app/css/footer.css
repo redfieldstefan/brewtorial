@@ -24,3 +24,8 @@ footer li {
   float: left;
   padding-left: 10px;
 }
+
+  footer li:hover {
+    color: tomato;
+    cursor: pointer;
+  }
