@@ -4,13 +4,7 @@ module.exports = function(app) {
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
     $scope.errors = [];
-    $scope.recicpe = {};
-    // $scope.header = {};
-    // $scope.ingredients = [];
-    // $scope.equipment = [];
-    // $scope.steps = [];
-    // $scope.id = '';
-    // $scope.description = '';
+    $scope.recipe = {};
     $scope.recipeId = $routeParams.id;
 
     $scope.getRecipe = function() {
@@ -20,12 +14,6 @@ module.exports = function(app) {
           return $scope.errors.push({msg: 'Problem finding resource'});
         }
         $scope.recipe = recipe.result;
-        // $scope.description = recipe.result.description;
-        // $scope.header = recipe.result.header;
-        // $scope.ingredients = recipe.result.ingredients;
-        // $scope.equipment = recipe.result.equipment;
-        // $scope.steps = recipe.result.steps;
-        // $scope.id = recipe.result._id;
       });
     };
 
