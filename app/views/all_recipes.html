@@ -26,10 +26,10 @@
       <ul class="fade-in">
         <li data-ng-repeat="recipe in recipes | filter:search | orderBy:sortBy:sortOrder" data-ng-click="view(recipe)">
           <h3>{{recipe.header.title}}</h3>
-          <p>Style: {{recipe.header.style}}</p>
-          <p>Abv: {{recipe.header.abv}}</p>
-          <p>Difficulty: {{recipe.header.difficulty}}</p>
-          <p>Popularity: {{recipe.header.popularity.length}} points</p>
+          <p><strong>Style:</strong> {{recipe.header.style}}</p>
+          <p><strong>Abv:</strong> {{recipe.header.abv}}</p>
+          <p><strong>Difficulty:</strong> {{recipe.header.difficulty}}</p>
+          <p><strong>Popularity:</strong> {{recipe.header.popularity.length}} points</p>
           <h4>Description</h4>
           <p class="description">{{recipe.description | limitTo:150}}...</p>
           <button data-ng-click="view(recipe)">View More</button>
