@@ -5,35 +5,53 @@ section.recipes ul {
   margin-right: 5%;
 }
 section.recipes li {
+  border: 1px solid white;
   position: relative;
-  width: 23%;
+  width: 22%;
   min-height: 500px;
   max-height: 500px;
-  background-color:rgba(255,255,255, 0.50);
+  background-color:rgba(255,255,255, 0.5);
   float: left;
   margin: 1%;
 }
 
   section.recipes li:hover {
-    background-color: rgba(140, 252, 187, 1);
+    /*background-color: rgba(140, 252, 187, 1);*/
+    background: white;
     cursor: pointer;
     max-height: none;
     z-index: 10;
 
   }
 
+  section.recipes li:hover > h3 {
+    color: red;
+  }
+
+  section.recipes li:hover > h4 {
+    color: rgba(140, 252, 187, 1);
+  }
+
   section.recipes li:hover > p {
     color: tomato;
   }
 
+  section.recipes li:hover > p strong {
+    color: #FF6633;
+  }
+
+  section.recipes li:hover > button {
+    color: white;
+    background: tomato;
+  }
+
 section.recipes li h3 {
-  margin-top: 0;
-  padding-top: 10%;
-  min-height: 75px;
-  background: white;
+  margin: 0;
+  padding-top: 25px;
+  font-size: 22px;
   text-transform: uppercase;
   text-align: center;
-  color: tomato;
+  color: rgba(140, 252, 187, 1);
   font-weight: bold;
 }
 
