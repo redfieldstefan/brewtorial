@@ -1,7 +1,9 @@
+@import 'animations.css';
 @import 'timer.css';
 @import 'nav.css';
 @import 'landing.css';
 @import 'profile.css';
+@import 'recipes.css';
 @import 'footer.css';
 
 /* clear fix */
@@ -98,7 +100,7 @@ h1 {
   letter-spacing: -0.025em;
   text-align: center;
   text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   margin: 0;
 }
 
@@ -146,7 +148,11 @@ img {
   vertical-align: middle;
 }
 
-img.bottom {
+#bottom {
+  width: 100%;
+}
+
+#bottom img {
   padding-bottom: 25px;
   width: 5%;
   margin-left: 47.5%;
