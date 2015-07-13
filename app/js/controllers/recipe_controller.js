@@ -35,9 +35,9 @@ module.exports = function(app) {
 
     $scope.createBrewEvent = function(user) {
       var newBrew = {
-        title: $scope.header.title,
-        ingredients: $scope.ingredients,
-        steps: $scope.steps
+        title: $scope.recipe.header.title,
+        ingredients: $scope.recipe.ingredients,
+        steps: $scope.recipe.steps
       };
       $scope.recipe.header.popularity.push(user);
       Recipe.save($scope.recipeId, $scope.recipe, function(err, res){
