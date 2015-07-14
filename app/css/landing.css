@@ -92,8 +92,9 @@
 
 #tally div {
   border-radius: 50%;
-  border: 2px solid hsla(0, 100%, 100%, 0.3);
-  background: hsla (0, 100%, 100%, 0.15);
+  /*border: 2px solid hsla(0, 100%, 100%, 0.3);*/
+  border: 2px solid black;
+  background: hsla (100, 100%, 100%, 0.15);
   width: 100px;
   height: 100px;
   text-align: center;
@@ -101,7 +102,8 @@
   font-weight: 600;
   letter-spacing: -0.05em;
   font-size: 48px;
-  color: hsla(0, 100%, 100%, 0.9);
+  /*color: hsla(0, 100%, 100%, 0.9);*/
+  color: black;
   line-height: 2;
 }
 
@@ -115,9 +117,10 @@
   display: inline-block;
   width: 100px;
   text-align: center;
-  font-family: 'Libre Baskerville';
+  font-family: 'Roboto';
   font-size: 20px;
-  color: hsla(0, 100%, 100%, 0.9);
+  /*color: hsla(0, 100%, 100%, 0.9);*/
+  color: black;
   margin: 15px 0 0 0;
 }
 

@@ -100,7 +100,7 @@ h1 {
   letter-spacing: -0.025em;
   text-align: center;
   text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
-  padding-top: 25px;
+  padding-top: px;
   margin: 0;
 }
 
@@ -186,7 +186,8 @@ main {
 }
 
 p {
-  color: hsla(0, 0%, 0%, 0.5);
+  /*color: hsla(0, 0%, 0%, 0.5);*/
+  color: black;
   font-size: 27px;
   text-align: center;
   font-famiy: 'Open Sans', sans-serif;
@@ -270,7 +271,8 @@ thead th {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('./images/beer.jpg') no-repeat center center fixed;
+  /*background: url('./images/beer.jpg') no-repeat center center fixed;*/
+  background: url('../images/brewtorial-background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -279,38 +281,40 @@ thead th {
 
 /* blue */
 main[data-page='landing'] {
-  /*background-color: hsla(199, 98%, 48%, 0.9);*/
-  background-color: hsla(200, 18%, 46%, 0.9);
+  /*background-color: hsla(200, 18%, 46%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* yellow */
 main[data-page='profile'] {
-  /*background-color: hsla(45, 100%, 51%, 0.9);*/
-  background-color: hsla(200, 18%, 46%, 0.9);
+  /*background-color: hsla(200, 18%, 46%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* register */
 main[data-page='register'] {
-  background-color: hsla(291, 64%, 42%, 0.9);
+  /*background-color: hsla(291, 64%, 42%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* magenta */
 main[data-page='user'],
 main[data-page='recipe'] {
-  /*background-color: hsla(340, 82%, 52%, 0.9);*/
-  /*background-color: hsla(199, 98%, 48%, 0.9);*/
-   background-color: hsla(200, 18%, 46%, 0.9);
+  /*background-color: hsla(200, 18%, 46%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* green */
 main[data-page='sign_in'],
 main[data-page='sign_out'] {
-  background-color: hsla(88, 50%, 53%, 0.9);
+  /*background-color: hsla(88, 50%, 53%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* gray blue */
 main[data-page='brew'] {
-  background-color: hsla(200, 18%, 46%, 0.9);
+  /*background-color: hsla(200, 18%, 46%, 0.9);*/
+  background-color:rgba(255,255,255, 0.50);
 }
 
 /* ================================================================================================================== */
