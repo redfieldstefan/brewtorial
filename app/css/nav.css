@@ -1,7 +1,5 @@
 nav #nav {
-  /*background-color:rgba(0,0,0, 0.50);*/
   background-color: #CC0033;
-  /*background-color: rgba(255, 99, 71, .75);*/
   width: 100%;
   z-index: 10;
 }
