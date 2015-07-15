@@ -16,7 +16,7 @@
 }
 
 .landing-main ul.options {
-  width: 75%;
+  width:75%;
   margin: 75px auto;
   padding-bottom: 350px;
 }
@@ -25,9 +25,9 @@
   border: 3px solid tomato;
   float: left;
   margin: 1.5% 1.5%;
-  width: 29.75%;
+  width: 29%;
   height: 0;
-  padding-bottom: 29.75%;
+  padding-bottom: 29%;
   background: white;
   border-radius: 50%;
 }

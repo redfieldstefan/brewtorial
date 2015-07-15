@@ -1,0 +1,11 @@
+
+.fade-in {
+  transition:1s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade-in {
+  opacity:1;
+}
+
