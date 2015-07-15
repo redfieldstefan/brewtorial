@@ -1,5 +1,7 @@
 nav #nav {
-  background-color:rgba(255,255,255, 0.750);
+  /*background-color:rgba(0,0,0, 0.50);*/
+  background-color: #CC0033;
+  /*background-color: rgba(255, 99, 71, .75);*/
   width: 100%;
   z-index: 10;
 }
@@ -23,7 +25,6 @@ nav #nav h1 {
 }
 
 #nav a {
-  /*color: hsla(0, 100%, 100%, 0.9);*/
   color: white;
   display: inline-block;
   padding: 20px 20px 0 30px;
@@ -31,7 +32,6 @@ nav #nav h1 {
 }
 
 #nav h1 {
-  /*font-family: 'Libre Baskerville';*/
   font-family: 'Roboto';
   display: inline-block;
   float: left;

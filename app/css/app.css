@@ -94,13 +94,15 @@ h1 {
   /*font-family: 'Libre Baskerville', serif;*/
   font-family: 'Roboto', serif;
   text-transform: uppercase;
-  color: #fff;
+/*  color: #fff;*/
+  color: black;
   font-size: 65px;
   font-weight: 600;
   letter-spacing: -0.025em;
   text-align: center;
-  text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
-  padding-top: px;
+  /*text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);*/
+  text-shadow: 0 3px 0 white;
+  padding-top: 25px;
   margin: 0;
 }
 
