@@ -12,7 +12,6 @@ module.exports = function(app) {
     $scope.validationErrorMessage = '';
 
     $scope.signIn = function(user) {
-
       var validationErrors = [];
       if (val.isNull(user)) {
         validationErrors.push('Please fill out the form.');

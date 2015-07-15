@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 
-  app.controller('UserController', ['$scope', 'RESTResource', 'auth', '$location', function($scope, resource, auth, $location) {
+  app.controller('UserController', ['$scope', 'RESTResource', '$cookies', 'auth', '$location', function($scope, resource, $cookies, auth, $location) {
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if(!auth.isSignedIn()){
