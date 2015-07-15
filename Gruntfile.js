@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   var watchFiles = ['Gruntfile.js','./app/**/*.js', './app/**/*.css', './app/**/*.html'];
 
@@ -86,7 +87,6 @@ module.exports = function(grunt) {
 
     karma: {
       test: {
-        // configFile:'../karmaConf.js'
         configFile:'./karma.conf.js'
       }
     },
@@ -106,14 +106,18 @@ module.exports = function(grunt) {
         flatten: false,
         src: 'images/**/*',
         dest: 'build/'
-      },
-      css: {
-        cwd: 'app/css',
-        expand: true,
-        flatten: false,
-        src:'**/*.css',
-        dest: 'build/',
-        filter: 'isFile'
+      }
+    },
+
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'app/',
+          src: 'css/**/*.css',
+          dest: 'build/',
+          ext: '.min.css'
+        }]
       }
     },
 
@@ -149,7 +153,6 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      // tasks: ['webpack:client','copy:html', 'copy:css']
       tasks: ['build']
     }
 
@@ -159,7 +162,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'build']);
   grunt.registerTask('test',  ['simplemocha:dev', 'karma']);
   grunt.registerTask('build:test', ['webpack:karma_test'])
-  grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'copy:css']);
+  grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'cssmin']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('am', ['build:dev', 'watch']);
 };

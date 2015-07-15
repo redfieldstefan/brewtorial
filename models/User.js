@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var BrewEvent = require('./BrewEvent')
+var BrewEvent = require('./BrewEvent');
 var bcrypt = require('bcrypt-nodejs');
 var eat = require('eat');
 
