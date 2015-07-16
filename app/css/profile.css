@@ -23,12 +23,12 @@
 }
 
 #user p strong {
-  color: hsla(0, 100%, 100%, 0.9);
+  color: #CC0033;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
 }
+
 #user .userInfo {
   width: 100%;
   margin-bottom: 50px;
@@ -53,11 +53,11 @@
   float: left;
   margin: 10px;
   width: 300px;
-  background-color:rgba(255,255,255, 0.50);
+  background-color:rgba(255,255,255, 0.750);
 }
 
   #user li.brew:hover {
-    background-color: rgba(140, 252, 187, 1);
+    background-color: white;
     cursor: pointer;
   }
   #user li.brew:hover > p {
@@ -70,7 +70,7 @@
   padding-top: 10px;
   width: 100%;
   text-align: center;
-  color: white;
+  color: #CC0033;
 }
 
 #user li.brew img {

@@ -6,6 +6,7 @@ nav #nav {
 
 nav #nav h1 {
   padding: 0;
+  text-shadow: none;
 }
 
 #nav img.logo {
