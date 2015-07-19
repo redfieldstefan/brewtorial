@@ -1,7 +1,8 @@
 .landing-main {
   margin-top: 75px;
   width: 100%;
-  background-color:rgba(0,0,0,0.75);
+ /* background-color:rgba(0,0,0,0.75);*/
+ background: url('../images/beer-line-1500x600.jpg');
 }
 
 .landing-main img.down-arrow {
@@ -13,6 +14,12 @@
 .landing-main h1 {
   padding-top: 50px;
   font-size: 45px;
+  text-shadow: none;
+}
+
+.landing-main h1.white {
+  color: rgba(140, 252, 187, 1);
+  text-shadow: none;
 }
 
 .landing-main ul.options {
@@ -22,13 +29,12 @@
 }
 
 .landing-main li {
-  border: 3px solid tomato;
   float: left;
   margin: 1.5% 1.5%;
-  width: 29%;
+  width: 30%;
   height: 0;
-  padding-bottom: 29%;
-  background: white;
+  padding-bottom: 30%;
+  background-color: #CC0033;
   border-radius: 50%;
 }
 
@@ -42,11 +48,10 @@
   }
 
 .landing-main li p {
-  color: tomato;
-  font-size: 15px;
+  color: white;
+  font-size: 20px;
   margin: 0;
   padding-top: 47%;
-  /*line-height: 275px;*/
   text-align: center;
 }
 
@@ -92,8 +97,9 @@
 
 #tally div {
   border-radius: 50%;
-  border: 2px solid hsla(0, 100%, 100%, 0.3);
-  background: hsla (0, 100%, 100%, 0.15);
+  background: white;
+  border: 2px solid black;
+  background: hsla (100, 100%, 100%, 0.15);
   width: 100px;
   height: 100px;
   text-align: center;
@@ -101,7 +107,7 @@
   font-weight: 600;
   letter-spacing: -0.05em;
   font-size: 48px;
-  color: hsla(0, 100%, 100%, 0.9);
+  color: black;
   line-height: 2;
 }
 
@@ -115,9 +121,9 @@
   display: inline-block;
   width: 100px;
   text-align: center;
-  font-family: 'Libre Baskerville';
+  font-family: 'Roboto';
   font-size: 20px;
-  color: hsla(0, 100%, 100%, 0.9);
+  color: black;
   margin: 15px 0 0 0;
 }
 

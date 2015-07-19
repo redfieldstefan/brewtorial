@@ -3,7 +3,7 @@
 <section class="page_form" id="brew" data-ng-controller="BrewController">
   <div class="inner">
      <section id = "timer-case">
-        <h1>{{ thisBrew.title }}</h1>
+        <h1 class="green">{{ thisBrew.title }}</h1>
         <h2 data-ng-if="!started">Ready to Brew?</h2>
         <button  data-ng-if="!started" data-ng-click="startBrew()">Let's Do It!</button>
         <ul class="ingredients"></ul>
@@ -42,7 +42,6 @@
     <h1 data-ng-if="thisBrew.complete === true">{{congrats}}</h1>
     <div class="cf">
         <div class="left">
-            <p>{{thisBrew.description}}</p>
             <h2>Ingredients</h2>
             <ul>
               <li data-ng-repeat="ingredient in thisBrew.ingredients">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.item}}</li>

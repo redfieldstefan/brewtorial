@@ -7,6 +7,21 @@
         <button data-ng-if="!user.editing" data-ng-click="editUser(user)">Edit profile</button>
         <button data-ng-click="deleteUser(user)">Delete profile</button>
       </section>
+
+      <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
+        <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
+          <label>Username
+            <input placeholder="new username"
+                   data-ng-model="user.displayName" type="text" required>
+          </label>
+          <label>Email
+            <input placeholder="new email"
+                   data-ng-model="user.basic.email" type="text" required>
+          </label>
+          <button type="button" data-ng-click="cancelEdit(user)">Cancel</button>
+          <button data-ng-disabled="profileForm.$invalid" type="submit">save</button>
+        </form>
+      </div>
       <div data-ng-init="getUser()">
 
         <section class="userInfo">
@@ -33,24 +48,11 @@
           </li>
         </ul>
       </div>
-
-      <div name="{{'editing' + user._id}}" data-ng-if="user.editing">
-        <form class="page_form" name="profileForm" data-ng-submit="saveUser(user)">
-          <label>Username
-            <input placeholder="new username"
-                   data-ng-model="user.displayName" type="text" required>
-          </label>
-          <label>Email
-            <input placeholder="new email"
-                   data-ng-model="user.basic.email" type="text" required>
-          </label>
-          <button type="button" data-ng-click="cancelEdit(user)">Cancel</button>
-          <button data-ng-disabled="profileForm.$invalid" type="submit">save</button>
-        </form>
-      </div>
     </article>
-     <div id="bottom">
+
+    <div id="bottom">
        <img src="images/new-logo.png"/>
     </div>
+
   </div>
 </section>
