@@ -24,6 +24,7 @@ module.exports = function(app) {
     $scope.createBrewEvent = function(user) {
       var newBrew = {
         title: $scope.recipe.header.title,
+        icon: $scope.recipe.header.icon,
         ingredients: $scope.recipe.ingredients,
         steps: $scope.recipe.steps
       };

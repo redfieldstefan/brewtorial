@@ -15,15 +15,16 @@
           <h2>{{header.title}}</h2>
           <p>{{description}}</p>
           <form class="page_form">
-
-            <h3>Brew Info:</h3>
-            <h4>Style: <span>{{header.style}}</span></h4>
-            <h4>ABV%: <span>{{header.abv}}</span></h4>
-            <h4>IBU: <span>{{header.ibu}}</span></h4>
-            <h4>OG: <span>{{header.og}}</span></h4>
-            <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
-            <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
-
+            <section class="header">
+              <h3>Brew Info:</h3>
+              <h4>Style: <span>{{header.style}}</span></h4>
+              <h4>ABV%: <span>{{header.abv}}</span></h4>
+              <h4>IBU: <span>{{header.ibu}}</span></h4>
+              <h4>OG: <span>{{header.og}}</span></h4>
+              <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
+              <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
+            </section>
+            <img class="icon" src="{{header.icon}}"/>
             <hr>
 
             <h3>Ingredients:</h3>
@@ -97,6 +98,14 @@
           </form>
 
           <hr>
+
+          <h3>Select Icons</h3>
+          <ul class="icons">
+            <li data-ng-repeat="icon in icons">
+              <img class="icon" src="{{icon}}" data-ng-click="addIcon(icon)">
+            </li>
+          </ul>
+
 
           <!-- description form -->
           <form class="page_form" data-ng-submit="addDescription(description)">

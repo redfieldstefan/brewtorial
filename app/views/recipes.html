@@ -5,7 +5,7 @@
 
     <p><a href="#/recipes" class="return" title="Back to Recipes">Back to Recipes</a></p>
     <h1>{{ recipe.header.title }}</h1>
-    <p><img src="images/logo.png" width="96" alt=""></p>
+    <p><img src="{{recipe.header.icon}}" width="96" alt=""></p>
     <p class="author"><span>created by:</span> {{ recipe.header.author }} <span>created on:</span> {{ recipe.header.created | date:'mediumDate' }}</p>
 
     <hr>

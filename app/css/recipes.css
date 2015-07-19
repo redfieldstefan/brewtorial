@@ -95,7 +95,6 @@ section.recipes li button:hover {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: -0.05em;
-  /*color: hsla(0, 100%, 100%, 0.9);*/
   color: #CC0033;
   margin: 0 15px;
 }
@@ -118,5 +117,23 @@ section.recipes li button:hover {
 
 #recipes .return {
   font-size: 18px;
+}
+
+ul.icons {
+  float: left;
+}
+
+ul.icons li {
+  float: left;
+}
+
+ul.icons li:hover {
+  cursor: pointer;
+}
+
+.recipes img.icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 

@@ -32,9 +32,11 @@
 
         <h2>Current Brews</h2>
         <ul>
-          <li data-ng-repeat="brew in user.currentBrews track by $index" class="brew" data-ng-click="goToBrew(brew.id)">
-            <p>{{ brew.title }}</p>
-            <img src="../images/logo.png" />
+          <li data-ng-repeat="brew in user.currentBrews track by $index" class="brew">
+            <section class="main" data-ng-click="goToBrew(brew.id)">
+              <p>{{ brew.title }}</p>
+              <img src="{{brew.icon}}" />
+            </section>
             <button data-ng-click="removeCurrentBrew(brew.id)">Remove &#x2715;</button>
           </li>
         </ul>
@@ -43,7 +45,7 @@
         <ul class="past">
           <li data-ng-repeat="brew in user.completedBrews track by $index" class="brew">
             <p>{{ brew.title }}</p>
-            <img src="../images/logo.png" />
+            <img src="{{brew.icon}}" />
             <button data-ng-click="removePastBrew(brew.id)">Remove &#x2715;</button>
           </li>
         </ul>

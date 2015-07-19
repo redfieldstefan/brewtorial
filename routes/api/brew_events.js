@@ -16,7 +16,7 @@ module.exports = function(router) {
         console.log(err);
         return res.status(500).json({msg: 'internal server error'});
       }
-      user.currentBrews.push({title: newBrew.title, id: newBrew._id});
+      user.currentBrews.push({title: newBrew.title, id: newBrew._id, icon: newBrew.icon});
       user.save(function(err, data) {
         if(err) { return console.log(err);}
         console.log(newBrew.title);

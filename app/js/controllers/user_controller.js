@@ -30,7 +30,6 @@ module.exports = function(app) {
           console.log(err);
           return $scope.errors.push({msg: 'Could not fetch profile'});
         }
-
         $scope.user = data.user;
         $scope.currentBrews = data.user.currentBrews;
         $scope.completedBrews = data.user.completedBrews;
@@ -60,7 +59,6 @@ module.exports = function(app) {
 
     $scope.saveUser = function(user) {
       user.editing = false;
-
       User.save(user._id, user, function(err, data) {
         if (err) {
           console.log(err);
