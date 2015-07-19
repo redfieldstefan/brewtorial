@@ -165,6 +165,7 @@ img {
 }
 
 #bottom img {
+  padding-top: 25px;
   padding-bottom: 25px;
   width: 5%;
   margin-left: 47.5%;
