@@ -32,7 +32,6 @@ module.exports = function(app) {
         }
         $scope.user = data.user;
         $scope.currentBrews = data.user.currentBrews;
-        console.log($scope.currentBrews);
         $scope.completedBrews = data.user.completedBrews;
       });
     };

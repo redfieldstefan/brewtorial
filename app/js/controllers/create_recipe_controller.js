@@ -65,7 +65,6 @@ module.exports = function(app) {
 
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
-      console.log($scope.header);
       document.getElementById("form_headers").reset();
     };
 
