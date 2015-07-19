@@ -3,8 +3,9 @@
 <section data-ng-init="getAll()" id="dashboard">
   <div class="inner">
     <h1>Micro-brewing.<br>Macro-chugging.</h1>
-    <p>Peruse our <strong>{{ beerTally }}</strong> hand-crafted micro-brew recipes.<br>If you find one that looks good, then get brewing!</p>
-    <hr>
+    <p>
+      Peruse our <strong>{{ beerTally }}</strong> hand-crafted micro-brew recipes.<br>If you find one that looks good, then get brewing!
+    </p>
 
     <!-- error handling -->
     <aside data-ng-show="errors.length">
@@ -19,8 +20,6 @@
       <input type="text" placeholder="Title" data-ng-model="search.header.title" />
       <input type="text" placeholder="Style" data-ng-model="search.header.style" />
     </div>
-
-    <hr>
 
     <section class="recipes">
       <ul class="fade-in">

@@ -43,7 +43,6 @@ module.exports = function(app) {
         }
         $scope.thisBrew = brew.data;
         $scope.steps = brew.data.steps;
-        // $scope.steps = brew.data.steps;
         brew.data.steps.forEach(function(step) {
           if (step.active === true) {
             $scope.started = true;
