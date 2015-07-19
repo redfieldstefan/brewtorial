@@ -5,6 +5,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var brewEventSchema = new mongoose.Schema({
   userId: ObjectId,
   recipe: ObjectId,
+  icon: String,
   title: String,
   description: String,
   ingredients: [

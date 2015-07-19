@@ -20,6 +20,8 @@ module.exports = function(app) {
     $scope.steps = [];
     $scope.equipment = [];
     $scope.description = '';
+    $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
+    $scope.icon = '';
 
     $scope.createRecipe = function() {
       var newRecipe = {
@@ -57,8 +59,13 @@ module.exports = function(app) {
       document.getElementById("description").value = '';
     };
 
+    $scope.addIcon = function(icon) {
+      $scope.header.icon = icon;
+    }
+
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
+      console.log($scope.header);
       document.getElementById("form_headers").reset();
     };
 
