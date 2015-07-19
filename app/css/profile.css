@@ -90,4 +90,13 @@
   background: tomato;
 }
 
+#user ul.past li.brew:hover {
+  background-color: rgba(255,255,255, 0.750);
+  cursor: default;
+}
+
+#user ul.past li.brew:hover > p {
+  color: #CC0033;
+}
+
 
