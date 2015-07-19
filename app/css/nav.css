@@ -19,7 +19,7 @@ nav #nav h1 {
 }
 
 #nav .inner {
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.15);
+  /*border-bottom: 1px solid hsla(0, 0%, 0%, 0.15);*/
   margin: 0 auto;
 }
 
