@@ -2,8 +2,8 @@ module.exports = function(grunt) {
 
   // configure grunt.
   grunt.file.defaultEncoding = 'utf8';
-  var path = require("path");
-
+  var path = require('path');
+  var webpack = require('webpack');
   // load npm tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-webpack');
@@ -73,8 +73,11 @@ module.exports = function(grunt) {
         entry: __dirname + '/app/js/client.js',
         output: {
           path: path.join(__dirname, '/build'),
-          filename: 'bundle.js'
-        }
+          filename: 'bundle.min.js'
+        },
+        plugins: [
+          new webpack.optimize.UglifyJsPlugin({minimize: true})
+        ]
       },
       karma_test: {
         entry: __dirname + '/test/karma_tests/karma_entry.js',
