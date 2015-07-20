@@ -30,7 +30,6 @@
           <p><strong>Difficulty:</strong> {{recipe.header.difficulty}}</p>
           <p><strong>Popularity:</strong> {{recipe.header.popularity.length}} points</p>
           <img class="icon" src="{{recipe.header.icon}}" />
-          <h4>Description</h4>
           <p class="description">{{recipe.description | limitTo:150}}...</p>
           <button data-ng-click="view(recipe)">View Recipe</button>
         </li>
