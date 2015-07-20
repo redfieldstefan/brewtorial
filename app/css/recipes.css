@@ -16,7 +16,7 @@ section.recipes li {
 }
 
   section.recipes li:hover {
-    background: white;
+    background: #F8F8F8;
     cursor: pointer;
     z-index: 10;
 
