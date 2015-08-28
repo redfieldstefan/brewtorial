@@ -1,5 +1,6 @@
 nav #nav {
-  background-color: #CC0033;
+  /*background-color: #CC0033;*/
+  background-color: #e23f32;
   width: 100%;
   z-index: 10;
 }
