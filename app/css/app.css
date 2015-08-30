@@ -1,5 +1,7 @@
 @import 'animations.css';
 @import 'brew.css';
+@import 'buttons.css';
+@import 'footer.css';
 @import 'timer.css';
 @import 'nav.css';
 @import 'landing.css';
@@ -67,26 +69,6 @@ body {
   height: 100%;
 }
 
-button {
-  background: #f8d38d;
-  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
-  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  color: hsla(0, 100%, 100%, 0.9);
-  text-transform: uppercase;
-  font-family: 'Open Sans';
-  font-weight: 600;
-  font-size: 20px;
-  outline: none;
-}
-
-  button:hover {
-    background: rgba(140, 252, 187, 1);
-  }
-
 ul {
   list-style: none;
   padding-left: 0;
@@ -94,16 +76,13 @@ ul {
 
 
 h1 {
-  /*font-family: 'Libre Baskerville', serif;*/
   font-family: 'Roboto', serif;
   text-transform: uppercase;
-/*  color: #fff;*/
   color: black;
   font-size: 65px;
   font-weight: 600;
   letter-spacing: -0.025em;
   text-align: center;
-  /*text-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);*/
   text-shadow: 0 3px 0 white;
   padding-top: 25px;
   margin: 0;
@@ -115,11 +94,9 @@ h1.green {
 
 
 h2 {
-  /*font-family: 'Libre Baskerville';*/
   font-family: 'Roboto', serif;
   font-size: 36px;
   font-weight: 300;
-  /*color: hsla(0, 100%, 100%, 0.9);*/
   color: rgba(0, 0, 0, .75);
 }
 
@@ -127,7 +104,6 @@ h3 {
   font-family: 'Open Sans';
   font-size: 24px;
   font-weight: 300;
-  /*color: hsla(0, 100%, 100%, 0.9);*/
   color: rgba(0, 0, 0, .75);
 }
 
@@ -291,7 +267,8 @@ thead th {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../images/bubble-background.jpg') no-repeat center center fixed;
+  background-color: LightSalmon;
+  /*background: url('../images/bubble-background.jpg') no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -357,15 +334,6 @@ main[data-page='brew'] {
 
 #form input.last_field { margin-bottom: 0; }
 
-#form button {
-  float: right;
-  padding: 15px 30px;
-  border-radius: 50px;
-  margin: 0;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
-}
-
 /* ================================================================================================================== */
 /* dashboard styles
 /* ================================================================================================================== */
@@ -395,34 +363,6 @@ main[data-page='dashboard'] input[type='text'] {
 #container {
   position: relative;
   width: 100%;
-}
-
-#recipe_info {
-  float: right;
-  width: 50%;
-  padding: 0 5%;
-  box-sizing: border-box;
-}
-
-#form_sections {
-  float: left;
-  width: 50%;
-  padding: 0 5%;
-  box-sizing: border-box;
-}
-
-#filters input {
-  width: 100%;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  border-radius: 7px;
-  padding: 7px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 16px;
-  color: hsla(0, 0%, 0%, 0.9);
-  font-family: 'Open Sans';
-  font-weight: 300;
-  margin-bottom: 15px;
 }
 
 .left {

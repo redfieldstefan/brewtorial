@@ -19,7 +19,6 @@ section.recipes li {
     background: #F8F8F8;
     cursor: pointer;
     z-index: 10;
-
   }
 
   section.recipes li:hover > h3 {
@@ -118,21 +117,30 @@ section.recipes li button:hover {
   font-size: 18px;
 }
 
-ul.icons {
-  float: left;
-}
-
-ul.icons li {
-  float: left;
-}
-
-ul.icons li:hover {
-  cursor: pointer;
-}
-
 .recipes img.icon {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#recipe_info {
+  float: right;
+  width: 50%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#filters input {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
 }
 

@@ -1,3 +1,16 @@
+#form_sections {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#form_headers{
+  float: left;
+}
+
 .page_form input[type='text'],
 .page_form input[type='number'] {
   width: 100%;
@@ -20,6 +33,7 @@
 }
 
 .page_form small {
+  width: 100%;
   margin: 0 0 10px 0;
   display: inline-block;
   color: black;
@@ -27,32 +41,9 @@
   text-transform: uppercase;
 }
 
-.page_form button,
-.page_form button[type='submit'] {
-  background: #f8d38d;
-  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
-  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  color: hsla(0, 100%, 100%, 0.9);
-  text-transform: uppercase;
-  font-family: 'Open Sans';
-  font-weight: 600;
-  font-size: 16px;
-  outline: none;
-  padding: 5px 15px;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  border-radius: 7px;
-}
-
-  .page_form button:hover {
-    background: rgba(140, 252, 187, 1);
-  }
-
 .page_form textarea {
   width: 100%;
+  height: 200px;
   border: 1px solid hsla(0, 0%, 0%, 0.15);
   border-radius: 7px;
   padding: 7px;
@@ -63,7 +54,6 @@
   font-family: 'Open Sans';
   font-weight: 300;
   margin-bottom: 15px;
-  height: 100px;
 }
 
 .page_form select {
@@ -97,4 +87,33 @@
   color: hsla(0, 0%, 0%, 0.5);
   font-size: 18px;
   font-family: 'Open Sans';
+}
+
+.header-input {
+  width: 45%;
+  float: left;
+  padding-right: 5%;
+}
+
+.header-input label {
+  width: 100%;
+}
+
+ul.icons {
+  width: 100%;
+  float: left;
+}
+
+ul.icons li {
+  float: left;
+}
+
+ul.icons li:hover {
+  cursor: pointer;
+}
+
+.icon.display {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
