@@ -108,7 +108,6 @@ section.recipes li button:hover {
 
 #recipes button {
   font-size: 24px;
-  padding: 15px 30px;
   border-radius: 50px;
   text-transform: inherit;
 }
@@ -124,11 +123,52 @@ section.recipes li button:hover {
 }
 
 #recipe_info {
-  float: right;
-  width: 50%;
+  float: left;
+  width: 100%;
   padding: 0 5%;
   box-sizing: border-box;
 }
+
+#recipe_info h4 {
+  color: white;
+}
+
+#review-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#review-info {
+  float: left;
+  padding: 25px;
+  width: 40%;
+}
+
+#review-materials {
+  float: left;
+  float: left;
+  width: 40%;
+}
+
+#review-steps {
+  float: left;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+#review-steps button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 25px;
+}
+
+
 
 #filters input {
   width: 100%;
