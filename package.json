@@ -4,10 +4,10 @@
   "description": "homebrew companion",
   "main": "server.js",
   "scripts": {
-    "build": "grunt --gruntfile ./dev/Gruntfile.js",
-    "test": "mocha dev/tests",
+    "build": "grunt --gruntfile /Gruntfile.js",
+    "test": "mocha test/",
     "start": "nodemon server.js || node server.js",
-    "db":"mongod --dbpath=./data"
+    "db": "mongod --dbpath=./data"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "karma": "^0.12.36",
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.2.0",
+    "mocha": "^2.3.2",
     "node-libs-browser": "^0.5.2",
     "phantomjs": "^1.9.17",
     "superagent": "^1.2.0",

@@ -10,11 +10,10 @@ module.exports = function(app) {
       $location.path('/sign_in');
     }
 
-    $scope.page = 'recipe';
     var Recipe = resource('recipe');
     var Equipment = resource('equipment');
+    $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.availableEquipment = [];
     $scope.header = {};
     $scope.ingredients = [];
     $scope.steps = [];
@@ -22,6 +21,7 @@ module.exports = function(app) {
     $scope.description = '';
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
     $scope.icon = '';
+    $scope.formStep = 'description';
 
     $scope.createRecipe = function() {
       var newRecipe = {
@@ -31,7 +31,6 @@ module.exports = function(app) {
         steps: $scope.steps,
         description: $scope.description
       };
-      console.log(newRecipe);
       Recipe.create(newRecipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
@@ -54,9 +53,12 @@ module.exports = function(app) {
       });
     };
 
+    $scope.nextStep = function(step) {
+      $scope.formStep = step;
+    }
+
     $scope.addDescription = function(description) {
       $scope.description = description;
-      document.getElementById("description").value = '';
     };
 
     $scope.addIcon = function(icon) {
@@ -65,7 +67,6 @@ module.exports = function(app) {
 
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;
-      document.getElementById("form_headers").reset();
     };
 
     $scope.addIngredient = function(ingredient) {

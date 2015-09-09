@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/redfieldstefan/brewtorial.svg?branch=recipe_form)](https://travis-ci.org/redfieldstefan/brewtorial)
+
 [![Stories in Ready](https://badge.waffle.io/redfieldstefan/brubuddy.png?label=ready&title=Ready)](https://waffle.io/redfieldstefan/brubuddy)
 
 Brewtorial

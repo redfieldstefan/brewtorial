@@ -25,16 +25,16 @@ describe('Brewtorial brew event get/put routes', function(){
     var testUser = new User({
       userId: uuid.v4(),
       displayName: 'test',
-      basic: { email: 'testbreww@example.com', password: password }
+      basic: { email: 'testbrew@example.com', password: password }
     });
 
     testUser.save(function(err, user) {
-      if (err) console.log(err);
-
+      if (err) {
+        return console.log(err);
+      }
       testUserId = user._id;
       user.generateToken(process.env.APP_SECRET, function(err, token) {
         if (err) console.log(err);
-
         testToken = token;
         testBrew = new BrewEvent({
           userId: testUserId,
@@ -59,7 +59,6 @@ describe('Brewtorial brew event get/put routes', function(){
 
         testBrew.save(function(err, brew) {
           if (err) console.log(err);
-
           testBrewId = brew._id;
           done();
         });
@@ -91,6 +90,7 @@ describe('Brewtorial brew event get/put routes', function(){
       .put('/api/brew/' + testBrewId)
       .send({ steps: [{ status: false }], eat: testToken})
       .end(function(err, res) {
+        console.log(res.body);
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
         expect(typeof res.body.data).to.eql('object');

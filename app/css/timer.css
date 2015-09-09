@@ -1,11 +1,11 @@
 section #timer-case {
-  background-color:rgba(0,0,0,0.75);
+  background-color: #F8F8F8;
   padding: 75px 50px;
 
 }
 
 section #timer-case p {
-  color: white;
+  color: black;
 }
 
 section #timer-case h1 {
@@ -40,6 +40,10 @@ section #timer-case h1 {
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 50px;
+}
+
+#spinner img {
+  width: 100%;
 }
 
 .timer {

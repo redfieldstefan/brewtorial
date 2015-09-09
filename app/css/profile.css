@@ -57,7 +57,7 @@
 }
 
   #user li.brew:hover {
-    background-color: white;
+    background-color: #F8F8F8;
     cursor: pointer;
   }
   #user li.brew:hover > p {

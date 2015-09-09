@@ -19,7 +19,6 @@ section.recipes li {
     background: #F8F8F8;
     cursor: pointer;
     z-index: 10;
-
   }
 
   section.recipes li:hover > h3 {
@@ -109,7 +108,6 @@ section.recipes li button:hover {
 
 #recipes button {
   font-size: 24px;
-  padding: 15px 30px;
   border-radius: 50px;
   text-transform: inherit;
 }
@@ -118,21 +116,71 @@ section.recipes li button:hover {
   font-size: 18px;
 }
 
-ul.icons {
-  float: left;
-}
-
-ul.icons li {
-  float: left;
-}
-
-ul.icons li:hover {
-  cursor: pointer;
-}
-
 .recipes img.icon {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#recipe_info {
+  float: left;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#recipe_info h4 {
+  color: white;
+}
+
+#review-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#review-info {
+  float: left;
+  padding: 25px;
+  width: 40%;
+}
+
+#review-materials {
+  float: left;
+  float: left;
+  width: 40%;
+}
+
+#review-steps {
+  float: left;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+#review-steps button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 25px;
+}
+
+
+
+#filters input {
+  width: 100%;
+  border: 1px solid hsla(0, 0%, 0%, 0.15);
+  border-radius: 7px;
+  padding: 7px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: hsla(0, 0%, 0%, 0.9);
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-bottom: 15px;
 }
 

@@ -1,0 +1,52 @@
+button {
+  background: #f8d38d;
+  color: hsla(0, 100%, 100%, 0.9);
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 20px;
+  outline: none;
+  border: 2px solid white;
+}
+
+  button:hover {
+    background: rgba(140, 252, 187, 1);
+  }
+
+.page_form button,
+.page_form button[type='submit'] {
+  background: #f8d38d;
+  color: hsla(0, 100%, 100%, 0.9);
+  text-transform: uppercase;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 16px;
+  outline: none;
+  padding: 5px 15px;
+  border: 2px solid white;
+  height: 50px;
+}
+
+  .page_form button:hover {
+    background: rgba(140, 252, 187, 1);
+  }
+
+#form button {
+  float: right;
+  padding: 15px 30px;
+  border-radius: 50px;
+  margin: 0;
+}
+
+.recipe-button {
+  border: 2px solid white;
+  height: 50px;
+  width: 125px;
+  font-size: 16px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+button.wide {
+  width: 200px;
+}

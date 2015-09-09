@@ -1,5 +1,6 @@
 nav #nav {
-  background-color: #CC0033;
+  /*background-color: #CC0033;*/
+  background-color: #e23f32;
   width: 100%;
   z-index: 10;
 }
@@ -26,8 +27,9 @@ nav #nav h1 {
 #nav a {
   color: white;
   display: inline-block;
-  padding: 20px 20px 0 30px;
+  padding: 25px 20px 0 30px;
   text-transform: initial;
+  font-weight: lighter;
 }
 
 #nav h1 {
