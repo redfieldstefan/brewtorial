@@ -5,6 +5,10 @@
 Brewtorial
 =========
 
+Brewtorial is craft brewing companion designed to let experienced Brewers post step by step recipes for interested amateurs to follow so that they may create their own delicious home made beers.
+
+Recipes consist of in depth instructions combined with timers to guide your path. For the longer steps your recipe's stage is saved so you may leave and return any time and still know the status of your home brew.
+
 #API
 
 ##User Routes:
