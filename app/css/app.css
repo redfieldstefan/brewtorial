@@ -7,6 +7,7 @@
 @import 'landing.css';
 @import 'profile.css';
 @import 'recipes.css';
+@import 'register.css';
 @import 'footer.css';
 
 /* clear fix */
@@ -20,49 +21,34 @@
     clear: both;
 }
 
-#message {
-  background: #cc0000;
-  background: -moz-linear-gradient(top, hsla(0,100%,40%,1) 0%, hsla(0,100%,40%,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,100%,40%,1)), color-stop(100%,hsla(0,100%,40%,1)));
-  background: -webkit-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
-  background: -o-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
-  background: -ms-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
-  background: linear-gradient(to bottom, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
-  width: 400px;
-  border-radius: 15px;
-  margin: 30px auto;
-  box-sizing: border-box;
-}
-
-#message p {
-  background: url('./images/error.png') 22px 50% no-repeat;
-  background-size: 30px 30px;
-  color: hsla(0, 100%, 100%, 0.9);
-  margin: 0;
-  font-size: 16px;
-  font-weight: 300;
-  padding: 15px 30px 15px 70px;
-  text-align: left;
+#bg {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: LightSalmon;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* container */
 .inner {
-  /*max-width: 1220px;*/
   margin: 0 auto;
   width: 100%;
   position: relative;
 }
 
-/* base styles */
+/* global styles */
 a {
   text-decoration: none;
   cursor: pointer;
-  /*color: hsla(0, 100%, 100%, 0.75);*/
   color: tomato;
   font-weight: 600;
   text-transform: uppercase;
-  /*text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);*/
-  /*text-shadow: 0 2px 0 white;*/
 }
 
 body {
@@ -81,7 +67,6 @@ h1 {
   color: #F8F8F8;
   font-size: 65px;
   font-weight: 600;
-  /*letter-spacing: -0.025em;*/
   text-align: center;
   padding-top: 25px;
   margin: 0;
@@ -179,7 +164,6 @@ main {
 }
 
 p {
-  /*color: hsla(0, 0%, 0%, 0.5);*/
   color: black;
   font-size: 27px;
   text-align: center;
@@ -207,7 +191,6 @@ table {
 td { text-align: center; }
 
 td.header {
-  /*color: hsla(0, 100%, 100%, 0.9);*/
   color: #CC0033;
   font-weight: 600;
   text-align: right;
@@ -239,7 +222,6 @@ tbody {
 }
 
 tbody tr:nth-child(odd) td {
-  /*background: hsla(0, 0%, 0%, 0.05);*/
   background: rgba(255, 255, 255, .75);
 }
 
@@ -257,106 +239,6 @@ thead th {
   cursor: pointer;
   color: hsla(0, 100%, 100%, 0.9);
   text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
-}
-
-#bg {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: LightSalmon;
-  /*background: url('../images/bubble-background.jpg') no-repeat center center fixed;*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-/* blue */
-main[data-page='landing'] {
-  /*background-color: hsla(200, 18%, 46%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* yellow */
-main[data-page='profile'] {
-  /*background-color: hsla(200, 18%, 46%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* register */
-main[data-page='register'] {
-  /*background-color: hsla(291, 64%, 42%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* magenta */
-main[data-page='user'],
-main[data-page='recipe'] {
-  /*background-color: hsla(200, 18%, 46%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* green */
-main[data-page='sign_in'],
-main[data-page='sign_out'] {
-  /*background-color: hsla(88, 50%, 53%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* gray blue */
-main[data-page='brew'] {
-  /*background-color: hsla(200, 18%, 46%, 0.9);*/
-  /*background-color:rgba(255,255,255, 0.50);*/
-}
-
-/* ================================================================================================================== */
-/* sign-in/register styles
-/* ================================================================================================================== */
-
-#form {
-  background: hsla(0, 100%, 100%, 0.9);
-  border-radius: 15px;
-  width: 600px;
-  margin: 0 auto;
-  padding: 30px;
-  box-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
-  box-sizing: border-box;
-}
-
-#form input[type='text'],
-#form input[type='password'] {
-  margin-bottom: 30px;
-}
-
-#form input.last_field { margin-bottom: 0; }
-
-/* ================================================================================================================== */
-/* dashboard styles
-/* ================================================================================================================== */
-
-#filters {
-  width: 485px;
-  margin: 0 auto;
-}
-
-body[data-page='dashboard'] strong {
-  color: hsla(0, 0%, 0%, 0.5);
-}
-
-tr {
-  cursor: pointer;
-}
-
-main[data-page='dashboard'] input[type='text'] {
-  width: 240px;
-  border-radius: 5px;
-  padding: 7px;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 #container {

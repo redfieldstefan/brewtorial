@@ -15,32 +15,32 @@ section.recipes li {
   margin: 1%;
 }
 
-  section.recipes li:hover {
-    background: #F8F8F8;
-    cursor: pointer;
-    z-index: 10;
-  }
+section.recipes li:hover {
+  background: #F8F8F8;
+  cursor: pointer;
+  z-index: 10;
+}
 
-  section.recipes li:hover > h3 {
-    color: red;
-  }
+section.recipes li:hover > h3 {
+  color: red;
+}
 
-  section.recipes li:hover > h4 {
-    color: rgba(140, 252, 187, 1);
-  }
+section.recipes li:hover > h4 {
+  color: rgba(140, 252, 187, 1);
+}
 
-  section.recipes li:hover > p {
-    color: tomato;
-  }
+section.recipes li:hover > p {
+  color: tomato;
+}
 
-  section.recipes li:hover > p strong {
-    color: #FF6633;
-  }
+section.recipes li:hover > p strong {
+  color: #FF6633;
+}
 
-  section.recipes li:hover > button {
-    color: white;
-    background: tomato;
-  }
+section.recipes li:hover > button {
+  color: white;
+  background: tomato;
+}
 
 section.recipes li h3 {
   margin: 0;
