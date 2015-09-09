@@ -4,8 +4,8 @@
   "description": "homebrew companion",
   "main": "server.js",
   "scripts": {
-    "build": "grunt --gruntfile ./dev/Gruntfile.js",
-    "test": "mocha dev/tests",
+    "build": "grunt --gruntfile /Gruntfile.js",
+    "test": "mocha test/",
     "start": "nodemon server.js || node server.js",
     "db":"mongod --dbpath=./data"
   },
