@@ -145,61 +145,58 @@
         </section>
       </div>
 
+
+      <!-- RECIPE REVIEW -->
+
       <div id="recipe_info" data-ng-if="formStep === 'review'">
-        <section>
-          <h1>Review</h1>
+
+        <h1>Review</h1>
+
+        <section id="review-header">
           <h2>{{header.title}}</h2>
           <p>{{description}}</p>
-          <form class="page_form">
-            <section class="header">
-              <h3>Brew Info:</h3>
-              <h4>Style: <span>{{header.style}}</span></h4>
-              <h4>ABV%: <span>{{header.abv}}</span></h4>
-              <h4>IBU: <span>{{header.ibu}}</span></h4>
-              <h4>OG: <span>{{header.og}}</span></h4>
-              <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
-              <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
-            </section>
-            <img class="icon" data-ng-if="header.icon" src="{{header.icon}}"/>
-            <hr>
-
-            <h3>Ingredients:</h3>
-            <ul>
-              <li data-ng-repeat="ingredient in ingredients">{{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}</li>
-            </ul>
-
-            <hr>
-
-            <h3>Equipment:</h3>
-            <ul>
-              <li data-ng-repeat="equipment in equipment track by $index">{{equipment}}</li>
-            </ul>
-
-            <hr>
-
-            <h3>Steps:</h3>
-            <ol>
-              <li data-ng-repeat="step in steps">{{step.directions}}:
-                (<em>Time Requred:
-                  {{step.offset.days}} Days,
-                  {{step.offset.hours}} Hours,
-                  {{step.offset.minutes}} Minutes
-                </em>)
-              </li>
-            </ol>
-
-            <hr>
-
-            <button type="submit" data-ng-click="createRecipe()">Submit This Recipe</button>
-          </form>
         </section>
+
+        <section id="review-info" class="header">
+          <h3>Brew Info:</h3>
+          <h4>Style: <span>{{header.style}}</span></h4>
+          <h4>ABV%: <span>{{header.abv}}</span></h4>
+          <h4>IBU: <span>{{header.ibu}}</span></h4>
+          <h4>OG: <span>{{header.og}}</span></h4>
+          <h4>Brew Time: <span>{{header.brewTime}}</span></h4>
+          <h4>Difficulty: <span>{{header.difficulty}}/5</span></h4>
+          <img class="icon" data-ng-if="header.icon" src="{{header.icon}}"/>
+        </section>
+
+        <section id="review-materials">
+
+          <h3>Ingredients:</h3>
+          <ul>
+            <li data-ng-repeat="ingredient in ingredients">{{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}</li>
+          </ul>
+
+          <h3>Equipment:</h3>
+          <ul>
+            <li data-ng-repeat="equipment in equipment track by $index">{{equipment}}</li>
+          </ul>
+        </section>
+
+        <section id="review-steps">
+          <h3>Steps:</h3>
+          <ol>
+            <li data-ng-repeat="step in steps">{{step.directions}}:
+              (<em>Time Requred:
+                {{step.offset.days}} Days,
+                {{step.offset.hours}} Hours,
+                {{step.offset.minutes}} Minutes
+              </em>)
+            </li>
+          </ol>
+          <button type="submit" data-ng-click="createRecipe()">Submit This Recipe</button>
+        </section>
+
       </div>
 
     </div><!--END CONTAINER-->
-
-<!--     <div id="bottom">
-       <img src="images/logo.png"/>
-    </div> -->
-
   </div>
 </article>
