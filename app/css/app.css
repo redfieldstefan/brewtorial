@@ -78,12 +78,11 @@ ul {
 h1 {
   font-family: 'Roboto', serif;
   text-transform: uppercase;
-  color: black;
+  color: #F8F8F8;
   font-size: 65px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  /*letter-spacing: -0.025em;*/
   text-align: center;
-  text-shadow: 0 3px 0 white;
   padding-top: 25px;
   margin: 0;
 }
