@@ -9,9 +9,9 @@ button {
   border: 2px solid white;
 }
 
-  button:hover {
-    background: rgba(140, 252, 187, 1);
-  }
+button:hover {
+  background: rgba(140, 252, 187, 1);
+}
 
 .page_form button,
 .page_form button[type='submit'] {

@@ -99,4 +99,27 @@
   color: #CC0033;
 }
 
+#filters {
+  width: 485px;
+  margin: 0 auto;
+}
+
+body[data-page='dashboard'] strong {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+tr {
+  cursor: pointer;
+}
+
+main[data-page='dashboard'] input[type='text'] {
+  width: 240px;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+
 

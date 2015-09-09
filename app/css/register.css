@@ -1,0 +1,43 @@
+#form {
+  background: hsla(0, 100%, 100%, 0.9);
+  border-radius: 15px;
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 0 3px 0 hsla(0, 0%, 0%, 0.15);
+  box-sizing: border-box;
+}
+
+#form input[type='text'],
+#form input[type='password'] {
+  margin-bottom: 30px;
+}
+
+#form input.last_field {
+ margin-bottom: 0;
+}
+
+#message {
+  background: #cc0000;
+  background: -moz-linear-gradient(top, hsla(0,100%,40%,1) 0%, hsla(0,100%,40%,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,100%,40%,1)), color-stop(100%,hsla(0,100%,40%,1)));
+  background: -webkit-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: -o-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: -ms-linear-gradient(top, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  background: linear-gradient(to bottom, hsla(0,100%,40%,1) 0%,hsla(0,100%,40%,1) 100%);
+  width: 400px;
+  border-radius: 15px;
+  margin: 30px auto;
+  box-sizing: border-box;
+}
+
+#message p {
+  background: url('./images/error.png') 22px 50% no-repeat;
+  background-size: 30px 30px;
+  color: hsla(0, 100%, 100%, 0.9);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 15px 30px 15px 70px;
+  text-align: left;
+}
