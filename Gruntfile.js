@@ -62,7 +62,8 @@ module.exports = function(grunt) {
             beforeEach: true,
             after: true,
             afterEach: true,
-            expect: true
+            expect: true,
+            $scope: true
           }
         }
       }
@@ -162,9 +163,9 @@ module.exports = function(grunt) {
   });
 
   // register tasks.
-  grunt.registerTask('default', ['jshint', 'build']);
+  grunt.registerTask('default', ['jshint']);
   grunt.registerTask('test',  ['simplemocha:dev', 'karma']);
-  grunt.registerTask('build:test', ['webpack:karma_test'])
+  grunt.registerTask('build:test', ['webpack:karma_test']);
   grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'cssmin']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('am', ['build:dev', 'watch']);

@@ -33,8 +33,8 @@ module.exports = function(app) {
     };
 
     $scope.redirect = function(destination) {
-      $location.path('/' + destination)
-    }
+      $location.path('/' + destination);
+    };
   }
 
   app.controller('LandingController', LandingController);

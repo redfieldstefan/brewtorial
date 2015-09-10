@@ -19,7 +19,7 @@ module.exports = function(app) {
 
     $scope.returnToRecipes = function() {
       $location.path('/recipes');
-    }
+    };
 
     $scope.createBrewEvent = function(user) {
       var newBrew = {
