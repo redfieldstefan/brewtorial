@@ -13,17 +13,17 @@ module.exports = function(app) {
     var Brew = resource('brew');
     var brewId = $routeParams.id;
     $scope.page = 'brew';
-    $scope.thisBrew;
-    $scope.steps;
     $scope.errors = [];
-    $scope.counter;
-    $scope.days;
-    $scope.hours;
-    $scope.mins;
-    $scope.secs;
-    $scope.started;
-    $scope.brewing;
-    $scope.congrats="CONGRATS! You've made a delicious brew"
+    // $scope.thisBrew;
+    // $scope.steps;
+    // $scope.counter;
+    // $scope.days;
+    // $scope.hours;
+    // $scope.mins;
+    // $scope.secs;
+    // $scope.started;
+    // $scope.brewing;
+    $scope.congrats = "CONGRATS! You've made a delicious brew";
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if (!auth.isSignedIn()){
@@ -32,7 +32,7 @@ module.exports = function(app) {
     }
 
     $scope.totalTime = function(step){
-      return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000))
+      return ((step.offset.days * 86400000) + (step.offset.hours * 3600000) + (step.offset.minutes * 60000));
     };
 
     $scope.getBrew = function() {
@@ -60,7 +60,7 @@ module.exports = function(app) {
         }
         console.log('save successful');
       });
-    }
+    };
 
     $scope.startBrew = function(){
       $scope.steps[0].active = true;
@@ -134,8 +134,8 @@ module.exports = function(app) {
         if($scope.days === 0 && $scope.hours === 0 && $scope.mins === 0 && $scope.secs === 0) {
               $scope.brewing = false;
               $timeout.cancel(counterTimeout);
-              return
-        };
+              return;
+        }
         counterTimeout = $timeout(function(){
           update();
         }, (1000));

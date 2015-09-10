@@ -8,7 +8,7 @@ describe('Landing Page controller test', function(){
   var $CtrlrConstructor;
   var $httpBackend;
   var $scope;
-  var $location
+  var $location;
 
   beforeEach(angular.mock.module('brewtorialApp'));
 

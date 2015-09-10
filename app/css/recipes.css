@@ -116,6 +116,32 @@ section.recipes li button:hover {
   font-size: 18px;
 }
 
+#bar {
+  float: left;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+#bar ul {
+  width: 70%;
+  margin-left: 15%;
+  display: block;
+  padding-top: 25px;
+}
+
+#bar li{
+  color: #F8F8F8;
+  width: 14.28%;
+  text-align: center;
+  float: left;
+  font-size: 30px;
+}
+
+#bar li.green {
+ color: rgba(140,252,187,1);
+ font-weight: bold;
+}
+
 .recipes img.icon {
   display: block;
   margin-left: auto;

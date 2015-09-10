@@ -55,7 +55,7 @@ module.exports = function(app) {
 
     $scope.nextStep = function(step) {
       $scope.formStep = step;
-    }
+    };
 
     $scope.addDescription = function(description) {
       $scope.description = description;
@@ -63,7 +63,7 @@ module.exports = function(app) {
 
     $scope.addIcon = function(icon) {
       $scope.header.icon = icon;
-    }
+    };
 
     $scope.addHeader = function(newHeader) {
       $scope.header = newHeader;

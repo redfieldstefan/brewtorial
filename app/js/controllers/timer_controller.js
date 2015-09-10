@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app){
+module.exports = function(app) {
 
     app.controller('TimerController',['$scope', '$timeout', function($scope, $timeout) {
     $scope.counter = 90;
@@ -33,4 +33,4 @@ module.exports = function(app){
 }]);
 
 
-}
+};

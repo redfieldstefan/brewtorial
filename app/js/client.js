@@ -17,7 +17,7 @@ require('./services/rest_resource')(brewtorialApp);
 // controllers.
 require('./controllers/brew_controller')(brewtorialApp);
 require('./controllers/create_recipe_controller')(brewtorialApp);
-require('./controllers/footer_controller')(brewtorialApp)
+require('./controllers/footer_controller')(brewtorialApp);
 require('./controllers/landing_controller')(brewtorialApp);
 require('./controllers/nav_header_controller')(brewtorialApp);
 require('./controllers/recipe_controller')(brewtorialApp);

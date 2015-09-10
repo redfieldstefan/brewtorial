@@ -57,7 +57,7 @@ describe('Brewtorial equipment api endpoint tests', function() {
 
       testEquipment.save(function(err, data) {
         if (err) console.log(err);
-        testEquipmentId = data._id
+        testEquipmentId = data._id;
         done();
       });
     });

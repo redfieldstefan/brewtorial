@@ -15,10 +15,10 @@ module.exports = function(app) {
 
     $scope.page = 'profile';
     $scope.errors = [];
-    $scope.user;
     $scope.users = [];
-    $scope.currentBrews;
-    $scope.completedBrews;
+    // $scope.user;
+    // $scope.currentBrews;
+    // $scope.completedBrews;
 
     $scope.gotoRecipes = function() {
       $location.path('/recipes');
@@ -37,7 +37,7 @@ module.exports = function(app) {
     };
 
     $scope.deleteUser = function(user) {
-      var areYouSure = prompt('Are you sure you want to delete your profile forever? Type "Yes" to confirm.');
+      var areYouSure = prompt('Are you sure you want to delete your profile forever? Type "Yes" to confirm.'); // jshint ignore:line
       if (areYouSure.toLowerCase() === 'yes') {
         $scope.users.splice($scope.users.indexOf(user), 1);
         $location.path('/dashboard');
@@ -80,7 +80,7 @@ module.exports = function(app) {
         if(brew === currentBrews[i].id){
           currentBrews.splice(currentBrews.indexOf(currentBrews[i]), 1);
         }
-      };
+      }
       $scope.saveUser($scope.user);
     };
 
@@ -90,13 +90,13 @@ module.exports = function(app) {
         if(brew === pastBrews[i].id){
           pastBrews.splice(pastBrews.indexOf(pastBrews[i]), 1);
         }
-      };
+      }
       $scope.saveUser($scope.user);
     };
 
     $scope.goToBrew = function(id){
       $location.path('/brews/' + id);
-    }
+    };
 
   }]);
 };
