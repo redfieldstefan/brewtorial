@@ -53,13 +53,13 @@ nav #nav h1 {
 #nav li.brew { margin-right: 10px; }
 
 #nav li.brew a {
-  background: #f8d38d;
-  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
+  /*background: #f8d38d;*/
+  /*background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
   background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
   background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
   background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
+  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);*/
   padding: 11px 30px;
   border: 1px solid hsla(0, 0%, 0%, 0.15);
 }
