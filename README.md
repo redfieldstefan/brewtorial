@@ -2,7 +2,7 @@
 
 [![Stories in Ready](https://badge.waffle.io/redfieldstefan/brubuddy.png?label=ready&title=Ready)](https://waffle.io/redfieldstefan/brubuddy)
 
-Brewtorial
+[Brewtorial](http://brewtorial.herokuapp.com/#/)
 =========
 
 Brewtorial is craft brewing companion designed to let experienced Brewers post step by step recipes for interested amateurs to follow so that they may create their own delicious home made beers.
