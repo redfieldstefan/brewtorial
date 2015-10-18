@@ -14,15 +14,6 @@ module.exports = function(app) {
     var brewId = $routeParams.id;
     $scope.page = 'brew';
     $scope.errors = [];
-    // $scope.thisBrew;
-    // $scope.steps;
-    // $scope.counter;
-    // $scope.days;
-    // $scope.hours;
-    // $scope.mins;
-    // $scope.secs;
-    // $scope.started;
-    // $scope.brewing;
     $scope.congrats = "CONGRATS! You've made a delicious brew";
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
