@@ -3,9 +3,15 @@
 <section data-ng-init="getAll()" id="dashboard">
   <div class="inner">
     <h1>Micro-brewing.<br>Macro-chugging.</h1>
-    <p>
-      Peruse our <strong>{{ beerTally }}</strong> hand-crafted micro-brew recipes.<br>If you find one that looks good, then get brewing!
-    </p>
+
+    <p>Brewtorial lets you share in the art of micro-brewing<br>from amateurs and professional brewmasters all over the world.</p>
+
+    <!-- tally -->
+    <ul id="tally" class="cf">
+      <li><div>{{ tallies.users }}</div><p>Users</p></li>
+      <li><div>{{ tallies.recipes }}</div><p>Recipes</p></li>
+      <li><div>{{ tallies.craftings }}</div><p>Craftings</p></li>
+    </ul>
 
     <!-- error handling -->
     <aside data-ng-show="errors.length">

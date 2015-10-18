@@ -88,6 +88,10 @@ section.recipes li button:hover {
   background: tomato;
 }
 
+#recipes a:hover {
+  color: rgba(140, 252, 187, 1);
+}
+
 #recipes p.author span {
   font-size: 16px;
   font-weight: 600;
