@@ -2,10 +2,10 @@
 <div id="bg"></div>
 
 <!-- nav -->
-<nav id="nav" data-page="{{ page }}">
+<nav data-page="{{ page }}">
   <div class="inner">
     <h1 class="nav" data-ng-show="isLoggedIn()"><a href="#landing" title="Dashboard"><img class="logo" src="images/logo.png"> Brewtorial<sup></sup></a></h1>
-    <h1 data-ng-show="!isLoggedIn()"><a href="#landing" title="Dashboard"><img class="logo" src="images/logo.png">Brewtorial<sup></sup></a></h1>
+    <h1 data-ng-show="!isLoggedIn()"><a class="logo" href="#landing" title="Dashboard"><img class="logo" src="images/logo.png">Brewtorial<sup></sup></a></h1>
     <ul class="cf">
       <li data-ng-show="!isLoggedIn()"><a href="#sign_in" title="Sign In">Sign In</a></li>
       <li data-ng-show="!isLoggedIn()"><a href="#register" title="Register">Register</a></li>

@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.controller('RecipeController', ['$scope', '$anchorScroll', 'RESTResource', '$routeParams', '$location', function($scope, $anchorScroll, resource, $routeParams, $location) {
+  app.controller('RecipeController', ['$scope', '$anchorScroll', 'RESTResource', 'auth', '$routeParams', '$location', function($scope, $anchorScroll, resource, auth, $routeParams, $location) {
     $scope.page = 'recipe';
     var Recipe = resource('recipe');
     var NewBrewEvent = resource('/brew/newbrew');
@@ -28,12 +28,18 @@ module.exports = function(app) {
         ingredients: $scope.recipe.ingredients,
         steps: $scope.recipe.steps
       };
+
       $scope.recipe.header.popularity.push(user);
       Recipe.save($scope.recipeId, $scope.recipe, function(err, res){
         if(err) {
           console.log(err);
         }
       });
+
+      if (!auth.isSignedIn()){
+        $location.path('/register');
+      }
+
       NewBrewEvent.create(newBrew, function(err, res) {
         if (err) {
           console.log(err);

@@ -2,48 +2,30 @@
 <section id="landing" data-ng-init="getLandingTallies()">
   <div class="inner">
     <h1 ng-bind-html="greeting"></h1>
-    <p>Brewtorial lets you share in the art of micro-brewing<br>from amateurs and professional brewmasters all over the world.</p>
+<!--     <p>Brewtorial lets you share in the art of micro-brewing<br>from amateurs and professional brewmasters all over the world.</p>
 
-    <!-- tally -->
     <ul id="tally" class="cf">
       <li><div>{{ tallies.users }}</div><p>Users</p></li>
       <li><div>{{ tallies.recipes }}</div><p>Recipes</p></li>
       <li><div>{{ tallies.craftings }}</div><p>Craftings</p></li>
-    </ul>
+    </ul> -->
+
 
     <section class="landing-main">
-      <img class="down-arrow" src="../images/down-arrow.png"/>
-      <ul class= "options">
-        <li data-ng-click="redirect('recipes')">
-          <p>
-            View The Recipes
-          </p>
-        </li>
-        <li data-ng-click="redirect('profile')">
-          <p>
-            Return to a Recipe I've started
-          </p>
-        </li>
-        <li data-ng-click="redirect('create_recipe')">
-          <p>
-            Create a Recipe
-          </p>
-        </li>
-      </ul>
-    <article>
-      <img class="down-arrow" src="../images/down-arrow.png"/>
-      <h1>What is Brewtorial?</h1>
-      <p>
-        Brewtorial is craft brewing companion designed to let experienced Brewers post step by step recipes for interested amateurs to follow so that they may create their own delicious home made beers.
-      </p>
-      <p>
-        Recipes consist of in depth instructions combined with timers so that you can have confidence your home brew is up to a high standard. For the longer steps your recipe's stage is saved so you may leave and return any time  and still know the status of your home brew.
-      </p>
-      <p>
-        We do screen all of our recipes for quality, and only invite experienced brewers to create and share their home brew steps. Feel free to sort through them all to find the home brew for you!
-      </p>
-      <h3 data-ng-click="redirect('recipes')">View Recipes</h3>
-    </article>
+      <article>
+        <img class="down-arrow" src="../images/down-arrow.png"/>
+        <h1>What is Brewtorial?</h1>
+        <p>
+          Brewtorial is craft brewing companion designed to let experienced Brewers post step by step recipes for interested amateurs to follow so that they may create their own delicious home made beers.
+        </p>
+        <p>
+          Recipes consist of in depth instructions combined with timers so that you can have confidence your home brew is up to a high standard. For the longer steps your recipe's stage is saved so you may leave and return any time  and still know the status of your home brew.
+        </p>
+        <p>
+          We do screen all of our recipes for quality, and only invite experienced brewers to create and share their home brew steps. Feel free to sort through them all to find the home brew for you!
+        </p>
+        <h3 data-ng-click="redirect('recipes')">View Recipes</h3>
+      </article>
     </section>
   </div>
 </section>

@@ -36,9 +36,13 @@ require('./directives/timer_directive')(brewtorialApp);
 // routes.
 brewtorialApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
+    // .when('/', {
+    //   templateUrl: 'views/landing.html',
+    //   controller: 'LandingController'
+    // })
     .when('/', {
-      templateUrl: 'views/landing.html',
-      controller: 'LandingController'
+      templateUrl: 'views/all_recipes.html',
+      controller: 'AllRecipesController'
     })
     .when('/brews/:id', {
       templateUrl: 'views/brew.html',
