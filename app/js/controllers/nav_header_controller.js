@@ -7,7 +7,7 @@ module.exports = function(app) {
   function NavHeaderController($scope, auth, $location) {
     $scope.page = $location.path();
     $scope.page = $scope.page.substr(1);
-    $scope.loggedIn = false
+    $scope.loggedIn = false;
 
     $scope.signOutUser = function() {
       auth.logout();
