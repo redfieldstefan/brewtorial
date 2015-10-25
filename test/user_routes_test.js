@@ -117,5 +117,4 @@ describe('Brewtorial user routes', function(){
         done();
       });
   });
-
 });

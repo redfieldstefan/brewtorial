@@ -45,7 +45,7 @@ module.exports = function(app) {
     };
 
     $scope.view = function(recipe) {
-      $location.path('recipes/' + recipe._id);
+      window.location = '#/recipes/' + recipe._id;
     };
 
   }

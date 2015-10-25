@@ -1,5 +1,5 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
-<section id="sign-in">
+<section id="sign-in" class="container">
   <div class="inner">
     <h1>Easy as A-B-V.</h1>
     <p>Provide your brewdentials or <a href="#/register" title="Register">Register</a> to login.</p>
@@ -10,14 +10,14 @@
     </div>
 
     <!-- form -->
-    <div id="form" class="cf">
+    <form id="form" data-ng-submit="signIn(user)" class="cf">
       <label>Email</label>
       <input type="text" name="email" autofocus data-ng-model="user.email">
       <label>Password</label>
       <input type="password" class="last_field" name="password" data-ng-model="user.password">
       <hr>
-      <button data-ng-click="signIn(user)">Sign In</button>
-    </div>
+      <button type="submit">Sign In</button>
+    </form>
   </div>
-  
+
 </section>

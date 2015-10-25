@@ -1,8 +1,8 @@
 <!-- id -->
-<div id="bg"></div>
+<!-- <div id="bg"></div> -->
 
 <!-- nav -->
-<nav data-page="{{ page }}">
+<!-- <nav data-page="{{ page }}">
   <div class="inner">
     <h1 class="nav" data-ng-show="isLoggedIn()"><a href="#landing" title="Dashboard"><img class="logo" src="images/logo.png"> Brewtorial<sup></sup></a></h1>
     <h1 data-ng-show="!isLoggedIn()"><a class="logo" href="#landing" title="Dashboard"><img class="logo" src="images/logo.png">Brewtorial<sup></sup></a></h1>
@@ -22,4 +22,50 @@
       <li data-ng-show="isLoggedIn()" class="brew"><a href="#recipes" title="Recipes">Recipes</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<!-- id -->
+<!-- <div id="bg"></div> -->
+
+<!-- nav -->
+<section data-ng-init="isLoggedIn()">
+  <section id="nav-signed-out" class="inner-nav" data-ng-if="!loggedIn" >
+    <a href="#recipes" title="Dashboard">
+      <img class="logo center" src="images/logo.png" />
+      <h2 id="logo-header">Brewtorial</h2>
+    </a>
+    <ul class="center">
+      <li>
+        <a href="#recipes"><p>Recipes</p></a>
+      </li>
+      <li>
+        <a href="#landing"><p>About Us</p></a>
+      </li>
+      <li>
+        <a href="#sign_in"><p>Sign In</p></a>
+      </li>
+      <li>
+        <a href='#register'><p>Register</p></a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="nav-signed-out" class="inner-nav" data-ng-if="loggedIn">
+    <a href="#landing" title="Dashboard"><img class="logo center" src="images/logo.png" /></a>
+    <h2>Brewtorial</h2>
+    <ul class="center">
+      <li>
+        <a href="#recipes"><p>Recipes</p></a>
+      </li>
+      <li>
+        <a href="#landing"><p>About Us</p></a>
+      </li>
+      <li>
+        <a href="#profile"><p>Profile</p></a>
+      </li>
+      <li>
+        <a href='#sign_out'><p>Log Out</p></a>
+      </li>
+    </ul>
+  </section>
+</section>
