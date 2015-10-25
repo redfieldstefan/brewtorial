@@ -15,6 +15,10 @@ section.recipes li {
   margin: 1%;
 }
 
+section.recipes li p {
+  color: black;
+}
+
 section.recipes li:hover {
   background: #F8F8F8;
   cursor: pointer;
