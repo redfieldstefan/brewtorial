@@ -1,11 +1,11 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
-<article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
+<article id="create_recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()" class="container">
 
   <div class="inner">
     <div id="container" class="cf">
 
-      <section id="bar">
+      <!-- <section id="bar">
           <ul>
             <li class="green">1</li>
             <li>2</li>
@@ -15,7 +15,7 @@
             <li>6</li>
             <li>Review</li>
           </ul>
-      </section>
+      </section> -->
 
       <div id="form_sections">
         <section id="brew_info">
@@ -68,7 +68,7 @@
             <section class="header-input">
               <label>Brewing Time</label>
               <small>How long it takes to prepare your brew</small>
-              <input type="number" step="any" required name="totalTime" data-ng-model="header.brewTime"/>
+              <input type="text" step="any" required name="totalTime" placeholder="Example: 6 Weeks" data-ng-model="header.brewTime"/>
             </section>
 
             <section class="header-input">

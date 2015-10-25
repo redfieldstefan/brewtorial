@@ -1,8 +1,8 @@
 .landing-main {
-  margin-top: 75px;
+  /*margin-top: 75px;*/
   width: 100%;
  /* background-color:rgba(0,0,0,0.75);*/
- background: url('../images/beer-line-1500x600.jpg');
+ /*background: url('../images/beer-line-1500x600.jpg');*/
 }
 
 .landing-main img.down-arrow {
@@ -12,9 +12,9 @@
 }
 
 .landing-main h1 {
-  padding-top: 50px;
   font-size: 45px;
   text-shadow: none;
+  color: LightSalmon;
 }
 
 .landing-main h1.white {
@@ -56,13 +56,13 @@
 }
 
 .landing-main article {
-  background: rgba(255, 255, 255, 1);
+  /*background: rgba(255, 255, 255, 1);*/
   margin-top: 50px;
   padding-bottom: 50px;
 }
 
 .landing-main article h1 {
-  color: rgba(140, 252, 187, 1);
+  /*color: rgba(140, 252, 187, 1);*/
   padding-bottom: 50px;
   text-shadow: none;
 }
@@ -86,19 +86,21 @@
   padding-bottom: 25px;
   width: 55%;
   text-align: justify;
-  color: black;
+  color: white;
 }
 
 #tally {
   margin: 0 auto;
   padding: 50px 0 0 0;
   width: 402px;
+  color: white;
 }
 
 #tally div {
   border-radius: 50%;
   background: white;
   border: 2px solid black;
+  border: 2px solid white;
   background: hsla (100, 100%, 100%, 0.15);
   width: 100px;
   height: 100px;
@@ -107,7 +109,7 @@
   font-weight: 600;
   letter-spacing: -0.05em;
   font-size: 48px;
-  color: black;
+  color: LightSalmon;
   line-height: 2;
 }
 
@@ -123,7 +125,7 @@
   text-align: center;
   font-family: 'Roboto';
   font-size: 20px;
-  color: black;
+  color: white;
   margin: 15px 0 0 0;
 }
 

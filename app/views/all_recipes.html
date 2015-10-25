@@ -1,8 +1,8 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
-<section data-ng-init="getAll()" id="dashboard">
+<section data-ng-init="getAll()" id="dashboard" class="container">
   <div class="inner">
-    <h1>Micro-brewing.<br>Macro-chugging.</h1>
+    <!-- <h1>Micro-brewing.<br>Macro-chugging.</h1> -->
 
     <p>Brewtorial lets you share in the art of micro-brewing<br>from amateurs and professional brewmasters all over the world.</p>
 
@@ -37,11 +37,10 @@
           <p><strong>Popularity:</strong> {{recipe.header.popularity.length}} points</p>
           <img class="icon" src="{{recipe.header.icon}}" />
           <p class="description">{{recipe.description | limitTo:100}}...</p>
+          <!-- <button data-ng-click="view(recipe)">View Recipe</button> -->
           <button data-ng-click="view(recipe)">View Recipe</button>
         </li>
       </ul>
     </section>
-    <div id="bottom">
-       <img src="images/logo.png"/>
-    </div>
   </div>
+</section>

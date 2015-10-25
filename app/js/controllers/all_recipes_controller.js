@@ -44,9 +44,9 @@ module.exports = function(app) {
       $scope.sortOrder = !$scope.sortOrder;
     };
 
-    $scope.view = function(recipe) {
-      $location.path('recipes/' + recipe._id);
-    };
+    // $scope.view = function(recipe) {
+    //   window.location = '#/recipes/' + recipe._id;
+    // };
 
   }
 
