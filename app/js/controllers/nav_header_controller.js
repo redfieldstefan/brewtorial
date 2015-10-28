@@ -9,6 +9,12 @@ module.exports = function(app) {
     $scope.page = $scope.page.substr(1);
     $scope.loggedIn = false;
 
+    $scope.turnOnSign = function() {
+      var tl = new TimelineLite();
+      tl.from('nav', 2, {boxShadow: '0 0 10px black'}, 'one')
+      .from('nav p', 2, {opacity: 0}, 'two')
+    };
+
     $scope.signOutUser = function() {
       auth.logout();
     };
