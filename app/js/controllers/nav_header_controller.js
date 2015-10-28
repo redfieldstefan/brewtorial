@@ -10,7 +10,7 @@ module.exports = function(app) {
     $scope.loggedIn = false;
 
     $scope.turnOnSign = function() {
-      var tl = new TimelineLite();
+      var tl = new TimelineLite(); //jshint ignore:line
       tl.from('nav#main', 2, {boxShadow: '0 0 10px black'}, 'one');
     };
 
