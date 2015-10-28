@@ -11,8 +11,7 @@ module.exports = function(app) {
 
     $scope.turnOnSign = function() {
       var tl = new TimelineLite();
-      tl.from('nav', 2, {boxShadow: '0 0 10px black'}, 'one')
-      .from('nav p', 2, {opacity: 0}, 'two')
+      tl.from('nav#main', 2, {boxShadow: '0 0 10px black'}, 'one');
     };
 
     $scope.signOutUser = function() {

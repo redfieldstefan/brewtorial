@@ -28,7 +28,7 @@
 <!-- <div id="bg"></div> -->
 
 <!-- nav -->
-<section data-ng-init="isLoggedIn()">
+<section data-ng-init="isLoggedIn(); turnOnSign()">
   <section id="nav-signed-out" class="inner-nav" data-ng-if="!loggedIn" >
     <a href="#recipes" title="Dashboard">
       <img class="logo center" src="images/logo.png" />
