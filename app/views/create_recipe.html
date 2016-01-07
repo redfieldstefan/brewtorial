@@ -93,15 +93,15 @@
         </section>
 
         <!-- ingredients -->
-        <section data-ng-if="formStep === 'ingredients'">
+        <section id="step-ingredients" data-ng-if="formStep === 'ingredients'">
           <h3><strong>Step 4</strong> &ndash; Ingredients</h3>
           <form id="form_ingredients" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addIngredient(ingredient)">
             <label>Item</label>
             <small>The ingredient item</small>
-            <input type="text" required name="ingredient" data-ng-model="ingredient.item"/>
+            <input type="text" required name="ingredient" placeholder="eg 'Hops' " data-ng-model="ingredient.item"/>
             <label>Amount</label>
             <small>The quantity of the ingredient</small>
-            <input type="number" required name="amount" step="any" data-ng-model="ingredient.amount"/>
+            <input type="number" required name="amount" step="any" placeholder="eg 1 (you're smart) " data-ng-model="ingredient.amount"/>
             <label>Unit</label>
             <small>The unit of measurement for the ingredient</small>
             <select data-ng-model="ingredient.unit">
@@ -117,16 +117,19 @@
             </select>
             <button data-ng-click="submit">Add Ingredient</button>
           </form>
-          <ul>
+          <ul class="current-ingredients">
+            <h2>Current List</h2>
             <li data-ng-repeat="ingredient in ingredients">
-              {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}}
+              {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}} <span class="glyphicon glyphicon-remove">X</span>
             </li>
           </ul>
-          <button class="recipe-button" data-ng-click="nextStep('equipment')">Next</button>
+          <div class="button">
+            <button class="recipe-button" data-ng-click="nextStep('equipment')">Next</button>
+          </div>
         </section>
 
         <!-- equipment. -->
-        <section data-ng-if="formStep === 'equipment'">
+        <section id="step-ingredients" data-ng-if="formStep === 'equipment'">
           <h3><strong>Step 5</strong> &ndash; Equipment</h3>
           <form id="form_equipment" class="page_form" ng-model-options="{updateOn: 'submit'}" data-ng-submit="addEquipment(item)">
             <label>Equipment</label>
@@ -136,7 +139,15 @@
             </select>
             <button class='wide' type="submit">Add Equipment</button>
           </form>
-          <button class="recipe-button" data-ng-click="nextStep('steps')">Next</button>
+
+          <ul class="current-ingredients">
+            <h2>Current List</h2>
+            <li data-ng-repeat="item in equipment">{{item}} <span class="glyphicon" data-ng-click="remove(item, $scope.equipment)">X</span></li>
+          </ul>
+
+          <div class="button">
+            <button class="recipe-button" data-ng-click="nextStep('steps')">Next</button>
+          </div>
         </section>
 
         <!-- steps -->
