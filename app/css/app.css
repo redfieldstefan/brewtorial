@@ -9,6 +9,7 @@
 @import 'recipes.css';
 @import 'register.css';
 @import 'footer.css';
+@import 'create-recipe.css';
 
 /* clear fix */
 .cf:before,
