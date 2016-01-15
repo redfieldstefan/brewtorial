@@ -1,32 +1,23 @@
 button {
-  /*background: #f8d38d;*/
-  background: LightSalmon;
-  color: hsla(0, 100%, 100%, 0.9);
+  color: white;
   text-transform: uppercase;
   font-family: 'Open Sans';
   font-weight: 600;
   font-size: 20px;
-  outline: none;
-  border: 2px solid white;
+  outline: none !important;
+  border: 0;
 }
 
 button:hover {
   background: rgba(140, 252, 187, 1);
 }
 
-.page_form button,
-.page_form button[type='submit'] {
-  /*background: #f8d38d;*/
-  background: tomato;
-  color: hsla(0, 100%, 100%, 0.9);
-  text-transform: uppercase;
-  font-family: 'Open Sans';
-  font-weight: 600;
+.page_form button {
   font-size: 16px;
-  outline: none;
   padding: 5px 15px;
-  border: 2px solid white;
   height: 50px;
+  outline: none;
+  border: 0;
 }
 
   .page_form button:hover {

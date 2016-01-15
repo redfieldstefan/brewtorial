@@ -1,3 +1,7 @@
+#brew {
+  float: left;
+}
+
 #form_sections {
   display: block;
   margin-left: auto;
@@ -9,21 +13,6 @@
 
 #form_headers{
   float: left;
-}
-
-.page_form input[type='text'],
-.page_form input[type='number'] {
-  width: 100%;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  border-radius: 7px;
-  padding: 7px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 16px;
-  color: hsla(0, 0%, 0%, 0.9);
-  font-family: 'Open Sans';
-  font-weight: 300;
-  margin-bottom: 15px;
 }
 
 .page_form label {
@@ -73,18 +62,15 @@
 
 .page_form h4 {
   margin: 0;
-  color: #CC0033;
 }
 
 .page_form h4 span {
   font-size: 18px;
   text-align: left;
   font-weight: 300;
-  color: hsla(0, 0%, 0%, 0.5);
 }
 
 .page_form li {
-  color: hsla(0, 0%, 0%, 0.5);
   font-size: 18px;
   font-family: 'Open Sans';
 }

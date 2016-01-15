@@ -15,7 +15,7 @@
         <div class="left">
           <h3>About this brewski:</h3>
           <label>Description:</label>
-          <p>{{ recipe.description }}</p>
+          <p class="black">{{ recipe.description }}</p>
           <hr>
             <table class="recipe_table">
               <tbody>
@@ -69,7 +69,7 @@
           </ul>
           <h3>Steps:</h3>
           <ol>
-            <li data-ng-repeat="step in recipe.steps">{{ step.directions }} (<em>Time: {{ step.offset.days }} Days {{ step.offset.hours }} Hours {{ step.offset.minutes }} Minutes</em>)</li>
+            <li class="white" data-ng-repeat="step in recipe.steps">{{ step.directions }} (<em>Time: {{ step.offset.days }} Days {{ step.offset.hours }} Hours {{ step.offset.minutes }} Minutes</em>)</li>
           </ol>
         </div>
         <hr>

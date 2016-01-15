@@ -12,7 +12,7 @@
 @import 'create-recipe.css';
 
 /* clear fix */
-.cf:before,
+/*.cf:before,
 .cf:after {
     content: " ";
     display: table;
@@ -20,9 +20,9 @@
 
 .cf:after {
     clear: both;
-}
+}*/
 
-#bg {
+/*#bg {
   z-index: -1;
   position: fixed;
   top: 0;
@@ -30,28 +30,22 @@
   width: 100%;
   height: 100%;
   background-color: rgb(51, 51, 51);
-  /*background-color: LightSalmon;*/
+  background-color: LightSalmon;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 
 /* container */
-.inner {
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-}
-
-.container {
-  float: left;
-  padding-top: 50px;
-  padding-bottom: 100px;
-  width: 100%;
-}
 
 /* global styles */
+
+body {
+  height: 100%;
+  background-color: rgb(51, 51, 51);
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -60,9 +54,6 @@ a {
   text-transform: uppercase;
 }
 
-body {
-  height: 100%;
-}
 
 ul {
   list-style: none;
@@ -175,7 +166,6 @@ main {
 }
 
 p {
-  /*color: black;*/
   color: #B0B0B0;
   font-size: 27px;
   text-align: center;
@@ -193,7 +183,7 @@ strong {
   font-weight: 600;
 }
 
-section.tables {
+/*section.tables {
   width: 100%;
   height: 100%;
   padding-bottom: 50px;
@@ -241,9 +231,9 @@ tbody {
 
 tbody tr:nth-child(odd) td {
   background: rgba(255, 255, 255, .75);
-}
+}*/
 
-thead th {
+/*thead th {
   background: #f8d38d;
   background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
@@ -257,11 +247,11 @@ thead th {
   cursor: pointer;
   color: hsla(0, 100%, 100%, 0.9);
   text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
-}
+}*/
 
-#container {
-  position: relative;
+.container {
   width: 100%;
+  float: left;
 }
 
 .left {
@@ -283,20 +273,29 @@ thead th {
   background: rgba(255, 255, 255, .75);
 }
 
-.right li {
-  color: black;
-}
-
-.right p {
-  color: black;
-}
-
 .left p {
   background: rgba(255, 255, 255, .75);
   padding: 25px;
   text-align: justify;
-  color: black;
   font-size: 18px;
   margin-top: 0;
+}
+
+/*COLORS*/
+
+.white {
+  color: white;
+}
+
+.pink {
+  color: #ffa07a;
+}
+
+.salmon {
+  color: Salmon;
+}
+
+.black {
+  color: black;
 }
 

@@ -69,7 +69,7 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       controller: 'AllRecipesController'
     })
     .when('/recipes/:id', {
-      templateUrl: 'views/recipes.html',
+      templateUrl: 'views/recipe.html',
       controller: 'RecipeController'
     })
     .when('/register', {

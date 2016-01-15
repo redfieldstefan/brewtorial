@@ -16,7 +16,7 @@ section.recipes li {
 }
 
 section.recipes li p {
-  color: black;
+  color: #FFFFFF;
 }
 
 section.recipes li:hover {
@@ -155,54 +155,6 @@ section.recipes li button:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
-#recipe_info {
-  float: left;
-  width: 100%;
-  padding: 0 5%;
-  box-sizing: border-box;
-}
-
-#recipe_info h4 {
-  color: white;
-}
-
-#review-header {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-#review-info {
-  float: left;
-  padding: 25px;
-  width: 40%;
-}
-
-#review-materials {
-  float: left;
-  float: left;
-  width: 40%;
-}
-
-#review-steps {
-  float: left;
-  width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 50px;
-}
-
-#review-steps button {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 25px;
-}
-
-
 
 #filters input {
   width: 100%;

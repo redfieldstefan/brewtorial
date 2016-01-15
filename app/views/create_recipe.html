@@ -5,18 +5,6 @@
   <div class="inner">
     <div id="container" class="cf">
 
-      <!-- <section id="bar">
-          <ul>
-            <li class="green">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>Review</li>
-          </ul>
-      </section> -->
-
       <div id="form_sections">
         <section id="brew_info">
           <!-- STEP 1 -->
@@ -25,8 +13,7 @@
               <h3><strong>Step 1</strong> &ndash; Description</h3>
               <label>Description</label>
               <small>Provide a description for your brew</small>
-              <textarea id="description" required name="description" data-ng-model="description"></textarea>
-              <!-- <button type="submit">Add Description to Review</button> -->
+              <textarea id="description" required name="description" data-ng-model="description"></textarea>x
             </form>
             <button class="recipe-button" data-ng-click="nextStep('header')">Next</button>
           </section>
@@ -120,7 +107,7 @@
           <ul class="current-ingredients">
             <h2>Current List</h2>
             <li data-ng-repeat="ingredient in ingredients">
-              {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}} <span class="glyphicon glyphicon-remove">X</span>
+              {{ingredient.item}} {{ingredient.amount}} {{ingredient.unit}} <span class="glyphicon glyphicon-remove" data-ng-click="remove(ingredient, ingredients)">X</span>
             </li>
           </ul>
           <div class="button">
@@ -135,14 +122,14 @@
             <label>Equipment</label>
             <small>Gear needed to create your brew</small>
             <select data-ng-model="item">
-              <option data-ng-repeat="equipment in availableEquipment">{{equipment.name}}</option>
+              <option data-ng-repeat="equipment in availableEquipment">{{equipment.name}} </option>
             </select>
             <button class='wide' type="submit">Add Equipment</button>
           </form>
 
           <ul class="current-ingredients">
             <h2>Current List</h2>
-            <li data-ng-repeat="item in equipment">{{item}} <span class="glyphicon" data-ng-click="remove(item, $scope.equipment)">X</span></li>
+            <li data-ng-repeat="item in equipment">{{item}} <span class="glyphicon glyphicon-remove" data-ng-click="remove(item, equipment)">X</span></li>
           </ul>
 
           <div class="button">
@@ -207,7 +194,7 @@
         <section id="review-steps">
           <h3>Steps:</h3>
           <ol>
-            <li data-ng-repeat="step in steps">{{step.directions}}:
+            <li class="white" data-ng-repeat="step in steps">{{step.directions}}:
               (<em>Time Requred:
                 {{step.offset.days}} Days,
                 {{step.offset.hours}} Hours,

@@ -21,7 +21,7 @@ module.exports = function(app) {
     $scope.description = '';
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
     $scope.icon = '';
-    $scope.formStep = 'description';
+    $scope.formStep = 'ingredients';
 
     $scope.createRecipe = function() {
       var newRecipe = {
@@ -94,6 +94,11 @@ module.exports = function(app) {
     $scope.addEquipment = function(item) {
       $scope.equipment.push(item);
       document.getElementById("form_equipment").reset();
+    };
+
+    $scope.remove = function(thing, arr) {
+      var index = arr.indexOf(thing);
+      arr.splice(index, 1);
     };
 
     var clearForms = function () {
