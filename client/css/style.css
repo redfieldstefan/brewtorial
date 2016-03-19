@@ -11,34 +11,6 @@
 @import 'footer.css';
 @import 'create-recipe.css';
 
-/* clear fix */
-/*.cf:before,
-.cf:after {
-    content: " ";
-    display: table;
-}
-
-.cf:after {
-    clear: both;
-}*/
-
-/*#bg {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(51, 51, 51);
-  background-color: LightSalmon;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
-
-/* container */
-
 /* global styles */
 
 body {
@@ -136,20 +108,6 @@ img.icon {
   padding-bottom: 25px;
   width: 5%;
   margin-left: 47.5%;
-}
-
-input[type='text'],
-input[type='password'] {
-  width: 100%;
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  border-radius: 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 20px;
-  color: hsla(0, 0%, 0%, 0.9);
-  font-family: 'Open Sans';
-  font-weight: 300;
 }
 
 label {

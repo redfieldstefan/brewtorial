@@ -11,10 +11,12 @@ module.exports = function(app) {
     }
     var Recipe = RESTResource('recipe');
     var Equipment = RESTResource('equipment');
+    $scope.steps = ['header', 'ingredients', 'icons', 'equipment', 'steps', 'review'];
+    $scope.stepIndex = 0;
+    $scope.formStep = $scope.steps[$scope.stepIndex];
     $scope.page = 'recipe';
     $scope.errors = [];
     $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []}
-    $scope.formStep = 'description';
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
 
     $scope.createRecipe = function() {
@@ -40,9 +42,9 @@ module.exports = function(app) {
       });
     };
 
-    $scope.nextStep = function(step) {
-      //$scope.formStep++;
-      $scope.formStep = step;
+    $scope.changeStep = function(number) {
+      $scope.stepIndex += number;
+      $scope.formStep = $scope.steps[$scope.stepIndex];
     };
 
     $scope.addIcon = function(icon) {
