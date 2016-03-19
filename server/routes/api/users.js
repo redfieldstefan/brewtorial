@@ -1,7 +1,7 @@
 var User = require('../../models/User');
 var bodyparser = require('body-parser');
 var uuid = require('uuid');
-var eatAuth = require("../../lib/eat_auth")(process.env.APP_SECRET);
+var eatAuth = require("../../../common/eat_auth")(process.env.APP_SECRET);
 
 module.exports = function(router, passport) {
   router.use(bodyparser.json());

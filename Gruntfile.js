@@ -15,7 +15,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  var watchFiles = ['Gruntfile.js','./app/**/*.js', './app/**/*.css', './app/**/*.html'];
+  var watchFiles = ['Gruntfile.js','./client/**/*.js', './client/**/*.css', './client/**/*.html'];
 
   // configure tasks.
   grunt.initConfig({
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 
     webpack: {
       client: {
-        entry: __dirname + '/app/js/client.js',
+        entry: __dirname + '/client/js/client.js',
         output: {
           path: path.join(__dirname, '/build'),
           filename: 'bundle.min.js'
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
 
     copy: {
       html: {
-        cwd: 'app/',
+        cwd: 'client/',
         expand: true,
         flatten: false,
         src:'**/*.html',
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         filter: 'isFile'
       },
       images: {
-        cwd: 'app/',
+        cwd: 'client/',
         expand: true,
         flatten: false,
         src: 'images/**/*',
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
       target: {
         files: [{
           expand: true,
-          cwd: 'app/',
+          cwd: 'client/',
           src: 'css/**/*.css',
           dest: 'build/',
           ext: '.min.css'
@@ -146,13 +146,13 @@ module.exports = function(grunt) {
     watch: {
       files: watchFiles,
       html: {
-        files: ['./app/**/*.html'],
+        files: ['./client/**/*.html'],
         options: {
           livereload: true
         }
       },
       css: {
-        files: ['./app/**/*.css'],
+        files: ['./client/**/*.css'],
         options: {
           livereload: true
         }

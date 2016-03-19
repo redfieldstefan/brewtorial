@@ -1,5 +1,5 @@
 var eat = require('eat');
-var User = require('../models/User');
+var User = require('../server/models/User');
 
 module.exports = function(secret) {
   return function(req, res, next) {

@@ -1,6 +1,6 @@
 // import models.
 var Recipe = require('../../models/Recipe');
-var eatAuth = require('../../lib/eat_auth')(process.env.APP_SECRET);
+var eatAuth = require('../../../common/eat_auth')(process.env.APP_SECRET);
 
 // export router.
 module.exports = function(router) {

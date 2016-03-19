@@ -8,64 +8,63 @@
       <div id="form_sections">
         <section id="brew_info">
           <!-- STEP 1 -->
-          <section data-ng-if="formStep === 'description'">
-            <form class="page_form" data-ng-submit="addDescription(description)">
-              <h3><strong>Step 1</strong> &ndash; Description</h3>
-              <label>Description</label>
-              <small>Provide a description for your brew</small>
-              <textarea id="description" required name="description" data-ng-model="description"></textarea>x
-            </form>
-            <button class="recipe-button" data-ng-click="nextStep('header')">Next</button>
-          </section>
+        <section data-ng-if="formStep === 'description'">
+          <form class="page_form">
+            <h3><strong>Step 1</strong> &ndash; Description</h3>
+            <label>Description</label>
+            <small>Provide a description for your brew</small>
+            <textarea id="description" required name="description" data-ng-model="recipe.description"></textarea>
+          </form>
+          <button class="recipe-button" type="button" data-ng-click="nextStep('header')">Next</button>
+        </section>
 
         <section data-ng-if="formStep === 'header'">
           <h3><strong>Step 2</strong> &ndash; Brew Info</h3>
-          <form id="form_headers" class="page_form" data-ng-submit="addHeader(header)">
+          <form id="form_headers" class="page_form">
 
             <section class="header-input">
               <label>Title</label>
               <small>Enter the title of your brew</small>
-              <input type="text" required name="title" data-ng-model="header.title">
+              <input type="text" required name="title" data-ng-model="recipe.header.title">
             </section>
 
             <section class="header-input">
               <label>Style</label>
               <small>Provide a style, such as: Lager, Ale, etc.</small>
-              <input type="text" required name="style" data-ng-model="header.style"/>
+              <input type="text" required name="style" data-ng-model="recipe.header.style"/>
             </section>
 
             <section class="header-input">
               <label>ABV%</label>
               <small>Enter the Alcohol by Volume percent</small>
-              <input type="number" step="any" required name="abv" data-ng-model="header.abv"/>
+              <input type="number" step="any" required name="abv" data-ng-model="recipe.header.abv"/>
             </section>
 
             <section class="header-input">
               <label>IBU</label>
               <small>International Bittering Units of your brew</small>
-              <input type="number" step="any" required name="ibu" data-ng-model="header.ibu"/>
+              <input type="number" step="any" required name="ibu" data-ng-model="recipe.header.ibu"/>
             </section>
 
             <section class="header-input">
               <label>OG</label>
               <small>Original Gravity of your brew</small>
-              <input type="number" step="any" required name="og" data-ng-model="header.og"/>
+              <input type="number" step="any" required name="og" data-ng-model="recipe.header.og"/>
             </section>
 
             <section class="header-input">
               <label>Brewing Time</label>
               <small>How long it takes to prepare your brew</small>
-              <input type="text" step="any" required name="totalTime" placeholder="Example: 6 Weeks" data-ng-model="header.brewTime"/>
+              <input type="text" step="any" required name="totalTime" placeholder="Example: 6 Weeks" data-ng-model="recipe.header.brewTime"/>
             </section>
 
             <section class="header-input">
               <label>Difficulty</label>
               <small>A scale of how easy (1) to hard (5) this brew is to make</small>
-              <input type="number" name="difficulty" data-ng-model="header.difficulty"/>
+              <input type="number" name="difficulty" data-ng-model="recipe.header.difficulty"/>
             </section>
-            <!-- <button type="submit">Add Info to Review</button> -->
           </form>
-          <button class="recipe-button" data-ng-click="nextStep('icons')">Next</button>
+          <button class="recipe-button" type="button" data-ng-click="nextStep('icons')">Next</button>
         </section>
 
         <section data-ng-if="formStep === 'icons'">
@@ -87,8 +86,6 @@
             <small>The ingredient item</small>
             <input type="text" required name="ingredient" placeholder="eg 'Hops' " data-ng-model="ingredient.item"/>
             <label>Amount</label>
-            <small>The quantity of the ingredient</small>
-            <input type="number" required name="amount" step="any" placeholder="eg 1 (you're smart) " data-ng-model="ingredient.amount"/>
             <label>Unit</label>
             <small>The unit of measurement for the ingredient</small>
             <select data-ng-model="ingredient.unit">
@@ -102,6 +99,8 @@
               <option>Tablespoons</option>
               <option>Packet</option>
             </select>
+            <small>The quantity of the ingredient</small>
+            <input type="number" required name="amount" step="any" placeholder="eg 1 (you're smart) " data-ng-model="ingredient.amount"/>
             <button data-ng-click="submit">Add Ingredient</button>
           </form>
           <ul class="current-ingredients">

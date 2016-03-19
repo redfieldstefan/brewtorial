@@ -2,36 +2,23 @@
 
 module.exports = function(app) {
 
-  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$cookies', 'auth', function($scope, $location, resource, $cookies, auth) {
+  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$cookies', 'auth', function($scope, $location, RESTResource, $cookies, auth) {
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if(!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
     }
-
-    var Recipe = resource('recipe');
-    var Equipment = resource('equipment');
+    var Recipe = RESTResource('recipe');
+    var Equipment = RESTResource('equipment');
     $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.header = {};
-    $scope.ingredients = [];
-    $scope.steps = [];
-    $scope.equipment = [];
-    $scope.description = '';
+    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []}
+    $scope.formStep = 'description';
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
-    $scope.icon = '';
-    $scope.formStep = 'ingredients';
 
     $scope.createRecipe = function() {
-      var newRecipe = {
-        header: $scope.header,
-        equipment: $scope.equipment,
-        ingredients: $scope.ingredients,
-        steps: $scope.steps,
-        description: $scope.description
-      };
-      Recipe.create(newRecipe, function(err, data) {
+      Recipe.create($scope.recipe, function(err, data) {
         if(err) {
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
@@ -54,19 +41,12 @@ module.exports = function(app) {
     };
 
     $scope.nextStep = function(step) {
+      //$scope.formStep++;
       $scope.formStep = step;
-    };
-
-    $scope.addDescription = function(description) {
-      $scope.description = description;
     };
 
     $scope.addIcon = function(icon) {
       $scope.header.icon = icon;
-    };
-
-    $scope.addHeader = function(newHeader) {
-      $scope.header = newHeader;
     };
 
     $scope.addIngredient = function(ingredient) {

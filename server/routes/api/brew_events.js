@@ -2,7 +2,7 @@
 
 var BrewEvent = require('../../models/BrewEvent.js');
 var User = require('../../models/User');
-var eatAuth = require("../../lib/eat_auth")(process.env.APP_SECRET);
+var eatAuth = require("../../../common/eat_auth")(process.env.APP_SECRET);
 
 module.exports = function(router) {
 

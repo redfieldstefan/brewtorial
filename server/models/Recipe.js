@@ -11,7 +11,7 @@ var recipeSchema = new mongoose.Schema({
       required: true
     },
     author: String,
-    brewTime: Number,
+    brewTime: String,
     created: Date,
     difficulty: Number,
     ibu: Number,

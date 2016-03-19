@@ -10,7 +10,7 @@ var equipmentRouter = express.Router();
 
 // initialize passport
 userRouter.use(passport.initialize());
-require('../lib/passport_strategy')(passport);
+require('../../common/passport_strategy')(passport);
 
 // import routes.
 require('./api/recipe')(recipeRouter);
