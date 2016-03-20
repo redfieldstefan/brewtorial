@@ -14,8 +14,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
-  var watchFiles = ['Gruntfile.js','./client/**/*.js', './client/**/*.css', './client/**/*.html'];
+  var watchFiles = ['Gruntfile.js','./client/**/*.js', './client/**/*.scss', './client/**/*.html'];
 
   // configure tasks.
   grunt.initConfig({
@@ -113,13 +114,32 @@ module.exports = function(grunt) {
       }
     },
 
+    sass: {
+      dist: {
+        options: {
+          sourcemap: 'none'
+        },
+        files: {
+          'build/css/style.css': 'client/styles/style.scss'
+        }
+      }
+    },
+
     cssmin: {
       target: {
         files: [{
+          // App styles: have already been built (by Sass) into `build/css/style.css`
           expand: true,
-          cwd: 'client/',
-          src: 'css/**/*.css',
-          dest: 'build/',
+          cwd: 'build/css/',
+          src: 'style.css',
+          dest: 'build/css/',
+          ext: '.min.css'
+        }, {
+          // Third-party styles: not built by Sass, are pulled in from `client/styles/lib/`
+          expand: true,
+          cwd: 'client/styles/lib/',
+          src: '**/*.css',
+          dest: 'build/css/',
           ext: '.min.css'
         }]
       }
@@ -152,7 +172,7 @@ module.exports = function(grunt) {
         }
       },
       css: {
-        files: ['./client/**/*.css'],
+        files: ['./client/**/*.scss'],
         options: {
           livereload: true
         }
@@ -166,7 +186,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint']);
   grunt.registerTask('test',  ['simplemocha:dev', 'karma']);
   grunt.registerTask('build:test', ['webpack:karma_test']);
-  grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'cssmin']);
+  grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'sass', 'cssmin']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('am', ['build:dev', 'watch']);
 };
