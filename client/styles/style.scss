@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'animations';
 @import 'brew';
 @import 'buttons';
@@ -242,18 +243,18 @@ tbody tr:nth-child(odd) td {
 /*COLORS*/
 
 .white {
-  color: white;
+  color: $white;
 }
 
 .pink {
-  color: #ffa07a;
+  color: $pink;
 }
 
 .salmon {
-  color: Salmon;
+  color: $salmon;
 }
 
 .black {
-  color: black;
+  color: $black;
 }
 
