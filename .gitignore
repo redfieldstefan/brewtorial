@@ -6,3 +6,4 @@
 **/build/
 **/bundle.js
 timer.html
+.sass-cache
