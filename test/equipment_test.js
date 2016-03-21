@@ -1,12 +1,12 @@
 process.env.MONGOLAB_URI = 'mongodb://localhost/brewtorial_test';
-require('../server');
+require('../server/index');
 
 var mongoose = require('mongoose');
 var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = require('chai').expect;
-var Equipment = require('../models/Equipment');
+var Equipment = require('../server/models/Equipment');
 
 describe('Brewtorial equipment api endpoint tests', function() {
   var testEquipment = new Equipment({

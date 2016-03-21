@@ -1,15 +1,15 @@
 'use strict';
 
 process.env.MONGOLAB_URI = 'mongodb://localhost/brewtorial_test';
-require('../server.js');
+require('../server/index');
 
 var mongoose = require('mongoose');
 var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
 var expect = chai.expect;
-var Recipe = require('../models/Recipe');
-var User = require('../models/User');
+var Recipe = require('../server/models/Recipe');
+var User = require('../server/models/User');
 var uuid = require('uuid');
 var bcrypt = require('bcrypt-nodejs');
 
