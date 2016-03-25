@@ -14,7 +14,7 @@ module.exports = function(app) {
       'Welcome to counter-<br>productivity.'
     ];
 
-    var Service = RESTResource('service');
+    var Service = RESTResource('service'); // jshint ignore:line
     $scope.greeting = greetings[Math.floor(Math.random()*greetings.length)];
     $scope.page = 'landing';
     $scope.errors = [];
