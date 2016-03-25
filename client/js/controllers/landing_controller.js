@@ -4,7 +4,7 @@ module.exports = function(app) {
 
   LandingController.$inject = ['$scope', '$location', '$document', 'RESTResource'];
 
-  function LandingController($scope, $location, $document, resource) {
+  function LandingController($scope, $location, $document, RESTResource) {
     var greetings = [
       'Re-brew-nited<br>and it tastes so good.',
       'Your Kung-brew<br>is strong, grasshoppa.',
@@ -14,7 +14,7 @@ module.exports = function(app) {
       'Welcome to counter-<br>productivity.'
     ];
 
-    var Service = resource('service');
+    var Service = RESTResource('service');
     $scope.greeting = greetings[Math.floor(Math.random()*greetings.length)];
     $scope.page = 'landing';
     $scope.errors = [];

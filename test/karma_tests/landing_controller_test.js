@@ -37,6 +37,7 @@ describe('Landing Page controller test', function(){
 
     it('should post a new tally', function(){
       $httpBackend.expectPOST('/api/service').respond(200, {result: {users: 1, recipes: 1, craftings: 1 }});
+      $scope.getLandingTallies();
       $httpBackend.flush();
       expect($scope.tallies.users).toBe(1);
       expect($scope.tallies.recipes).toBe(1);
