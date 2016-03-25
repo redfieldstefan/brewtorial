@@ -20,7 +20,6 @@ describe('brewtorial create recipe controllers test', function(){
     var CreateRecipeController = $CtrlrConstructor('CreateRecipeController', {$scope: $scope});
     expect(typeof CreateRecipeController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
-    expect(Array.isArray($scope.ingredients)).toBe(true);
     expect(Array.isArray($scope.steps)).toBe(true);
   });
 

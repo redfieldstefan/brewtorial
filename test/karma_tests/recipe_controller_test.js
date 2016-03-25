@@ -17,6 +17,7 @@ describe('brewtorial recipe controller test', function() {
     $CtrlrConstructor = $controller;
     $location = _$location_;
     $routeParams = _$routeParams_;
+    $routeParams.id = 1;
   }));
 
   it('should test true', function() {
@@ -27,10 +28,7 @@ describe('brewtorial recipe controller test', function() {
     var RecipeController = $CtrlrConstructor('RecipeController', {$scope: $scope});
     expect(typeof RecipeController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
-    expect(typeof $scope.header).toBe('object');
-    expect(Array.isArray($scope.ingredients)).toBe(true);
-    expect(Array.isArray($scope.equipment)).toBe(true);
-    expect(Array.isArray($scope.steps)).toBe(true);
+    expect(typeof $scope.recipe).toBe('object');
   });
 
   describe('Function tests', function() {
@@ -40,7 +38,6 @@ describe('brewtorial recipe controller test', function() {
     }));
 
     it('should make a get recipe request', function() {
-      $routeParams._id = 1;
       var mockRes = {
         _id: 1,
         header: {title: 'test', style: 'beer'},
@@ -53,11 +50,11 @@ describe('brewtorial recipe controller test', function() {
       $httpBackend.expectGET('/api/recipe/1').respond(200, {result: mockRes});
       $scope.getRecipe();
       $httpBackend.flush();
-      expect($scope.header.title).toBe('test');
-      expect($scope.header.style).toBe('beer');
-      expect($scope.ingredients[0].item).toBe('hops');
-      expect($scope.ingredients[0].amount).toBe(3);
-      expect($scope.ingredients[0].unit).toBe('pounds');
+      expect($scope.recipe.header.title).toBe('test');
+      expect($scope.recipe.header.style).toBe('beer');
+      expect($scope.recipe.ingredients[0].item).toBe('hops');
+      expect($scope.recipe.ingredients[0].amount).toBe(3);
+      expect($scope.recipe.ingredients[0].unit).toBe('pounds');
       expect($scope.errors.length).toBe(0);
     });
   });
