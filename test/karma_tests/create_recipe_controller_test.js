@@ -11,9 +11,14 @@ describe('brewtorial create recipe controllers test', function(){
 
   beforeEach(angular.mock.module('brewtorialApp'));
 
-  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+  beforeEach(angular.mock.inject(function($rootScope, $controller, auth) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
+    sinon.stub(auth, 'isSignedIn').returns(true);
+  }));
+
+  afterEach(angular.mock.inject(function (auth) {
+    auth.isSignedIn.restore();
   }));
 
   it('Should be able to create a new controller', function(){
