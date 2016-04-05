@@ -1,0 +1,132 @@
+#create-recipe input {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+}
+
+#progress {
+  width: 20%;
+  float: left;
+  background: tomato;
+  height: 500px;
+}
+
+#form-sections {
+  width: 80%;
+  float: left;
+  min-height: 500px;
+}
+
+.step {
+  width: 100%;
+  float: left;
+}
+
+#create-recipe .buttons {
+  margin-left: 5%;
+}
+
+#create-recipe #form-headers .header-input {
+  width: 45%;
+  padding-top: 25px;
+  float: left;
+}
+
+#create-recipe #form-headers label {
+  color: white;
+}
+
+#create-recipe #form-headers small {
+  color: white;
+}
+
+
+#step-ingredients form {
+  width: 50%;
+  float: left;
+}
+
+#step-ingredients ul.current-ingredients {
+  float: left;
+  width: 40%;
+  margin-left: 2%;
+  padding-left: 5px;
+  background-color: #F8F8F8;
+  min-height: 300px;
+}
+
+#step-ingredients ul.current-ingredients li {
+  padding-top: 3px;
+  padding-bottom: 0;
+  color: Salmon;
+}
+
+#step-ingredients ul.current-ingredients h2 {
+  background-color: #F8F8F8;
+  color: black;
+  padding: 5px;
+}
+
+#step-ingredients ul.current-ingredients .glyphicon {
+  color: Salmon;
+}
+
+#step-ingredients ul.current-ingredients .glyphicon:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.button {
+  width: 100%;
+  float: left;
+}
+
+#recipe_info {
+  float: left;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+#recipe_info h4 {
+  color: white;
+}
+
+#review-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#review-info {
+  float: left;
+  padding: 25px;
+  width: 40%;
+}
+
+#recipe_info ul li {
+  color: #FFFFFF;
+}
+
+#review-materials {
+  float: left;
+  float: left;
+  width: 40%;
+}
+
+#review-steps {
+  float: left;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
+#review-steps button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 25px;
+}

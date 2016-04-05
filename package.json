@@ -6,7 +6,7 @@
   "scripts": {
     "build": "grunt --gruntfile /Gruntfile.js",
     "test": "mocha test/ && grunt jshint",
-    "start": "nodemon server.js || node server.js",
+    "start": "nodemon server/index.js || node server/index.js",
     "db": "mongod --dbpath=./data"
   },
   "repository": {

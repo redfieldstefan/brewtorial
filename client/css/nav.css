@@ -1,0 +1,151 @@
+.logo {
+  width: 75px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+#logo-header:hover {
+  color: LightSalmon;
+}
+
+nav {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 100%;
+  float: left;
+  background: #282828;
+  box-shadow: 0 0px 75px white;
+}
+
+nav .inner-nav {
+  width: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+nav h2 {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  padding-top: 5px;
+}
+
+nav ul {
+  width: 50%;
+}
+
+nav li {
+  width: 25%;
+  float: left;
+}
+
+nav li p {
+  text-align: center;
+  font-size: 12px;
+  color: white;
+}
+
+nav li p:hover {
+  color: tomato;
+  cursor: pointer;
+}
+
+/*nav  {
+  background-color: #e23f32;
+  width: 100%;
+  z-index: 10;
+}
+
+nav h1 {
+  padding: 0;
+  text-shadow: none;
+}
+
+nav img.logo {
+  width: 50px;
+  margin-right: 5px;
+}
+
+nav a.logo {
+  padding-top: 15px;
+}
+
+nav .inner {
+  margin: 0 auto;
+}
+
+nav a {
+  color: white;
+  display: inline-block;
+  padding: 25px 20px 0 30px;
+  text-transform: initial;
+  font-weight: lighter;
+}
+
+nav h1 {
+  font-family: 'Roboto';
+  display: inline-block;
+  float: left;
+  font-size: 35px;
+  margin: 0;
+}
+
+  nav h1 a:hover {
+    color: rgba(140, 252, 187, 1);
+  }
+
+nav li {
+  display: block;
+  float: right;
+  margin: 30px 15px 0 0;
+}
+
+nav li.brew {
+ margin-right: 10px;
+}
+
+nav li.brew a {
+  padding: 11px 30px;
+}
+
+nav li.user {
+  margin-right: 15px;
+}
+
+nav li.user a {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+nav li.user img {
+  margin: 3px 0 0 5px;
+}
+
+nav li:nth-child(2) {
+  margin-right: 15px;
+}
+
+nav li a {
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+}
+
+  nav li a:hover {
+    color: rgba(140,252,187,1);
+  }
+
+nav sup {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  opacity: 0.5;
+  font-size: 16px;
+}
+*/
