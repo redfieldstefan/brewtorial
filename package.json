@@ -57,6 +57,7 @@
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.36",
     "karma-jasmine": "^0.3.5",
+    "karma-ng-html2js-preprocessor": "^0.2.1",
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.3.2",
