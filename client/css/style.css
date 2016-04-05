@@ -13,9 +13,14 @@
 
 /* global styles */
 
+html {
+  max-width: 100%;
+  height: 100%;
+}
+
 body {
   height: 100%;
-  background-color: rgb(51, 51, 51);
+  max-width: 100%;
 }
 
 a {
@@ -54,28 +59,22 @@ h2 {
   font-family: 'Roboto', serif;
   font-size: 36px;
   font-weight: 300;
-  color: #F8F8F8;
+  color: black;
   margin: 0;
 }
 
 h3 {
-  font-family: 'Open Sans';
+  font-family: 'Roboto', serif;
   font-size: 24px;
   font-weight: 300;
-  color: #F8F8F8;
+  color: black;
 }
 
 h4 {
-  font-family: 'Open Sans';
+  font-family: 'Roboto', serif;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  color: hsla(0, 100%, 100%, 0.5);
-}
-
-h3 strong {
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 hr {
@@ -84,10 +83,6 @@ hr {
   border: 0;
   margin: 30px 0;
   clear: both;
-}
-
-html {
-  height: 100%;
 }
 
 img {
@@ -99,17 +94,6 @@ img.icon {
   padding-left: 25px;
 }
 
-#bottom {
-  width: 100%;
-}
-
-#bottom img {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  width: 5%;
-  margin-left: 47.5%;
-}
-
 label {
   font-family: 'Open Sans';
   font-weight: 600;
@@ -117,10 +101,6 @@ label {
   text-transform: uppercase;
   color: hsla(0, 0%, 0%, 0.5);
   display: block;
-}
-
-main {
-  min-height: 100%;
 }
 
 p {
@@ -131,81 +111,27 @@ p {
   font-weight: 300;
 }
 
+small {
+  width: 100%;
+  margin: 0 0 10px 0;
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
 
+.text-center {
+  text-align: center;
+}
+
 strong {
   font-weight: 600;
 }
-
-/*section.tables {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 50px;
-}
-
-table {
-  border: 1px solid hsla(0, 0%, 0%, 0.15);
-  border-raidus: 5px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-td { text-align: center; }
-
-td.header {
-  color: #CC0033;
-  font-weight: 600;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-td.data {
-  text-align: left;
-  padding-left: 15px;
-}
-
-td, th {
-  font-family: 'Open Sans';
-  font-weight: 300;
-  padding: 5px;
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.075);
-}
-
-tr.all_recipes:hover{
-  background-color: rgba(140, 252, 187, 1);
-}
-
-tr.all_recipes:hover > td {
-  color: white;
-}
-
-tbody {
-  background: rgba(255, 255, 255, .50);
-}
-
-tbody tr:nth-child(odd) td {
-  background: rgba(255, 255, 255, .75);
-}*/
-
-/*thead th {
-  background: #f8d38d;
-  background: -moz-linear-gradient(top, hsla(39,88%,76%,1) 0%, hsla(31,81%,53%,1) 75%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(39,88%,76%,1)), color-stop(75%,hsla(31,81%,53%,1)));
-  background: -webkit-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -o-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: -ms-linear-gradient(top, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  background: linear-gradient(to bottom, hsla(39,88%,76%,1) 0%,hsla(31,81%,53%,1) 75%);
-  padding: 15px 0;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: hsla(0, 100%, 100%, 0.9);
-  text-shadow: 0 2px 0 hsla(0, 0%, 0%, 0.15);
-}*/
 
 .container {
   width: 100%;
@@ -251,6 +177,10 @@ tbody tr:nth-child(odd) td {
 
 .salmon {
   color: Salmon;
+}
+
+.background-salmon {
+  background-color: Salmon;
 }
 
 .black {

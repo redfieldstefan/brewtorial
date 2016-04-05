@@ -9,11 +9,12 @@ module.exports = function(app) {
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
     }
+
     var Recipe = RESTResource('recipe');
     var Equipment = RESTResource('equipment');
-    $scope.steps = ['header', 'ingredients', 'icons', 'equipment', 'steps', 'review'];
+    $scope.steps = [{name: 'Description', complete: false},{name:'Information', complete: false}, {name:'Ingredients', complete: false}, {name:'Icons', complete: false}, {name:'Equipment', complete: false}, {name:'Instructions', complete: false}, {name:'Review', complete: false}];
     $scope.stepIndex = 0;
-    $scope.formStep = $scope.steps[$scope.stepIndex];
+    $scope.formStep = $scope.steps[$scope.stepIndex].name;
     $scope.page = 'recipe';
     $scope.errors = [];
     $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []}
@@ -43,16 +44,24 @@ module.exports = function(app) {
     };
 
     $scope.changeStep = function(number) {
+      if(number > -1) {
+        $scope.steps[$scope.stepIndex].complete = true;
+      }
       $scope.stepIndex += number;
-      $scope.formStep = $scope.steps[$scope.stepIndex];
+      $scope.formStep = $scope.steps[$scope.stepIndex].name;
+    };
+
+    $scope.jumpStep = function(step) {
+      $scope.stepIndex = $scope.steps.indexOf(step);
+      $scope.formStep = $scope.steps[$scope.stepIndex].name;
     };
 
     $scope.addIcon = function(icon) {
-      $scope.header.icon = icon;
+      $scope.recipe.header.icon = icon;
     };
 
     $scope.addIngredient = function(ingredient) {
-      $scope.ingredients.push({item: ingredient.item, amount: ingredient.amount, unit: ingredient.unit});
+      $scope.recipe.ingredients.push({item: ingredient.item, amount: ingredient.amount, unit: ingredient.unit});
       document.getElementById("form_ingredients").reset();
     };
 

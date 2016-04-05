@@ -1,3 +1,9 @@
+#create-recipe {
+  max-width: 100%;
+  float: left;
+  padding-top: 50px;
+}
+
 #create-recipe input {
   width: 100%;
   height: 35px;
@@ -7,8 +13,33 @@
 #progress {
   width: 20%;
   float: left;
-  background: tomato;
   height: 500px;
+}
+
+#progress h4 {
+  padding-left: 50px;
+}
+
+#progress ul {
+  padding-left: 50px;
+  color: Salmon;
+}
+
+#progress li:hover {
+  cursor: pointer;
+  color: tomato;
+}
+
+#progress li.current {
+  color: rgba(140,252,187,1);
+}
+
+#progress li.complete span {
+  color: gold;
+}
+
+#progress li.complete.current {
+  color: green;
 }
 
 #form-sections {
@@ -17,13 +48,15 @@
   min-height: 500px;
 }
 
-.step {
-  width: 100%;
+#form-sections .step {
+  width: 90%;
   float: left;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-#create-recipe .buttons {
-  margin-left: 5%;
+#form-sections .buttons {
+  width: 90%;
 }
 
 #create-recipe #form-headers .header-input {
@@ -32,14 +65,9 @@
   float: left;
 }
 
-#create-recipe #form-headers label {
-  color: white;
+#create-recipe textarea {
+  width: 75%;
 }
-
-#create-recipe #form-headers small {
-  color: white;
-}
-
 
 #step-ingredients form {
   width: 50%;
@@ -51,20 +79,14 @@
   width: 40%;
   margin-left: 2%;
   padding-left: 5px;
-  background-color: #F8F8F8;
   min-height: 300px;
+  border: 2px dotted WhiteSmoke;
 }
 
 #step-ingredients ul.current-ingredients li {
   padding-top: 3px;
   padding-bottom: 0;
   color: Salmon;
-}
-
-#step-ingredients ul.current-ingredients h2 {
-  background-color: #F8F8F8;
-  color: black;
-  padding: 5px;
 }
 
 #step-ingredients ul.current-ingredients .glyphicon {
@@ -74,11 +96,6 @@
 #step-ingredients ul.current-ingredients .glyphicon:hover {
   color: black;
   cursor: pointer;
-}
-
-.button {
-  width: 100%;
-  float: left;
 }
 
 #recipe_info {

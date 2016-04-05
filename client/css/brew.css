@@ -21,15 +21,6 @@
   color: #CC0033;
 }
 
-.page_form small {
-  width: 100%;
-  margin: 0 0 10px 0;
-  display: inline-block;
-  font-size: 13px;
-  text-transform: uppercase;
-  color: white;
-}
-
 .page_form textarea {
   width: 100%;
   height: 200px;
