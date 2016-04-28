@@ -13,6 +13,10 @@
 
 /* global styles */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   max-width: 100%;
   height: 100%;
@@ -23,11 +27,15 @@ body {
   max-width: 100%;
 }
 
+.container {
+  width: 90%;
+  display: inline-block;
+  margin-left: 5%;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
-  color: tomato;
-  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -42,10 +50,9 @@ ul {
 h1 {
   font-family: 'Roboto', serif;
   text-transform: uppercase;
-  color: #F8F8F8;
-  font-size: 65px;
+  /*color: #F8F8F8;*/ /*I DO LOVE THIS COLOR THOUGH*/
+  font-size: 45px;
   font-weight: 600;
-  text-align: center;
   padding-top: 25px;
   margin: 0;
 }
@@ -104,9 +111,6 @@ label {
 }
 
 p {
-  color: #B0B0B0;
-  font-size: 27px;
-  text-align: center;
   font-famiy: 'Open Sans', sans-serif;
   font-weight: 300;
 }
@@ -133,11 +137,6 @@ strong {
   font-weight: 600;
 }
 
-.container {
-  width: 100%;
-  float: left;
-}
-
 .left {
   width: 50%;
   float: left;
@@ -146,29 +145,46 @@ strong {
 }
 
 .right {
+  float: right;
+}
+
+input.dotted-underline {
+  border: none;
+  border-bottom: 2px dotted #B0B0B0;
+}
+
+textarea.dotted-border {
+  border: 2px dotted #B0B0B0;
+}
+
+/*.right {
   width: 50%;
   float: right;
   padding: 0 5%;
   box-sizing: border-box;
-}
+}*/
 
-.right ul {
+/*.right ul {
   padding: 25px;
   background: rgba(255, 255, 255, .75);
-}
+}*/
 
-.left p {
+/*.left p {
   background: rgba(255, 255, 255, .75);
   padding: 25px;
   text-align: justify;
   font-size: 18px;
   margin-top: 0;
-}
+}*/
 
 /*COLORS*/
 
 .white {
   color: white;
+}
+
+.primary-white {
+  color: #F8F8F8;
 }
 
 .pink {

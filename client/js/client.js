@@ -88,5 +88,9 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/user.html',
       controller: 'UserController'
     })
+    .when('/new-create', {
+      templateUrl: 'views/new-create.html',
+      controller: 'RecipeController'
+    })
     .otherwise({ redirectTo: '/' });
 }]);

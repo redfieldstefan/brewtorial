@@ -1,4 +1,108 @@
 #create-recipe {
+  width: 100%;
+  float: left;
+}
+
+#create-recipe .head {
+  width: 100%;
+  float: left;
+}
+
+#create-recipe .previous {
+  width: 100%;
+  float: left;
+}
+
+#create-recipe button.next {
+  height: 50px;
+  text-align: center;
+  color: white;
+  font-weight: 300;
+  padding-left: 25px;
+  padding-right: 25px;
+  -webkit-box-shadow: 0.5px 0.5px 2px 0px rgba(48,48,48,1);
+  -moz-box-shadow: 0.5px 0.5px 2px 0px rgba(48,48,48,1);
+  box-shadow: 0.5px 0.5px 2px 0px rgba(48,48,48,1);
+}
+
+#create-recipe #progress {
+  width: 100%;
+  float: left;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: WhiteSmoke;
+}
+
+#create-recipe #progress h1 {
+  float: left;
+  font-size: 40px;
+  width: 15%;
+}
+
+#create-recipe #progress ul {
+  float: left;
+  width: 85%;
+  padding-top: 50px;
+}
+
+#create-recipe #progress li {
+  width: 16%;
+  float: left;
+  margin-left: .33%;
+  margin-right: .33%;
+}
+
+#create-recipe #progress li:hover {
+  cursor: pointer;
+}
+
+#create-recipe #progress li .bar {
+  float: left;
+  width: 100%;
+  height: 15px;
+  background-color: #c5ebc0;
+}
+
+#create-recipe #progress li.current .bar {
+  background-color: #6dcff6;
+}
+
+#create-recipe #progress li.current.complete .bar {
+  background-color: #6dcff6;
+}
+
+#create-recipe #progress li.complete .bar {
+  background-color: #679c5f;
+}
+
+#create-recipe #steps {
+  width: 55%;
+  float: left;
+  margin-left: 22.5%;
+  padding-bottom: 50px;
+}
+
+#create-recipe #steps input {
+  width: 50%;
+  padding-left: 10px;
+  margin-bottom: 25px;
+}
+
+#create-recipe #steps textarea {
+  width: 100%;
+  height: 300px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+#create-recipe #steps .step {
+  padding-bottom: 25px;
+}
+
+
+
+/*OLD*/
+/*#create-recipe {
   max-width: 100%;
   float: left;
   padding-top: 50px;
@@ -147,3 +251,4 @@
   margin-left: auto;
   padding: 25px;
 }
+*/

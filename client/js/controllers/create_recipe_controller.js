@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     var Recipe = RESTResource('recipe');
     var Equipment = RESTResource('equipment');
-    $scope.steps = [{name: 'Description', complete: false},{name:'Information', complete: false}, {name:'Ingredients', complete: false}, {name:'Icons', complete: false}, {name:'Equipment', complete: false}, {name:'Instructions', complete: false}, {name:'Review', complete: false}];
+    $scope.steps = [{name: 'Basics', complete: false},{name:'Details', complete: false}, {name:'Ingredients', complete: false}, {name:'Equipment', complete: false}, {name:'Directions', complete: false}, {name:'Review', complete: false}];
     $scope.stepIndex = 0;
     $scope.formStep = $scope.steps[$scope.stepIndex].name;
     $scope.page = 'recipe';
