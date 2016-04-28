@@ -27,10 +27,10 @@ module.exports = function(grunt) {
         node: true,
       },
       server: {
-        src: ['Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'server.js']
+        src: ['Gruntfile.js', 'server/routes/**/*.js', 'server/models/**/*.js', 'server/index.js']
       },
       client: {
-        src: ['app/**/*.js'],
+        src: ['client/**/*.js'],
         options: {
           globals: {
             angular: true,
@@ -165,6 +165,7 @@ module.exports = function(grunt) {
   // register tasks.
   grunt.registerTask('default', ['jshint']);
   grunt.registerTask('test',  ['simplemocha:dev', 'karma']);
+  grunt.registerTask('test:frontend', ['webpack:karma_test', 'karma']);
   grunt.registerTask('build:test', ['webpack:karma_test']);
   grunt.registerTask('build:dev', [ 'webpack:client', 'copy:html', 'copy:images', 'cssmin']);
   grunt.registerTask('build', ['build:dev']);

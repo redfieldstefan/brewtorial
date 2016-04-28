@@ -1,13 +1,13 @@
 'use strict';
 
-require('../../app/js/client');
+require('../../client/js/client');
 require('angular-mocks');
 
 describe('brewtorial brew event controllers test', function(){
 
   var $CtrlrConstructor;
   var $httpBackend;
-  var $routeParams;
+  var $routeParams = {};
   var $scope;
 
   beforeEach(angular.mock.module('brewtorialApp'));
@@ -15,6 +15,7 @@ describe('brewtorial brew event controllers test', function(){
   beforeEach(angular.mock.inject(function($rootScope, $controller) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
+    $routeParams.id = 4;
   }));
 
   it('Should be able to create a new controller', function(){
@@ -26,9 +27,10 @@ describe('brewtorial brew event controllers test', function(){
   describe('REST Functionality', function(){
 
     beforeEach(angular.mock.inject(function(_$httpBackend_, _$routeParams_) {
-      this.BrewController = $CtrlrConstructor('BrewController', {$scope: $scope});
       $httpBackend = _$httpBackend_;
       $routeParams = _$routeParams_;
+      $routeParams.id = 4;
+      this.BrewController = $CtrlrConstructor('BrewController', {$scope: $scope});
     }));
 
     afterEach(function() {
@@ -37,12 +39,11 @@ describe('brewtorial brew event controllers test', function(){
     });
 
     it('get a specific brew event', function(){
-      $routeParams._id = 4;
       $httpBackend.expectGET('/api/brew/4').respond(200, {data: {ingredients: ['Test Ingredients'], steps: ['Test Steps']}});
       $scope.getBrew();
       $httpBackend.flush();
       expect(typeof $scope.thisBrew).toBe('object');
-      expect($scope.ingredients[0]).toBe('Test Ingredients');
+      expect($scope.thisBrew.ingredients[0]).toBe('Test Ingredients');
       expect($scope.steps[0]).toBe('Test Steps');
 
     });

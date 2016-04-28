@@ -8,15 +8,16 @@ module.exports = function(app) {
     if(!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
+      console.log('redirected...')
     }
-    var Recipe = RESTResource('recipe');
-    var Equipment = RESTResource('equipment');
+    var Recipe = RESTResource('recipe'); //jshint ignore: line
+    var Equipment = RESTResource('equipment'); //jshint ignore: line
     $scope.steps = ['header', 'ingredients', 'icons', 'equipment', 'steps', 'review'];
     $scope.stepIndex = 0;
     $scope.formStep = $scope.steps[$scope.stepIndex];
     $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []}
+    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []};
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
 
     $scope.createRecipe = function() {

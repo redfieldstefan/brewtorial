@@ -27,7 +27,7 @@ module.exports = function(app) {
     };
 
     $scope.getBrew = function() {
-      Brew.getOne(brewId, function(err, brew) {
+      Brew.getOne($routeParams.id, function(err, brew) {
         if (err){
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error fetching the brew event'});

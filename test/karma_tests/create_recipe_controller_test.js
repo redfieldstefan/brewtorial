@@ -1,6 +1,6 @@
 'use strict';
 
-require('../../app/js/client');
+require('../../client/js/client');
 require('angular-mocks');
 
 describe('brewtorial create recipe controllers test', function(){
@@ -9,18 +9,33 @@ describe('brewtorial create recipe controllers test', function(){
   var $httpBackend;
   var $scope;
 
+  // beforeEach(angular.module('brewtorialApp'));
   beforeEach(angular.mock.module('brewtorialApp'));
 
-  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+  // beforeEach(angular.mock.module('templates'));
+
+  beforeEach(function () {
+    var temp = angular.mock.module('templates');
+    console.log(temp);
+    // temp();
+    console.log('done');
+  });
+
+  beforeEach(angular.mock.inject(function($rootScope, $controller, auth) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
+    sinon.stub(auth, 'isSignedIn').returns(true);
+    angular.module('templates');
+  }));
+
+  afterEach(angular.mock.inject(function (auth) {
+    auth.isSignedIn.restore();
   }));
 
   it('Should be able to create a new controller', function(){
     var CreateRecipeController = $CtrlrConstructor('CreateRecipeController', {$scope: $scope});
     expect(typeof CreateRecipeController).toBe('object');
     expect(Array.isArray($scope.errors)).toBe(true);
-    expect(Array.isArray($scope.ingredients)).toBe(true);
     expect(Array.isArray($scope.steps)).toBe(true);
   });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-require('../../app/js/client');
+require('../../client/js/client');
 require('angular-mocks');
 
 describe('brewtorial user controller test', function(){
