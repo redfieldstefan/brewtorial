@@ -99,6 +99,19 @@
   padding-bottom: 25px;
 }
 
+.ingredient-step {
+  padding: 20px;
+  float: left; /* TODO: do we need this anymore? */
+  width: 100%;
+}
+
+#create-recipe #steps .ingredient-step input {
+  width: 32%;
+  margin-right: 1%;
+  display: inline-block;
+  float: left;
+  margin-bottom: 0;
+}
 
 
 /*OLD*/

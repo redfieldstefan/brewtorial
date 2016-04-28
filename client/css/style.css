@@ -203,3 +203,7 @@ textarea.dotted-border {
   color: black;
 }
 
+/* INTERACTION */
+.hover {
+  cursor: pointer;
+}

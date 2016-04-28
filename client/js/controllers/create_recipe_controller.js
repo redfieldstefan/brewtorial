@@ -17,7 +17,7 @@ module.exports = function(app) {
     $scope.formStep = $scope.steps[$scope.stepIndex].name;
     $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: []}
+    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: [{}]}
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
 
     $scope.createRecipe = function() {
@@ -31,6 +31,10 @@ module.exports = function(app) {
           $location.path('/recipes/' + address);
         }
       });
+    };
+
+    $scope.addEmptyIngredient = function () {
+      $scope.recipe.ingredients.push({});
     };
 
     $scope.getEquipmentList = function() {
@@ -60,6 +64,7 @@ module.exports = function(app) {
       $scope.recipe.header.icon = icon;
     };
 
+    // TODO: delete me
     $scope.addIngredient = function(ingredient) {
       $scope.recipe.ingredients.push({item: ingredient.item, amount: ingredient.amount, unit: ingredient.unit});
       document.getElementById("form_ingredients").reset();
