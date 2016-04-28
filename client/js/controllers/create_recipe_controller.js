@@ -8,6 +8,7 @@ module.exports = function(app) {
     if(!auth.isSignedIn()){
       $cookies.put('postAuthenticationRedirect', $location.path());
       $location.path('/sign_in');
+      console.log('redirected...')
     }
     var Recipe = RESTResource('recipe'); //jshint ignore: line
     var Equipment = RESTResource('equipment'); //jshint ignore: line

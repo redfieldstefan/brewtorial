@@ -9,12 +9,23 @@ describe('brewtorial create recipe controllers test', function(){
   var $httpBackend;
   var $scope;
 
+  // beforeEach(angular.module('brewtorialApp'));
   beforeEach(angular.mock.module('brewtorialApp'));
+
+  // beforeEach(angular.mock.module('templates'));
+
+  beforeEach(function () {
+    var temp = angular.mock.module('templates');
+    console.log(temp);
+    // temp();
+    console.log('done');
+  });
 
   beforeEach(angular.mock.inject(function($rootScope, $controller, auth) {
     $scope = $rootScope.$new();
     $CtrlrConstructor = $controller;
     sinon.stub(auth, 'isSignedIn').returns(true);
+    angular.module('templates');
   }));
 
   afterEach(angular.mock.inject(function (auth) {
