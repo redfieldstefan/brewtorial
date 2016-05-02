@@ -63,6 +63,27 @@
 
       </div>
 
+      <!-- STEP 4 -->
+      <div class="step step-equipment" data-ng-if="formStep === 'Equipment'">
+        <h3 class="text-center">Step 3: Ingredients</h3>
+
+          <form class="center" data-ng-submit="addEmptyEquipment()">
+            <div data-ng-repeat="item in recipe.equipment track by $index" class="equipment-step">
+              <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="item.quantity">
+              <select data-ng-model="item.name">
+                <option value="">Select Item</option>
+                <option data-ng-repeat="availableItem in availableEquipment track by $index" value="{{availableItem.name}}">
+                  {{availableItem.name}}
+                </option>
+              </select>
+            </div>
+            <button class="add center">
+              <i class="material-icons plus center hover">add</i>
+            </button>
+          </form>
+
+      </div>
+
       <button data-ng-if="stepIndex !== steps.length - 1" class="next background-salmon right" type="button" data-ng-click="changeStep(1)">Next</button>
 
     </section>

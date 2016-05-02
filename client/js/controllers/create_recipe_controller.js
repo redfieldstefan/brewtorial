@@ -17,7 +17,7 @@ module.exports = function(app) {
     $scope.formStep = $scope.steps[$scope.stepIndex].name;
     $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.recipe  = {header: {}, steps: [], equipment: [], ingredients: [{}]}
+    $scope.recipe  = {header: {}, steps: [], equipment: [{}], ingredients: [{}]}
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
 
     $scope.createRecipe = function() {
@@ -64,12 +64,6 @@ module.exports = function(app) {
       $scope.recipe.header.icon = icon;
     };
 
-    // TODO: delete me
-    $scope.addIngredient = function(ingredient) {
-      $scope.recipe.ingredients.push({item: ingredient.item, amount: ingredient.amount, unit: ingredient.unit});
-      document.getElementById("form_ingredients").reset();
-    };
-
      $scope.addStep = function(step) {
       if(!step.offset.days){
         step.offset.days = 0;
@@ -87,9 +81,8 @@ module.exports = function(app) {
       document.getElementById("form_steps").reset();
     };
 
-    $scope.addEquipment = function(item) {
-      $scope.equipment.push(item);
-      document.getElementById("form_equipment").reset();
+    $scope.addEmptyEquipment = function() {
+      $scope.recipe.equipment.push({});
     };
 
     $scope.remove = function(thing, arr) {

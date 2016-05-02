@@ -113,6 +113,15 @@
   margin-bottom: 0;
 }
 
+#create-recipe #steps .step-equipment form {
+  width: 50%;
+}
+
+#create-recipe #steps .step-equipment select {
+  border: 0;
+  background: white;
+}
+
 
 /*OLD*/
 /*#create-recipe {
