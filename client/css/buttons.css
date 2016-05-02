@@ -8,6 +8,16 @@ button {
   border: 0;
 }
 
+button.add {
+  background-color: transparent;
+  color: black;
+}
+
+button.add:hover {
+  color: rgba(140, 252, 187, 1);
+  background-color: transparent;
+}
+
 button:hover {
   background: rgba(140, 252, 187, 1);
 }

@@ -50,14 +50,16 @@
       <div class="step step-ingredients" data-ng-if="formStep === 'Ingredients'">
         <h3 class="text-center">Step 3: Ingredients</h3>
 
-        <div data-ng-repeat="ingredient in recipe.ingredients" class="ingredient-step">
-          <input type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
-          <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="ingredient.quantity">
-          <input type="text" placeholder="Units" class="dotted-underline" data-ng-model="ingredient.units">
-        </div>
-        <div class="text-center" data-ng-click="addEmptyIngredient()">
-          <i class="material-icons plus center hover">add</i>
-        </div>
+          <form data-ng-submit="addEmptyIngredient()">
+            <div data-ng-repeat="ingredient in recipe.ingredients" class="ingredient-step">
+              <input type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
+              <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="ingredient.quantity">
+              <input type="text" placeholder="Units" class="dotted-underline" data-ng-model="ingredient.units">
+            </div>
+            <button class="add center">
+              <i class="material-icons plus center hover">add</i>
+            </button>
+          </form>
 
       </div>
 
