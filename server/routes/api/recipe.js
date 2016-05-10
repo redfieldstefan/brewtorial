@@ -56,6 +56,7 @@ module.exports = function(router) {
   });
 
   router.post('/', eatAuth, function(req, res) {
+    console.log(req.body);
     var newRecipe = new Recipe(req.body);
     newRecipe.header.author = req.user.displayName;
     newRecipe.header.created = Date.now();

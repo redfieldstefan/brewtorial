@@ -1,6 +1,6 @@
 <nav data-nav-header data-page="{{ page }}"></nav>
 
-<article id="create-recipe" data-ng-controller="CreateRecipeController" data-ng-init="getEquipmentList()">
+<article id="create-recipe" data-ng-controller="CreateRecipeController" data-ng-init="setup()">
 
   <section id="progress">
     <div class="container">
@@ -39,7 +39,7 @@
         <form>
           <input type="text" placeholder="Style" class="center dotted-underline" data-ng-model="recipe.style">
           <input type="text" placeholder="Difficulty" class="center dotted-underline" data-ng-model="recipe.difficulty">
-          <input type="text" placeholder="Time Required (e.g 4 weeks)" class="center dotted-underline" data-ng-model="recipe.time">
+          <input type="text" placeholder="Time Required (e.g 4 weeks)" class="center dotted-underline" data-ng-model="recipe.brewTime">
           <input type="text" placeholder="ABV" class="center dotted-underline" data-ng-model="recipe.abv">
           <input type="text" placeholder="OG" class="center dotted-underline" data-ng-model="recipe.og">
           <input type="text" placeholder="IBU" class="center dotted-underline" data-ng-model="recipe.ibu">
@@ -50,9 +50,10 @@
       <div class="step step-ingredients" data-ng-if="formStep === 'Ingredients'">
         <h3 class="text-center">Step 3: Ingredients</h3>
 
+        <md-content class="md-padding">
           <form data-ng-submit="addEmptyIngredient()">
             <div data-ng-repeat="ingredient in recipe.ingredients" class="ingredient-step">
-              <input type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
+              <input id="ingredients-input" type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
               <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="ingredient.quantity">
               <input type="text" placeholder="Units" class="dotted-underline" data-ng-model="ingredient.units">
             </div>
@@ -60,12 +61,13 @@
               <i class="material-icons plus center hover">add</i>
             </button>
           </form>
+        </md-content>
 
       </div>
 
       <!-- STEP 4 -->
       <div class="step step-equipment" data-ng-if="formStep === 'Equipment'">
-        <h3 class="text-center">Step 3: Ingredients</h3>
+        <h3 class="text-center">Step 4: Equipment</h3>
 
           <form class="center" data-ng-submit="addEmptyEquipment()">
             <div data-ng-repeat="item in recipe.equipment track by $index" class="equipment-step">

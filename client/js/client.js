@@ -87,8 +87,11 @@ brewtorialApp.config(['$routeProvider', function($routeProvider) {
     .when('/profile', {
       templateUrl: 'views/user.html',
       controller: 'UserController'
+    }).when('/new-create', {
+      templateUrl: 'views/new-create.html',
+      controller: 'RecipeController'
     })
-    .when('/new-create', {
+    .when('/new-create/:id', {
       templateUrl: 'views/new-create.html',
       controller: 'RecipeController'
     })

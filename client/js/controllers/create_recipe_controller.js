@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 
-  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$cookies', 'auth', function($scope, $location, RESTResource, $cookies, auth) {
+  app.controller('CreateRecipeController', ['$scope', '$location', 'RESTResource', '$routeParams', '$cookies', 'auth', function($scope, $location, RESTResource, $routeParams, $cookies, auth) {
 
     // restricted url, ensure user is authenticated. capture location for post-authentication redirect.
     if(!auth.isSignedIn()){
@@ -13,12 +13,54 @@ module.exports = function(app) {
     var Recipe = RESTResource('recipe');
     var Equipment = RESTResource('equipment');
     $scope.steps = [{name: 'Basics', complete: false},{name:'Details', complete: false}, {name:'Ingredients', complete: false}, {name:'Equipment', complete: false}, {name:'Directions', complete: false}, {name:'Review', complete: false}];
-    $scope.stepIndex = 0;
-    $scope.formStep = $scope.steps[$scope.stepIndex].name;
     $scope.page = 'recipe';
     $scope.errors = [];
-    $scope.recipe  = {header: {}, steps: [], equipment: [{}], ingredients: [{}]}
     $scope.icons = ['../images/icons/brew-yellow.png', '../images/icons/brew-pale.png', '../images/icons/brew-amber.png', '../images/icons/brew-red.png', '../images/icons/brew-brown.png', '../images/icons/brew-dark.png'];
+
+    $scope.ingredientsAutocomplete = ["Hops", "Grains", "Yeast", "Malt"];
+    $scope.unitsAutocomplete = ["Cups", "Tbsp", "Tsp", "Gallons", "Ounces"];
+
+    $scope.getRecipe = function () {
+      if($routeParams.id) {
+        Recipe.getOne($routeParams.id, function(err, recipe) {
+          if (err) {
+            console.log(err);
+            return $scope.errors.push({msg: 'Problem finding resource'});
+          }
+          $scope.recipe = recipe.result;
+          $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
+        });
+      } else {
+        $scope.recipe  = {header: {}, steps: [], equipment: [{}], ingredients: [{}], stepIndex: 0};
+        $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
+      }
+    };
+
+    $scope.setup = function () {
+      $scope.getRecipe();
+      $scope.getEquipmentList();
+      var ingredients = ["Hops", "Grains", "Yeast", "Malt"];
+      $("#ingredients-input" ).autocomplete({
+        source: ingredients,
+        select: function(event, ui) {
+          event.preventDefault();
+          $("#ingredients-input").val(ui.item.value);
+        }
+      });
+    };
+
+    $scope.saveRecipe = function () {
+      if($scope.recipe.stepIndex === 0 && !$routeParams.id) {
+        return $scope.createRecipe();
+      } else {
+        Recipe.save($scope.recipe._id, $scope.recipe, function (err, data) {
+          if(err) {
+            return console.log(err);
+          }
+          console.log('Save succesful');
+        });
+      }
+    }
 
     $scope.createRecipe = function() {
       Recipe.create($scope.recipe, function(err, data) {
@@ -26,9 +68,8 @@ module.exports = function(app) {
           $scope.errors.push(err);
           return console.log({msg: 'Dang, error creating the recipe'});
         } else {
-          clearForms();
-          var address = data.result._id;
-          $location.path('/recipes/' + address);
+          console.log(data);
+          $scope.recipe = data.result;
         }
       });
     };
@@ -48,16 +89,18 @@ module.exports = function(app) {
     };
 
     $scope.changeStep = function(number) {
+      $scope.saveRecipe();
+      console.log($scope.recipe.stepIndex);
       if(number > -1) {
-        $scope.steps[$scope.stepIndex].complete = true;
+        $scope.steps[$scope.recipe.stepIndex].complete = true;
       }
-      $scope.stepIndex += number;
-      $scope.formStep = $scope.steps[$scope.stepIndex].name;
+      $scope.recipe.stepIndex += number;
+      $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
     };
 
     $scope.jumpStep = function(step) {
-      $scope.stepIndex = $scope.steps.indexOf(step);
-      $scope.formStep = $scope.steps[$scope.stepIndex].name;
+      $scope.recipe.stepIndex = $scope.steps.indexOf(step);
+      $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
     };
 
     $scope.addIcon = function(icon) {
