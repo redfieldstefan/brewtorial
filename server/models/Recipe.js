@@ -5,31 +5,23 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 // define schema.
 var recipeSchema = new mongoose.Schema({
   description: String,
+  title: String,
+  abv: Number,
+  ibu: Number,
+  icon: String,
+  og: Number,
+  style: String,
+  brewTime: String,
+  difficulty: String,
   header: {
-    abv: {
-      type: Number,
-      required: true
-    },
     author: String,
-    brewTime: String,
     created: Date,
-    difficulty: Number,
-    ibu: Number,
-    icon: String,
     likes: Number,
-    og: Number,
     popularity: Array,
-    style: String,
-    title: String
   },
   equipment: Array,
-  ingredients: [
-    {
-      item: String,
-      amount: String,
-      unit: String
-    }
-  ],
+  ingredients: Array,
+  stepIndex: Number,
   steps: [
     {
       directions: String,
