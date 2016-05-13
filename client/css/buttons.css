@@ -18,6 +18,16 @@ button.add:hover {
   background-color: transparent;
 }
 
+button.remove {
+  background-color: transparent;
+  color: black;
+}
+
+button.remove:hover {
+  color: tomato;
+  background-color: transparent;
+}
+
 button:hover {
   background: rgba(140, 252, 187, 1);
 }
