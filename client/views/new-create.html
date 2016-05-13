@@ -51,7 +51,7 @@
         <h3 class="text-center">Step 3: Ingredients</h3>
 
         <md-content class="md-padding">
-          <form data-ng-submit="addEmptyIngredient()">
+          <form data-ng-submit="addTo(recipe.equipment)">
             <div data-ng-repeat="ingredient in recipe.ingredients" class="ingredient-step">
               <input id="ingredients-input" type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
               <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="ingredient.quantity">
@@ -69,21 +69,42 @@
       <div class="step step-equipment" data-ng-if="formStep === 'Equipment'">
         <h3 class="text-center">Step 4: Equipment</h3>
 
-          <form class="center" data-ng-submit="addEmptyEquipment()">
-            <div data-ng-repeat="item in recipe.equipment track by $index" class="equipment-step">
-              <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="item.quantity">
-              <select data-ng-model="item.name">
-                <option value="">Select Item</option>
-                <option data-ng-repeat="availableItem in availableEquipment track by $index" value="{{availableItem.name}}">
-                  {{availableItem.name}}
-                </option>
-              </select>
-            </div>
-            <button class="add center">
-              <i class="material-icons plus center hover">add</i>
-            </button>
-          </form>
+        <form class="center" data-ng-submit="addTo(recipe.ingredients)">
+          <div data-ng-repeat="item in recipe.equipment track by $index" class="equipment-step">
+            <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="item.quantity">
+            <select data-ng-model="item.name">
+              <option value="">Select Item</option>
+              <option data-ng-repeat="availableItem in availableEquipment track by $index" value="{{availableItem.name}}">
+                {{availableItem.name}}
+              </option>
+            </select>
+          </div>
+          <button class="add center">
+            <i class="material-icons plus center hover">add</i>
+          </button>
+        </form>
+      </div>
 
+      <!-- STEP 5 -->
+      <div class="step" data-ng-if="formStep === 'Directions'">
+        <h3 class="text-center">Step 5: Directions</h3>
+
+        <form class="center" data-ng-submit="addTo(recipe.steps)">
+          <div data-ng-repeat="step in recipe.steps track by $index">
+            <button class="remove right">
+              <i class="material-icons remove right hover" data-ng-click="remove(step, recipe.steps)">clear</i>
+            </button>
+            <h5>Step {{$index + 1}}</h5>
+            <textarea placeholder="Write out the instructions for this step" class="dotted-border" data-ng-model="step.direction"></textarea>
+            <h5>Time Required</h5>
+            <input type="number" placeholder="days" data-ng-model="step.offset.days">
+            <input type="number" placeholder="hours" data-ng-model="step.offset.hours">
+            <input type="number" placeholder="minutes" data-ng-model="step.offset.minutes">
+          </div>
+          <button class="add center">
+            <i class="material-icons plus center hover">add</i>
+          </button>
+        </form>
       </div>
 
       <button data-ng-if="stepIndex !== steps.length - 1" class="next background-salmon right" type="button" data-ng-click="changeStep(1)">Next</button>

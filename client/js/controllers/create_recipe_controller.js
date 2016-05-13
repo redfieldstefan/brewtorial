@@ -31,7 +31,7 @@ module.exports = function(app) {
           $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
         });
       } else {
-        $scope.recipe  = {header: {}, steps: [], equipment: [{}], ingredients: [{}], stepIndex: 0};
+        $scope.recipe  = {header: {}, steps: [], equipment: [{}], ingredients: [{}], steps: [{}], stepIndex: 0, complete: false};
         $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
       }
     };
@@ -74,8 +74,12 @@ module.exports = function(app) {
       });
     };
 
-    $scope.addEmptyIngredient = function () {
-      $scope.recipe.ingredients.push({});
+    $scope.addTo = function (arr) {
+      arr.push({});
+    };
+
+    $scope.remove = function (thing, arr) {
+      arr.splice(arr.indexOf(thing), 1);
     };
 
     $scope.getEquipmentList = function() {
@@ -103,35 +107,26 @@ module.exports = function(app) {
       $scope.formStep = $scope.steps[$scope.recipe.stepIndex].name;
     };
 
-    $scope.addIcon = function(icon) {
-      $scope.recipe.header.icon = icon;
-    };
+    // $scope.addIcon = function(icon) {
+    //   $scope.recipe.header.icon = icon;
+    // };
 
-     $scope.addStep = function(step) {
-      if(!step.offset.days){
-        step.offset.days = 0;
-      }
-      if(!step.offset.hours){
-        step.offset.hours = 0;
-      }
-      if(!step.offset.minutes){
-        step.offset.minutes = 0;
-      }
-      $scope.steps.push({directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
-      step.offset.days = 0;
-      step.offset.hours = 0;
-      step.offset.minutes = 0;
-      document.getElementById("form_steps").reset();
-    };
-
-    $scope.addEmptyEquipment = function() {
-      $scope.recipe.equipment.push({});
-    };
-
-    $scope.remove = function(thing, arr) {
-      var index = arr.indexOf(thing);
-      arr.splice(index, 1);
-    };
+    //  $scope.addStep = function(step) {
+    //   if(!step.offset.days){
+    //     step.offset.days = 0;
+    //   }
+    //   if(!step.offset.hours){
+    //     step.offset.hours = 0;
+    //   }
+    //   if(!step.offset.minutes){
+    //     step.offset.minutes = 0;
+    //   }
+    //   $scope.steps.push({directions: step.directions, offset: {days: step.offset.days, hours: step.offset.hours, minutes: step.offset.minutes}, status: false});
+    //   step.offset.days = 0;
+    //   step.offset.hours = 0;
+    //   step.offset.minutes = 0;
+    //   document.getElementById("form_steps").reset();
+    // };
 
     var clearForms = function () {
       $scope.recipes = [];

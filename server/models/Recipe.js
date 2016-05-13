@@ -33,6 +33,7 @@ var recipeSchema = new mongoose.Schema({
       status: Boolean
     }
   ],
+  complete: Boolean,
 });
 
 // export model.
