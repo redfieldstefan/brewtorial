@@ -51,7 +51,7 @@
         <h3 class="text-center">Step 3: Ingredients</h3>
 
         <md-content class="md-padding">
-          <form data-ng-submit="addTo(recipe.equipment)">
+          <form data-ng-submit="addTo(recipe.ingredients)">
             <div data-ng-repeat="ingredient in recipe.ingredients" class="ingredient-step">
               <input id="ingredients-input" type="text" placeholder="Ingredient" class="dotted-underline" data-ng-model="ingredient.name">
               <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="ingredient.quantity">
@@ -69,7 +69,7 @@
       <div class="step step-equipment" data-ng-if="formStep === 'Equipment'">
         <h3 class="text-center">Step 4: Equipment</h3>
 
-        <form class="center" data-ng-submit="addTo(recipe.ingredients)">
+        <form class="center" data-ng-submit="addTo(recipe.equipment)">
           <div data-ng-repeat="item in recipe.equipment track by $index" class="equipment-step">
             <input type="text" placeholder="Quantity" class="dotted-underline" data-ng-model="item.quantity">
             <select data-ng-model="item.name">
