@@ -70,6 +70,7 @@ module.exports = function(app) {
         } else {
           console.log(data);
           $scope.recipe = data.result;
+          $location.path("/create/" + data.result._id);
         }
       });
     };
