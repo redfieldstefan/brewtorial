@@ -91,7 +91,7 @@
 
         <form class="center" data-ng-submit="addTo(recipe.steps)">
           <div data-ng-repeat="step in recipe.steps track by $index">
-            <button class="remove right">
+            <button type="button" class="remove right">
               <i class="material-icons remove right hover" data-ng-click="remove(step, recipe.steps)">clear</i>
             </button>
             <h5>Step {{$index + 1}}</h5>
