@@ -6,10 +6,10 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var recipeSchema = new mongoose.Schema({
   description: String,
   title: String,
-  abv: Number,
-  ibu: Number,
+  abv: String,
+  ibu: String,
   icon: String,
-  og: Number,
+  og: String,
   style: String,
   brewTime: String,
   difficulty: String,
